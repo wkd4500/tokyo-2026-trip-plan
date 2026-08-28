@@ -150,6 +150,10 @@ code{font-size:11.5px;background:var(--plane);border:1px solid var(--grid);borde
 .pickname{font-size:13px;font-weight:800;line-height:1.35}.pickmeta{font-size:11px;color:var(--muted);margin-top:4px}
 .picknote{font-size:11.5px;color:var(--text-secondary);margin-top:6px;line-height:1.45}
 .picklinks{margin-top:7px}.picklinks a{font-size:10.5px;color:var(--d1);text-decoration:none}
+.choice-added{display:inline-block;margin-left:6px;font-size:9px;font-weight:800;color:#176b17;
+  background:#eef7ee;border:1px solid #cce5cc;border-radius:999px;padding:2px 6px;vertical-align:middle}
+.route-open{display:inline-block;margin-top:7px;font-size:11px;font-weight:800;color:var(--d1);text-decoration:none;
+  border:1px solid var(--grid);border-radius:7px;padding:5px 8px;background:var(--surface-1)}
 .verdict-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
 .verdict{border:1px solid var(--grid);border-radius:12px;padding:13px;background:var(--surface-1)}
 .verdict b{display:block;font-size:13px;margin-bottom:5px}.verdict p{margin:0;font-size:12px;color:var(--text-secondary)}
@@ -207,24 +211,6 @@ code{font-size:11.5px;background:var(--plane);border:1px solid var(--grid);borde
   <div class="source-links">공식 운영 검증: <a href="https://www.tokyodisneyresort.jp/en/tds/daily/calendar/20260928/" target="_blank" rel="noopener">디즈니씨 9/28</a> · <a href="https://www.nmwa.go.jp/en/exhibitions/2026italy.html" target="_blank" rel="noopener">국립서양미술관 휴관</a> · <a href="https://www.kabuki-za.co.jp/ticket/" target="_blank" rel="noopener">가부키자 공연일</a> · <a href="https://policies.env.go.jp/national-garden/shinjukugyoen/english/guide/information/" target="_blank" rel="noopener">신주쿠교엔</a> · <a href="https://www.english.metro.tokyo.lg.jp/w/116-101-007403" target="_blank" rel="noopener">에도도쿄박물관</a>. 평점 숫자는 시점·플랫폼별 변동이 커 고정값 대신 리뷰의 일관성과 반복 지적을 등급에 반영했습니다.</div>
 </section>
 
-<!-- ══ v3 선택 플래너 ══ -->
-<section class="card" id="choice-planner">
-  <div class="pad" style="padding-bottom:0">
-    <div class="choice-head">
-      <div>
-        <h2>날짜별 선택 플래너</h2>
-        <div class="sub">시간대별로 카드를 고르면 이 기기에 선택 상태가 저장됩니다.</div>
-      </div>
-      <div class="choice-actions">
-        <span class="choice-count" id="choiceCount">0개 선택</span>
-        <button class="ghost-btn" id="choiceReset" type="button">선택 초기화</button>
-      </div>
-    </div>
-  </div>
-  <div class="choice-tabs" id="choiceTabs" role="tablist"></div>
-  <div class="choice-body" id="choiceBody"></div>
-</section>
-
 <!-- ══ 하루 밀도 ══ -->
 <section class="card pad">
   <h2>일자별 일정 수</h2>
@@ -247,6 +233,24 @@ code{font-size:11.5px;background:var(--plane);border:1px solid var(--grid);borde
       <div class="maplegend" id="maplegend"></div>
     </div>
   </div>
+</section>
+
+<!-- ══ v3 선택 플래너 ══ -->
+<section class="card" id="choice-planner">
+  <div class="pad" style="padding-bottom:0">
+    <div class="choice-head">
+      <div>
+        <h2>날짜별 선택 플래너</h2>
+        <div class="sub">카드를 고르면 위 해당 날짜 타임라인·전체 일정표·지도 동선 링크에 즉시 반영되고 이 기기에 저장됩니다.</div>
+      </div>
+      <div class="choice-actions">
+        <span class="choice-count" id="choiceCount">0개 선택</span>
+        <button class="ghost-btn" id="choiceReset" type="button">선택 초기화</button>
+      </div>
+    </div>
+  </div>
+  <div class="choice-tabs" id="choiceTabs" role="tablist"></div>
+  <div class="choice-body" id="choiceBody"></div>
 </section>
 
 <!-- ══ 예약 체크리스트 ══ -->
@@ -550,9 +554,36 @@ const CAT={관광:"#2a78d6",건축:"#3455a4",맛집:"#eb6834",쇼핑:"#1baf7a",�
 /* ── v3 선택 플래너 ── */
 const choiceStoreKey='tokyo-v3-picks';
 let choiceSelected=new Set();
+let detailReady=false;
+let currentDetailDay='d1';
 try{choiceSelected=new Set(JSON.parse(localStorage.getItem(choiceStoreKey)||'[]'));}catch(e){}
 
 function choiceKey(day,slot,item){return `${day.id}|${slot.time}|${item.n}`;}
+function slotMax(rule){
+  if(rule.includes('2~3')) return 3;
+  if(rule.includes('1~2')) return 2;
+  if(rule.includes('2~3')) return 3;
+  if(rule.includes('2곳')) return 2;
+  if(/1곳|한 줄기|시간 고정|선택 시/.test(rule)) return 1;
+  return Infinity;
+}
+function targetDayForChoice(choiceDay,item){
+  const direct={c1:'d1',c2:'d2',c3:'d3',c5:'d5',c6:'d6'};
+  if(direct[choiceDay.id]) return direct[choiceDay.id];
+  const n=item.n;
+  if(/아후리|하라주쿠|나카메구로|다이칸야마|지브리|Borderless|도쿄타워|모리 미술관|아자부다이|국립신미술관/.test(n)) return 'd2';
+  if(/이즈에이|칸다 마츠야|카야바|이케부쿠로/.test(n)) return 'd3';
+  if(/무기토 올리브|센비키야|디파치카/.test(n)) return 'd6';
+  return 'd1';
+}
+function selectedChoiceItems(dayId){
+  const out=[];
+  CHOICE_DAYS.forEach(cd=>cd.slots.forEach(slot=>slot.items.forEach(item=>{
+    const key=choiceKey(cd,slot,item);
+    if(!item.no&&choiceSelected.has(key)&&targetDayForChoice(cd,item)===dayId) out.push({cd,slot,item,key});
+  })));
+  return out;
+}
 function choiceBadge(level){
   const cls=level==='필수'?'must':level==='추천'?'rec':level==='불가'?'no':'';
   return `<span class="badge ${cls}">${level}</span>`;
@@ -580,8 +611,15 @@ function renderChoiceDay(id){
         </label>`;
       }).join('')}</div></div>`).join('');
   document.querySelectorAll('#choiceBody input[type="checkbox"]').forEach(input=>input.addEventListener('change',()=>{
-    if(input.checked) choiceSelected.add(input.dataset.key); else choiceSelected.delete(input.dataset.key);
-    updateChoiceCount();
+    const parts=input.dataset.key.split('|'),prefix=`${parts[0]}|${parts[1]}|`;
+    const slot=day.slots.find(s=>s.time===parts[1]);
+    if(input.checked){
+      const max=slotMax(slot.rule),inSlot=[...choiceSelected].filter(k=>k.startsWith(prefix));
+      while(inSlot.length>=max){const old=inSlot.shift();choiceSelected.delete(old);}
+      choiceSelected.add(input.dataset.key);
+    }else choiceSelected.delete(input.dataset.key);
+    updateChoiceCount();renderChoiceDay(day.id);
+    if(detailReady){currentDetailDay=targetDayForChoice(day,slot.items.find(i=>i.n===parts.slice(2).join('|')));select(currentDetailDay);renderFullTable();}
   }));
 }
 
@@ -592,6 +630,7 @@ CHOICE_DAYS.forEach(day=>{
 });
 document.getElementById('choiceReset').addEventListener('click',()=>{
   choiceSelected.clear();updateChoiceCount();renderChoiceDay(document.querySelector('.choice-tab[aria-selected="true"]')?.dataset.id||'c1');
+  if(detailReady){select(currentDetailDay);renderFullTable();}
 });
 updateChoiceCount();renderChoiceDay('c1');
 
@@ -775,29 +814,62 @@ DAYS.forEach(d=>{
   tabsEl.appendChild(b);
 });
 
+function normPlace(s){return s.toLowerCase().replace(/[^\p{L}\p{N}]/gu,'');}
+function timeRank(t){
+  const m=String(t).match(/(\d{1,2}):(\d{2})/);
+  if(m) return Number(m[1])*60+Number(m[2]);
+  if(t==='식사') return 750;
+  if(t==='반나절') return 600;
+  return 720;
+}
+function effectiveDayItems(day){
+  const choices=selectedChoiceItems(day.id);
+  if(!choices.length) return day.items;
+  const places=day.items.filter(i=>!i.move).map(i=>({...i}));
+  choices.forEach(({slot,item})=>{
+    const ni=normPlace(item.n);
+    const existing=places.find(p=>{const np=normPlace(p.n);return np===ni||(Math.min(np.length,ni.length)>5&&(np.includes(ni)||ni.includes(np)));});
+    if(existing){existing.choice=true;existing.d=item.note;existing.stay=item.d;existing.cost=item.p;return;}
+    places.push({t:slot.time,n:item.n,cat:item.c,d:item.note,stay:item.d,cost:item.p,choice:true});
+  });
+  return places.sort((a,b)=>timeRank(a.t)-timeRank(b.t));
+}
+function routeUrlFor(items){
+  const names=items.filter(i=>!i.move).map(i=>i.n);
+  if(!names.length) return '#';
+  if(names.length===1) return gmap(names[0]);
+  const origin=encodeURIComponent(names[0]+', Tokyo'),destination=encodeURIComponent(names.at(-1)+', Tokyo');
+  const middle=names.slice(1,-1).map(n=>encodeURIComponent(n+', Tokyo')).join('%7C');
+  return `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}${middle?`&waypoints=${middle}`:''}`;
+}
+
 function select(id){
   const day=DAYS.find(d=>d.id===id);
+  currentDetailDay=id;
+  const renderItems=effectiveDayItems(day);
+  const picked=selectedChoiceItems(id);
   document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.id===id));
 
   document.getElementById('dayhead').innerHTML=
     `<h2><span class="dot" style="background:${day.hex}"></span>${day.label}(${day.dow}) · ${day.theme}</h2>
-     <div class="zone">${day.zone}</div>`;
+     <div class="zone">${day.zone}${picked.length?` · <b>${picked.length}개 선택 반영</b>`:' · 기본 일정'}</div>
+     <a class="route-open" target="_blank" rel="noopener" href="${routeUrlFor(renderItems)}">${picked.length?'선택 반영 동선':'기본 동선'} 지도에서 열기 ↗</a>`;
 
   // timeline
   let n=0;
-  document.getElementById('timeline').innerHTML=day.items.map((it,idx)=>{
+  document.getElementById('timeline').innerHTML=renderItems.map((it,idx)=>{
     if(it.move){
       return `<div class="move"><div></div><div class="rail"><div class="line"></div><div class="pin sm" style="background:var(--baseline);width:8px;height:8px;border-width:0"></div></div>
         <div class="movetxt">${it.move}</div></div>`;
     }
     n++;
-    const last=idx===day.items.length-1;
+    const last=idx===renderItems.length-1;
     const catcol=CAT[it.cat]||'#898781';
     return `<div class="step">
       <div class="time">${it.t}</div>
       <div class="rail">${last?'':'<div class="line"></div>'}<div class="pin" style="background:${day.hex}">${n}</div></div>
       <div class="body">
-        <div class="pname">${it.n}</div>
+        <div class="pname">${it.n}${it.choice?'<span class="choice-added">선택 반영</span>':''}</div>
         <p class="pdesc">${it.d}</p>
         <div class="chips">
           <span class="chip cat" style="background:${catcol}">${it.cat}</span>
@@ -812,42 +884,45 @@ function select(id){
   // map
   if(layer) map.removeLayer(layer);
   layer=L.layerGroup();
-  const pts=day.items.filter(i=>!i.move);
+  let mapSeq=0;
+  const pts=[];
+  renderItems.forEach(p=>{if(!p.move){mapSeq++;if(Number.isFinite(p.lat)&&Number.isFinite(p.lng))pts.push({...p,_seq:mapSeq});}});
   const coords=[];
-  pts.forEach((p,i)=>{
+  pts.forEach(p=>{
     coords.push([p.lat,p.lng]);
-    L.marker([p.lat,p.lng],{icon:pinIcon(day.hex,i+1)}).addTo(layer)
-      .bindPopup(`<div class="pt">${i+1}. ${p.n}</div><span style="font-size:11.5px;color:#898781">${p.t} · ${p.cat}${p.stay&&p.stay!=='—'?' · '+p.stay:''}</span><br>${p.d}
+    L.marker([p.lat,p.lng],{icon:pinIcon(day.hex,p._seq)}).addTo(layer)
+      .bindPopup(`<div class="pt">${p._seq}. ${p.n}</div><span style="font-size:11.5px;color:#898781">${p.t} · ${p.cat}${p.stay&&p.stay!=='—'?' · '+p.stay:''}</span><br>${p.d}
         <br><a class="gmap" style="margin-top:7px" target="_blank" rel="noopener" href="${gmap(p.n)}">지도에서 열기 ↗</a>`);
   });
-  L.polyline(coords,{color:day.hex,weight:3,opacity:.7,dashArray:'7 8'}).addTo(layer);
+  if(coords.length>1)L.polyline(coords,{color:day.hex,weight:3,opacity:.7,dashArray:'7 8'}).addTo(layer);
   layer.addTo(map);
-  const b=L.latLngBounds(coords);
-  map.fitBounds(b.pad(.18));
+  if(coords.length){const b=L.latLngBounds(coords);map.fitBounds(b.pad(.18));}
 
   document.getElementById('maplegend').innerHTML=
-    `<span class="dot" style="background:${day.hex}"></span> ${day.label} 동선 · 점선 = 이동 순서 · 번호는 왼쪽 타임라인과 일치`;
+    `<span class="dot" style="background:${day.hex}"></span> ${day.label} 동선 · 선택한 신규 장소는 위 Google 지도 동선 링크에 모두 반영`;
 
   setTimeout(()=>map.invalidateSize(),80);
 }
 
 /* ── 전체 표 ── */
-(function(){
+function renderFullTable(){
   let h=`<tr><th style="width:74px">날짜</th><th style="width:52px">시각</th><th style="width:190px">장소</th><th style="width:58px">분류</th><th>내용</th></tr>`;
   DAYS.forEach(d=>{
-    d.items.filter(i=>!i.move).forEach((it,i)=>{
+    effectiveDayItems(d).filter(i=>!i.move).forEach((it,i)=>{
       h+=`<tr>
         <td class="nowrap">${i===0?`<span class="dot" style="background:${d.hex}"></span><b>${d.label}(${d.dow})</b>`:''}</td>
         <td class="nowrap" style="font-variant-numeric:tabular-nums">${it.t}</td>
-        <td><b>${it.n}</b></td>
+        <td><b>${it.n}</b>${it.choice?' <span class="choice-added">선택</span>':''}</td>
         <td style="color:var(--muted)">${it.cat}</td>
         <td style="color:var(--text-secondary)">${it.d.replace(/<[^>]+>/g,'')}</td>
       </tr>`;
     });
   });
   document.getElementById('fulltable').innerHTML=h;
-})();
+}
 
+detailReady=true;
+renderFullTable();
 select('d1');
 </script>
 </body>
