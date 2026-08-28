@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>도쿄 5박 6일 · 2026.09.25–09.30 · 일정 최적화 v2</title>
+<title>도쿄 5박 6일 · 2026.09.25–09.30</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
   integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
 <style>
@@ -130,100 +130,22 @@ code{font-size:11.5px;background:var(--plane);border:1px solid var(--grid);borde
 
 <!-- ══ HERO ══ -->
 <section class="card pad">
-  <div class="eyebrow">Tokyo 5N6D · Itinerary v2 (재설계)</div>
+  <div class="eyebrow">Tokyo 5N6D · Itinerary</div>
   <h1>도쿄 5박 6일 여행 플랜</h1>
   <div class="dates">2026.09.25(금) — 09.30(수)</div>
-  <p class="lead">
-    기존 v1(9/18–23 단순 날짜 이동본)을 폐기하고, <b>실제 9/25–30 날짜에 맞춰 6일을 전부 재배치</b>했습니다.
-    <b>도쿄 디즈니씨 하루</b>를 신규 편성하고, 요청대로 <b>서쪽(신주쿠·시부야)을 앞 이틀에</b> 배치했습니다.
-    각 날짜는 트리플 앱처럼 <b>시간대별 타임라인 + 지도 핀 번호 일치 + 구간별 이동수단·소요시간</b>으로 읽습니다.
-  </p>
-  <div class="callout">
-    <b>날짜 배치는 취향이 아니라 제약으로 결정했습니다.</b> 각 요일에만 되는 것 / 그날 안 되는 것을 먼저 고정하고 나머지를 채웠습니다 —
-    디즈니씨는 9/25(금)만 <b>18:30 조기폐장</b>이라 제외하고 평일 최저혼잡인 월요일로, 츠키지는 <b>일요일·일부 수요일 휴장</b>이라 화요일로,
-    아키하바라는 <b>보행자천국이 일요일 한정</b>이라 일요일로 갔습니다. 근거는 아래 「최적화 근거」 표에 전부 적었습니다.
-  </div>
   <div class="tiles">
     <div class="tile"><div class="v">6일 5박</div><div class="k">여행 기간</div></div>
-    <div class="tile"><div class="v">37곳</div><div class="k">타임라인 스팟</div></div>
-    <div class="tile"><div class="v">1일</div><div class="k">디즈니씨 (신규)</div></div>
+    <div class="tile"><div class="v">40곳</div><div class="k">타임라인 스팟</div></div>
+    <div class="tile"><div class="v">1일</div><div class="k">디즈니씨</div></div>
     <div class="tile"><div class="v">3건</div><div class="k">사전예약 필수</div></div>
     <div class="tile"><div class="v">약 ¥62,000</div><div class="k">1인 예상(숙박·항공 제외)</div></div>
     <div class="tile"><div class="v">0일</div><div class="k">공휴일 겹침</div></div>
   </div>
 </section>
 
-<!-- ══ 최적화 근거 ══ -->
-<section class="card pad">
-  <h2>최적화 근거 — 왜 이 날짜에 이 일정인가</h2>
-  <div class="sub" style="margin-bottom:14px">2026-08-20 기준 최신 공개 데이터로 점검. 「제약」이 그날로 고정시킨 이유입니다.</div>
-  <table>
-    <tr>
-      <th style="width:88px">날짜</th><th style="width:150px">배정</th>
-      <th>고정시킨 제약 (최신 데이터)</th><th style="width:112px">판정</th>
-    </tr>
-    <tr>
-      <td class="nowrap"><span class="dot" style="background:var(--d1)"></span><b>9/25 금</b></td>
-      <td>도착 + 신주쿠</td>
-      <td>도착일이라 예약·이동 부하가 낮아야 함. 도쿄도청 전망대는 <b>무료·22:00까지</b>라 늦은 도착에도 소화 가능. 프로젝션 매핑 <i>Tokyo Night &amp; Light</i>도 무료·야간.</td>
-      <td><b style="color:var(--good)">유지</b> 서쪽 앞단</td>
-    </tr>
-    <tr>
-      <td class="nowrap"><span class="dot" style="background:var(--d2)"></span><b>9/26 토</b></td>
-      <td>시부야·하라주쿠</td>
-      <td>주말이라 혼잡하지만, 이 권역은 <b>거리 분위기 자체가 콘텐츠</b>라 주말이 오히려 제값. 반대로 평일에 넣으면 아까운 날을 씀. SHIBUYA SKY 일몰(<b>일몰 약 17:30</b>) 슬롯 배치.</td>
-      <td><b style="color:var(--good)">유지</b> 서쪽 앞단</td>
-    </tr>
-    <tr>
-      <td class="nowrap"><span class="dot" style="background:var(--d3)"></span><b>9/27 일</b></td>
-      <td>아사쿠사·우에노·아키하바라</td>
-      <td>🔑 <b>아키하바라 보행자천국은 일요일 한정</b>(주오도리 13:00–18:00, 4–9월). 이날 아니면 못 봄. 아메요코도 일요일이 가장 활기. 반대로 <b>츠키지는 일요일 휴장</b>이라 이날 절대 배치 불가.</td>
-      <td><b style="color:var(--good)">일요일 고정</b></td>
-    </tr>
-    <tr>
-      <td class="nowrap"><span class="dot" style="background:var(--d4)"></span><b>9/28 월</b></td>
-      <td>도쿄 디즈니씨 ⭐</td>
-      <td>🔑 <b>9/25(금)만 18:30 조기폐장</b>, 9/26–30은 09:00–21:00. 주말(26·27)은 최혼잡, 30일은 귀국일 → <b>남는 후보는 월·화</b>. 그중 월요일이 주말 직후라 통상 더 한산.</td>
-      <td><b style="color:var(--good)">월요일 최적</b></td>
-    </tr>
-    <tr>
-      <td class="nowrap"><span class="dot" style="background:var(--d5)"></span><b>9/29 화</b></td>
-      <td>츠키지·도요스·오다이바</td>
-      <td>🔑 <b>츠키지 장외시장은 일요일 전면·일부 수요일 휴장</b> → 화요일이 안전. teamLab Planets는 시간지정제라 어차피 예약일 고정. 츠키지→도요스→오다이바는 한 축(베이)으로 묶여 이동 낭비 없음.</td>
-      <td><b style="color:var(--good)">화요일 고정</b></td>
-    </tr>
-    <tr>
-      <td class="nowrap"><span class="dot" style="background:var(--d6)"></span><b>9/30 수</b></td>
-      <td>긴자·도쿄역 + 귀국</td>
-      <td>🔑 <b>도쿄역이 나리타 익스프레스 기점</b> → 마지막 쇼핑 장소와 공항 출발점이 같은 건물. 짐 들고 재이동 0회. 긴자는 도쿄역에서 지하철 2정거장이라 오전에 붙임.</td>
-      <td><b style="color:var(--good)">동선 이득</b></td>
-    </tr>
-  </table>
-  <div class="callout" style="border-left-color:var(--good);background:#f4fbf4">
-    <b>보너스 — 혼잡도:</b> 일본 실버위크 연휴(9/21 경로의 날 · 9/22 국민의 휴일 · 9/23 추분의 날)는 <b>9/25 출발 시점에 이미 끝나 있습니다.</b>
-    v1 문서가 가정했던 "연휴 혼잡"은 이번 일정엔 해당 없음 — <b>연휴 직후의 비수기 평일</b> 구간을 타게 됩니다.
-  </div>
-</section>
-
-<!-- ══ v1 → v2 변경 ══ -->
-<section class="card pad">
-  <h2>v1 → v2 무엇이 바뀌었나</h2>
-  <div class="sub" style="margin-bottom:14px">단순 날짜 치환이 아니라 순서·구성이 바뀐 지점만 표시</div>
-  <table>
-    <tr><th style="width:92px">날짜</th><th>v1 (기존 9/18–23 그대로 밀기)</th><th>v2 (재설계)</th><th style="width:78px">변화</th></tr>
-    <tr><td class="nowrap"><b>1일차</b></td><td>신주쿠</td><td>신주쿠 <span style="color:var(--muted)">+ 무료 전망대·프로젝션 매핑 야간 코스</span></td><td style="color:var(--text-secondary)">보강</td></tr>
-    <tr><td class="nowrap"><b>2일차</b></td><td>아사쿠사·우에노 <span style="color:var(--muted)">(동부)</span></td><td><b>시부야·하라주쿠</b> <span style="color:var(--muted)">(서남부)</span></td><td><b style="color:var(--d2)">순서 교체</b></td></tr>
-    <tr><td class="nowrap"><b>3일차</b></td><td>하라주쿠·시부야</td><td><b>아사쿠사·우에노·아키하바라</b></td><td><b style="color:var(--d2)">순서 교체</b></td></tr>
-    <tr><td class="nowrap"><b>4일차</b></td><td>츠키지·긴자·도쿄역</td><td><b>도쿄 디즈니씨 (종일)</b></td><td><b style="color:var(--critical)">신규</b></td></tr>
-    <tr><td class="nowrap"><b>5일차</b></td><td>teamLab·도요스·오다이바</td><td>츠키지 + teamLab·도요스·오다이바 <span style="color:var(--muted)">(베이 축으로 병합)</span></td><td><b style="color:var(--d1)">병합</b></td></tr>
-    <tr><td class="nowrap"><b>6일차</b></td><td>귀국 (유동)</td><td><b>긴자·도쿄역 쇼핑</b> + 귀국 <span style="color:var(--muted)">(공항 기점과 일치)</span></td><td><b style="color:var(--d1)">구체화</b></td></tr>
-  </table>
-</section>
-
 <!-- ══ 하루 밀도 ══ -->
 <section class="card pad">
-  <h2>하루 밀도 — 일자별 타임라인 스팟 수</h2>
-  <div class="sub" style="margin-bottom:14px">도착·귀국일은 의도적으로 가볍게, 디즈니씨는 파크 내부 블록으로 집계</div>
+  <h2>일자별 일정 수</h2>
   <div id="chart"></div>
   <div class="srcnote">막대 색 = 아래 날짜 탭 색과 동일 · 숫자는 이동 구간을 제외한 체류 스팟 수</div>
 </section>
@@ -328,17 +250,6 @@ code{font-size:11.5px;background:var(--plane);border:1px solid var(--grid);borde
 <!-- ══ 실사 지도 (오프라인) ══ -->
 <section class="card pad">
   <h2>실사 지도 — 오프라인용 지역 참조도</h2>
-  <div class="sub" style="margin-bottom:6px">
-    기존 <code>realmap</code> 문서에 들어 있던 <b>라벨 달린 실제 지도 이미지</b>를 이 문서로 옮겨 담았습니다.
-    위쪽 인터랙티브 지도는 인터넷이 있어야 타일이 뜨지만, <b>아래 두 장은 파일 안에 박혀 있어 비행기·지하철 등 오프라인에서도 그대로 보입니다.</b>
-  </div>
-  <div class="callout" style="border-left-color:var(--d1);background:#f5f9fe">
-    <b>왜 원본 realmap 파일을 그대로 안 쓰고 옮겼나 —</b>
-    원본 3개 파일 중 <code>realmap</code> 2개는 <b>바이트 단위로 완전히 동일한 중복</b>이었고, 본문 텍스트도 인터랙티브판과 같았습니다.
-    실제 고유 자산은 <b>이 지도 이미지들뿐</b>이라 그것만 추출해 재압축(8.7MB → 0.9MB)했습니다.
-    다만 이 두 장은 <b>서·중앙부와 베이 권역만</b> 담고 있어, 새로 추가된 <b>동부(9/27)와 디즈니씨(9/28)는 커버하지 못합니다</b> —
-    그래서 인터랙티브 지도를 없애지 않고 <b>둘을 같이 두는</b> 구성으로 갔습니다.
-  </div>
 
   <h3 style="margin-top:20px">① 서부·중앙 — 9/25(금)·9/26(토)·9/30(수)</h3>
   <div class="sub" style="margin-bottom:8px">신주쿠 · 요요기 · 하라주쿠 · 시부야 · 아오야마 · 롯폰기 · 긴자 · 도쿄역 · 고쿄가 한 장에 들어옵니다.</div>
@@ -397,10 +308,6 @@ code{font-size:11.5px;background:var(--plane);border:1px solid var(--grid);borde
 
 <div class="footer">
   <b>데이터 기준일 2026-08-20.</b> 운영시간·요금·휴관일은 변동될 수 있으니 <b>예약 직전 공식 채널에서 재확인</b>하세요.
-  일몰 시각(약 17:30)은 천문 계산 근사치입니다.<br>
-  주요 확인 출처 — 도쿄 디즈니리조트 공식(운영시간·티켓·판타지스프링스 규칙) · teamLab 공식(시간지정 예약·휴관) ·
-  츠키지 장외시장 공식 캘린더(휴장일) · SHIBUYA SKY(14일 전 예약 오픈) · GO TOKYO(도쿄도청 전망대·센캬쿠반라이) · 기상 통계(9월 기온·태풍 빈도).<br>
-  지도 베이스맵 © OpenStreetMap contributors · 각 핀의 “지도에서 열기”는 Google 지도 검색으로 연결됩니다.
 </div>
 
 </div>
@@ -414,7 +321,6 @@ const DAYS=[
 {
  id:"d1",label:"9/25",dow:"금",color:"var(--d1)",hex:"#2a78d6",
  zone:"서부 · 신주쿠",theme:"도착 + 신주쿠 무료 야경 2연타",
- note:"도착일이라 예약이 필요한 일정은 하나도 넣지 않았습니다. 비행기가 밀려도 무너지지 않는 구성입니다.",
  items:[
   {t:"16:30",n:"도큐 가부키초 타워",cat:"쇼핑",lat:35.6952,lng:139.7017,
    d:"지상 48층 복합 엔터테인먼트 타워. 극장·라이브홀·푸드홀이 한 건물. 신주쿠 감 잡기용 첫 스팟.",stay:"50분",cost:"무료(입장)"},
@@ -432,7 +338,6 @@ const DAYS=[
 {
  id:"d2",label:"9/26",dow:"토",color:"var(--d2)",hex:"#eb6834",
  zone:"서남부 · 하라주쿠 · 시부야",theme:"신사 → 쇼핑거리 → 일몰 전망",
- note:"토요일이라 붐빕니다. 다만 이 권역은 사람 자체가 풍경이라 주말이 손해가 아닙니다. 오전에 메이지진구로 조용하게 시작해 밸런스를 맞췄습니다.",
  items:[
   {t:"09:40",n:"메이지진구",cat:"관광",lat:35.6764,lng:139.6993,
    d:"도심 한복판의 70만㎡ 인공 숲. 본전 참배는 무료(어원 정원만 ¥500). 오전이 압도적으로 조용합니다.",stay:"75분",cost:"무료"},
@@ -462,7 +367,6 @@ const DAYS=[
 {
  id:"d3",label:"9/27",dow:"일",color:"var(--d3)",hex:"#1baf7a",
  zone:"동부 · 아사쿠사 · 우에노 · 아키하바라",theme:"전통 → 전망 → 시장 → 서브컬처",
- note:"일요일에만 성립하는 날입니다. 아키하바라 주오도리가 13:00–18:00 차 없는 보행자천국이 되고, 아메요코도 일요일이 가장 붐빕니다. 오후 아키하바라 배치는 이 창을 노린 것입니다.",
  items:[
   {t:"09:00",n:"센소지 · 가미나리몬",cat:"관광",lat:35.7148,lng:139.7967,
    d:"도쿄 최고(最古) 사찰. 09시대는 관광버스가 오기 전이라 가미나리몬 사진이 깨끗하게 나옵니다. 참배 무료.",stay:"70분",cost:"무료"},
@@ -489,7 +393,6 @@ const DAYS=[
 {
  id:"d4",label:"9/28",dow:"월",color:"var(--d4)",hex:"#eda100",
  zone:"마이하마 · 도쿄 디즈니씨 ⭐",theme:"종일 파크 (09:00–21:00)",
- note:"이번 재설계의 핵심 신규 일정. 9/25(금)만 18:30 조기폐장이라 제외했고, 주말은 최혼잡, 30일은 귀국일이라 월요일이 남습니다. 파크 내부는 위치 좌표가 겹치므로 지도 핀은 파크 단위로 찍고, 타임라인에서 구역별로 나눴습니다.",
  items:[
   {t:"08:30",n:"마이하마역 → 디즈니리조트라인",cat:"이동",lat:35.6329,lng:139.8814,
    d:"모노레일로 '도쿄디즈니씨 스테이션' 하차. 1회 ¥300 / 1일권 ¥800. 걸어가도 약 20분.",stay:"20분",cost:"¥300"},
@@ -500,7 +403,7 @@ const DAYS=[
   {t:"11:30",n:"② 미스테리어스 아일랜드",cat:"체험",lat:35.6272,lng:139.8837,
    d:"화산 내부 구역. '센터 오브 디 어스', '해저 2만 마일'. 디즈니씨 상징 프로메테우스 화산 바로 아래.",stay:"90분",cost:"—"},
   {t:"13:00",n:"③ 점심 · 카스바 푸드코트",cat:"맛집",lat:35.6255,lng:139.8862,
-   d:"아라비안 코스트의 대형 푸드코트. 피크(12:00~13:00)를 살짝 비켜 앉는 배치입니다.",stay:"60분",cost:"¥1,500~"},
+   d:"아라비안 코스트의 대형 푸드코트. 피크 시간은 12:00~13:00입니다.",stay:"60분",cost:"¥1,500~"},
   {t:"14:30",n:"④ 아메리칸 워터프론트",cat:"체험",lat:35.6260,lng:139.8820,
    d:"'타워 오브 테러', '토이스토리 마니아'. 1900년대 뉴욕 항구 테마라 사진 배경이 가장 좋은 구역.",stay:"120분",cost:"—"},
   {t:"16:30",n:"⑤ 로스트리버 델타 · 머메이드 라군",cat:"체험",lat:35.6285,lng:139.8875,
@@ -514,7 +417,6 @@ const DAYS=[
 {
  id:"d5",label:"9/29",dow:"화",color:"var(--d5)",hex:"#e87ba4",
  zone:"베이 · 츠키지 · 도요스 · 오다이바",theme:"아침 시장 → 예약 전시 → 베이 야경",
- note:"츠키지(일요일·일부 수요일 휴장)를 화요일에 넣어 안전하게 확보했습니다. 츠키지 → 도요스 → 오다이바가 한 축이라 되돌아가는 이동이 없습니다. 이 날은 아침이 전부입니다.",
  items:[
   {t:"08:00",n:"츠키지 장외시장",cat:"시장",lat:35.6655,lng:139.7708,
    d:"🔑 오전 장사라 점심 지나면 닫기 시작합니다. 카이센동·참치초밥·¥100 다마고야키 꼬치가 대표. 소규모 점포는 현금만 받는 곳이 있음.",stay:"100분",cost:"¥2,500~"},
@@ -542,7 +444,6 @@ const DAYS=[
 {
  id:"d6",label:"9/30",dow:"수",color:"var(--d6)",hex:"#008300",
  zone:"중앙 · 긴자 · 도쿄역 → 귀국",theme:"마지막 쇼핑이 곧 공항 가는 길",
- note:"도쿄역이 나리타 익스프레스 기점이라, 쇼핑 장소와 공항 출발점이 같은 건물이 되도록 짰습니다. 짐 들고 되돌아가는 이동이 0회입니다. 출발편이 이르면 고쿄·마루노우치 구간부터 잘라내세요.",
  items:[
   {t:"10:00",n:"긴자 쇼핑",cat:"쇼핑",lat:35.6717,lng:139.7650,
    d:"긴자식스·도큐플라자 긴자·미츠코시·유니클로 긴자, 그리고 문구 성지 이토야. 면세 카운터가 잘 갖춰져 있어 마지막 지출을 몰기 좋습니다.",stay:"120분",cost:"—"},
@@ -602,8 +503,7 @@ function select(id){
 
   document.getElementById('dayhead').innerHTML=
     `<h2><span class="dot" style="background:${day.hex}"></span>${day.label}(${day.dow}) · ${day.theme}</h2>
-     <div class="zone">${day.zone}</div>
-     <p class="pdesc" style="margin:8px 0 12px;max-width:760px">${day.note}</p>`;
+     <div class="zone">${day.zone}</div>`;
 
   // timeline
   let n=0;
