@@ -199,6 +199,7 @@ tr:last-child td{border-bottom:none}
     <div class="verdict niche"><b>취향형 · 건축·동네 산책을 좋아하면 강력</b><p>도쿄 카테드랄, 21_21, 네즈미술관, 야네센, 구라마에, 키요스미시라카와, 칸다 마츠야. 대중 필수코스는 아니지만 여행의 개성을 만드는 선택지.</p></div>
     <div class="verdict bad"><b>제외·대체 권장</b><p>국립서양미술관과 가부키자 1막은 해당 날짜 이용 불가. NTT 도코모 외관은 도쿄국제포럼으로, 아자부다이 스카이로비는 모리 시티뷰로 대체. 다이코쿠야·스시잔마이는 명성은 있으나 ‘도쿄 최고의 한 끼’가 아니라 동선상 백업으로 분류.</p></div>
   </div>
+  <div class="mini" style="margin-top:12px"><b>전망대 우선순위</b><p><b>SHIBUYA SKY 최우선</b> · 스카이트리 전망대는 날씨와 취향에 따라 선택 · 도쿄도청은 무료 보조 코스로 사용합니다.</p></div>
   <div class="source-links">공식 운영 검증: <a href="https://www.tokyodisneyresort.jp/en/tds/daily/calendar/20260928/" target="_blank" rel="noopener">디즈니씨 9/28</a> · <a href="https://www.nmwa.go.jp/en/exhibitions/2026italy.html" target="_blank" rel="noopener">국립서양미술관 휴관</a> · <a href="https://www.kabuki-za.co.jp/ticket/" target="_blank" rel="noopener">가부키자 공연일</a> · <a href="https://policies.env.go.jp/national-garden/shinjukugyoen/english/guide/information/" target="_blank" rel="noopener">신주쿠교엔</a> · <a href="https://www.english.metro.tokyo.lg.jp/w/116-101-007403" target="_blank" rel="noopener">에도도쿄박물관</a>. 평점 숫자는 시점·플랫폼별 변동이 커 고정값 대신 리뷰의 일관성과 반복 지적을 등급에 반영했습니다.</div>
 </section>
 
@@ -309,7 +310,7 @@ tr:last-child td{border-bottom:none}
       <div class="mini">
         <b>무료로 채운 구간</b>
         <p>도쿄도청 전망대(202m)·Tokyo Night &amp; Light 프로젝션 매핑·메이지진구 본전·센소지·고쿄 외원·오다이바 해변공원·유니콘 건담 변신연출 — <b>전부 무료</b>입니다.
-        유료 전망대는 SHIBUYA SKY와 스카이트리 둘로 충분합니다.</p>
+        유료 전망대는 <b>SHIBUYA SKY를 우선</b>하고 스카이트리는 날씨가 좋을 때만 선택합니다.</p>
       </div>
     </div>
   </div>
@@ -345,7 +346,7 @@ tr:last-child td{border-bottom:none}
 <script>
 const CHOICE_DAYS=[
 {
- id:"c1",label:"9/25 신주쿠",route:"후운지 → 신주쿠 서쪽 건축 → 도쿄도청 야경 → 가부키초·골든가이. 신주쿠교엔은 17:30 최종 입장 전에만 선택.",
+ id:"c1",label:"9/25 신주쿠",route:"후운지 → 신주쿠 서쪽 건축 → 도쿄도청 야경 → 가부키초·골든가이. 신주쿠교엔은 16:00까지 관광을 시작하지 못하면 자동 제외.",
  slots:[
   {time:"14:00",title:"첫 식사",rule:"1곳 선택",items:[
    {n:"후운지",c:"맛집",l:"추천",d:"60분",p:"¥1,100~",note:"신주쿠 도착 후 츠케멘. 대기줄 감안."}
@@ -357,13 +358,13 @@ const CHOICE_DAYS=[
    {n:"도쿄도청 — 단게 겐조의 도시",c:"건축",l:"추천",d:"40분",p:"무료",note:"외관·공공공간 중심. 전망대와 연결 가능."}
   ]},
   {time:"16:30",title:"공원 또는 가부키초",rule:"1~2곳 선택",items:[
-   {n:"신주쿠교엔",c:"휴양",l:"선택",d:"90분",p:"¥500",note:"9/25 정상 개원. 18:00 폐원, 17:30 최종 입장."},
+   {n:"신주쿠교엔",c:"휴양",l:"조건부",d:"90분",p:"¥500",autoExcludeAt:"2026-09-25T16:00:00+09:00",note:"9/25 16:00까지 관광을 시작한 경우만 선택. 이후에는 일정에서 자동 제외."},
    {n:"도큐 가부키초 타워",c:"쇼핑",l:"추천",d:"50분",p:"무료",note:"가부키초 입구. 푸드홀·오락 중심."},
    {n:"하나조노 신사",c:"관광",l:"선택",d:"20분",p:"무료",note:"골든가이 동선과 연결."},
    {n:"신주쿠 3D 고양이",c:"야경",l:"선택",d:"15분",p:"무료",note:"신주쿠 동출구. 가부키초 이동 중 짧게."}
   ]},
   {time:"18:30",title:"무료 야경",rule:"1~2곳 선택",items:[
-   {n:"도쿄도청 남전망대",c:"야경",l:"추천",d:"40분",p:"무료",note:"지상 202m. 당일 휴관 공지 확인."},
+   {n:"도쿄도청 남전망대",c:"야경",l:"무료 보조",d:"40분",p:"무료",note:"SHIBUYA SKY를 우선하고, 도청은 무료 야경 보조 코스로 선택. 당일 휴관 공지 확인."},
    {n:"Tokyo Night & Light",c:"야경",l:"추천",d:"25분",p:"무료",note:"9월 18:30부터 30분 간격 상영."}
   ]},
   {time:"19:30",title:"저녁·야간 골목",rule:"1곳 선택",items:[
@@ -436,7 +437,7 @@ const CHOICE_DAYS=[
    {n:"teamLab Planets TOKYO",c:"체험",l:"필수",d:"100분",p:"¥3,600~",note:"시간지정제. 예약 시간에 맞춰 전체 동선 조정."}
   ]},
   {time:"16:30",title:"오다이바 마무리",rule:"1곳 선택",items:[
-   {n:"레인보우브리지 도보 횡단",c:"휴양",l:"선택",d:"60분",p:"무료",note:"바람·우천 시 취소. 건너간 뒤 역 접근성 확인."},
+   {n:"레인보우브리지 도보 횡단",c:"휴양",l:"후순위",d:"60분",p:"무료",note:"디즈니씨 다음 날이라 체력이 충분하고 비·강풍이 없을 때만 선택. 오다이바 해변 산책을 우선."},
    {n:"후지TV 구체 전망대",c:"관광",l:"후순위",d:"40분",p:"¥800~",note:"평가는 무난한 편. 오다이바에 이미 있을 때만 추가하고 야경 목적이면 해변공원을 우선."}
   ]}
  ]
@@ -531,6 +532,10 @@ let currentDetailDay='d1';
 try{choiceSelected=new Set(JSON.parse(localStorage.getItem(choiceStoreKey)||'[]'));}catch(e){}
 
 function choiceKey(day,slot,item){return `${day.id}|${slot.time}|${slot.title}|${item.n}`;}
+function isAutoExcluded(item){return Boolean(item.autoExcludeAt&&Date.now()>=Date.parse(item.autoExcludeAt));}
+CHOICE_DAYS.forEach(day=>day.slots.forEach(slot=>slot.items.forEach(item=>{
+  if(item.no||isAutoExcluded(item))choiceSelected.delete(choiceKey(day,slot,item));
+})));
 function slotMax(rule){
   if(rule.includes('2~3')) return 3;
   if(rule.includes('1~2')) return 2;
@@ -574,11 +579,11 @@ function renderChoiceDay(id){
     day.slots.map(slot=>`<div class="slot">
       <div class="slot-head"><div class="slot-title"><span class="slot-time">${slot.time}</span>${slot.title}</div><div class="slot-rule">${slot.rule}</div></div>
       <div class="pick-grid">${slot.items.map(item=>{
-        const key=choiceKey(day,slot,item),checked=choiceSelected.has(key)&&!item.no;
+        const key=choiceKey(day,slot,item),blocked=item.no||isAutoExcluded(item),checked=choiceSelected.has(key)&&!blocked;
         const mapUrl='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(item.n+', Tokyo');
-        return `<label class="pickcard ${item.no?'unavailable':''}" style="border-left-color:${CAT[item.c]||'#898781'}">
-          <input type="checkbox" data-key="${key.replace(/&/g,'&amp;').replace(/"/g,'&quot;')}" ${checked?'checked':''} ${item.no?'disabled':''}>
-          <div class="picktop"><div class="pickbadges">${choiceBadge(item.l)}<span class="badge">${item.c}</span>${day.id==='cx'?`<span class="badge">${targetDayLabel(day,item)} 배치</span>`:''}</div><span class="pickcheck">✓</span></div>
+        return `<label class="pickcard ${blocked?'unavailable':''}" style="border-left-color:${CAT[item.c]||'#898781'}">
+          <input type="checkbox" data-key="${key.replace(/&/g,'&amp;').replace(/"/g,'&quot;')}" ${checked?'checked':''} ${blocked?'disabled':''}>
+          <div class="picktop"><div class="pickbadges">${choiceBadge(isAutoExcluded(item)?'자동 제외':item.l)}<span class="badge">${item.c}</span>${day.id==='cx'?`<span class="badge">${targetDayLabel(day,item)} 배치</span>`:''}</div><span class="pickcheck">✓</span></div>
           <div class="pickname">${item.n}</div><div class="pickmeta">${item.at?`🕒 ${item.at} · `:''}⏱ ${item.d} · 💴 ${item.p}</div>
           <div class="picknote">${item.note}</div>
           <div class="picklinks"><a href="${mapUrl}" target="_blank" rel="noopener" onclick="event.stopPropagation()">지도에서 열기 ↗</a></div>
@@ -623,7 +628,7 @@ const DAYS=[
    d:"전후부터 이어진 야키토리 골목. 첫 저녁으로 분위기가 가장 확실합니다. 좁고 현금만 받는 집이 섞여 있음.",stay:"80분",cost:"¥2,500~"},
   {move:"🚶 도보 약 12분 (서쪽 도청 방향)"},
   {t:"19:00",n:"도쿄도청 남전망대",cat:"야경",lat:35.6896,lng:139.6921,
-   d:"지상 202m · 무료 · 야간 22:00까지. 도쿄만과 신주쿠 야경을 공짜로 봅니다. 유료 전망대 하나를 아끼는 구간.",stay:"40분",cost:"무료"},
+   d:"지상 202m · 무료 · 야간 22:00까지. SHIBUYA SKY를 우선하고 이곳은 무료 보조 야경으로 이용합니다.",stay:"40분",cost:"무료",priority:"무료 보조"},
   {move:"🚶 도보 2분 (도청 앞 광장)"},
   {t:"20:00",n:"Tokyo Night & Light 프로젝션 매핑",cat:"야경",lat:35.6895,lng:139.6917,
    d:"도청사 벽면 전체를 쓰는 상설 프로젝션 매핑. 무료, 야간 다회차 상영. 전망대 직후 그대로 이어집니다.",stay:"25분",cost:"무료"}
@@ -652,7 +657,7 @@ const DAYS=[
    d:"세계 최대 보행 교차로. 토요일 저녁은 밀도가 최대치라 사진이 가장 잘 나옵니다.",stay:"25분",cost:"무료"},
   {move:"🚶 도보 약 5분 (시부야 스크램블 스퀘어)"},
   {t:"16:30",n:"SHIBUYA SKY",cat:"야경",lat:35.6584,lng:139.7022,
-   d:"229m 옥상 개방형 전망대. 일몰 약 17:30 → 낮·노을·야경을 한 슬롯에서 다 봅니다. 옥상은 우천·강풍 시 폐쇄될 수 있음.",stay:"90분",cost:"WEB ¥3,400",book:"9/12부터 9/26분 판매 · 현지시간 00:00"},
+   d:"이번 일정의 최우선 전망대. 229m 옥상에서 낮·노을·야경을 한 슬롯에 보고, 우천·강풍 시에는 실내 구간만 이용합니다.",stay:"90분",cost:"WEB ¥3,400",book:"9/12부터 9/26분 판매 · 현지시간 00:00",priority:"최우선 전망대"},
   {move:"🚶 도보 약 8분"},
   {t:"18:30",n:"저녁 · 미야시타파크 시부야 요코초",cat:"맛집",lat:35.6614,lng:139.7024,
    d:"공원 위에 얹은 상업시설. 1층 요코초에 일본 각지 향토요리 점포가 늘어서 있어 한 곳에서 고르기 좋습니다.",stay:"90분",cost:"¥3,000~"}
@@ -669,7 +674,7 @@ const DAYS=[
    d:"250m 참배길 상점가. 닌교야키·멜론빵·센베이를 서서 먹는 구간. 노점은 현금만 받는 곳이 많음.",stay:"45분",cost:"¥1,000~"},
   {move:"🚶 도보 약 20분 (스미다강 건너) 또는 🚃 도부선 3분"},
   {t:"11:30",n:"도쿄 스카이트리 · 소라마치",cat:"관광",lat:35.7101,lng:139.8107,
-   d:"634m 전파탑. 2026년부터 전망대는 변동가격제(WEB ¥1,800~). 흐리면 전망대 대신 소라마치만 선택.",stay:"120분",cost:"WEB ¥1,800~"},
+   d:"634m 전파탑. 전망대는 선택 코스이며 날씨가 흐리면 올라가지 않고 소라마치만 이용합니다.",stay:"120분",cost:"WEB ¥1,800~",priority:"날씨 따라 선택"},
   {move:"🚶 소라마치 내부 이동"},
   {t:"13:30",n:"점심 · 소라마치 푸드플로어",cat:"맛집",lat:35.7104,lng:139.8100,
    d:"6·7·30·31층에 식당가. 전망 좌석은 30층대. 아사쿠사에서 텐동으로 먹었다면 여기선 가볍게.",stay:"60분",cost:"¥1,800~"},
@@ -899,6 +904,7 @@ function select(id){
           <span class="chip cat" style="background:${catcol}">${it.cat}</span>
           ${it.stay&&it.stay!=='—'?`<span class="chip">⏱ ${it.stay}</span>`:''}
           ${it.cost&&it.cost!=='—'?`<span class="chip">💴 ${it.cost}</span>`:''}
+          ${it.priority?`<span class="chip book">⭐ ${it.priority}</span>`:''}
           ${it.book?`<span class="chip book">🎫 ${it.book}</span>`:''}
           <a class="gmap" target="_blank" rel="noopener" href="${gmap(it.n)}">지도에서 열기 ↗</a>
         </div>
@@ -938,7 +944,7 @@ function renderFullTable(){
       h+=`<tr>
         <td class="nowrap">${i===0?`<span class="dot" style="background:${d.hex}"></span><b>${d.label}(${d.dow})</b>`:''}</td>
         <td class="nowrap" style="font-variant-numeric:tabular-nums">${it.t}</td>
-        <td><b>${it.n}</b>${it.choice?' <span class="choice-added">선택</span>':''}</td>
+        <td><b>${it.n}</b>${it.choice?' <span class="choice-added">선택</span>':''}${it.priority?` <span class="choice-added">${it.priority}</span>`:''}</td>
         <td style="color:var(--muted)">${it.cat}</td>
         <td style="color:var(--text-secondary)">${it.d.replace(/<[^>]+>/g,'')}</td>
       </tr>`;
