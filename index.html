@@ -200,18 +200,14 @@ tr:last-child td{border-bottom:none}
   </table>
 </section>
 
-<!-- ══ 검증 결론 ══ -->
+<!-- ══ 여행자 ══ -->
 <section class="card pad">
-  <h2>선택지 최종 등급</h2>
-  <div class="sub">73곳을 방문가치·동선·리뷰 일관성으로 분류했습니다.</div>
-  <div class="verdict-grid">
-    <div class="verdict good"><b>최우선 · 만족도와 동선 모두 강함</b><p>디즈니씨, SHIBUYA SKY, teamLab Planets, 메이지진구, 센소지, 신주쿠교엔, 오모테산도 건축 산책, 시부야 PARCO, 도쿄국립박물관, 에도도쿄박물관, 도쿄역 캐릭터 스트리트.</p></div>
-    <div class="verdict warn"><b>한국인 선호 높음 · 다만 혼잡 감수</b><p>디즈니씨, teamLab, SHIBUYA SKY, 닌텐도·포켓몬, @cosme, MEGA 돈키호테, 규카츠 모토무라. 리뷰량과 한국어 여행 플랫폼 노출은 강하지만 대기시간 대비 효율은 현장에서 판단.</p></div>
-    <div class="verdict niche"><b>취향형 · 건축·동네 산책을 좋아하면 강력</b><p>도쿄 카테드랄, 21_21, 네즈미술관, 야네센, 구라마에, 키요스미시라카와, 칸다 마츠야. 대중 필수코스는 아니지만 여행의 개성을 만드는 선택지.</p></div>
-    <div class="verdict bad"><b>제외·대체 권장</b><p>국립서양미술관은 여행 기간 임시 휴관. 가부키자 1막은 9/26 오전 대체 코스로 이동. NTT 도코모 외관은 9/26 이동 중 경유하고, 아자부다이 스카이로비는 모리 시티뷰로 대체. 다이코쿠야·스시잔마이는 동선상 백업으로 분류.</p></div>
-  </div>
-  <div class="mini" style="margin-top:12px"><b>전망대 우선순위</b><p><b>SHIBUYA SKY 최우선</b> · 스카이트리 전망대는 날씨와 취향에 따라 선택 · 도쿄도청은 무료 보조 코스로 사용합니다.</p></div>
-  <div class="source-links">공식 운영 검증: <a href="https://www.tokyodisneyresort.jp/en/tds/daily/calendar/20260928/" target="_blank" rel="noopener">디즈니씨 9/28</a> · <a href="https://www.nmwa.go.jp/en/exhibitions/2026italy.html" target="_blank" rel="noopener">국립서양미술관 휴관</a> · <a href="https://www.kabuki-za.co.jp/ticket/" target="_blank" rel="noopener">가부키자 공연일</a> · <a href="https://policies.env.go.jp/national-garden/shinjukugyoen/english/guide/information/" target="_blank" rel="noopener">신주쿠교엔</a> · <a href="https://www.english.metro.tokyo.lg.jp/w/116-101-007403" target="_blank" rel="noopener">에도도쿄박물관</a> · <a href="https://tokyoprojectionmappingproject.jp/en/" target="_blank" rel="noopener">Tokyo Night &amp; Light 상영표</a> · <a href="https://www.jreast.co.jp/en/multi/pass/nex.html" target="_blank" rel="noopener">N'EX 왕복권</a>. 평점 숫자는 시점·플랫폼별 변동이 커 고정값 대신 리뷰의 일관성과 반복 지적을 등급에 반영했습니다.</div>
+  <h2>여행자</h2>
+  <table>
+    <tr><th>여행자</th><th>참여 일정</th><th>합류</th></tr>
+    <tr><td><b>기존 여행자</b></td><td>9/25(금)–9/30(수)</td><td>전체 일정</td></tr>
+    <tr><td><b>고동민(비둘기)</b></td><td>9/26(토) 10:00 도쿄 도착</td><td><b>14:00 츠키시마 후쿠로노미세부터 합류</b></td></tr>
+  </table>
 </section>
 
 <!-- ══ 일자별 상세 (트리플 스타일) ══ -->
@@ -446,7 +442,7 @@ const CHOICE_DAYS=[
  ]
 },
 {
- id:"c2",label:"9/26 베이",route:"츠키지 → 긴자식스 → MUJI 긴자 → 니혼바시 → 14:00 후쿠로노미세 → 15:30 teamLab → 오다이바. 토요일 운영시간에 맞춰 베이 코스를 통째로 이동.",
+ id:"c2",label:"9/26 베이",route:"츠키지 → 긴자식스 → MUJI 긴자 → 니혼바시 → 14:00 후쿠로노미세에서 고동민 합류 → 15:30 teamLab → 오다이바.",
  slots:[
   {time:"09:00",title:"정원·점심",rule:"1~2곳 선택",items:[
    {n:"하마리큐 온시테이엔",c:"휴양",l:"추천",d:"80분",p:"¥300",note:"츠키지 인근. 아침 코스."},
@@ -459,7 +455,7 @@ const CHOICE_DAYS=[
    {n:"가부키자 — 1막 관람권",c:"체험",l:"대체",at:"10:30",d:"70~90분",p:"¥1,200~",note:"9/26은 9월 공연 마지막 날. 선택하면 MUJI·포켓몬 중 1~2곳을 뺍니다."}
   ]},
   {time:"14:00",title:"츠키시마 체험",rule:"시간 지정",items:[
-   {n:"후쿠로노미세",c:"체험",l:"추천",d:"60분",p:"¥2,000~",note:"츠키시마 부엉이 카페. 토요일 운영일이며 회차제 가능성이 있어 방문 전 예약·운영 여부 재확인."}
+   {n:"후쿠로노미세",c:"체험",l:"추천",d:"60분",p:"¥2,000~",note:"14:00 고동민 합류 지점. 토요일 운영일이며 방문 전 예약·운영 여부 재확인."}
   ]},
   {time:"15:30",title:"예약 전시",rule:"시간 고정",items:[
    {n:"teamLab Planets TOKYO",c:"체험",l:"필수",d:"100분",p:"¥3,600~",note:"9/26 15:30 전후 시간지정권으로 예약."}
@@ -756,7 +752,7 @@ const DAYS=[
 },
 {
  id:"d2",label:"9/26",dow:"토",color:"var(--d2)",hex:"#eb6834",
- zone:"츠키지 · 긴자 · 니혼바시 → 도요스 · 오다이바",theme:"중앙권 회수 → 예약 전시 → 베이 야경",
+ zone:"츠키지 · 긴자 · 니혼바시 → 도요스 · 오다이바",theme:"14:00 고동민 합류 → 예약 전시 → 베이 야경",
  items:[
   {t:"08:00",n:"츠키지 장외시장",cat:"시장",lat:35.6655,lng:139.7708,
    d:"🔑 오전 장사라 점심 지나면 닫기 시작합니다. 카이센동·참치초밥·¥100 다마고야키 꼬치가 대표. 소규모 점포는 현금만 받는 곳이 있음.",stay:"100분",cost:"¥2,500~"},
@@ -774,7 +770,7 @@ const DAYS=[
    d:"센터 중심으로 60분. 포켓몬 카페를 예약하면 체류가 길어지므로 이 날은 센터만 보는 구성이 안전합니다.",stay:"60분",cost:"—"},
   {move:"🚇 니혼바시 → 츠키시마 약 20분"},
   {t:"14:00",n:"후쿠로노미세",cat:"체험",lat:35.6648,lng:139.7838,
-   d:"츠키시마의 원조 부엉이 카페. 토요일 운영일이지만 공식 안내가 오래되어 회차와 예약 가능 여부를 출발 전에 다시 확인합니다.",stay:"60분",cost:"¥2,000~",book:"운영·회차 재확인"},
+   d:"고동민(비둘기) 합류 지점. 츠키시마의 원조 부엉이 카페이며 운영과 회차는 출발 전에 다시 확인합니다.",stay:"60분",cost:"¥2,000~",book:"운영·회차 재확인",priority:"동행 합류"},
   {move:"🚇 츠키시마 → 신토요스 약 20분"},
   {t:"15:30",n:"teamLab Planets TOKYO",cat:"체험",lat:35.649075,lng:139.789525,
    d:"맨발로 물에 들어가는 몰입형 전시. 무릎까지 젖으니 걷어올리기 쉬운 하의가 편합니다. 시간지정 입장제.",stay:"100분",cost:"¥3,600~",book:"예약 필수 · 지금 가능"},
