@@ -114,6 +114,50 @@ code{font-size:11.5px;background:var(--plane);border:1px solid var(--grid);borde
 .leaflet-popup-content{font-family:system-ui,-apple-system,"Noto Sans KR",sans-serif;line-height:1.45;margin:11px 13px}
 .pt{font-weight:800;margin-bottom:3px;font-size:13px}
 
+/* selectable v3 planner */
+.choice-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+.choice-count{font-size:12px;font-weight:800;color:var(--d1);white-space:nowrap}
+.choice-actions{display:flex;align-items:center;gap:8px}
+.ghost-btn{border:1px solid var(--grid);background:var(--surface-1);border-radius:8px;padding:6px 9px;
+  font:inherit;font-size:11px;color:var(--text-secondary);cursor:pointer}
+.choice-tabs{display:flex;gap:7px;overflow-x:auto;padding:14px 24px 0;scrollbar-width:thin}
+.choice-tab{border:1px solid var(--grid);background:var(--surface-1);border-radius:999px;padding:9px 13px;
+  font:inherit;font-size:12px;color:var(--text-secondary);white-space:nowrap;cursor:pointer}
+.choice-tab[aria-selected="true"]{background:var(--text-primary);color:#fff;border-color:var(--text-primary)}
+.choice-body{padding:18px 24px 24px}
+.choice-route{font-size:12.5px;color:var(--text-secondary);padding:10px 12px;background:var(--plane);
+  border:1px solid var(--grid);border-radius:10px;margin-bottom:14px}
+.slot{border-top:1px solid var(--grid);padding:16px 0 3px}
+.slot:first-of-type{border-top:0;padding-top:0}
+.slot-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:9px}
+.slot-title{font-size:14px;font-weight:800}.slot-time{color:var(--d1);font-variant-numeric:tabular-nums;margin-right:7px}
+.slot-rule{font-size:11px;color:var(--muted);white-space:nowrap}
+.pick-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.pickcard{position:relative;display:block;border:1px solid var(--grid);border-left:4px solid var(--baseline);
+  border-radius:12px;padding:11px 11px 10px;background:var(--surface-1);cursor:pointer;transition:.14s;min-width:0}
+.pickcard:hover{border-color:var(--baseline)}
+.pickcard:has(input:checked){background:#f2f8ff;border-color:var(--d1);box-shadow:0 0 0 1px var(--d1)}
+.pickcard.unavailable{opacity:.58;background:#f2f1ee;cursor:not-allowed}
+.pickcard input{position:absolute;opacity:0;pointer-events:none}
+.picktop{display:flex;justify-content:space-between;gap:6px;align-items:center;margin-bottom:5px}
+.pickbadges{display:flex;gap:4px;flex-wrap:wrap}
+.badge{font-size:9.5px;font-weight:800;padding:2px 6px;border-radius:999px;background:var(--plane);
+  border:1px solid var(--grid);color:var(--text-secondary)}
+.badge.must{background:#fdecec;border-color:#f3c9c9;color:#8a1f1f}.badge.rec{background:#eef7ee;color:#176b17}
+.badge.no{background:#ecebea;color:#5f5e5a}.pickcheck{width:18px;height:18px;border:1px solid var(--baseline);
+  border-radius:5px;display:grid;place-items:center;font-size:11px;color:transparent;flex:none}
+.pickcard:has(input:checked) .pickcheck{background:var(--d1);border-color:var(--d1);color:#fff}
+.pickname{font-size:13px;font-weight:800;line-height:1.35}.pickmeta{font-size:11px;color:var(--muted);margin-top:4px}
+.picknote{font-size:11.5px;color:var(--text-secondary);margin-top:6px;line-height:1.45}
+.picklinks{margin-top:7px}.picklinks a{font-size:10.5px;color:var(--d1);text-decoration:none}
+.verdict-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
+.verdict{border:1px solid var(--grid);border-radius:12px;padding:13px;background:var(--surface-1)}
+.verdict b{display:block;font-size:13px;margin-bottom:5px}.verdict p{margin:0;font-size:12px;color:var(--text-secondary)}
+.verdict.good{border-left:4px solid var(--good)}.verdict.warn{border-left:4px solid var(--warn)}
+.verdict.bad{border-left:4px solid var(--critical)}.verdict.niche{border-left:4px solid var(--d1)}
+.source-links{font-size:10.5px;color:var(--muted);margin-top:12px;line-height:1.65}
+.source-links a{color:var(--text-secondary)}
+
 @media(max-width:900px){
   .tiles{grid-template-columns:repeat(3,1fr)}
   .daygrid{grid-template-columns:1fr}
@@ -121,7 +165,14 @@ code{font-size:11.5px;background:var(--plane);border:1px solid var(--grid);borde
   .mapcol{position:static;order:1}
   #map{height:400px}
   .grid2,.grid3{grid-template-columns:1fr}
+  .verdict-grid{grid-template-columns:1fr}
+  .pick-grid{grid-template-columns:1fr 1fr}
   .wrap{padding:12px} .pad{padding:18px}
+}
+@media(max-width:560px){
+  .pick-grid{grid-template-columns:1fr}
+  .choice-head{display:block}.choice-actions{margin-top:9px;justify-content:space-between}
+  .choice-tabs{padding-left:18px;padding-right:18px}.choice-body{padding:16px 18px 20px}
 }
 </style>
 </head>
@@ -130,17 +181,48 @@ code{font-size:11.5px;background:var(--plane);border:1px solid var(--grid);borde
 
 <!-- ══ HERO ══ -->
 <section class="card pad">
-  <div class="eyebrow">Tokyo 5N6D · Itinerary</div>
-  <h1>도쿄 5박 6일 여행 플랜</h1>
+  <div class="eyebrow">Tokyo 5N6D · Itinerary v3</div>
+  <h1>도쿄 5박 6일 선택형 여행 플랜</h1>
   <div class="dates">2026.09.25(금) — 09.30(수)</div>
   <div class="tiles">
     <div class="tile"><div class="v">6일 5박</div><div class="k">여행 기간</div></div>
-    <div class="tile"><div class="v">40곳</div><div class="k">타임라인 스팟</div></div>
+    <div class="tile"><div class="v">72곳</div><div class="k">추가 선택지</div></div>
     <div class="tile"><div class="v">1일</div><div class="k">디즈니씨</div></div>
     <div class="tile"><div class="v">3건</div><div class="k">사전예약 필수</div></div>
     <div class="tile"><div class="v">약 ¥62,000</div><div class="k">1인 예상(숙박·항공 제외)</div></div>
     <div class="tile"><div class="v">0일</div><div class="k">공휴일 겹침</div></div>
   </div>
+</section>
+
+<!-- ══ 검증 결론 ══ -->
+<section class="card pad">
+  <h2>72곳 검증 결론</h2>
+  <div class="sub">전부가 최적은 아닙니다. 아래처럼 등급을 나눠야 일정의 질이 올라갑니다.</div>
+  <div class="verdict-grid">
+    <div class="verdict good"><b>최우선 · 만족도와 동선 모두 강함</b><p>디즈니씨, SHIBUYA SKY, teamLab Planets, 메이지진구, 센소지, 신주쿠교엔, 오모테산도 건축 산책, 시부야 PARCO, 도쿄국립박물관, 에도도쿄박물관, 도쿄역 캐릭터 스트리트.</p></div>
+    <div class="verdict warn"><b>한국인 선호 높음 · 다만 혼잡 감수</b><p>디즈니씨, teamLab, SHIBUYA SKY, 닌텐도·포켓몬, @cosme, MEGA 돈키호테, 규카츠 모토무라. 리뷰량과 한국어 여행 플랫폼 노출은 강하지만 대기시간 대비 효율은 현장에서 판단.</p></div>
+    <div class="verdict niche"><b>취향형 · 건축·동네 산책을 좋아하면 강력</b><p>도쿄 카테드랄, 21_21, 네즈미술관, 야네센, 구라마에, 키요스미시라카와, 칸다 마츠야. 대중 필수코스는 아니지만 여행의 개성을 만드는 선택지.</p></div>
+    <div class="verdict bad"><b>제외·대체 권장</b><p>국립서양미술관과 가부키자 1막은 해당 날짜 이용 불가. NTT 도코모 외관은 도쿄국제포럼으로, 아자부다이 스카이로비는 모리 시티뷰로 대체. 다이코쿠야·스시잔마이는 명성은 있으나 ‘도쿄 최고의 한 끼’가 아니라 동선상 백업으로 분류.</p></div>
+  </div>
+  <div class="source-links">공식 운영 검증: <a href="https://www.tokyodisneyresort.jp/en/tds/daily/calendar/20260928/" target="_blank" rel="noopener">디즈니씨 9/28</a> · <a href="https://www.nmwa.go.jp/en/exhibitions/2026italy.html" target="_blank" rel="noopener">국립서양미술관 휴관</a> · <a href="https://www.kabuki-za.co.jp/ticket/" target="_blank" rel="noopener">가부키자 공연일</a> · <a href="https://policies.env.go.jp/national-garden/shinjukugyoen/english/guide/information/" target="_blank" rel="noopener">신주쿠교엔</a> · <a href="https://www.english.metro.tokyo.lg.jp/w/116-101-007403" target="_blank" rel="noopener">에도도쿄박물관</a>. 평점 숫자는 시점·플랫폼별 변동이 커 고정값 대신 리뷰의 일관성과 반복 지적을 등급에 반영했습니다.</div>
+</section>
+
+<!-- ══ v3 선택 플래너 ══ -->
+<section class="card" id="choice-planner">
+  <div class="pad" style="padding-bottom:0">
+    <div class="choice-head">
+      <div>
+        <h2>날짜별 선택 플래너</h2>
+        <div class="sub">시간대별로 카드를 고르면 이 기기에 선택 상태가 저장됩니다.</div>
+      </div>
+      <div class="choice-actions">
+        <span class="choice-count" id="choiceCount">0개 선택</span>
+        <button class="ghost-btn" id="choiceReset" type="button">선택 초기화</button>
+      </div>
+    </div>
+  </div>
+  <div class="choice-tabs" id="choiceTabs" role="tablist"></div>
+  <div class="choice-body" id="choiceBody"></div>
 </section>
 
 <!-- ══ 하루 밀도 ══ -->
@@ -170,7 +252,7 @@ code{font-size:11.5px;background:var(--plane);border:1px solid var(--grid);borde
 <!-- ══ 예약 체크리스트 ══ -->
 <section class="card pad">
   <h2>예약 체크리스트 — 마감이 빠른 순</h2>
-  <div class="sub" style="margin-bottom:14px">오늘 2026-08-20 기준. ①②는 지금 바로 잡아야 하고, ③은 알람이 필요합니다.</div>
+  <div class="sub" style="margin-bottom:14px">2026-08-28 공식 판매 페이지 기준.</div>
   <table>
     <tr><th style="width:34px"></th><th style="width:180px">대상</th><th style="width:96px">해당일</th><th style="width:150px">예약 오픈 / 마감</th><th>메모</th></tr>
     <tr>
@@ -178,7 +260,7 @@ code{font-size:11.5px;background:var(--plane);border:1px solid var(--grid);borde
       <td><b>도쿄 디즈니씨 1데이 패스포트</b></td>
       <td class="nowrap">9/28(월)</td>
       <td><b style="color:var(--critical)">지금 예약 가능</b></td>
-      <td>전면 사전예약제 + <b>변동가격제</b>(어른 ¥7,900–10,900). 수용인원 제한으로 <b>원하는 날짜가 매진될 수 있음</b> → 가장 먼저 확정할 것. 공식 앱 설치 필수.</td>
+      <td>9/28 성인 1데이 패스포트 <b>¥9,900</b>. 당일 09:00–21:00, 25주년·할로윈 기간. 공식 앱 설치 필수.</td>
     </tr>
     <tr>
       <td><span class="prio p1">2</span></td>
@@ -192,7 +274,7 @@ code{font-size:11.5px;background:var(--plane);border:1px solid var(--grid);borde
       <td><b>SHIBUYA SKY</b></td>
       <td class="nowrap">9/26(토)</td>
       <td><b style="color:var(--serious)">9/12(토) 00:00 JST</b></td>
-      <td>🔔 <b>방문 14일 전 자정에만 열립니다</b>(그 전엔 아예 안 뜸). 일몰 슬롯은 3일 내 매진 → <b>9/12 자정 알람</b> 필수. 사전 ¥2,500 / 당일 ¥3,000. 일몰 약 17:30 → <b>16:30 입장</b> 슬롯 권장.</td>
+      <td><b>방문 14일 전 자정부터 판매</b>. 15:00 이후 WEB 성인 ¥3,400 / 당일 ¥3,700. 일몰 약 17:30 → <b>16:30 입장</b> 슬롯 권장.</td>
     </tr>
     <tr>
       <td><span class="prio p3">4</span></td>
@@ -210,9 +292,8 @@ code{font-size:11.5px;background:var(--plane);border:1px solid var(--grid);borde
     </tr>
   </table>
   <div class="callout" style="border-left-color:var(--critical);background:#fdf6f6">
-    <b>디즈니씨 판타지스프링스(2024년 개장 최대 확장) 최신 규칙 —</b> 이제 <b>구역 입장 제한은 폐지</b>돼 자유롭게 걸어 들어갈 수 있습니다.
-    다만 <b>내부 어트랙션 탑승에는 여전히 스탠바이패스(무료, 앱) 또는 프리미어 액세스(유료 ¥2,000/건)가 필요</b>합니다.
-    → <b>개장 직후 09:00에 앱으로 스탠바이패스부터 확보</b>하는 것이 그날의 성패를 가릅니다.
+    <b>디즈니씨 9/28 핵심 —</b> 판타지스프링스는 자유 입장이고 어트랙션은 <b>일반 대기 또는 유료 Premier Access</b>입니다.
+    타워 오브 테러·인디아나 존스·머메이드 라군 시어터는 이날 휴장이라 일정에서 제외했습니다.
   </div>
 </section>
 
@@ -222,14 +303,14 @@ code{font-size:11.5px;background:var(--plane);border:1px solid var(--grid);borde
   <div class="grid2" style="margin-top:12px">
     <table>
       <tr><th>항목</th><th class="num" style="width:130px">금액(엔)</th></tr>
-      <tr><td>디즈니씨 1데이 패스포트</td><td class="num">7,900 – 10,900</td></tr>
+      <tr><td>디즈니씨 1데이 패스포트</td><td class="num">9,900</td></tr>
       <tr><td>teamLab Planets</td><td class="num">3,800 – 5,600</td></tr>
-      <tr><td>SHIBUYA SKY (사전)</td><td class="num">2,500</td></tr>
+      <tr><td>SHIBUYA SKY (15시 이후 WEB)</td><td class="num">3,400</td></tr>
       <tr><td>도쿄 스카이트리 전망대</td><td class="num">2,400 –</td></tr>
       <tr><td>시내 교통 6일 (IC카드)</td><td class="num">6,000 – 8,000</td></tr>
       <tr><td>나리타 익스프레스 편도</td><td class="num">3,070</td></tr>
       <tr><td>식비 6일 (조·중·석)</td><td class="num">25,000 – 35,000</td></tr>
-      <tr><td><b>합계</b></td><td class="num"><b>약 50,700 – 67,500</b></td></tr>
+      <tr><td><b>합계</b></td><td class="num"><b>약 53,600 – 67,400</b></td></tr>
     </table>
     <div>
       <div class="mini" style="margin-bottom:12px">
@@ -307,7 +388,7 @@ code{font-size:11.5px;background:var(--plane);border:1px solid var(--grid);borde
 </section>
 
 <div class="footer">
-  <b>데이터 기준일 2026-08-20.</b> 운영시간·요금·휴관일은 변동될 수 있으니 <b>예약 직전 공식 채널에서 재확인</b>하세요.
+  <b>데이터 기준일 2026-08-28.</b> 운영시간·요금·휴관일은 변동될 수 있으니 <b>예약 직전 공식 채널에서 재확인</b>하세요.
 </div>
 
 </div>
@@ -315,7 +396,204 @@ code{font-size:11.5px;background:var(--plane);border:1px solid var(--grid);borde
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
-const CAT={관광:"#2a78d6",맛집:"#eb6834",쇼핑:"#1baf7a",야경:"#4a3aa7",체험:"#e87ba4",시장:"#eda100",이동:"#898781"};
+const CHOICE_DAYS=[
+{
+ id:"c1",label:"9/25 신주쿠",route:"후운지 → 신주쿠 서쪽 건축 → 도쿄도청 야경 → 가부키초·골든가이. 신주쿠교엔은 17:30 최종 입장 전에만 선택.",
+ slots:[
+  {time:"14:00",title:"첫 식사",rule:"1곳 선택",items:[
+   {n:"후운지",c:"맛집",l:"추천",d:"60분",p:"¥1,100~",note:"신주쿠 도착 후 츠케멘. 대기줄 감안."}
+  ]},
+  {time:"15:00",title:"서쪽 건축 산책",rule:"1~2곳 선택",items:[
+   {n:"모드학원 코쿤 타워",c:"건축",l:"선택",d:"20분",p:"무료(외관)",note:"신주쿠 서출구 인근. 외관 중심."},
+   {n:"신주쿠 파크타워 · 피크 라운지",c:"건축",l:"선택",d:"70분",p:"무료~¥2,000",note:"단게 겐조 건축과 호텔 라운지. 라운지 이용 시 주문."},
+   {n:"NTT 도코모 요요기 빌딩",c:"건축",l:"후순위",d:"15분",p:"무료(외관)",note:"내부 관람 불가. 지나갈 때만 보고, 건축 목적이면 9/30 도쿄국제포럼으로 대체."},
+   {n:"도쿄도청 — 단게 겐조의 도시",c:"건축",l:"추천",d:"40분",p:"무료",note:"외관·공공공간 중심. 전망대와 연결 가능."}
+  ]},
+  {time:"16:30",title:"공원 또는 가부키초",rule:"1~2곳 선택",items:[
+   {n:"신주쿠교엔",c:"휴양",l:"선택",d:"90분",p:"¥500",note:"9/25 정상 개원. 18:00 폐원, 17:30 최종 입장."},
+   {n:"도큐 가부키초 타워",c:"쇼핑",l:"추천",d:"50분",p:"무료",note:"가부키초 입구. 푸드홀·오락 중심."},
+   {n:"하나조노 신사",c:"관광",l:"선택",d:"20분",p:"무료",note:"골든가이 동선과 연결."},
+   {n:"신주쿠 3D 고양이",c:"야경",l:"선택",d:"15분",p:"무료",note:"신주쿠 동출구. 가부키초 이동 중 짧게."}
+  ]},
+  {time:"18:30",title:"무료 야경",rule:"1~2곳 선택",items:[
+   {n:"도쿄도청 남전망대",c:"야경",l:"추천",d:"40분",p:"무료",note:"지상 202m. 당일 휴관 공지 확인."},
+   {n:"Tokyo Night & Light",c:"야경",l:"추천",d:"25분",p:"무료",note:"9월 18:30부터 30분 간격 상영."}
+  ]},
+  {time:"19:30",title:"저녁·야간 골목",rule:"1곳 선택",items:[
+   {n:"오모이데요코초",c:"맛집",l:"추천",d:"80분",p:"¥2,500~",note:"야키토리 골목. 현금 필요 가능."},
+   {n:"신주쿠 골든가이",c:"맛집",l:"선택",d:"90분",p:"¥3,000~",note:"하나조노 신사·가부키초와 한 묶음."}
+  ]}
+ ]
+},
+{
+ id:"c2",label:"9/26 건축·시부야",route:"도쿄 카테드랄(선택) → 오모테산도 → 하라주쿠 → 시부야. 21_21·네즈미술관은 같은 오후에 다 넣지 말고 하나만.",
+ slots:[
+  {time:"09:00",title:"건축·미술 시작",rule:"1곳 선택",items:[
+   {n:"도쿄 카테드랄 성 마리아 대성당",c:"건축",l:"추천",d:"40분",p:"무료",note:"단게 겐조. 오모테산도와 거리가 있어 오전 첫 코스로만."},
+   {n:"21_21 DESIGN SIGHT",c:"건축",l:"선택",d:"80분",p:"전시별",note:"안도 다다오 건축. 9/26 전시 교체기 가능성으로 공식 프로그램 확인."},
+   {n:"네즈 미술관",c:"관광",l:"선택",d:"90분",p:"¥1,600",note:"오모테산도 남쪽. 정원·전시를 포함하면 90분."}
+  ]},
+  {time:"11:00",title:"오모테산도·하라주쿠",rule:"2~3곳 선택",items:[
+   {n:"오모테산도 건축 스트립 워크",c:"건축",l:"추천",d:"90분",p:"무료",note:"프라다·디오르·오모테산도힐즈 축."},
+   {n:"요요기 공원",c:"휴양",l:"선택",d:"60분",p:"무료",note:"메이지진구·하라주쿠와 묶기."},
+   {n:"KAWAII MONSTER LAND - HARAJUKU -",c:"체험",l:"선택",d:"90분",p:"¥3,000~",note:"2026-02-13 오픈. 화려한 신작이지만 장기 리뷰 축적은 아직 적어 취향형으로 분류."},
+   {n:"@cosme TOKYO",c:"쇼핑",l:"선택",d:"60분",p:"—",note:"하라주쿠역 앞. 뷰티 쇼핑."},
+   {n:"오모테산도 힐즈",c:"쇼핑",l:"선택",d:"50분",p:"무료",note:"건축 산책과 중복 선택 가능."}
+  ]},
+  {time:"15:00",title:"시부야 쇼핑",rule:"1~2곳 선택",items:[
+   {n:"시부야 파르코 — 닌텐도 도쿄·포켓몬센터",c:"쇼핑",l:"추천",d:"90분",p:"—",note:"시부야 북쪽. 여러 매장을 한 번에."},
+   {n:"시부야 109 · MEGA 돈키호테",c:"쇼핑",l:"선택",d:"70분",p:"—",note:"스크램블 교차로 인근."}
+  ]},
+  {time:"18:30",title:"저녁",rule:"1곳 선택",items:[
+   {n:"논베이요코초",c:"맛집",l:"선택",d:"80분",p:"¥3,000~",note:"작은 이자카야 골목. 초반 입장 권장."},
+   {n:"우오베이 시부야",c:"맛집",l:"추천",d:"45분",p:"¥1,500~",note:"회전초밥. 빠른 저녁 선택."},
+   {n:"규카츠 모토무라",c:"맛집",l:"선택",d:"50분",p:"¥1,900~",note:"한국인 인지도가 높지만 대기 대비 효율은 보통. 줄이 길면 우오베이로 전환."}
+  ]}
+ ]
+},
+{
+ id:"c3",label:"9/27 동부",route:"오전은 ① 야네센·우에노 또는 ② 구라마에·캇파바시·아사쿠사 중 한 줄기. 오후는 아키하바라, 료고쿠는 반나절 대체.",
+ slots:[
+  {time:"09:00",title:"오전 코스",rule:"한 줄기 선택",items:[
+   {n:"야네센 — 야나카긴자·네즈 신사",c:"관광",l:"추천",d:"3시간",p:"무료",note:"우에노 북쪽 산책. 도쿄국립박물관과 모두 넣으면 오전 전체 소요."},
+   {n:"도쿄국립박물관",c:"관광",l:"추천",d:"2~3시간",p:"¥1,000",note:"9/27 일요일 개관. 오전 단독 핵심 코스로 적합."},
+   {n:"구라마에",c:"관광",l:"선택",d:"2시간",p:"—",note:"카페·소품점. 캇파바시와 연결."},
+   {n:"캇파바시 도구거리",c:"쇼핑",l:"선택",d:"70분",p:"—",note:"주방도구·식품 모형. 아사쿠사 서쪽."},
+   {n:"국립서양미술관 — 르 코르뷔지에",c:"건축",l:"불가",d:"90분",p:"¥500~",note:"9/24~9/30 임시 휴관. 외관만 가능.",no:true}
+  ]},
+  {time:"12:00",title:"아사쿠사 점심",rule:"1곳 선택",items:[
+   {n:"아사쿠사 다이코쿠야 텐동",c:"맛집",l:"후순위",d:"50분",p:"¥2,000~",note:"진한 소스에 적신 전통식이라 눅눅하다는 리뷰가 반복됨. 바삭한 튀김 취향이면 이마한이나 현장 고평점 식당으로 전환."},
+   {n:"아사쿠사 이마한 스키야키",c:"맛집",l:"선택",d:"90분",p:"¥5,000~",note:"만족도는 높지만 오후 스팟 1개를 줄이는 선택."}
+  ]},
+  {time:"14:00",title:"아사쿠사·아키하바라",rule:"2~3곳 선택",items:[
+   {n:"아키하바라 만다라케·슈퍼포테이토",c:"쇼핑",l:"추천",d:"90분",p:"—",note:"보행자천국 시간과 묶기."},
+   {n:"아키하바라 가챠폰 회관",c:"체험",l:"선택",d:"30분",p:"¥300~",note:"만다라케 동선에 짧게 추가."},
+   {n:"도쿄 미즈마치·스미다 공원",c:"휴양",l:"선택",d:"60분",p:"무료",note:"아사쿠사→스카이트리 도보 축."},
+   {n:"아즈마바시 무료 야경 포인트",c:"야경",l:"선택",d:"20분",p:"무료",note:"스미다강·스카이트리 뷰. 해질녘 선택."}
+  ]},
+  {time:"14:00",title:"료고쿠·스미다 반나절 대체",rule:"1곳 선택",items:[
+   {n:"에도도쿄박물관",c:"관광",l:"추천",d:"2~3시간",p:"¥800",note:"2026-03-31 재개관. 료고쿠 단독 반나절 코스."},
+   {n:"키요스미시라카와 — 정원·블루보틀 1호점",c:"휴양",l:"선택",d:"2~3시간",p:"¥500~",note:"카페·정원 반나절. 아사쿠사와 병합하지 말 것."},
+   {n:"료고쿠 유야 에도유",c:"휴양",l:"선택",d:"2~3시간",p:"¥2,750~",note:"온천·사우나. 야간 일정 대체용."}
+  ]}
+ ]
+},
+{
+ id:"c5",label:"9/29 베이",route:"하마리큐 → 츠키지 점심 → teamLab → 오다이바. 레인보우브리지 도보와 후지TV는 하나만 선택.",
+ slots:[
+  {time:"09:00",title:"정원·점심",rule:"1~2곳 선택",items:[
+   {n:"하마리큐 온시테이엔",c:"휴양",l:"추천",d:"80분",p:"¥300",note:"츠키지 인근. 아침 코스."},
+   {n:"스시잔마이 츠키지 본점",c:"맛집",l:"후순위",d:"60분",p:"¥3,000~",note:"안정적인 중가 체인이지만 목적지급 스시는 아님. 웨이팅이 짧을 때만 선택."}
+  ]},
+  {time:"14:00",title:"예약 전시",rule:"시간 고정",items:[
+   {n:"teamLab Planets TOKYO",c:"체험",l:"필수",d:"100분",p:"¥3,800~5,600",note:"시간지정제. 예약 시간에 맞춰 전체 동선 조정."}
+  ]},
+  {time:"16:30",title:"오다이바 마무리",rule:"1곳 선택",items:[
+   {n:"레인보우브리지 도보 횡단",c:"휴양",l:"선택",d:"60분",p:"무료",note:"바람·우천 시 취소. 건너간 뒤 역 접근성 확인."},
+   {n:"후지TV 구체 전망대",c:"관광",l:"후순위",d:"40분",p:"¥800~",note:"평가는 무난한 편. 오다이바에 이미 있을 때만 추가하고 야경 목적이면 해변공원을 우선."}
+  ]}
+ ]
+},
+{
+ id:"c6",label:"9/30 중앙",route:"긴자 → 니혼바시(선택) → 도쿄역·마루노우치 → 나리타 익스프레스. 가부키자 1막 관람은 9/30 공연이 없어 불가.",
+ slots:[
+  {time:"10:00",title:"긴자",rule:"2곳 선택",items:[
+   {n:"무인양품 긴자 플래그십",c:"쇼핑",l:"추천",d:"60분",p:"—",note:"긴자 오전 쇼핑."},
+   {n:"긴자식스 옥상정원",c:"휴양",l:"선택",d:"25분",p:"무료",note:"긴자식스 쇼핑에 짧게 추가."},
+   {n:"가부키자 — 1막 관람권",c:"체험",l:"불가",d:"70~90분",p:"¥1,200~",note:"2026년 9월 공연은 9/26 종료. 9/30은 외관만 가능.",no:true}
+  ]},
+  {time:"12:30",title:"니혼바시 대안",rule:"선택 시 70분",items:[
+   {n:"니혼바시 — 포켓몬센터 도쿄DX·포켓몬 카페",c:"쇼핑",l:"선택",d:"70분",p:"—",note:"카페는 사전예약 필수. 미예약 시 센터만."}
+  ]},
+  {time:"14:00",title:"도쿄역·마루노우치",rule:"2~3곳 선택",items:[
+   {n:"고쿄 히가시교엔 — 에도성 천수대",c:"관광",l:"추천",d:"70분",p:"무료",note:"9/30 수요일 개원 예정. 임시 휴원 확인."},
+   {n:"KITTE 마루노우치 옥상정원",c:"야경",l:"추천",d:"30분",p:"무료",note:"도쿄역 프로트 뷰. 낮에도 가능."},
+   {n:"도쿄역 이치방가이 — 캐릭터 스트리트",c:"쇼핑",l:"추천",d:"90분",p:"—",note:"귀국 전 기념품 쇼핑."},
+   {n:"도쿄역 다이마루 디파치카·에키벤야 마츠리",c:"쇼핑",l:"추천",d:"40분",p:"¥1,200~",note:"공항 이동 전 식사·에키벤 구매."}
+  ]}
+ ]
+},
+{
+ id:"cx",label:"대체·아무 날",route:"이 탭은 기본 일정에 더하는 목록이 아니라, 반나절 전체를 교체하거나 가까운 권역에서 식사만 고르는 용도.",
+ slots:[
+  {time:"반나절",title:"롯폰기·아자부다이",rule:"1~2곳 선택",items:[
+   {n:"teamLab Borderless",c:"체험",l:"선택",d:"2시간",p:"¥3,800~",note:"시간지정 예약. Planets와 중복 취향이면 하나만."},
+   {n:"도쿄타워",c:"야경",l:"선택",d:"70분",p:"¥1,500~",note:"아자부다이·롯폰기와 묶기."},
+   {n:"모리 미술관·도쿄 시티뷰",c:"야경",l:"선택",d:"2시간",p:"¥2,000~",note:"전시와 실내 전망대. 옥상 스카이데크는 제외."},
+   {n:"아자부다이힐스 스카이로비",c:"야경",l:"후순위",d:"50분",p:"이용 조건 있음",note:"무료 자유 입장 전망대가 아님. 전망 목적이면 모리 시티뷰가 확실한 대체."},
+   {n:"국립신미술관",c:"관광",l:"선택",d:"90분",p:"전시별",note:"롯폰기 반나절 실내 대안."}
+  ]},
+  {time:"반나절",title:"권역 교체",rule:"1곳 선택",items:[
+   {n:"나카메구로·다이칸야마",c:"휴양",l:"선택",d:"3시간",p:"—",note:"카페·산책 위주. 9/26 오후 대체."},
+   {n:"이케부쿠로 — 선샤인시티·애니메이트 본점",c:"쇼핑",l:"선택",d:"3~4시간",p:"—",note:"아키하바라 대체 서브컬처 코스."},
+   {n:"카구라자카",c:"관광",l:"선택",d:"2~3시간",p:"—",note:"골목·카페 산책. 비 적은 날 추천."},
+   {n:"지브리 미술관(미타카)",c:"체험",l:"예약",d:"3시간",p:"¥1,000",note:"사전예약 필수. 왕복 이동까지 반나절 교체."}
+  ]},
+  {time:"식사",title:"장르별 맛집",rule:"가까운 권역에서 1곳",items:[
+   {n:"라멘 — 아후리",c:"맛집",l:"선택",d:"40분",p:"¥1,300~",note:"유자 라멘. 가까운 지점 선택."},
+   {n:"라멘 — 무기토 올리브",c:"맛집",l:"선택",d:"50분",p:"¥1,300~",note:"긴자 일정에 연결."},
+   {n:"우나기 — 이즈에이(우에노)",c:"맛집",l:"선택",d:"80분",p:"¥4,000~",note:"우에노 일정 저녁."},
+   {n:"야키니쿠 — 야키니쿠 라이크",c:"맛집",l:"백업",d:"45분",p:"¥1,500~",note:"빠른 1인 식사용 체인. 목적지 맛집이 아니라 일정이 밀렸을 때 사용."},
+   {n:"소바 — 칸다 마츠야",c:"맛집",l:"선택",d:"50분",p:"¥1,200~",note:"아키하바라·칸다 일정에 연결."},
+   {n:"이자카야 — 토리키조쿠",c:"맛집",l:"백업",d:"90분",p:"¥2,500~",note:"가격이 예측 가능한 체인 백업. 특별한 한 끼보다는 늦은 야간 일정용."},
+   {n:"카페 — 카야바 커피(야나카)",c:"맛집",l:"선택",d:"50분",p:"¥1,000~",note:"야네센 코스에 연결."},
+   {n:"디저트 — 하라주쿠 크레페",c:"맛집",l:"선택",d:"20분",p:"¥700~",note:"하라주쿠 산책 중 간식."},
+   {n:"과일 — 센비키야 후르츠 파를러",c:"맛집",l:"선택",d:"60분",p:"¥2,500~",note:"니혼바시·도쿄역 코스에 연결."},
+   {n:"디파치카 순회",c:"맛집",l:"선택",d:"60분",p:"¥2,000~",note:"긴자·도쿄역 백화점 지하 식품관."}
+  ]}
+ ]
+}
+];
+
+const CAT={관광:"#2a78d6",건축:"#3455a4",맛집:"#eb6834",쇼핑:"#1baf7a",야경:"#4a3aa7",체험:"#e87ba4",휴양:"#38a687",시장:"#eda100",이동:"#898781"};
+
+/* ── v3 선택 플래너 ── */
+const choiceStoreKey='tokyo-v3-picks';
+let choiceSelected=new Set();
+try{choiceSelected=new Set(JSON.parse(localStorage.getItem(choiceStoreKey)||'[]'));}catch(e){}
+
+function choiceKey(day,slot,item){return `${day.id}|${slot.time}|${item.n}`;}
+function choiceBadge(level){
+  const cls=level==='필수'?'must':level==='추천'?'rec':level==='불가'?'no':'';
+  return `<span class="badge ${cls}">${level}</span>`;
+}
+function updateChoiceCount(){
+  document.getElementById('choiceCount').textContent=`${choiceSelected.size}개 선택`;
+  localStorage.setItem(choiceStoreKey,JSON.stringify([...choiceSelected]));
+}
+function renderChoiceDay(id){
+  const day=CHOICE_DAYS.find(d=>d.id===id)||CHOICE_DAYS[0];
+  document.querySelectorAll('.choice-tab').forEach(b=>b.setAttribute('aria-selected',b.dataset.id===day.id));
+  document.getElementById('choiceBody').innerHTML=
+    `<div class="choice-route"><b>추천 순서</b> · ${day.route}</div>`+
+    day.slots.map(slot=>`<div class="slot">
+      <div class="slot-head"><div class="slot-title"><span class="slot-time">${slot.time}</span>${slot.title}</div><div class="slot-rule">${slot.rule}</div></div>
+      <div class="pick-grid">${slot.items.map(item=>{
+        const key=choiceKey(day,slot,item),checked=choiceSelected.has(key)&&!item.no;
+        const mapUrl='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(item.n+', Tokyo');
+        return `<label class="pickcard ${item.no?'unavailable':''}" style="border-left-color:${CAT[item.c]||'#898781'}">
+          <input type="checkbox" data-key="${key.replace(/&/g,'&amp;').replace(/"/g,'&quot;')}" ${checked?'checked':''} ${item.no?'disabled':''}>
+          <div class="picktop"><div class="pickbadges">${choiceBadge(item.l)}<span class="badge">${item.c}</span></div><span class="pickcheck">✓</span></div>
+          <div class="pickname">${item.n}</div><div class="pickmeta">⏱ ${item.d} · 💴 ${item.p}</div>
+          <div class="picknote">${item.note}</div>
+          <div class="picklinks"><a href="${mapUrl}" target="_blank" rel="noopener" onclick="event.stopPropagation()">지도에서 열기 ↗</a></div>
+        </label>`;
+      }).join('')}</div></div>`).join('');
+  document.querySelectorAll('#choiceBody input[type="checkbox"]').forEach(input=>input.addEventListener('change',()=>{
+    if(input.checked) choiceSelected.add(input.dataset.key); else choiceSelected.delete(input.dataset.key);
+    updateChoiceCount();
+  }));
+}
+
+CHOICE_DAYS.forEach(day=>{
+  const b=document.createElement('button');
+  b.type='button';b.className='choice-tab';b.dataset.id=day.id;b.textContent=day.label;
+  b.onclick=()=>renderChoiceDay(day.id);document.getElementById('choiceTabs').appendChild(b);
+});
+document.getElementById('choiceReset').addEventListener('click',()=>{
+  choiceSelected.clear();updateChoiceCount();renderChoiceDay(document.querySelector('.choice-tab[aria-selected="true"]')?.dataset.id||'c1');
+});
+updateChoiceCount();renderChoiceDay('c1');
 
 const DAYS=[
 {
@@ -358,7 +636,7 @@ const DAYS=[
    d:"세계 최대 보행 교차로. 토요일 저녁은 밀도가 최대치라 사진이 가장 잘 나옵니다.",stay:"25분",cost:"무료"},
   {move:"🚶 도보 약 5분 (시부야 스크램블 스퀘어)"},
   {t:"16:30",n:"SHIBUYA SKY",cat:"야경",lat:35.6584,lng:139.7022,
-   d:"229m 옥상 개방형 전망대. 일몰 약 17:30 → 낮·노을·야경을 한 슬롯에서 다 봅니다. 옥상은 우천·강풍 시 폐쇄될 수 있음.",stay:"90분",cost:"¥2,500",book:"예약 9/12 00:00 오픈"},
+   d:"229m 옥상 개방형 전망대. 일몰 약 17:30 → 낮·노을·야경을 한 슬롯에서 다 봅니다. 옥상은 우천·강풍 시 폐쇄될 수 있음.",stay:"90분",cost:"WEB ¥3,400",book:"9/12부터 9/26분 판매 · 현지시간 00:00"},
   {move:"🚶 도보 약 8분"},
   {t:"18:30",n:"저녁 · 미야시타파크 시부야 요코초",cat:"맛집",lat:35.6614,lng:139.7024,
    d:"공원 위에 얹은 상업시설. 1층 요코초에 일본 각지 향토요리 점포가 늘어서 있어 한 곳에서 고르기 좋습니다.",stay:"90분",cost:"¥3,000~"}
@@ -397,17 +675,17 @@ const DAYS=[
   {t:"08:30",n:"마이하마역 → 디즈니리조트라인",cat:"이동",lat:35.6329,lng:139.8814,
    d:"모노레일로 '도쿄디즈니씨 스테이션' 하차. 1회 ¥300 / 1일권 ¥800. 걸어가도 약 20분.",stay:"20분",cost:"¥300"},
   {t:"09:00",n:"도쿄 디즈니씨 입장",cat:"체험",lat:35.6267,lng:139.8850,
-   d:"개장 09:00 / 폐장 21:00. 입장하자마자 할 일은 딱 하나 — 공식 앱으로 판타지스프링스 어트랙션 스탠바이패스 확보.",stay:"—",cost:"¥7,900~10,900",book:"사전예약 필수"},
+   d:"개장 09:00 / 폐장 21:00. 25주년·할로윈 기간. 입장 후 공식 앱에서 유료 프리미어 액세스와 쇼 Entry Request를 먼저 확인.",stay:"—",cost:"¥9,900",book:"사전예약 필수"},
   {t:"09:15",n:"① 판타지스프링스",cat:"체험",lat:35.6300,lng:139.8880,
-   d:"2024년 개장한 역대 최대 확장 구역(겨울왕국·라푼젤·피터팬). 구역 입장 제한은 폐지돼 자유 입장이지만, 탑승은 스탠바이패스(무료) 또는 프리미어 액세스(유료 ¥2,000/건)가 필요합니다.",stay:"135분",cost:"앱 조작"},
+   d:"겨울왕국·라푼젤·피터팬 구역. 구역은 자유 입장이고 어트랙션은 현장 일반 대기 또는 유료 Disney Premier Access로 이용.",stay:"135분",cost:"일반 대기 또는 DPA"},
   {t:"11:30",n:"② 미스테리어스 아일랜드",cat:"체험",lat:35.6272,lng:139.8837,
    d:"화산 내부 구역. '센터 오브 디 어스', '해저 2만 마일'. 디즈니씨 상징 프로메테우스 화산 바로 아래.",stay:"90분",cost:"—"},
   {t:"13:00",n:"③ 점심 · 카스바 푸드코트",cat:"맛집",lat:35.6255,lng:139.8862,
    d:"아라비안 코스트의 대형 푸드코트. 피크 시간은 12:00~13:00입니다.",stay:"60분",cost:"¥1,500~"},
   {t:"14:30",n:"④ 아메리칸 워터프론트",cat:"체험",lat:35.6260,lng:139.8820,
-   d:"'타워 오브 테러', '토이스토리 마니아'. 1900년대 뉴욕 항구 테마라 사진 배경이 가장 좋은 구역.",stay:"120분",cost:"—"},
+   d:"토이스토리 마니아와 1900년대 뉴욕 항구 테마. 타워 오브 테러는 9/28 휴장이라 동선에서 제외.",stay:"120분",cost:"—"},
   {t:"16:30",n:"⑤ 로스트리버 델타 · 머메이드 라군",cat:"체험",lat:35.6285,lng:139.8875,
-   d:"'인디아나 존스', '레이징 스피리츠'와 실내 머메이드 라군. 오후에 비가 오면 머메이드 라군으로 피신 가능.",stay:"120분",cost:"—"},
+   d:"레이징 스피리츠와 실내 머메이드 라군. 인디아나 존스와 머메이드 라군 시어터는 9/28 휴장.",stay:"120분",cost:"—"},
   {t:"18:30",n:"⑥ 저녁 + 메디테레이니언 하버 야경",cat:"야경",lat:35.6252,lng:139.8845,
    d:"항구 테마 중앙 구역. 해가 진 뒤 화산과 수면 조명이 켜지면 이 파크에서 가장 좋은 그림이 나옵니다.",stay:"90분",cost:"¥2,500~"},
   {t:"20:00",n:"⑦ 쇼핑 · 엠포리오",cat:"쇼핑",lat:35.6245,lng:139.8838,
