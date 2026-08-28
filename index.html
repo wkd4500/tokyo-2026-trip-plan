@@ -225,7 +225,7 @@ tr:last-child td{border-bottom:none}
     <div class="choice-head">
       <div>
         <h2>날짜별 선택 플래너</h2>
-        <div class="sub">카드를 고르면 위 해당 날짜 타임라인·전체 일정표·지도 동선 링크에 즉시 반영되고 이 기기에 저장됩니다.</div>
+        <div class="sub">선택 구간은 기존 코스를 교체하며, 고정 예약시간을 유지한 채 가까운 장소 순으로 일정·지도·Google 동선을 자동 정렬합니다.</div>
       </div>
       <div class="choice-actions">
         <span class="choice-count" id="choiceCount">0개 선택</span>
@@ -380,7 +380,7 @@ const CHOICE_DAYS=[
    {n:"21_21 DESIGN SIGHT",c:"건축",l:"선택",d:"80분",p:"전시별",note:"안도 다다오 건축. 9/26 전시 교체기 가능성으로 공식 프로그램 확인."},
    {n:"네즈 미술관",c:"관광",l:"선택",d:"90분",p:"¥1,600",note:"오모테산도 남쪽. 정원·전시를 포함하면 90분."}
   ]},
-  {time:"11:00",title:"오모테산도·하라주쿠",rule:"2~3곳 선택",items:[
+  {time:"11:00",title:"오모테산도·하라주쿠",rule:"1~2곳 선택",items:[
    {n:"오모테산도 건축 스트립 워크",c:"건축",l:"추천",d:"90분",p:"무료",note:"프라다·디오르·오모테산도힐즈 축."},
    {n:"요요기 공원",c:"휴양",l:"선택",d:"60분",p:"무료",note:"메이지진구·하라주쿠와 묶기."},
    {n:"KAWAII MONSTER LAND - HARAJUKU -",c:"체험",l:"선택",d:"90분",p:"¥3,000~",note:"2026-02-13 오픈. 화려한 신작이지만 장기 리뷰 축적은 아직 적어 취향형으로 분류."},
@@ -452,7 +452,7 @@ const CHOICE_DAYS=[
   {time:"12:30",title:"니혼바시 대안",rule:"선택 시 70분",items:[
    {n:"니혼바시 — 포켓몬센터 도쿄DX·포켓몬 카페",c:"쇼핑",l:"선택",d:"70분",p:"—",note:"카페는 사전예약 필수. 미예약 시 센터만."}
   ]},
-  {time:"14:00",title:"도쿄역·마루노우치",rule:"2~3곳 선택",items:[
+  {time:"14:00",title:"도쿄역·마루노우치",rule:"1~2곳 선택",items:[
    {n:"고쿄 히가시교엔 — 에도성 천수대",c:"관광",l:"추천",d:"70분",p:"무료",note:"9/30 수요일 개원. 17:00 폐원, 16:30 입장 마감."},
    {n:"KITTE 마루노우치 옥상정원",c:"야경",l:"추천",d:"30분",p:"무료",note:"도쿄역 프로트 뷰. 낮에도 가능."},
    {n:"도쿄역 이치방가이 — 캐릭터 스트리트",c:"쇼핑",l:"추천",d:"90분",p:"—",note:"귀국 전 기념품 쇼핑."},
@@ -524,7 +524,7 @@ const CHOICE_COORDS={
 const CAT={관광:"#2a78d6",건축:"#3455a4",맛집:"#eb6834",쇼핑:"#1baf7a",야경:"#4a3aa7",체험:"#e87ba4",휴양:"#38a687",시장:"#eda100",이동:"#898781"};
 
 /* ── v3 선택 플래너 ── */
-const choiceStoreKey='tokyo-v3-picks-v2';
+const choiceStoreKey='tokyo-v3-picks-v3';
 let choiceSelected=new Set();
 let detailReady=false;
 let currentDetailDay='d1';
@@ -789,6 +789,40 @@ function timeRank(t){
   if(t==='반나절') return 600;
   return 720;
 }
+function geoDistance(a,b){
+  if(!a||!b||![a.lat,a.lng,b.lat,b.lng].every(Number.isFinite))return 0;
+  const rad=Math.PI/180,dy=(b.lat-a.lat)*rad,dx=(b.lng-a.lng)*rad;
+  const y=Math.sin(dy/2)**2+Math.cos(a.lat*rad)*Math.cos(b.lat*rad)*Math.sin(dx/2)**2;
+  return 12742*Math.asin(Math.sqrt(y));
+}
+function permutations(items){
+  if(items.length<2)return [items];
+  const out=[];
+  items.forEach((item,i)=>permutations(items.slice(0,i).concat(items.slice(i+1))).forEach(rest=>out.push([item,...rest])));
+  return out;
+}
+function optimizeEqualTimeGroups(items){
+  const out=[];
+  for(let i=0;i<items.length;){
+    const rank=timeRank(items[i].t),group=[];
+    let j=i;
+    while(j<items.length&&timeRank(items[j].t)===rank)group.push(items[j++]);
+    if(group.length>1&&group.length<=6&&group.every(p=>Number.isFinite(p.lat)&&Number.isFinite(p.lng))){
+      const prev=[...out].reverse().find(p=>Number.isFinite(p.lat)&&Number.isFinite(p.lng));
+      const next=items.slice(j).find(p=>Number.isFinite(p.lat)&&Number.isFinite(p.lng));
+      let best=group,bestKm=Infinity;
+      permutations(group).forEach(order=>{
+        let km=prev?geoDistance(prev,order[0]):0;
+        for(let k=1;k<order.length;k++)km+=geoDistance(order[k-1],order[k]);
+        if(next)km+=geoDistance(order.at(-1),next);
+        if(km<bestKm){bestKm=km;best=order;}
+      });
+      out.push(...best);
+    }else out.push(...group);
+    i=j;
+  }
+  return out;
+}
 function effectiveDayItems(day){
   const choices=selectedChoiceItems(day.id);
   if(!choices.length) return day.items;
@@ -796,6 +830,14 @@ function effectiveDayItems(day){
   choices.forEach(({cd,slot,item})=>{
     const chosenTime=item.at||slot.time,rank=timeRank(chosenTime);
     const removeBase=p=>!p.choice;
+    if(cd.id==='c1'&&slot.title==='공원 또는 가부키초')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=960&&timeRank(p.t)<1050&&p.cat!=='맛집'));
+    if(cd.id==='c2'&&slot.title==='오모테산도·하라주쿠')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=660&&timeRank(p.t)<900&&p.cat!=='맛집'));
+    if(cd.id==='c2'&&slot.title==='시부야 쇼핑')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=900&&timeRank(p.t)<990&&p.cat!=='맛집'));
+    if(cd.id==='c3'&&slot.title==='아사쿠사·아키하바라')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=840&&timeRank(p.t)<1080&&p.cat!=='맛집'));
+    if(cd.id==='c5'&&slot.title==='정원·점심'&&item.c!=='맛집')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)<660&&p.cat!=='맛집'));
+    if(cd.id==='c5'&&slot.title==='오다이바 마무리')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=960&&timeRank(p.t)<1140&&p.cat!=='맛집'));
+    if(cd.id==='c6'&&slot.title==='긴자')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=600&&timeRank(p.t)<720&&p.cat!=='맛집'));
+    if(cd.id==='c6'&&slot.title==='도쿄역·마루노우치')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=840&&timeRank(p.t)<1020&&p.cat!=='맛집'));
     if(/저녁/.test(slot.title))places=places.filter(p=>!(removeBase(p)&&p.cat==='맛집'&&timeRank(p.t)>=1020));
     if(/점심/.test(slot.title)&&item.c==='맛집')places=places.filter(p=>!(removeBase(p)&&p.cat==='맛집'&&timeRank(p.t)>=660&&timeRank(p.t)<960));
     if(day.id==='d2'&&slot.title==='건축·미술 시작')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)<660));
@@ -813,7 +855,8 @@ function effectiveDayItems(day){
     places.push({t:chosenTime,n:item.n,cat:item.c,d:item.note,stay:item.d,cost:item.p,choice:true,
       lat:coord?.[0],lng:coord?.[1]});
   });
-  return places.sort((a,b)=>timeRank(a.t)-timeRank(b.t));
+  places.sort((a,b)=>timeRank(a.t)-timeRank(b.t));
+  return optimizeEqualTimeGroups(places);
 }
 function routeUrlFor(items){
   const names=items.filter(i=>!i.move).map(i=>i.n);
@@ -833,7 +876,7 @@ function select(id){
 
   document.getElementById('dayhead').innerHTML=
     `<h2><span class="dot" style="background:${day.hex}"></span>${day.label}(${day.dow}) · ${day.theme}</h2>
-     <div class="zone">${day.zone}${picked.length?` · <b>${picked.length}개 선택 반영</b>`:' · 기본 일정'}</div>
+     <div class="zone">${day.zone}${picked.length?` · <b>${picked.length}개 선택 · 동선 자동 정렬</b>`:' · 기본 일정'}</div>
      <a class="route-open" target="_blank" rel="noopener" href="${routeUrlFor(renderItems)}">${picked.length?'선택 반영 동선':'기본 동선'} 지도에서 열기 ↗</a>`;
 
   // timeline
