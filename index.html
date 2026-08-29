@@ -156,30 +156,7 @@ tr:last-child td{border-bottom:none}
 .source-links{font-size:10.5px;color:var(--muted);margin-top:12px;line-height:1.65}
 .source-links a{color:var(--text-secondary)}
 
-/* Google Maps saved places */
-.saved-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}
-.saved-summary{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
-.saved-summary .badge{font-size:10.5px;padding:4px 8px}
-.saved-summary .planned{background:#eef7ee;border-color:#cce5cc;color:#176b17}
-.saved-summary .candidate{background:#f2f8ff;border-color:#cbdff6;color:#1d5f9e}
-.saved-tabs{display:flex;gap:7px;overflow-x:auto;padding:14px 24px 0;scrollbar-width:thin}
-.saved-tab{border:1px solid var(--grid);background:var(--surface-1);border-radius:999px;padding:9px 13px;
-  font:inherit;font-size:12px;color:var(--text-secondary);white-space:nowrap;cursor:pointer}
-.saved-tab[aria-selected="true"]{background:var(--text-primary);color:#fff;border-color:var(--text-primary)}
-.saved-body{padding:18px 24px 24px}
-.saved-route{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;padding:11px 12px;
-  background:var(--plane);border:1px solid var(--grid);border-radius:10px;margin-bottom:13px}
-.saved-route p{font-size:12px;color:var(--text-secondary);margin:3px 0 0}
-.saved-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
-.saved-place{border:1px solid var(--grid);border-left:4px solid var(--d1);border-radius:12px;
-  padding:12px;background:var(--surface-1);min-width:0}
-.saved-place.is-planned{border-left-color:var(--good)}
-.saved-place.is-closed{border-left-color:var(--critical);background:#fdf8f8}
-.saved-place-top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
-.saved-place-name{font-size:13px;font-weight:800;line-height:1.38;overflow-wrap:anywhere}
-.saved-place-meta{font-size:11px;color:var(--muted);margin-top:5px}
-.saved-place-note{font-size:11.5px;color:var(--text-secondary);line-height:1.45;margin-top:7px}
-.saved-place .badge{flex:none}.saved-place .gmap{margin-top:8px}
+.badge.mapsaved{background:#fff3e7;border-color:#f1cda8;color:#9a4d08}
 
 @media(max-width:900px){
   .tiles{grid-template-columns:repeat(3,1fr)}
@@ -189,16 +166,14 @@ tr:last-child td{border-bottom:none}
   #map{height:400px}
   .grid2,.grid3{grid-template-columns:1fr}
   .verdict-grid{grid-template-columns:1fr}
-  .pick-grid,.saved-grid{grid-template-columns:1fr 1fr}
+  .pick-grid{grid-template-columns:1fr 1fr}
   .wrap{padding:12px} .pad{padding:18px}
 }
 @media(max-width:560px){
   .tiles{grid-template-columns:repeat(2,1fr)}
-  .pick-grid,.saved-grid{grid-template-columns:1fr}
+  .pick-grid{grid-template-columns:1fr}
   .choice-head{display:block}.choice-actions{margin-top:9px;justify-content:space-between}
-  .choice-tabs,.saved-tabs{padding-left:18px;padding-right:18px}.choice-body,.saved-body{padding:16px 18px 20px}
-  .saved-head{display:block}.saved-summary{justify-content:flex-start;margin-top:10px}
-  .saved-route{display:block}
+  .choice-tabs{padding-left:18px;padding-right:18px}.choice-body{padding:16px 18px 20px}
   .table-scroll{margin-right:-2px}
 }
 </style>
@@ -213,7 +188,7 @@ tr:last-child td{border-bottom:none}
   <div class="dates">2026.09.25(금) — 09.30(수)</div>
   <div class="tiles">
     <div class="tile"><div class="v">6일 5박</div><div class="k">여행 기간</div></div>
-    <div class="tile"><div class="v">75곳</div><div class="k">선택 가능 스팟</div></div>
+    <div class="tile"><div class="v">88곳</div><div class="k">선택 가능 스팟</div></div>
     <div class="tile"><div class="v">1일</div><div class="k">디즈니씨</div></div>
     <div class="tile"><div class="v">3건</div><div class="k">사전예약 필수</div></div>
     <div class="tile"><div class="v">약 ¥73,000</div><div class="k">1인 현지 예상액</div></div>
@@ -279,10 +254,11 @@ tr:last-child td{border-bottom:none}
     <div class="choice-head">
       <div>
         <h2>날짜별 선택 플래너</h2>
-        <div class="sub">선택 구간은 같은 시간대의 기본 코스를 교체합니다. 예약 일정은 보호하고, 지정 시각과 위치를 기준으로 일정·지도·Google 구간 동선에 반영합니다.</div>
+        <div class="sub">선택 구간은 같은 시간대의 기본 코스를 교체합니다. <b>📍 맵 저장</b>은 Google 지도 공유 목록에서 가져온 후보이며, 예약 일정은 보호한 채 지정 시각과 위치를 기준으로 일정·지도·Google 구간 동선에 반영합니다.</div>
       </div>
       <div class="choice-actions">
         <span class="choice-count" id="choiceCount">0개 선택</span>
+        <a class="ghost-btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/xqAmQD8casuqXV1B6" style="text-decoration:none">저장 목록 ↗</a>
         <a class="ghost-btn" href="#daily-detail" style="text-decoration:none">반영 일정 보기 ↑</a>
         <button class="ghost-btn" id="choiceReset" type="button">선택 초기화</button>
       </div>
@@ -290,26 +266,6 @@ tr:last-child td{border-bottom:none}
   </div>
   <div class="choice-tabs" id="choiceTabs" role="tablist"></div>
   <div class="choice-body" id="choiceBody"></div>
-</section>
-
-<!-- ══ Google 지도 저장 장소 ══ -->
-<section class="card" id="saved-places">
-  <div class="pad" style="padding-bottom:0">
-    <div class="saved-head">
-      <div>
-        <div class="eyebrow">Google Maps · 2026 도쿄 🗼</div>
-        <h2>저장 장소 20곳 · 일정 권역별 정리</h2>
-        <div class="sub">공유 목록 표기는 21곳이지만 Google 지도에서 실제 확인되는 장소 레코드는 20곳입니다. 기존 일정 7곳은 중복 추가하지 않고 반영 상태를 표시했습니다.</div>
-      </div>
-      <div class="saved-summary" aria-label="저장 장소 반영 현황">
-        <span class="badge planned">7곳 일정 반영·검토</span>
-        <span class="badge candidate">13곳 권역별 후보</span>
-        <a class="ghost-btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/xqAmQD8casuqXV1B6" style="text-decoration:none">원본 목록 ↗</a>
-      </div>
-    </div>
-  </div>
-  <div class="saved-tabs" id="savedTabs" role="tablist" aria-label="저장 장소 권역"></div>
-  <div class="saved-body" id="savedBody"></div>
 </section>
 
 <!-- ══ 예약 체크리스트 ══ -->
@@ -427,47 +383,6 @@ tr:last-child td{border-bottom:none}
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
-const SAVED_PLACE_GROUPS=[
-  {
-    id:"saved-west", label:"9/25·9/29 서부 · 7곳", title:"신주쿠 → 하라주쿠·시부야",
-    route:"첫날 신주쿠와 9/29 서부 일정에 붙일 수 있는 후보입니다. 식당은 예약·대기시간에 따라 같은 권역의 기존 식사 구간과 교체하세요.",
-    places:[
-      {n:"라멘야 시마",rating:"4.3",reviews:"756",price:"¥1,000~2,000",type:"라면",note:"저장 메모: 소유라멘"},
-      {n:"우동 심보리",rating:"4.0",reviews:"546",price:"¥1,000~2,000",type:"우동"},
-      {n:"라멘 브레이크 비츠",rating:"4.3",reviews:"616",price:"¥1,000~2,000",type:"라면"},
-      {n:"오모테산도 힐즈",rating:"4.0",reviews:"8,506",type:"쇼핑몰",status:"planned",plan:"9/29 오모테산도·하라주쿠 선택 구간에 반영됨"},
-      {n:"CHERMSIDE SANDWICH Harajuku Takeshita Dori",rating:"4.1",reviews:"514",price:"¥3,000~4,000",type:"샌드위치"},
-      {n:"도큐 플라자 하라주쿠 하라카도",rating:"4.3",reviews:"1,184",type:"쇼핑몰",note:"저장 메모: 야경✨",status:"planned",plan:"9/29 하라주쿠 동선에 반영됨"},
-      {n:"후운지 신주쿠",rating:"4.3",reviews:"5,661",price:"¥1,000~2,000",type:"라면",status:"planned",plan:"9/25 도착 후 저녁 대안으로 반영됨"}
-    ]
-  },
-  {
-    id:"saved-bay", label:"9/26 긴자·베이 · 8곳", title:"츠키지·긴자 → 츠키시마·도요스",
-    route:"9/26 고동민 합류일의 기본 이동축입니다. 14:00 합류와 16:00 teamLab 예약은 고정하고, 긴자 식사·디저트 후보만 오전 구간에 넣으세요.",
-    places:[
-      {n:"안즈 하나레",rating:"4.7",reviews:"895",type:"돈까스 전문식당"},
-      {n:"우미노사치 쇼",rating:"4.4",reviews:"446",price:"¥2,000~6,000",type:"해산물 돈부리",note:"저장 메모: 참치덮밥"},
-      {n:"麺屋いしヰ 東京銀座 MENYA ISHII WAGYU UDON",rating:"4.9",reviews:"951",price:"¥1,000~2,000",type:"우동"},
-      {n:"DOLCE TACUBO GINZA",rating:"4.0",reviews:"51",price:"¥1,000~2,000",type:"카페"},
-      {n:"茶屋いつか 銀座店",rating:"4.2",reviews:"35",price:"¥1~1,000",type:"디저트"},
-      {n:"팀랩 플래닛 도쿄",rating:"4.5",reviews:"55,566",type:"현대미술관",status:"planned",plan:"9/26 16:00 예약 전시로 반영됨"},
-      {n:"후쿠로노미세",rating:"4.6",reviews:"191",price:"¥1,000~2,000",type:"카페",status:"planned",plan:"9/26 14:00 회차 권장으로 반영됨"},
-      {n:"쓰키지 장외시장",rating:"4.2",reviews:"56,007",type:"시장",status:"planned",plan:"9/26 오전 시작 구간에 반영됨"}
-    ]
-  },
-  {
-    id:"saved-east", label:"9/27 동부 · 5곳", title:"칸다·우에노·아사쿠사·아키하바라",
-    route:"9/27 동부 일정과 가까운 후보입니다. 아사쿠사·우에노·아키하바라 중 실제로 지나는 축에만 붙여 이동 역주행을 피하세요.",
-    places:[
-      {n:"멘야 스고 칸다점",rating:"4.2",reviews:"313",price:"¥1,000~2,000",type:"라면"},
-      {n:"American Diner Andra",rating:"4.4",reviews:"843",price:"¥2,000~3,000",type:"햄버거"},
-      {n:"베니즈루 팬케익",rating:"4.0",reviews:"2,485",price:"¥2,000~3,000",type:"팬케이크"},
-      {n:"아울카페 아키바 후쿠로우",rating:"4.9",reviews:"9,721",type:"동물카페"},
-      {n:"국립서양미술관",rating:"4.5",reviews:"12,122",type:"미술관",status:"closed",plan:"9/24~9/30 임시휴관 · 일정에서 관람 불가로 검토됨"}
-    ]
-  }
-];
-
 const CHOICE_DAYS=[
 {
  id:"c1",label:"9/25 신주쿠",route:"16:30 나리타 도착 → N'EX → 도착시각에 따라 서쪽 건축 → 21:30 프로젝션 → 22:00 저녁 → 23:20 가부키초. 19:45 이후 신주쿠 도착이면 코쿤 타워부터 생략.",
@@ -498,7 +413,8 @@ const CHOICE_DAYS=[
  slots:[
   {time:"09:00",title:"신주쿠에서 회수",rule:"1~2곳 선택",items:[
    {n:"신주쿠교엔",c:"휴양",l:"추천",at:"09:00",d:"75분",p:"¥500",note:"9/29 화요일 09:00 개원 직후 방문. 10:15에는 센다가야문 방향으로 이동."},
-   {n:"NTT 도코모 요요기 빌딩",c:"건축",l:"경유",at:"10:30",d:"15분",p:"무료(외관)",note:"신주쿠교엔에서 메이지진구로 내려가는 길에 외관만 짧게."}
+   {n:"NTT 도코모 요요기 빌딩",c:"건축",l:"경유",at:"10:30",d:"15분",p:"무료(외관)",note:"신주쿠교엔에서 메이지진구로 내려가는 길에 외관만 짧게."},
+   {n:"라멘야 시마",c:"맛집",l:"예약",at:"08:15",d:"50분",p:"¥1,000~2,000",mapsaved:true,note:"📍 평점 4.3. 완전예약제·평일 오전 영업. 9/29 전날 08:00 TableCheck 예약에 성공하면 신주쿠교엔 대신 첫 코스로 선택."}
   ]},
   {time:"09:00",title:"건축·미술 시작",rule:"1곳 선택",items:[
    {n:"도쿄 카테드랄 성 마리아 대성당",c:"건축",l:"추천",d:"40분",p:"무료",note:"단게 겐조. 오모테산도와 거리가 있어 오전 첫 코스로만."},
@@ -510,7 +426,9 @@ const CHOICE_DAYS=[
    {n:"요요기 공원",c:"휴양",l:"선택",d:"60분",p:"무료",note:"메이지진구·하라주쿠와 묶기."},
    {n:"KAWAII MONSTER LAND - HARAJUKU -",c:"체험",l:"선택",d:"90분",p:"¥3,000~",note:"2026-02-13 오픈. 화려한 신작이지만 장기 리뷰 축적은 아직 적어 취향형으로 분류."},
    {n:"@cosme TOKYO",c:"쇼핑",l:"선택",d:"60분",p:"—",note:"하라주쿠역 앞. 뷰티 쇼핑."},
-   {n:"오모테산도 힐즈",c:"쇼핑",l:"선택",d:"50분",p:"무료",note:"건축 산책과 중복 선택 가능."}
+   {n:"오모테산도 힐즈",c:"쇼핑",l:"선택",d:"50분",p:"무료",note:"건축 산책과 중복 선택 가능."},
+   {n:"CHERMSIDE SANDWICH Harajuku Takeshita Dori",c:"맛집",l:"선택",at:"12:00",d:"50분",p:"¥3,000~4,000",mapsaved:true,note:"📍 평점 4.1. 다케시타도리 안이라 동선은 좋지만 가격이 높아 샌드위치가 목적일 때만 점심으로 선택."},
+   {n:"우동 심보리",c:"맛집",l:"선택",at:"13:20",d:"50분",p:"¥1,000~2,000",mapsaved:true,note:"📍 평점 4.0. 시부야 사쿠라가오카 쪽 우동. 하라주쿠 구간을 마친 뒤 SHIBUYA SKY로 내려갈 때 점심 대안."}
   ]},
   {time:"18:10",title:"시부야 쇼핑",rule:"1곳 선택",items:[
    {n:"시부야 파르코 — 닌텐도 도쿄·포켓몬센터",c:"쇼핑",l:"추천",at:"18:10",d:"60분",p:"—",note:"SHIBUYA SKY 뒤에 방문. 캐릭터·게임 쇼핑 만족도가 높은 우선 옵션."},
@@ -519,13 +437,17 @@ const CHOICE_DAYS=[
   {time:"19:20",title:"저녁",rule:"1곳 선택",items:[
    {n:"논베이요코초",c:"맛집",l:"선택",d:"80분",p:"¥3,000~",note:"작은 이자카야 골목. 초반 입장 권장."},
    {n:"우오베이 시부야",c:"맛집",l:"추천",d:"45분",p:"¥1,500~",note:"회전초밥. 빠른 저녁 선택."},
-   {n:"규카츠 모토무라",c:"맛집",l:"선택",d:"50분",p:"¥1,900~",note:"한국인 인지도가 높지만 대기 대비 효율은 보통. 줄이 길면 우오베이로 전환."}
+   {n:"규카츠 모토무라",c:"맛집",l:"선택",d:"50분",p:"¥1,900~",note:"한국인 인지도가 높지만 대기 대비 효율은 보통. 줄이 길면 우오베이로 전환."},
+   {n:"라멘 브레이크 비츠",c:"맛집",l:"불가",at:"19:20",d:"70분",p:"¥1,000~2,000",mapsaved:true,no:true,note:"📍 평점 4.3. 메구로·유텐지에 있고 9/29 화요일은 정기휴일이라 이번 일정에서는 선택 불가."}
   ]}
  ]
 },
 {
  id:"c3",label:"9/27 동부",route:"기본은 센소지 → 스미다강·소라마치 → 아메요코 → 아키하바라. 오전 대체 코스는 한 줄기만 선택.",
  slots:[
+  {time:"08:30",title:"아사쿠사 아침",rule:"1곳 선택",items:[
+   {n:"베니즈루 팬케익",c:"맛집",l:"선택",at:"09:30",d:"60분",p:"¥2,000~3,000",mapsaved:true,note:"📍 평점 4.0. 08:30부터 현장 시간권을 받은 뒤 지정 시각에 재방문하는 방식. 센소지 전후 시간과 맞는 표를 받을 때만 선택."}
+  ]},
   {time:"09:00",title:"오전 코스",rule:"한 줄기 선택",items:[
    {n:"야네센 — 야나카긴자·네즈 신사",c:"관광",l:"추천",d:"3시간",p:"무료",note:"우에노 북쪽 산책. 도쿄국립박물관과 모두 넣으면 오전 전체 소요."},
    {n:"도쿄국립박물관",c:"관광",l:"추천",d:"2~3시간",p:"¥1,000",note:"9/27 일요일 개관. 오전 단독 핵심 코스로 적합."},
@@ -535,11 +457,15 @@ const CHOICE_DAYS=[
   ]},
   {time:"12:00",title:"아사쿠사 점심",rule:"1곳 선택",items:[
    {n:"아사쿠사 다이코쿠야 텐동",c:"맛집",l:"후순위",at:"11:00",d:"50분",p:"¥2,000~",note:"선택하면 스카이트리·소라마치 기본 구간을 빼고 우에노로 이동. 바삭한 튀김 취향이면 다른 식당 권장."},
-   {n:"아사쿠사 이마한 스키야키",c:"맛집",l:"선택",at:"11:00",d:"90분",p:"¥5,000~",note:"선택하면 스카이트리·소라마치 기본 구간을 빼고 여유 있게 식사."}
+   {n:"아사쿠사 이마한 스키야키",c:"맛집",l:"선택",at:"11:00",d:"90분",p:"¥5,000~",note:"선택하면 스카이트리·소라마치 기본 구간을 빼고 여유 있게 식사."},
+   {n:"멘야 스고 칸다점",c:"맛집",l:"선택",at:"12:00",d:"50분",p:"¥1,000~2,000",mapsaved:true,note:"📍 평점 4.2. 칸다·아키하바라 축의 라멘. 아사쿠사에서 바로 먹는 대신 오후 아키하바라 진입 때 점심으로 선택."},
+   {n:"American Diner Andra",c:"맛집",l:"불가",at:"12:00",d:"60분",p:"¥2,000~3,000",mapsaved:true,no:true,note:"📍 평점 4.4. 우에노·이나리초라 위치는 맞지만 일요일 정기휴무여서 9/27에는 방문 불가."},
+   {n:"우미노사치 쇼",c:"맛집",l:"불가",at:"11:45",d:"60분",p:"¥2,000~6,000",mapsaved:true,no:true,note:"📍 평점 4.4 · 저장 메모 ‘참치덮밥’. 칸다·이와모토초라 위치는 맞지만 토·일·공휴일 휴무여서 9/27에는 방문 불가."}
   ]},
   {time:"14:00",title:"아사쿠사·아키하바라",rule:"2~3곳 선택",items:[
    {n:"아키하바라 만다라케·슈퍼포테이토",c:"쇼핑",l:"추천",d:"90분",p:"—",note:"보행자천국 시간과 묶기."},
    {n:"아키하바라 가챠폰 회관",c:"체험",l:"선택",d:"30분",p:"¥300~",note:"만다라케 동선에 짧게 추가."},
+   {n:"아울카페 아키바 후쿠로우",c:"체험",l:"예약",at:"16:30",d:"60분",p:"공식 확인",mapsaved:true,note:"📍 평점 4.9. 완전예약제이며 아키하바라 일정 안에서 선택 가능. 동물 체험이 겹치므로 9/26 후쿠로노미세와 둘 중 하나만 권장."},
    {n:"도쿄 미즈마치·스미다 공원",c:"휴양",l:"선택",d:"60분",p:"무료",note:"아사쿠사→스카이트리 도보 축."},
    {n:"아즈마바시 무료 야경 포인트",c:"야경",l:"선택",d:"20분",p:"무료",note:"스미다강·스카이트리 뷰. 해질녘 선택."}
   ]},
@@ -564,6 +490,12 @@ const CHOICE_DAYS=[
    {n:"긴자 주오도리 보행자천국",c:"관광·쇼핑",l:"추천",at:"12:30",d:"25분",p:"무료",note:"토요일 4~9월 공식 운영시간 12:00~18:00. 이토야에서 니혼바시 방향으로 걷기."},
    {n:"니혼바시 — 포켓몬센터 도쿄DX·포켓몬 카페",c:"쇼핑",l:"선택",at:"13:00",d:"30분",p:"—",note:"센터만 빠르게 방문. 긴자 쇼핑이 밀리면 생략하고 포켓몬 카페는 별도 예약일에 방문."},
    {n:"가부키자 — 1막 관람권",c:"체험",l:"대체",at:"10:30",d:"70~90분",p:"¥1,200~",note:"9/26은 9월 공연 마지막 날. 선택하면 MUJI·포켓몬 중 1~2곳을 뺍니다."}
+  ]},
+  {time:"11:00",title:"긴자 점심·디저트",rule:"1~2곳 선택",items:[
+   {n:"안즈 하나레",c:"맛집",l:"추천",at:"11:00",d:"70분",p:"¥4,000~",mapsaved:true,note:"📍 평점 4.7. 긴자 6초메 돈카츠. 기본 코스에서 가장 자연스러운 점심이지만 Google 지도 가격표보다 실제 평균 지출이 높아 예산 확인."},
+   {n:"MENYA ISHII WAGYU UDON",c:"맛집",l:"선택",at:"11:00",d:"50분",p:"¥1,000~2,000",mapsaved:true,note:"📍 평점 4.9. 긴자 2초메·동긴자 쪽, 1일 100식 한정. 츠키지에서 긴자로 올라오는 축의 점심 대안."},
+   {n:"DOLCE TACUBO GINZA",c:"맛집",l:"간식",at:"12:15",d:"25분",p:"¥1,000~2,000",mapsaved:true,note:"📍 평점 4.0. 긴자 7초메 테이크아웃 디저트. 안즈 하나레와 가깝고 니혼바시 이동 전 짧게 추가 가능."},
+   {n:"茶屋いつか 銀座店",c:"맛집",l:"간식",at:"12:15",d:"25분",p:"¥1,000~",mapsaved:true,note:"📍 평점 4.2. 긴자 5초메 말차 디저트. 식사 대신이 아니라 점심 뒤 간식 1곳으로 선택."}
   ]},
   {time:"14:00",title:"츠키시마 체험",rule:"시간 지정",items:[
    {n:"후쿠로노미세",c:"체험",l:"조건부",d:"60분",p:"¥2,000~",note:"고동민은 츠키시마역 10번 출구에서 합류. 운영 확인 시 방문하고 미운영이면 몬자거리 산책."}
@@ -648,7 +580,12 @@ const CHOICE_COORDS={
 "라멘 — 아후리":[35.6690,139.7030],"라멘 — 무기토 올리브":[35.6719,139.7695],"우나기 — 이즈에이(우에노)":[35.7119,139.7710],
 "야키니쿠 — 야키니쿠 라이크":[35.6924,139.7000],"소바 — 칸다 마츠야":[35.6979,139.7685],"이자카야 — 토리키조쿠":[35.6934,139.7030],
 "카페 — 카야바 커피(야나카)":[35.7203,139.7667],"디저트 — 하라주쿠 크레페":[35.6713,139.7057],"과일 — 센비키야 후르츠 파를러":[35.6839,139.7734],
-"디파치카 순회":[35.6812,139.7686]
+"디파치카 순회":[35.6812,139.7686],
+"라멘야 시마":[35.6869,139.6829],"우동 심보리":[35.6565,139.7010],"라멘 브레이크 비츠":[35.6348,139.7000],
+"CHERMSIDE SANDWICH Harajuku Takeshita Dori":[35.6712,139.7051],"안즈 하나레":[35.6714,139.7624],
+"MENYA ISHII WAGYU UDON":[35.6693,139.7702],"DOLCE TACUBO GINZA":[35.6686,139.7641],"茶屋いつか 銀座店":[35.6704,139.7643],
+"우미노사치 쇼":[35.6950,139.7735],"멘야 스고 칸다점":[35.6910,139.7679],"American Diner Andra":[35.7135,139.7830],
+"베니즈루 팬케익":[35.7121,139.7906],"아울카페 아키바 후쿠로우":[35.7009,139.7744]
 };
 
 const CAT={관광:"#2a78d6","관광·쇼핑":"#168b80",건축:"#3455a4",맛집:"#eb6834",쇼핑:"#1baf7a",야경:"#4a3aa7",체험:"#e87ba4",휴양:"#38a687",시장:"#eda100",이동:"#898781"};
@@ -714,7 +651,7 @@ function renderChoiceDay(id){
         const mapUrl='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(item.n+', Tokyo');
         return `<label class="pickcard ${blocked?'unavailable':''}" style="border-left-color:${CAT[item.c]||'#898781'}">
           <input type="checkbox" data-key="${key.replace(/&/g,'&amp;').replace(/"/g,'&quot;')}" ${checked?'checked':''} ${blocked?'disabled':''}>
-          <div class="picktop"><div class="pickbadges">${choiceBadge(isAutoExcluded(item)?'자동 제외':item.l)}<span class="badge">${item.c}</span>${day.id==='cx'?`<span class="badge">${targetDayLabel(day,item)} 배치</span>`:''}</div><span class="pickcheck">✓</span></div>
+          <div class="picktop"><div class="pickbadges">${choiceBadge(isAutoExcluded(item)?'자동 제외':item.l)}<span class="badge">${item.c}</span>${item.mapsaved?'<span class="badge mapsaved">📍 맵 저장</span>':''}${day.id==='cx'?`<span class="badge">${targetDayLabel(day,item)} 배치</span>`:''}</div><span class="pickcheck">✓</span></div>
           <div class="pickname">${item.n}</div><div class="pickmeta">${item.at?`🕒 ${item.at} · `:''}⏱ ${item.d} · 💴 ${item.p}</div>
           <div class="picknote">${item.note}</div>
           <div class="picklinks"><a href="${mapUrl}" target="_blank" rel="noopener" onclick="event.stopPropagation()">지도에서 열기 ↗</a></div>
@@ -940,38 +877,6 @@ let layer=null;
 
 function gmap(n){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(n+', Tokyo');}
 function pinIcon(hex,n){return L.divIcon({html:`<div style="width:26px;height:26px;border-radius:50%;background:${hex};color:#fff;border:2px solid #fff;box-shadow:0 1px 5px #0004;display:grid;place-items:center;font:700 12px system-ui">${n}</div>`,className:'',iconSize:[26,26],iconAnchor:[13,13]});}
-
-function savedBadge(place){
-  if(place.status==='planned') return '<span class="badge rec">일정 반영됨</span>';
-  if(place.status==='closed') return '<span class="badge no">임시휴관</span>';
-  return '<span class="badge">저장 후보</span>';
-}
-function selectSavedGroup(id){
-  const group=SAVED_PLACE_GROUPS.find(g=>g.id===id)||SAVED_PLACE_GROUPS[0];
-  document.querySelectorAll('.saved-tab').forEach(tab=>tab.setAttribute('aria-selected',String(tab.dataset.id===group.id)));
-  document.getElementById('savedBody').innerHTML=`
-    <div class="saved-route">
-      <div><b>${group.title}</b><p>${group.route}</p></div>
-      <a class="ghost-btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/xqAmQD8casuqXV1B6" style="text-decoration:none;white-space:nowrap">공유 목록 ↗</a>
-    </div>
-    <div class="saved-grid">${group.places.map(place=>`
-      <article class="saved-place ${place.status==='planned'?'is-planned':''} ${place.status==='closed'?'is-closed':''}">
-        <div class="saved-place-top"><div class="saved-place-name">${place.n}</div>${savedBadge(place)}</div>
-        <div class="saved-place-meta">★ ${place.rating} · 리뷰 ${place.reviews}${place.price?' · '+place.price:''} · ${place.type}</div>
-        ${place.note?`<div class="saved-place-note">${place.note}</div>`:''}
-        ${place.plan?`<div class="saved-place-note"><b>${place.plan}</b></div>`:''}
-        <a class="gmap" target="_blank" rel="noopener" href="${gmap(place.n)}">지도에서 열기 ↗</a>
-      </article>`).join('')}</div>`;
-}
-const savedTabs=document.getElementById('savedTabs');
-SAVED_PLACE_GROUPS.forEach(group=>{
-  const button=document.createElement('button');
-  button.className='saved-tab'; button.type='button'; button.dataset.id=group.id;
-  button.setAttribute('role','tab'); button.setAttribute('aria-selected','false');
-  button.textContent=group.label; button.onclick=()=>selectSavedGroup(group.id);
-  savedTabs.appendChild(button);
-});
-selectSavedGroup(SAVED_PLACE_GROUPS[0].id);
 
 /* ── 렌더 ── */
 const tabsEl=document.getElementById('tabs');
