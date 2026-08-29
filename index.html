@@ -28,6 +28,12 @@ h3{font-size:14px;margin:0 0 8px}
 .sub{font-size:12.5px;color:var(--muted)}
 .dates{font-size:19px;font-weight:800;color:var(--d1);margin-top:4px}
 
+/* itinerary version switch */
+.version-switch{display:flex;gap:8px;padding:6px;background:#efefeb;border:1px solid var(--grid);border-radius:15px;margin-bottom:16px;position:sticky;top:8px;z-index:1000;box-shadow:0 5px 18px #0000000d}
+.version-tab{flex:1;border:0;border-radius:10px;padding:12px 16px;background:transparent;color:var(--text-secondary);font:inherit;font-size:13px;font-weight:800;cursor:pointer}
+.version-tab[aria-selected="true"]{background:var(--text-primary);color:#fff;box-shadow:0 2px 8px #0002}
+.version-note{font-size:11.5px;color:var(--text-secondary);padding:5px 8px 3px;line-height:1.45}
+
 /* stat tiles */
 .tiles{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:18px}
 .tile{border:1px solid var(--grid);border-radius:13px;padding:13px 10px;text-align:center;background:var(--surface-1)}
@@ -197,17 +203,27 @@ tr:last-child td{border-bottom:none}
 <body>
 <div class="wrap">
 
+<section class="version-switch" role="tablist" aria-label="여행 일정 버전">
+  <button class="version-tab" id="versionDisney" type="button" role="tab" aria-selected="true">디즈니 포함</button>
+  <button class="version-tab" id="versionNoDisney" type="button" role="tab" aria-selected="false">디즈니 제외</button>
+</section>
+
+<section class="card pad" style="padding-top:15px;padding-bottom:15px">
+  <h2 id="versionTitle">디즈니 포함 · 현재 추천안</h2>
+  <div class="version-note" id="versionNote">공통 필수축은 9/26 14:00 후쿠로노미세·아자부다이·AMBIENT KYOTO, 9/29 16:40 SHIBUYA SKY, 왕복 항공편과 N'EX입니다. 디즈니씨는 9/28 월요일에 둡니다.</div>
+</section>
+
 <!-- ══ HERO ══ -->
 <section class="card pad">
-  <div class="eyebrow">Tokyo 5N6D · Itinerary v3</div>
+  <div class="eyebrow">Tokyo 5N6D · Itinerary v4</div>
   <h1>도쿄 5박 6일 선택형 여행 플랜</h1>
   <div class="dates">2026.09.25(금) — 09.30(수)</div>
   <div class="tiles">
     <div class="tile"><div class="v">6일 5박</div><div class="k">여행 기간</div></div>
-    <div class="tile"><div class="v">82곳</div><div class="k">선택 가능 스팟</div></div>
-    <div class="tile"><div class="v">1일</div><div class="k">디즈니씨</div></div>
-    <div class="tile"><div class="v">3건</div><div class="k">사전예약 필수</div></div>
-    <div class="tile"><div class="v">약 ¥57–79k</div><div class="k">쇼핑·DPA 제외 기본비</div></div>
+    <div class="tile"><div class="v" id="spotCount">82곳</div><div class="k">선택 가능 스팟</div></div>
+    <div class="tile"><div class="v" id="featureDay">1일</div><div class="k" id="featureDayLabel">디즈니씨</div></div>
+    <div class="tile"><div class="v" id="bookingCount">3건</div><div class="k">사전예약 필수</div></div>
+    <div class="tile"><div class="v" id="heroBudget">약 ¥57–79k</div><div class="k" id="heroBudgetLabel">쇼핑·DPA 제외 기본비</div></div>
     <div class="tile"><div class="v">6일</div><div class="k">날짜별 지도 동선</div></div>
   </div>
 </section>
@@ -241,7 +257,7 @@ tr:last-child td{border-bottom:none}
     <tr><td><b>9/25(금)</b></td><td>나리타 · 신주쿠</td><td>나리타 → 체크인 → 도쿄도청 야경 → 오모이데요코초 → 가부키초</td></tr>
     <tr><td><b>9/26(토)</b></td><td>츠키지 · 긴자 · 츠키시마 · 아자부다이</td><td>츠키지 → 긴자/아티존 → 14:00 부엉이카페 → 아자부다이 건축·AMBIENT KYOTO</td></tr>
     <tr><td><b>9/27(일)</b></td><td>아사쿠사 · 스미다 · 우에노 · 아키하바라</td><td>아사쿠사 → 스카이트리 → 우에노·아메요코 → 아키하바라</td></tr>
-    <tr><td><b>9/28(월)</b></td><td>마이하마</td><td>도쿄 디즈니씨 종일 · 확보한 앱 예약시간 우선</td></tr>
+    <tr id="summaryD4"><td><b>9/28(월)</b></td><td>마이하마</td><td>도쿄 디즈니씨 종일 · 확보한 앱 예약시간 우선</td></tr>
     <tr><td><b>9/29(화)</b></td><td>신주쿠 · 하라주쿠 · 오모테산도 · 시부야</td><td>신주쿠교엔 → 메이지진구 → 하라주쿠 → 오모테산도 → SHIBUYA SKY</td></tr>
     <tr><td><b>9/30(수)</b></td><td>고쿄 · 도쿄역 · 나리타</td><td>도쿄역 짐 보관 → 고쿄 → 도쿄역 → N'EX → 나리타</td></tr>
   </table></div>
@@ -290,9 +306,9 @@ tr:last-child td{border-bottom:none}
 <section class="card pad">
   <h2>예약 체크리스트 — 마감이 빠른 순</h2>
   <div class="sub" style="margin-bottom:14px">2026-08-30 공식 판매 페이지 기준.</div>
-  <div class="table-scroll"><table>
+  <div class="table-scroll"><table id="reservationTable">
     <tr><th style="width:34px"></th><th style="width:180px">대상</th><th style="width:96px">해당일</th><th style="width:150px">예약 오픈 / 마감</th><th>메모</th></tr>
-    <tr>
+    <tr id="disneyBookingRow">
       <td><span class="prio p1">1</span></td>
       <td><b>도쿄 디즈니씨 1데이 패스포트</b></td>
       <td class="nowrap">9/28(월)</td>
@@ -335,7 +351,7 @@ tr:last-child td{border-bottom:none}
       <td>전 좌석 지정. <b>N'EX TOKYO Round Trip Ticket ¥5,200</b>, 14일 유효. 9/25 나리타→신주쿠, 9/30 도쿄역→나리타에 사용.</td>
     </tr>
   </table></div>
-  <div class="callout" style="border-left-color:var(--critical);background:#fdf6f6">
+  <div class="callout" id="versionCallout" style="border-left-color:var(--critical);background:#fdf6f6">
     <b>디즈니씨 9/28 핵심 —</b> 판타지스프링스는 자유 입장이고 어트랙션은 <b>일반 대기 또는 유료 Premier Access</b>입니다.
     타워 오브 테러·인디아나 존스·머메이드 라군 시어터·메디테레이니언 하버 출발 트랜짓 스티머라인은 이날 휴장이고, <b>Sky Full of Colors</b>도 휴연입니다. <b>Night High Halloween은 20:50 예정</b>이므로 당일 앱에서 최종 확인합니다.
     9/29(화)도 운영시간·요금·휴장 시설이 동일합니다. 화요일로 옮기면 월요일 신주쿠교엔 휴원 또는 동부 박물관 휴관·아키하바라 보행자천국 손실이 생기므로 <b>동부 일요일·디즈니 월요일·서부 화요일을 유지</b>합니다.
@@ -348,12 +364,12 @@ tr:last-child td{border-bottom:none}
   <div class="grid2" style="margin-top:12px">
     <table>
       <tr><th>항목</th><th class="num" style="width:130px">금액(엔)</th></tr>
-      <tr><td>고정 예약비 · 디즈니·AMBIENT·SKY</td><td class="num">15,800 –</td></tr>
-      <tr><td>교통비 · N'EX + 시내 IC</td><td class="num">11,200 – 13,200</td></tr>
+      <tr><td id="fixedBudgetLabel">고정 예약비 · 디즈니·AMBIENT·SKY</td><td class="num" id="fixedBudget">15,800 –</td></tr>
+      <tr><td id="transportBudgetLabel">교통비 · N'EX + 시내 IC</td><td class="num" id="transportBudget">11,200 – 13,200</td></tr>
       <tr><td>식비 6일</td><td class="num">30,000 – 45,000</td></tr>
       <tr><td>선택 입장비 · 후쿠로·스카이트리 등</td><td class="num">0 – 4,300+</td></tr>
-      <tr><td><b>기본 합계</b></td><td class="num"><b>약 57,000 – 79,000</b></td></tr>
-      <tr><td>디즈니 DPA</td><td class="num"><b>별도 한도</b></td></tr>
+      <tr><td><b>기본 합계</b></td><td class="num"><b id="totalBudget">약 57,000 – 79,000</b></td></tr>
+      <tr id="dpaBudgetRow"><td>디즈니 DPA</td><td class="num"><b>별도 한도</b></td></tr>
       <tr><td>쇼핑·굿즈·카페·술</td><td class="num"><b>개인 한도</b></td></tr>
       <tr><td>비상금</td><td class="num">10,000 권장</td></tr>
     </table>
@@ -377,7 +393,7 @@ tr:last-child td{border-bottom:none}
   <h2>꼭 필요한 주의사항</h2>
   <div class="grid2" style="margin-top:12px">
     <div class="mini"><b>비·강풍</b><p>SHIBUYA SKY 옥상은 제한될 수 있습니다. 같은 권역의 PARCO·소라마치와 아자부다이 힐즈 실내 공간을 대안으로 사용하세요.</p></div>
-    <div class="mini"><b>디즈니 이동</b><p>도쿄역 게이요선 승강장은 다른 노선에서 멉니다. 환승에 약 15분을 추가하고 공식 앱을 입장 전에 설치하세요.</p></div>
+    <div class="mini" id="variantCaution"><b>디즈니 이동</b><p>도쿄역 게이요선 승강장은 다른 노선에서 멉니다. 환승에 약 15분을 추가하고 공식 앱을 입장 전에 설치하세요.</p></div>
     <div class="mini"><b>AMBIENT KYOTO</b><p>토요일은 20:00까지 운영하며 마지막 입장은 종료 30분 전입니다. 아자부다이 건축 산책 뒤 17:00 전후 전매권으로 관람합니다.</p></div>
     <div class="mini"><b>츠키지·현금</b><p>츠키지는 오전 방문이 적합합니다. 골목·시장 소규모 점포용으로 소액 현금을 준비하세요.</p></div>
     <div class="mini"><b>귀국일 짐</b><p>9/30은 08:20까지 도쿄역 또는 출발 거점에 짐 보관을 끝내고, 12:05부터 회수·N'EX 승강장 이동에 들어갑니다.</p></div>
@@ -392,7 +408,7 @@ tr:last-child td{border-bottom:none}
 </section>
 
 <div class="footer">
-  <b>일정 데이터 기준일 2026-08-28 · Google 지도 저장 목록 확인일 2026-08-30.</b> 운영시간·요금·휴관일은 변동될 수 있으니 <b>예약 직전 공식 채널에서 재확인</b>하세요.
+  <b>일정 데이터 기준일 2026-08-30 · Google 지도 저장 목록 확인일 2026-08-30.</b> 운영시간·요금·휴관일은 변동될 수 있으니 <b>예약 직전 공식 채널에서 재확인</b>하세요.
 </div>
 
 </div>
@@ -400,6 +416,11 @@ tr:last-child td{border-bottom:none}
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
+let itineraryMode='disney';
+try{
+  const savedMode=localStorage.getItem('tokyo-itinerary-mode');
+  if(savedMode==='disney'||savedMode==='nodisney')itineraryMode=savedMode;
+}catch(e){}
 const CHOICE_DAYS=[
 {
  id:"c1",label:"9/25 신주쿠",route:"16:30 나리타 도착 → N'EX → 숙소 체크인 → 21:30 프로젝션 → 오모이데요코초 → 가부키초. 코쿤 타워·피크 라운지는 일찍 체크인했을 때만 고르는 보너스.",
@@ -544,6 +565,19 @@ const CHOICE_DAYS=[
  ]
 },
 {
+ id:"c4",label:"9/28 가마쿠라·에노시마",route:"디즈니 제외 버전 전용. 08:00 도쿄 출발 → 가마쿠라 중심 → 하세데라·대불 → 에노시마 일몰 → 도쿄 복귀.",
+ slots:[
+  {time:"09:10",title:"가마쿠라 오전 교체",rule:"1곳 선택",items:[
+   {n:"호코쿠지 대나무정원",c:"휴양",l:"선택",at:"09:20",d:"110분",p:"¥500~",note:"쓰루가오카·고마치도리 대신 동쪽 사찰과 대나무정원을 보는 조용한 오전. 버스 왕복시간을 포함해 점심 전 하세역 이동을 지킵니다."},
+   {n:"기타가마쿠라 엔가쿠지",c:"관광",l:"선택",at:"09:10",d:"100분",p:"¥500",note:"가마쿠라역으로 들어가기 전 기타가마쿠라에서 하차하는 선형 동선. 사찰 건축을 우선할 때 쓰루가오카·고마치도리를 교체합니다."}
+  ]},
+  {time:"16:00",title:"에노시마 마무리",rule:"1곳 선택",items:[
+   {n:"에노시마 이와야 동굴",c:"관광",l:"선택",at:"16:00",d:"100분",p:"¥500~",note:"섬 안쪽 해안과 동굴을 우선하는 체력형 선택. 왕복 계단과 도보가 길어 시캔들 일몰은 생략합니다."},
+   {n:"에노시마 시캔들 · 사무엘 코킹원",c:"야경",l:"추천",at:"16:30",d:"100분",p:"세트 ¥1,100",note:"에스카로 올라가 17:29 전후 일몰을 보고 내려오는 기본 선택. 공식 운영 09:00~20:00, 최종입장 19:30."}
+  ]}
+ ]
+},
+{
  id:"c6",label:"9/30 중앙",route:"08:20 짐 보관 → 09:05 고쿄 또는 도쿄역 오전 쇼핑 → 11:25 에키벤·이른 점심 → 12:05 짐 회수 → 12:30 전후 N'EX → 16:20 출국.",
  slots:[
   {time:"09:00",title:"출국 전 오전 핵심",rule:"1~2곳 선택",items:[
@@ -581,7 +615,7 @@ const CHOICE_DAYS=[
 }
 ];
 
-CHOICE_DAYS.sort((a,b)=>['c1','c2','c3','c5','c6','cx'].indexOf(a.id)-['c1','c2','c3','c5','c6','cx'].indexOf(b.id));
+CHOICE_DAYS.sort((a,b)=>['c1','c2','c3','c4','c5','c6','cx'].indexOf(a.id)-['c1','c2','c3','c4','c5','c6','cx'].indexOf(b.id));
 
 const CHOICE_COORDS={
 "후운지":[35.6877,139.6955],"모드학원 코쿤 타워":[35.6916,139.6967],"신주쿠 파크타워 · 피크 라운지":[35.6856,139.6917],
@@ -622,7 +656,9 @@ const CHOICE_COORDS={
 "도큐 플라자 오모테산도 오모카도":[35.6686,139.7051],"후지TV 구체 전망대 하치타마":[35.6264,139.7744],
 "롯폰기 힐스 · 모리 미술관·도쿄 시티뷰":[35.6605,139.7292],
 "아티존 미술관 — 소트사스·다키구치 슈조·소장품전":[35.6779,139.7710],
-"아자부다이 힐즈 마켓·푸드홀":[35.6605,139.7401],"가미야초·도라노몬 저녁":[35.6629,139.7451]
+"아자부다이 힐즈 마켓·푸드홀":[35.6605,139.7401],"가미야초·도라노몬 저녁":[35.6629,139.7451],
+"호코쿠지 대나무정원":[35.3208,139.5694],"기타가마쿠라 엔가쿠지":[35.3370,139.5441],
+"에노시마 이와야 동굴":[35.2990,139.4744],"에노시마 시캔들 · 사무엘 코킹원":[35.2997,139.4794]
 };
 
 const CAT={관광:"#2a78d6","관광·쇼핑":"#168b80",건축:"#3455a4",맛집:"#eb6834",쇼핑:"#1baf7a",야경:"#4a3aa7",체험:"#e87ba4",휴양:"#38a687",시장:"#eda100",이동:"#898781"};
@@ -662,7 +698,7 @@ function slotMax(rule){
   return Infinity;
 }
 function targetDayForChoice(choiceDay,item){
-  const direct={c1:'d1',c2:'d2',c3:'d3',c5:'d5',c6:'d6'};
+  const direct={c1:'d1',c2:'d2',c3:'d3',c4:'d4',c5:'d5',c6:'d6'};
   if(direct[choiceDay.id]) return direct[choiceDay.id];
   const n=item.n;
   if(/아후리|하라주쿠|나카메구로|다이칸야마|지브리|Borderless|도쿄타워|모리 미술관|아자부다이|국립신미술관/.test(n)) return 'd5';
@@ -675,12 +711,13 @@ function selectedChoiceItems(dayId){
   const out=[];
   CHOICE_DAYS.forEach(cd=>cd.slots.forEach(slot=>slot.items.forEach(item=>{
     const key=choiceKey(cd,slot,item);
+    if(cd.id==='c4'&&itineraryMode!=='nodisney')return;
     if(!item.no&&choiceConfirmed.has(key)&&targetDayForChoice(cd,item)===dayId) out.push({cd,slot,item,key});
   })));
   return out;
 }
 function targetDayLabel(choiceDay,item){
-  return ({d1:'9/25',d2:'9/26',d3:'9/27',d5:'9/29',d6:'9/30'})[targetDayForChoice(choiceDay,item)]||'';
+  return ({d1:'9/25',d2:'9/26',d3:'9/27',d4:'9/28',d5:'9/29',d6:'9/30'})[targetDayForChoice(choiceDay,item)]||'';
 }
 function choiceBadge(level){
   const cls=level==='필수'?'must':level==='추천'?'rec':level==='불가'?'no':'';
@@ -688,11 +725,13 @@ function choiceBadge(level){
 }
 function sameChoices(a,b){return a.size===b.size&&[...a].every(key=>b.has(key));}
 function updateChoiceCount(){
-  const dirty=!sameChoices(choiceDraft,choiceConfirmed);
-  document.getElementById('choiceCount').textContent=`선택 ${choiceDraft.size} · 확정 ${choiceConfirmed.size}${dirty?' · 미확정':''}`;
-  document.getElementById('choiceConfirm').disabled=!dirty||choiceDraft.size===0;
-  document.getElementById('choiceUnconfirm').disabled=choiceConfirmed.size===0;
-  document.getElementById('choiceReset').disabled=choiceDraft.size===0&&choiceConfirmed.size===0;
+  const visible=key=>itineraryMode==='nodisney'||!key.startsWith('c4|');
+  const draftVisible=new Set([...choiceDraft].filter(visible)),confirmedVisible=new Set([...choiceConfirmed].filter(visible));
+  const dirty=!sameChoices(draftVisible,confirmedVisible);
+  document.getElementById('choiceCount').textContent=`선택 ${draftVisible.size} · 확정 ${confirmedVisible.size}${dirty?' · 미확정':''}`;
+  document.getElementById('choiceConfirm').disabled=!dirty||draftVisible.size===0;
+  document.getElementById('choiceUnconfirm').disabled=confirmedVisible.size===0;
+  document.getElementById('choiceReset').disabled=draftVisible.size===0&&confirmedVisible.size===0;
   localStorage.setItem(choiceDraftStoreKey,JSON.stringify([...choiceDraft]));
   localStorage.setItem(choiceConfirmedStoreKey,JSON.stringify([...choiceConfirmed]));
 }
@@ -739,11 +778,17 @@ function renderChoiceDay(id){
   }));
 }
 
-CHOICE_DAYS.forEach(day=>{
-  const b=document.createElement('button');
-  b.type='button';b.className='choice-tab';b.dataset.id=day.id;b.textContent=day.label;
-  b.onclick=()=>renderChoiceDay(day.id);document.getElementById('choiceTabs').appendChild(b);
-});
+function renderChoiceTabs(preferred='c1'){
+  const visible=CHOICE_DAYS.filter(day=>day.id!=='c4'||itineraryMode==='nodisney');
+  const chosen=visible.some(day=>day.id===preferred)?preferred:visible[0].id;
+  const tabs=document.getElementById('choiceTabs');tabs.innerHTML='';
+  visible.forEach(day=>{
+    const b=document.createElement('button');
+    b.type='button';b.className='choice-tab';b.dataset.id=day.id;b.textContent=day.label;
+    b.onclick=()=>renderChoiceDay(day.id);tabs.appendChild(b);
+  });
+  renderChoiceDay(chosen);
+}
 function activeChoiceDay(){return document.querySelector('.choice-tab[aria-selected="true"]')?.dataset.id||'c1';}
 function refreshConfirmedSchedule(){
   updateChoiceCount();renderChoiceDay(activeChoiceDay());
@@ -764,7 +809,7 @@ document.getElementById('choiceReset').addEventListener('click',()=>{
   choiceDraft.clear();choiceConfirmed.clear();
   refreshConfirmedSchedule();
 });
-updateChoiceCount();renderChoiceDay('c1');
+updateChoiceCount();renderChoiceTabs('c1');
 
 const DAYS=[
 {
@@ -956,6 +1001,44 @@ const DAYS=[
  ]
 }
 ];
+const DISNEY_DAY=DAYS.find(day=>day.id==='d4');
+const NO_DISNEY_DAY={
+ id:"d4",label:"9/28",dow:"월",color:"var(--d4)",hex:"#eda100",
+ zone:"가마쿠라 → 하세 → 에노시마",theme:"사찰·옛길 → 해안 → 일몰 · 월요일 휴관 회피형 근교 하루",
+ lodging:"숙소 → 가마쿠라 / 에노시마 → 숙소 · 신주쿠 기준 편도 약 70~85분",
+ rain:"비가 강하면 가마쿠라·에노시마를 취소하고 선샤인시티·수족관 등 도쿄 실내 대체안으로 전환",
+ items:[
+  {t:"08:00",n:"도쿄 시내 → 가마쿠라역",cat:"이동",lat:35.3190,lng:139.5504,
+   d:"신주쿠 숙소 기준 JR 쇼난신주쿠라인 직통을 우선합니다. 숙소가 달라지면 출발역만 바꾸되 09:10 가마쿠라 도착을 목표로 합니다.",stay:"약 70~85분",cost:"IC 약 ¥950~"},
+  {move:"🚶 가마쿠라역 동쪽 출구 → 쓰루가오카 하치만구 약 15분"},
+  {t:"09:20",n:"쓰루가오카 하치만구",cat:"관광",lat:35.3257,lng:139.5563,
+   d:"월요일에도 가능한 가마쿠라의 중심축. 단카즈라 참배길과 본궁을 먼저 보고 혼잡해지기 전에 내려옵니다.",stay:"60분",cost:"무료"},
+  {move:"🚶 와카미야오지 → 고마치도리 약 8분"},
+  {t:"10:30",n:"고마치도리 · 이른 점심",cat:"맛집",lat:35.3213,lng:139.5507,
+   d:"간식만 이어 먹지 말고 11:20까지 한 끼를 끝냅니다. 시라스동·소바·카레 중 대기 20분 이내인 곳을 선택합니다.",stay:"55분",cost:"¥1,800~",priority:"11:25 가마쿠라역 복귀"},
+  {move:"🚃 에노덴 가마쿠라 → 하세 약 7분 · 혼잡 대기 포함 20분"},
+  {t:"11:50",n:"가마쿠라 하세데라",cat:"관광",lat:35.3125,lng:139.5330,
+   d:"바다 전망과 정원·관음당을 함께 보는 핵심. 9월 공식 운영 08:00~17:00, 최종입장 16:30이라 오후 혼잡 전 배치합니다.",stay:"75분",cost:"¥400"},
+  {move:"🚶 하세데라 → 고토쿠인 약 8분"},
+  {t:"13:15",n:"고토쿠인 · 가마쿠라 대불",cat:"관광",lat:35.3167,lng:139.5357,
+   d:"야외 청동 대불을 중심으로 짧고 확실하게 봅니다. 9월 공식 운영은 17:30까지이며 예약은 필요 없습니다.",stay:"50분",cost:"¥300"},
+  {move:"🚶 하세역 방면 · 유이가하마 해변까지 약 12분"},
+  {t:"14:20",n:"유이가하마 해변 · 하세 카페 휴식",cat:"휴양",lat:35.3084,lng:139.5360,
+   d:"사찰 두 곳 뒤 45분을 비워 체력을 회복합니다. 비나 강풍이면 해변을 빼고 하세역 근처 실내 카페만 이용합니다.",stay:"45분",cost:"¥800~"},
+  {move:"🚃 에노덴 하세 → 에노시마 약 25분"},
+  {t:"15:35",n:"에노시마 벤텐바시 · 나카미세",cat:"관광",lat:35.3045,lng:139.4836,
+   d:"섬 진입 후 에스카를 이용해 계단 피로를 줄입니다. 간식과 상점은 내려오는 길에 보고 일몰 시각을 먼저 지킵니다.",stay:"45분",cost:"에스카 포함 세트권 권장"},
+  {move:"🚶·에스카 에노시마 신사 → 사무엘 코킹원"},
+  {t:"16:30",n:"에노시마 시캔들 · 사무엘 코킹원",cat:"야경",lat:35.2997,lng:139.4794,
+   d:"17:29 전후 일몰을 기준으로 바다와 후지산 방향을 봅니다. 공식 운영 09:00~20:00, 최종입장 19:30이며 날씨가 나쁘면 전망대 체류를 줄입니다.",stay:"100분",cost:"에스카 포함 세트 ¥1,100",priority:"일몰 전 입장"},
+  {move:"🚶 에노시마역·가타세에노시마역 방향으로 하산 약 30분"},
+  {t:"18:50",n:"저녁 · 에노시마역 주변",cat:"맛집",lat:35.3112,lng:139.4870,
+   d:"섬 안 대기열을 피해 역 주변에서 시라스·해산물 또는 대기 짧은 식당을 고릅니다. 20:00 전후 도쿄행 출발을 목표로 합니다.",stay:"70분",cost:"¥2,500~"},
+  {t:"20:05",n:"에노시마 → 도쿄 시내 복귀",cat:"이동",lat:35.3112,lng:139.4870,
+   d:"후지사와 경유 JR 또는 오다큐를 비교해 숙소에 유리한 경로를 선택합니다. 다음 날 서부 일정 때문에 밤 일정을 추가하지 않습니다.",stay:"약 70~90분",cost:"IC 약 ¥700~"}
+ ]
+};
+if(itineraryMode==='nodisney')DAYS[DAYS.findIndex(day=>day.id==='d4')]=NO_DISNEY_DAY;
 DAYS.sort((a,b)=>Number(a.id.slice(1))-Number(b.id.slice(1)));
 
 /* ── 지도 ── */
@@ -1055,6 +1138,8 @@ function effectiveDayItems(day){
     }
     if(cd.id==='c3'&&slot.title==='아키하바라 선택')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=890&&timeRank(p.t)<1080&&p.cat!=='맛집'));
     if(cd.id==='c3'&&slot.title==='아사쿠사 점심')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=630&&timeRank(p.t)<780));
+    if(cd.id==='c4'&&slot.title==='가마쿠라 오전 교체')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=550&&timeRank(p.t)<700));
+    if(cd.id==='c4'&&slot.title==='에노시마 마무리'&&item.n==='에노시마 이와야 동굴')places=places.filter(p=>!/^에노시마 시캔들/.test(p.n));
     if(cd.id==='c2'&&slot.title==='정원·점심'&&item.c!=='맛집')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)<660&&p.cat!=='맛집'));
     if(cd.id==='c2'&&slot.title==='아티존 대체')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=620&&timeRank(p.t)<800));
     if(cd.id==='c2'&&slot.title==='긴자·니혼바시 회수')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=620&&timeRank(p.t)<840&&p.cat!=='이동'));
@@ -1206,9 +1291,57 @@ function renderFullTable(){
   document.getElementById('fulltable').innerHTML=h;
 }
 
+function updateReservationNumbers(){
+  let seq=0;
+  document.querySelectorAll('#reservationTable tr').forEach((row,index)=>{
+    if(index===0||row.style.display==='none')return;
+    const badge=row.querySelector('.prio');if(badge)badge.textContent=++seq;
+  });
+}
+function applyItineraryMode(mode){
+  itineraryMode=mode==='nodisney'?'nodisney':'disney';
+  try{localStorage.setItem('tokyo-itinerary-mode',itineraryMode);}catch(e){}
+  const no=itineraryMode==='nodisney';
+  DAYS[DAYS.findIndex(day=>day.id==='d4')]=no?NO_DISNEY_DAY:DISNEY_DAY;
+  document.getElementById('versionDisney').setAttribute('aria-selected',String(!no));
+  document.getElementById('versionNoDisney').setAttribute('aria-selected',String(no));
+  document.getElementById('versionTitle').textContent=no?'디즈니 제외 · 가마쿠라·에노시마 재설계안':'디즈니 포함 · 현재 추천안';
+  document.getElementById('versionNote').innerHTML=no
+    ?"공통 필수축은 그대로 유지합니다. 9/28 월요일은 도쿄 박물관 다수의 휴관을 피해 <b>가마쿠라 사찰 → 하세 해안 → 에노시마 일몰</b>로 새로 구성했습니다."
+    :"공통 필수축은 9/26 14:00 후쿠로노미세·아자부다이·AMBIENT KYOTO, 9/29 16:40 SHIBUYA SKY, 왕복 항공편과 N'EX입니다. 디즈니씨는 9/28 월요일에 둡니다.";
+  document.getElementById('spotCount').textContent=no?'86곳':'82곳';
+  document.getElementById('featureDay').textContent='1일';
+  document.getElementById('featureDayLabel').textContent=no?'가마쿠라·에노시마':'디즈니씨';
+  document.getElementById('bookingCount').textContent=no?'2건':'3건';
+  document.getElementById('heroBudget').textContent=no?'약 ¥51–74k':'약 ¥57–79k';
+  document.getElementById('heroBudgetLabel').textContent=no?'쇼핑 제외 기본비':'쇼핑·DPA 제외 기본비';
+  document.getElementById('summaryD4').innerHTML=no
+    ?'<td><b>9/28(월)</b></td><td>가마쿠라 · 하세 · 에노시마</td><td>쓰루가오카 → 하세데라·대불 → 유이가하마 → 에노시마 일몰</td>'
+    :'<td><b>9/28(월)</b></td><td>마이하마</td><td>도쿄 디즈니씨 종일 · 확보한 앱 예약시간 우선</td>';
+  document.getElementById('disneyBookingRow').style.display=no?'none':'';
+  document.getElementById('versionCallout').innerHTML=no
+    ?'<b>디즈니 제외판 재검토 결론 —</b> 9/26은 고동민 합류·부엉이카페·아자부다이 때문에 고정, 9/27은 일요일 아키하바라 보행자천국 때문에 유지, 9/29는 신주쿠교엔과 SHIBUYA SKY 예약 때문에 유지합니다. 따라서 비는 9/28 월요일에 <b>상설 사찰 중심의 가마쿠라·에노시마</b>를 넣는 것이 휴관 충돌과 권역 중복이 가장 적습니다.<div class="source-links">공식 확인 · <a href="https://www.hasedera.jp/en/guide/" target="_blank" rel="noopener">하세데라</a> · <a href="https://www.kotoku-in.jp/en/" target="_blank" rel="noopener">고토쿠인 대불</a> · <a href="https://enoshima-seacandle.com/opening-hours/" target="_blank" rel="noopener">에노시마 시캔들</a></div>'
+    :'<b>디즈니씨 9/28 핵심 —</b> 판타지스프링스는 자유 입장이고 어트랙션은 <b>일반 대기 또는 유료 Premier Access</b>입니다. 타워 오브 테러·인디아나 존스·머메이드 라군 시어터·메디테레이니언 하버 출발 트랜짓 스티머라인은 이날 휴장이고, <b>Sky Full of Colors</b>도 휴연입니다. <b>Night High Halloween은 20:50 예정</b>이므로 당일 앱에서 최종 확인합니다.';
+  document.getElementById('fixedBudgetLabel').textContent=no?'고정 예약비 · AMBIENT·SKY':'고정 예약비 · 디즈니·AMBIENT·SKY';
+  document.getElementById('fixedBudget').textContent=no?'5,900 –':'15,800 –';
+  document.getElementById('transportBudgetLabel').textContent=no?"교통비 · N'EX + 시내 IC + 가마쿠라":"교통비 · N'EX + 시내 IC";
+  document.getElementById('transportBudget').textContent=no?'14,000 – 17,000':'11,200 – 13,200';
+  document.getElementById('totalBudget').textContent=no?'약 51,000 – 74,000':'약 57,000 – 79,000';
+  document.getElementById('dpaBudgetRow').style.display=no?'none':'';
+  document.getElementById('variantCaution').innerHTML=no
+    ?'<b>가마쿠라·에노시마 체력</b><p>계단과 도보가 많습니다. 에스카를 사용하고 이와야 동굴과 시캔들을 동시에 넣지 마세요. 강한 비에는 도쿄 실내 대체안으로 전환합니다.</p>'
+    :'<b>디즈니 이동</b><p>도쿄역 게이요선 승강장은 다른 노선에서 멉니다. 환승에 약 15분을 추가하고 공식 앱을 입장 전에 설치하세요.</p>';
+  updateReservationNumbers();
+  const choiceDay=activeChoiceDay();
+  renderChoiceTabs(choiceDay);
+  updateChoiceCount();
+  if(detailReady){select(currentDetailDay);renderFullTable();}
+}
+
 detailReady=true;
-renderFullTable();
-select('d1');
+document.getElementById('versionDisney').addEventListener('click',()=>applyItineraryMode('disney'));
+document.getElementById('versionNoDisney').addEventListener('click',()=>applyItineraryMode('nodisney'));
+applyItineraryMode(itineraryMode);
 </script>
 </body>
 </html>
