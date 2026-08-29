@@ -113,6 +113,8 @@ tr:last-child td{border-bottom:none}
 .choice-actions{display:flex;align-items:center;gap:8px}
 .ghost-btn{border:1px solid var(--grid);background:var(--surface-1);border-radius:8px;padding:6px 9px;
   font:inherit;font-size:11px;color:var(--text-secondary);cursor:pointer}
+.ghost-btn.confirm-btn{background:var(--text-primary);border-color:var(--text-primary);color:#fff;font-weight:800}
+.ghost-btn:disabled{opacity:.42;cursor:not-allowed}
 .choice-tabs{display:flex;gap:7px;overflow-x:auto;padding:14px 24px 0;scrollbar-width:thin}
 .choice-tab{border:1px solid var(--grid);background:var(--surface-1);border-radius:999px;padding:9px 13px;
   font:inherit;font-size:12px;color:var(--text-secondary);white-space:nowrap;cursor:pointer}
@@ -130,6 +132,7 @@ tr:last-child td{border-bottom:none}
   border-radius:12px;padding:11px 11px 10px;background:var(--surface-1);cursor:pointer;transition:.14s;min-width:0}
 .pickcard:hover{border-color:var(--baseline)}
 .pickcard:has(input:checked){background:#f2f8ff;border-color:var(--d1);box-shadow:0 0 0 1px var(--d1)}
+.pickcard.confirmed{border-right:3px solid var(--good)}
 .pickcard.unavailable{opacity:.58;background:#f2f1ee;cursor:not-allowed}
 .pickcard input{position:absolute;opacity:0;pointer-events:none}
 .picktop{display:flex;justify-content:space-between;gap:6px;align-items:center;margin-bottom:5px}
@@ -145,6 +148,10 @@ tr:last-child td{border-bottom:none}
 .picklinks{margin-top:7px}.picklinks a{font-size:10.5px;color:var(--d1);text-decoration:none}
 .choice-added{display:inline-block;margin-left:6px;font-size:9px;font-weight:800;color:#176b17;
   background:#eef7ee;border:1px solid #cce5cc;border-radius:999px;padding:2px 6px;vertical-align:middle}
+.detail-state{display:inline-block;margin-left:6px;font-size:9px;font-weight:800;border-radius:999px;padding:2px 6px;vertical-align:middle}
+.detail-state.fixed{color:#8a1f1f;background:#fdecec;border:1px solid #f3c9c9}
+.detail-state.base{color:#5f5e5a;background:#ecebea;border:1px solid #d9d8d4}
+.detail-state.confirmed{color:#176b17;background:#eef7ee;border:1px solid #cce5cc}
 .route-open{display:inline-block;margin-top:7px;font-size:11px;font-weight:800;color:var(--d1);text-decoration:none;
   border:1px solid var(--grid);border-radius:7px;padding:5px 8px;background:var(--surface-1)}
 .route-open+.route-open{margin-left:5px}
@@ -188,7 +195,7 @@ tr:last-child td{border-bottom:none}
   <div class="dates">2026.09.25(금) — 09.30(수)</div>
   <div class="tiles">
     <div class="tile"><div class="v">6일 5박</div><div class="k">여행 기간</div></div>
-    <div class="tile"><div class="v">88곳</div><div class="k">선택 가능 스팟</div></div>
+    <div class="tile"><div class="v">74곳</div><div class="k">선택 가능 스팟</div></div>
     <div class="tile"><div class="v">1일</div><div class="k">디즈니씨</div></div>
     <div class="tile"><div class="v">3건</div><div class="k">사전예약 필수</div></div>
     <div class="tile"><div class="v">약 ¥73,000</div><div class="k">1인 현지 예상액</div></div>
@@ -235,7 +242,7 @@ tr:last-child td{border-bottom:none}
 <section class="card" id="daily-detail">
   <div class="pad" style="padding-bottom:0">
     <h2>일자별 상세 일정</h2>
-    <div class="sub">날짜를 누르면 타임라인과 지도가 함께 바뀝니다. 지도 핀 번호 = 타임라인 번호.</div>
+    <div class="sub">상세 일정은 <b>필수</b>·<b>기본</b> 일정과 플래너에서 <b>선택 확정</b>한 장소만 보여줍니다. 날짜를 누르면 타임라인과 지도가 함께 바뀝니다.</div>
   </div>
   <div class="tabs" id="tabs" role="tablist"></div>
   <div class="dayhead" id="dayhead"></div>
@@ -254,12 +261,14 @@ tr:last-child td{border-bottom:none}
     <div class="choice-head">
       <div>
         <h2>날짜별 선택 플래너</h2>
-        <div class="sub">선택 구간은 같은 시간대의 기본 코스를 교체합니다. <b>📍 맵 저장</b>은 Google 지도 공유 목록에서 가져온 후보이며, 예약 일정은 보호한 채 지정 시각과 위치를 기준으로 일정·지도·Google 구간 동선에 반영합니다.</div>
+        <div class="sub">체크는 아직 초안입니다. <b>선택 일정 확정</b>을 눌러야 같은 시간대의 기본 코스를 교체하고 상세 일정·지도·Google 구간 동선에 고정됩니다. <b>📍 맵 저장</b>은 Google 지도 공유 목록에서 가져온 후보입니다.</div>
       </div>
       <div class="choice-actions">
-        <span class="choice-count" id="choiceCount">0개 선택</span>
+        <span class="choice-count" id="choiceCount">0개 선택 · 0개 확정</span>
         <a class="ghost-btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/xqAmQD8casuqXV1B6" style="text-decoration:none">저장 목록 ↗</a>
         <a class="ghost-btn" href="#daily-detail" style="text-decoration:none">반영 일정 보기 ↑</a>
+        <button class="ghost-btn confirm-btn" id="choiceConfirm" type="button">선택 일정 확정</button>
+        <button class="ghost-btn" id="choiceUnconfirm" type="button">확정 해제</button>
         <button class="ghost-btn" id="choiceReset" type="button">선택 초기화</button>
       </div>
     </div>
@@ -388,13 +397,10 @@ const CHOICE_DAYS=[
  id:"c1",label:"9/25 신주쿠",route:"16:30 나리타 도착 → N'EX → 도착시각에 따라 서쪽 건축 → 21:30 프로젝션 → 22:00 저녁 → 23:20 가부키초. 19:45 이후 신주쿠 도착이면 코쿤 타워부터 생략.",
  slots:[
   {time:"19:40",title:"도착 후 서쪽 코스",rule:"1~2곳 선택",items:[
-   {n:"모드학원 코쿤 타워",c:"건축",l:"조건부",at:"19:40",d:"10분",p:"무료(외관)",note:"19:45 이전 신주쿠 도착 때만 외관 관람. 늦으면 바로 생략."},
-   {n:"신주쿠 파크타워 · 피크 라운지",c:"건축",l:"조건부",at:"20:00",d:"45분",p:"¥2,000~",note:"20:15 이전 도착 때만 이용. 20:45에 나와 21:30 프로젝션으로 이동."},
    {n:"후운지",c:"맛집",l:"대안",at:"19:45",d:"60분",p:"¥1,100~",note:"피크 라운지 대신 고르는 저녁 대안. 대기가 길면 21:30 상영을 위해 바로 전환."}
   ]},
   {time:"21:30",title:"무료 야경",rule:"1~2곳 선택",items:[
    {n:"도쿄도청 — 단게 겐조의 도시",c:"건축",l:"경유",at:"21:20",d:"10분",p:"무료(외관)",note:"프로젝션 관람 전 도청 외관과 공공공간을 함께 확인."},
-   {n:"Tokyo Night & Light",c:"야경",l:"추천",at:"21:30",d:"20분",p:"무료",note:"9월 공식 마지막 회차. 악천후 취소 여부만 당일 확인."},
    {n:"도쿄도청 남전망대",c:"야경",l:"대안",at:"20:40",d:"40분",p:"무료",note:"피크 라운지를 빼는 경우에만 선택. 통상 21:30 최종 입실·22:00 종료."}
   ]},
   {time:"22:00",title:"저녁·야간 골목",rule:"1곳 선택",items:[
@@ -412,8 +418,6 @@ const CHOICE_DAYS=[
  id:"c5",label:"9/29 건축·시부야",route:"09:00 신주쿠교엔 → NTT 도코모 외관 → 메이지진구 → 하라주쿠·오모테산도 → 16:30 SHIBUYA SKY.",
  slots:[
   {time:"09:00",title:"신주쿠에서 회수",rule:"1~2곳 선택",items:[
-   {n:"신주쿠교엔",c:"휴양",l:"추천",at:"09:00",d:"75분",p:"¥500",note:"9/29 화요일 09:00 개원 직후 방문. 10:15에는 센다가야문 방향으로 이동."},
-   {n:"NTT 도코모 요요기 빌딩",c:"건축",l:"경유",at:"10:30",d:"15분",p:"무료(외관)",note:"신주쿠교엔에서 메이지진구로 내려가는 길에 외관만 짧게."},
    {n:"라멘야 시마",c:"맛집",l:"예약",at:"08:15",d:"50분",p:"¥1,000~2,000",mapsaved:true,note:"📍 평점 4.3. 완전예약제·평일 오전 영업. 9/29 전날 08:00 TableCheck 예약에 성공하면 신주쿠교엔 대신 첫 코스로 선택."}
   ]},
   {time:"09:00",title:"건축·미술 시작",rule:"1곳 선택",items:[
@@ -484,10 +488,6 @@ const CHOICE_DAYS=[
    {n:"스시잔마이 츠키지 본점",c:"맛집",l:"후순위",at:"11:00",d:"60분",p:"¥3,000~",note:"안정적인 중가 체인이지만 목적지급 스시는 아님. 웨이팅이 짧을 때만 선택."}
   ]},
   {time:"10:20",title:"긴자·니혼바시 회수",rule:"2~5곳 선택",items:[
-   {n:"긴자식스 옥상정원",c:"휴양",l:"추천",at:"10:20",d:"25분",p:"무료",note:"옥상정원은 공식 07:00 개방. 츠키지에서 도보로 이동."},
-   {n:"무인양품 긴자 플래그십",c:"쇼핑",l:"추천",at:"11:10",d:"40분",p:"—",note:"공식 11:00 개점. 관심층만 압축해서 방문."},
-   {n:"긴자 이토야 본점",c:"쇼핑",l:"추천",at:"11:55",d:"30분",p:"—",note:"문구·종이·디자인 상품을 모은 긴자 대표 플래그십. 토요일 10:00~20:00 운영."},
-   {n:"긴자 주오도리 보행자천국",c:"관광·쇼핑",l:"추천",at:"12:30",d:"25분",p:"무료",note:"토요일 4~9월 공식 운영시간 12:00~18:00. 이토야에서 니혼바시 방향으로 걷기."},
    {n:"니혼바시 — 포켓몬센터 도쿄DX·포켓몬 카페",c:"쇼핑",l:"선택",at:"13:00",d:"30분",p:"—",note:"센터만 빠르게 방문. 긴자 쇼핑이 밀리면 생략하고 포켓몬 카페는 별도 예약일에 방문."},
    {n:"가부키자 — 1막 관람권",c:"체험",l:"대체",at:"10:30",d:"70~90분",p:"¥1,200~",note:"9/26은 9월 공연 마지막 날. 선택하면 MUJI·포켓몬 중 1~2곳을 뺍니다."}
   ]},
@@ -496,12 +496,6 @@ const CHOICE_DAYS=[
    {n:"MENYA ISHII WAGYU UDON",c:"맛집",l:"선택",at:"11:00",d:"50분",p:"¥1,000~2,000",mapsaved:true,note:"📍 평점 4.9. 긴자 2초메·동긴자 쪽, 1일 100식 한정. 츠키지에서 긴자로 올라오는 축의 점심 대안."},
    {n:"DOLCE TACUBO GINZA",c:"맛집",l:"간식",at:"12:15",d:"25분",p:"¥1,000~2,000",mapsaved:true,note:"📍 평점 4.0. 긴자 7초메 테이크아웃 디저트. 안즈 하나레와 가깝고 니혼바시 이동 전 짧게 추가 가능."},
    {n:"茶屋いつか 銀座店",c:"맛집",l:"간식",at:"12:15",d:"25분",p:"¥1,000~",mapsaved:true,note:"📍 평점 4.2. 긴자 5초메 말차 디저트. 식사 대신이 아니라 점심 뒤 간식 1곳으로 선택."}
-  ]},
-  {time:"14:00",title:"츠키시마 체험",rule:"시간 지정",items:[
-   {n:"후쿠로노미세",c:"체험",l:"조건부",d:"60분",p:"¥2,000~",note:"고동민은 츠키시마역 10번 출구에서 합류. 운영 확인 시 방문하고 미운영이면 몬자거리 산책."}
-  ]},
-  {time:"16:00",title:"예약 전시",rule:"시간 고정",items:[
-   {n:"teamLab Planets TOKYO",c:"체험",l:"필수",d:"100분",p:"¥3,600~",note:"9/26 16:00 전후 시간지정권 권장. 츠키시마에서 40분 여유 확보."}
   ]},
   {time:"18:00",title:"오다이바 마무리",rule:"1곳 선택",items:[
    {n:"레인보우브리지 도보 횡단",c:"휴양",l:"대체",at:"18:10",d:"60분",p:"무료",note:"해변·건담 대신 신토요스에서 시바우라 입구로 이동해 오다이바 방향으로 한 번만 횡단. 비·강풍 시 제외."},
@@ -513,10 +507,7 @@ const CHOICE_DAYS=[
  id:"c6",label:"9/30 중앙",route:"08:20 짐 보관 → 09:05 고쿄 또는 도쿄역 오전 쇼핑 → 11:25 에키벤·이른 점심 → 12:05 짐 회수 → 12:30 전후 N'EX → 16:20 출국.",
  slots:[
   {time:"09:00",title:"출국 전 오전 핵심",rule:"1~2곳 선택",items:[
-   {n:"고쿄 히가시교엔 — 에도성 천수대",c:"관광",l:"추천",at:"09:05",d:"65분",p:"무료",note:"짐 보관 후 개원 직후 방문하고 10:10까지 나와 도쿄역으로 이동."},
    {n:"KITTE 마루노우치 옥상정원",c:"관광",l:"선택",at:"10:30",d:"30분",p:"무료",note:"도쿄역 바로 앞. 운영시간이 맞을 때만 짧게."},
-   {n:"도쿄역 이치방가이 — 캐릭터 스트리트",c:"쇼핑",l:"추천",at:"10:30",d:"50분",p:"—",note:"귀국 전 기념품 쇼핑. 11:20에는 마무리."},
-   {n:"도쿄역 다이마루 디파치카·에키벤야 마츠리",c:"쇼핑",l:"추천",at:"11:25",d:"40분",p:"¥1,200~",note:"공항 이동 전 이른 점심과 에키벤 구매. 12:05에는 승강장으로 이동."}
   ]}
  ]
 },
@@ -591,17 +582,31 @@ const CHOICE_COORDS={
 const CAT={관광:"#2a78d6","관광·쇼핑":"#168b80",건축:"#3455a4",맛집:"#eb6834",쇼핑:"#1baf7a",야경:"#4a3aa7",체험:"#e87ba4",휴양:"#38a687",시장:"#eda100",이동:"#898781"};
 
 /* ── v3 선택 플래너 ── */
-const choiceStoreKey='tokyo-v3-picks-v8';
-let choiceSelected=new Set();
+const choiceDraftStoreKey='tokyo-v3-draft-v10';
+const choiceConfirmedStoreKey='tokyo-v3-confirmed-v10';
+const legacyChoiceStoreKey='tokyo-v3-picks-v8';
+let choiceDraft=new Set();
+let choiceConfirmed=new Set();
 let detailReady=false;
 let currentDetailDay='d1';
-try{choiceSelected=new Set(JSON.parse(localStorage.getItem(choiceStoreKey)||'[]'));}catch(e){}
+try{
+  const legacy=localStorage.getItem(legacyChoiceStoreKey);
+  choiceDraft=new Set(JSON.parse(localStorage.getItem(choiceDraftStoreKey)||legacy||'[]'));
+  choiceConfirmed=new Set(JSON.parse(localStorage.getItem(choiceConfirmedStoreKey)||'[]'));
+}catch(e){}
 
 function choiceKey(day,slot,item){return `${day.id}|${slot.time}|${slot.title}|${item.n}`;}
 function isAutoExcluded(item){return Boolean(item.autoExcludeAt&&Date.now()>=Date.parse(item.autoExcludeAt));}
+const validChoiceKeys=new Set();
 CHOICE_DAYS.forEach(day=>day.slots.forEach(slot=>slot.items.forEach(item=>{
-  if(item.no||isAutoExcluded(item))choiceSelected.delete(choiceKey(day,slot,item));
+  validChoiceKeys.add(choiceKey(day,slot,item));
+  if(item.no||isAutoExcluded(item)){
+    choiceDraft.delete(choiceKey(day,slot,item));
+    choiceConfirmed.delete(choiceKey(day,slot,item));
+  }
 })));
+choiceDraft=new Set([...choiceDraft].filter(key=>validChoiceKeys.has(key)));
+choiceConfirmed=new Set([...choiceConfirmed].filter(key=>validChoiceKeys.has(key)));
 function slotMax(rule){
   const range=rule.match(/\d+~(\d+)곳/);
   if(range) return Number(range[1]);
@@ -624,7 +629,7 @@ function selectedChoiceItems(dayId){
   const out=[];
   CHOICE_DAYS.forEach(cd=>cd.slots.forEach(slot=>slot.items.forEach(item=>{
     const key=choiceKey(cd,slot,item);
-    if(!item.no&&choiceSelected.has(key)&&targetDayForChoice(cd,item)===dayId) out.push({cd,slot,item,key});
+    if(!item.no&&choiceConfirmed.has(key)&&targetDayForChoice(cd,item)===dayId) out.push({cd,slot,item,key});
   })));
   return out;
 }
@@ -635,9 +640,14 @@ function choiceBadge(level){
   const cls=level==='필수'?'must':level==='추천'?'rec':level==='불가'?'no':'';
   return `<span class="badge ${cls}">${level}</span>`;
 }
+function sameChoices(a,b){return a.size===b.size&&[...a].every(key=>b.has(key));}
 function updateChoiceCount(){
-  document.getElementById('choiceCount').textContent=`${choiceSelected.size}개 선택`;
-  localStorage.setItem(choiceStoreKey,JSON.stringify([...choiceSelected]));
+  const dirty=!sameChoices(choiceDraft,choiceConfirmed);
+  document.getElementById('choiceCount').textContent=`${choiceDraft.size}개 선택 · ${choiceConfirmed.size}개 확정${dirty?' · 미확정 변경':''}`;
+  document.getElementById('choiceConfirm').disabled=!dirty||choiceDraft.size===0;
+  document.getElementById('choiceUnconfirm').disabled=choiceConfirmed.size===0;
+  localStorage.setItem(choiceDraftStoreKey,JSON.stringify([...choiceDraft]));
+  localStorage.setItem(choiceConfirmedStoreKey,JSON.stringify([...choiceConfirmed]));
 }
 function renderChoiceDay(id){
   const day=CHOICE_DAYS.find(d=>d.id===id)||CHOICE_DAYS[0];
@@ -647,11 +657,11 @@ function renderChoiceDay(id){
     day.slots.map(slot=>`<div class="slot">
       <div class="slot-head"><div class="slot-title"><span class="slot-time">${slot.time}</span>${slot.title}</div><div class="slot-rule">${slot.rule}</div></div>
       <div class="pick-grid">${slot.items.map(item=>{
-        const key=choiceKey(day,slot,item),blocked=item.no||isAutoExcluded(item),checked=choiceSelected.has(key)&&!blocked;
+        const key=choiceKey(day,slot,item),blocked=item.no||isAutoExcluded(item),checked=choiceDraft.has(key)&&!blocked,confirmed=choiceConfirmed.has(key)&&!blocked;
         const mapUrl='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(item.n+', Tokyo');
-        return `<label class="pickcard ${blocked?'unavailable':''}" style="border-left-color:${CAT[item.c]||'#898781'}">
+        return `<label class="pickcard ${blocked?'unavailable':''} ${confirmed?'confirmed':''}" style="border-left-color:${CAT[item.c]||'#898781'}">
           <input type="checkbox" data-key="${key.replace(/&/g,'&amp;').replace(/"/g,'&quot;')}" ${checked?'checked':''} ${blocked?'disabled':''}>
-          <div class="picktop"><div class="pickbadges">${choiceBadge(isAutoExcluded(item)?'자동 제외':item.l)}<span class="badge">${item.c}</span>${item.mapsaved?'<span class="badge mapsaved">📍 맵 저장</span>':''}${day.id==='cx'?`<span class="badge">${targetDayLabel(day,item)} 배치</span>`:''}</div><span class="pickcheck">✓</span></div>
+          <div class="picktop"><div class="pickbadges">${choiceBadge(isAutoExcluded(item)?'자동 제외':item.l)}<span class="badge">${item.c}</span>${item.mapsaved?'<span class="badge mapsaved">📍 맵 저장</span>':''}${confirmed?`<span class="badge rec">${checked?'✓ 확정됨':'확정본 유지'}</span>`:''}${day.id==='cx'?`<span class="badge">${targetDayLabel(day,item)} 배치</span>`:''}</div><span class="pickcheck">✓</span></div>
           <div class="pickname">${item.n}</div><div class="pickmeta">${item.at?`🕒 ${item.at} · `:''}⏱ ${item.d} · 💴 ${item.p}</div>
           <div class="picknote">${item.note}</div>
           <div class="picklinks"><a href="${mapUrl}" target="_blank" rel="noopener" onclick="event.stopPropagation()">지도에서 열기 ↗</a></div>
@@ -662,14 +672,13 @@ function renderChoiceDay(id){
     const slot=day.slots.find(s=>s.time===parts[1]&&s.title===parts[2]);
     if(input.checked){
       if((day.id==='c3'&&parts[1]==='14:00')||(day.id==='cx'&&parts[1]==='반나절')){
-        [...choiceSelected].filter(k=>k.startsWith(`${parts[0]}|${parts[1]}|`)&&!k.startsWith(prefix)).forEach(k=>choiceSelected.delete(k));
+        [...choiceDraft].filter(k=>k.startsWith(`${parts[0]}|${parts[1]}|`)&&!k.startsWith(prefix)).forEach(k=>choiceDraft.delete(k));
       }
-      const max=slotMax(slot.rule),inSlot=[...choiceSelected].filter(k=>k.startsWith(prefix));
-      while(inSlot.length>=max){const old=inSlot.shift();choiceSelected.delete(old);}
-      choiceSelected.add(input.dataset.key);
-    }else choiceSelected.delete(input.dataset.key);
+      const max=slotMax(slot.rule),inSlot=[...choiceDraft].filter(k=>k.startsWith(prefix));
+      while(inSlot.length>=max){const old=inSlot.shift();choiceDraft.delete(old);}
+      choiceDraft.add(input.dataset.key);
+    }else choiceDraft.delete(input.dataset.key);
     updateChoiceCount();renderChoiceDay(day.id);
-    if(detailReady){currentDetailDay=targetDayForChoice(day,slot.items.find(i=>i.n===parts.slice(3).join('|')));select(currentDetailDay);renderFullTable();}
   }));
 }
 
@@ -678,9 +687,25 @@ CHOICE_DAYS.forEach(day=>{
   b.type='button';b.className='choice-tab';b.dataset.id=day.id;b.textContent=day.label;
   b.onclick=()=>renderChoiceDay(day.id);document.getElementById('choiceTabs').appendChild(b);
 });
-document.getElementById('choiceReset').addEventListener('click',()=>{
-  choiceSelected.clear();updateChoiceCount();renderChoiceDay(document.querySelector('.choice-tab[aria-selected="true"]')?.dataset.id||'c1');
+function activeChoiceDay(){return document.querySelector('.choice-tab[aria-selected="true"]')?.dataset.id||'c1';}
+function refreshConfirmedSchedule(){
+  updateChoiceCount();renderChoiceDay(activeChoiceDay());
   if(detailReady){select(currentDetailDay);renderFullTable();}
+}
+document.getElementById('choiceConfirm').addEventListener('click',()=>{
+  const activeDay=CHOICE_DAYS.find(day=>day.id===activeChoiceDay());
+  const activeItem=activeDay?.slots.flatMap(slot=>slot.items).find(item=>choiceDraft.has(choiceKey(activeDay,activeDay.slots.find(slot=>slot.items.includes(item)),item)));
+  if(activeDay&&activeItem)currentDetailDay=targetDayForChoice(activeDay,activeItem);
+  choiceConfirmed=new Set(choiceDraft);
+  refreshConfirmedSchedule();
+});
+document.getElementById('choiceUnconfirm').addEventListener('click',()=>{
+  choiceConfirmed.clear();
+  refreshConfirmedSchedule();
+});
+document.getElementById('choiceReset').addEventListener('click',()=>{
+  choiceDraft.clear();choiceConfirmed.clear();
+  refreshConfirmedSchedule();
 });
 updateChoiceCount();renderChoiceDay('c1');
 
@@ -998,7 +1023,13 @@ function routeLinksFor(items,selected=false){
   const groups=[];
   if(names.length===1)groups.push(names);
   else for(let i=0;i<names.length-1;i+=4)groups.push(names.slice(i,i+5));
-  return groups.map((group,i)=>`<a class="route-open" target="_blank" rel="noopener" href="${routeUrlForNames(group)}">${groups.length>1?`Google 지도 ${i+1}구간`:`${selected?'선택 반영':'기본'} Google 지도`} ↗</a>`).join('');
+  return groups.map((group,i)=>`<a class="route-open" target="_blank" rel="noopener" href="${routeUrlForNames(group)}">${groups.length>1?`Google 지도 ${i+1}구간`:`${selected?'확정 반영':'기본'} Google 지도`} ↗</a>`).join('');
+}
+
+function detailStateBadge(item){
+  if(item.choice)return '<span class="detail-state confirmed">선택 확정</span>';
+  const fixed=Boolean(item.book)||/ZE607|ZE610|고동민.*합류/.test(item.n);
+  return fixed?'<span class="detail-state fixed">필수</span>':'<span class="detail-state base">기본</span>';
 }
 
 function select(id){
@@ -1010,7 +1041,7 @@ function select(id){
 
   document.getElementById('dayhead').innerHTML=
     `<h2><span class="dot" style="background:${day.hex}"></span>${day.label}(${day.dow}) · ${day.theme}</h2>
-     <div class="zone">${day.zone}${picked.length?` · <b>${picked.length}개 선택 · 시간순 반영</b>`:' · 기본 일정'}</div>
+     <div class="zone">${day.zone}${picked.length?` · <b>${picked.length}개 선택 확정 · 시간순 반영</b>`:' · 기본 일정'}</div>
      ${routeLinksFor(renderItems,Boolean(picked.length))}`;
 
   // timeline
@@ -1027,7 +1058,7 @@ function select(id){
       <div class="time">${it.t}</div>
       <div class="rail">${last?'':'<div class="line"></div>'}<div class="pin" style="background:${day.hex}">${n}</div></div>
       <div class="body">
-        <div class="pname">${it.n}${it.choice?'<span class="choice-added">선택 반영</span>':''}</div>
+        <div class="pname">${it.n}${detailStateBadge(it)}</div>
         <p class="pdesc">${it.d}</p>
         <div class="chips">
           <span class="chip cat" style="background:${catcol}">${it.cat}</span>
@@ -1057,7 +1088,7 @@ function select(id){
     if(coords.length>1)L.polyline(coords,{color:day.hex,weight:3,opacity:.7,dashArray:'7 8'}).addTo(layer);
     layer.addTo(map);
     if(coords.length){const b=L.latLngBounds(coords);map.fitBounds(b.pad(.18));}
-    document.getElementById('maplegend').innerHTML=`<span class="dot" style="background:${day.hex}"></span> ${day.label} 동선 · 선택 장소는 시간순으로 핀과 점선에 즉시 반영`;
+    document.getElementById('maplegend').innerHTML=`<span class="dot" style="background:${day.hex}"></span> ${day.label} 동선 · 확정한 선택 장소만 시간순으로 핀과 점선에 반영`;
     setTimeout(()=>map.invalidateSize(),80);
   }else{
     document.getElementById('map').innerHTML=`<div style="height:100%;display:grid;place-items:center;padding:24px;text-align:center"><div>${routeLinksFor(renderItems,Boolean(picked.length))}</div></div>`;
@@ -1073,7 +1104,7 @@ function renderFullTable(){
       h+=`<tr>
         <td class="nowrap">${i===0?`<span class="dot" style="background:${d.hex}"></span><b>${d.label}(${d.dow})</b>`:''}</td>
         <td class="nowrap" style="font-variant-numeric:tabular-nums">${it.t}</td>
-        <td><b>${it.n}</b>${it.choice?' <span class="choice-added">선택</span>':''}${it.priority?` <span class="choice-added">${it.priority}</span>`:''}</td>
+        <td><b>${it.n}</b>${detailStateBadge(it)}${it.priority?` <span class="choice-added">${it.priority}</span>`:''}</td>
         <td style="color:var(--muted)">${it.cat}</td>
         <td style="color:var(--text-secondary)">${it.d.replace(/<[^>]+>/g,'')}</td>
       </tr>`;
