@@ -1017,8 +1017,9 @@ function routeUrlForNames(names){
   const middle=names.slice(1,-1).map(n=>encodeURIComponent(n+', Tokyo')).join('%7C');
   return `https://www.google.com/maps/dir/?api=1&origin=${origin}&destination=${destination}${middle?`&waypoints=${middle}`:''}`;
 }
+function isAirportMapItem(item){return /나리타|N'EX|ZE607|ZE610/.test(item.n||'');}
 function routeLinksFor(items,selected=false){
-  const names=items.filter(i=>!i.move).map(i=>i.n);
+  const names=items.filter(i=>!i.move&&!isAirportMapItem(i)).map(i=>i.n);
   if(!names.length)return '';
   const groups=[];
   if(names.length===1)groups.push(names);
@@ -1077,7 +1078,12 @@ function select(id){
     layer=L.layerGroup();
     let mapSeq=0;
     const pts=[];
-    renderItems.forEach(p=>{if(!p.move){mapSeq++;if(Number.isFinite(p.lat)&&Number.isFinite(p.lng))pts.push({...p,_seq:mapSeq});}});
+    renderItems.forEach(p=>{
+      if(!p.move){
+        mapSeq++;
+        if(!isAirportMapItem(p)&&Number.isFinite(p.lat)&&Number.isFinite(p.lng))pts.push({...p,_seq:mapSeq});
+      }
+    });
     const coords=[];
     pts.forEach(p=>{
       coords.push([p.lat,p.lng]);
@@ -1088,7 +1094,7 @@ function select(id){
     if(coords.length>1)L.polyline(coords,{color:day.hex,weight:3,opacity:.7,dashArray:'7 8'}).addTo(layer);
     layer.addTo(map);
     if(coords.length){const b=L.latLngBounds(coords);map.fitBounds(b.pad(.18));}
-    document.getElementById('maplegend').innerHTML=`<span class="dot" style="background:${day.hex}"></span> ${day.label} 동선 · 확정한 선택 장소만 시간순으로 핀과 점선에 반영`;
+    document.getElementById('maplegend').innerHTML=`<span class="dot" style="background:${day.hex}"></span> ${day.label} 시내 동선 · 공항·항공편·N'EX 구간 제외 · 확정한 선택 장소만 반영`;
     setTimeout(()=>map.invalidateSize(),80);
   }else{
     document.getElementById('map').innerHTML=`<div style="height:100%;display:grid;place-items:center;padding:24px;text-align:center"><div>${routeLinksFor(renderItems,Boolean(picked.length))}</div></div>`;
