@@ -204,7 +204,7 @@ tr:last-child td{border-bottom:none}
   <div class="dates">2026.09.25(금) — 09.30(수)</div>
   <div class="tiles">
     <div class="tile"><div class="v">6일 5박</div><div class="k">여행 기간</div></div>
-    <div class="tile"><div class="v">78곳</div><div class="k">선택 가능 스팟</div></div>
+    <div class="tile"><div class="v">80곳</div><div class="k">선택 가능 스팟</div></div>
     <div class="tile"><div class="v">1일</div><div class="k">디즈니씨</div></div>
     <div class="tile"><div class="v">3건</div><div class="k">사전예약 필수</div></div>
     <div class="tile"><div class="v">약 ¥58–80k</div><div class="k">쇼핑·DPA 제외 기본비</div></div>
@@ -270,7 +270,7 @@ tr:last-child td{border-bottom:none}
     <div class="choice-head">
       <div>
         <h2>날짜별 선택 플래너</h2>
-        <div class="sub">체크는 아직 초안입니다. <b>선택 일정 확정</b>을 눌러야 같은 시간대의 기본 코스를 교체하고 상세 일정·지도·Google 구간 동선에 고정됩니다. <b>📍 맵 저장</b>은 Google 지도 공유 목록에서 가져온 후보입니다.</div>
+        <div class="sub">체크는 아직 초안입니다. <b>선택 일정 확정</b>을 눌러야 같은 시간대의 기본 코스를 교체하고 상세 일정·지도·Google 구간 동선에 고정됩니다. <b>📍 맵 저장</b>은 2026-08-30에 다시 확인한 Google 지도 공유 목록 31곳 기준입니다.</div>
       </div>
       <div class="choice-actions">
         <span class="choice-count" id="choiceCount" aria-live="polite">선택 0 · 확정 0</span>
@@ -409,14 +409,14 @@ const CHOICE_DAYS=[
    {n:"신주쿠 파크타워 · 피크 라운지",c:"야경",l:"보너스",at:"20:05",d:"35분",p:"¥2,000~",note:"숙소 체크인을 19:50까지 끝냈고 20:45에 나올 수 있을 때만 선택. 라운지를 위해 첫날 핵심 동선을 늦추지 않습니다."}
   ]},
   {time:"19:45",title:"도착 후 저녁 대안",rule:"1곳 선택",items:[
-   {n:"후운지",c:"맛집",l:"대안",at:"19:45",d:"60분",p:"¥1,100~",note:"21:30 상영 전 일찍 먹는 대안. 대기가 길면 바로 포기하고 기본 야간 동선을 유지."}
+   {n:"후운지",c:"맛집",l:"대안",at:"19:45",d:"60분",p:"¥1,100~",mapsaved:true,note:"📍 맵 저장. 21:30 상영 전 일찍 먹는 대안. 대기가 길면 바로 포기하고 기본 야간 동선을 유지."}
   ]},
   {time:"21:30",title:"무료 야경",rule:"1~2곳 선택",items:[
    {n:"도쿄도청 — 단게 겐조의 도시",c:"건축",l:"경유",at:"21:20",d:"10분",p:"무료(외관)",note:"프로젝션 관람 전 도청 외관과 공공공간을 함께 확인."},
    {n:"도쿄도청 남전망대",c:"야경",l:"대안",at:"20:40",d:"40분",p:"무료",note:"피크 라운지를 빼는 경우에만 선택. 통상 21:30 최종 입실·22:00 종료."}
   ]},
   {time:"22:00",title:"저녁·야간 골목",rule:"1곳 선택",items:[
-   {n:"오모이데요코초",c:"맛집",l:"추천",d:"80분",p:"¥2,500~",note:"야키토리 골목. 현금 필요 가능."},
+   {n:"오모이데요코초",c:"맛집",l:"추천",d:"80분",p:"¥2,500~",mapsaved:true,note:"📍 맵 저장. 야키토리 골목. 현금 필요 가능."},
    {n:"신주쿠 골든가이",c:"맛집",l:"선택",d:"90분",p:"¥3,000~",note:"하나조노 신사·가부키초와 한 묶음."}
   ]},
   {time:"23:20",title:"심야 신주쿠 추가",rule:"1곳 선택",items:[
@@ -434,7 +434,7 @@ const CHOICE_DAYS=[
   ]},
   {time:"09:00",title:"건축·미술 시작",rule:"1곳 선택",items:[
    {n:"도쿄 카테드랄 성 마리아 대성당",c:"건축",l:"추천",d:"40분",p:"무료",note:"단게 겐조. 오모테산도와 거리가 있어 오전 첫 코스로만."},
-   {n:"21_21 DESIGN SIGHT",c:"건축",l:"선택",at:"10:00",d:"80분",p:"전시별",note:"안도 다다오 건축. 전시 프로그램을 확인한 뒤 오전 대체 코스로 선택."},
+   {n:"21_21 DESIGN SIGHT",c:"건축",l:"선택",at:"10:00",d:"80분",p:"전시별",mapsaved:true,note:"📍 맵 저장. 안도 다다오 건축. 전시 프로그램을 확인한 뒤 오전 대체 코스로 선택."},
    {n:"네즈 미술관",c:"관광",l:"선택",at:"10:00",d:"90분",p:"¥1,600",note:"오모테산도 남쪽. 정원·전시를 포함한 오전 대체 코스."}
   ]},
   {time:"11:00",title:"오모테산도·하라주쿠",rule:"1~2곳 선택",items:[
@@ -442,7 +442,11 @@ const CHOICE_DAYS=[
    {n:"요요기 공원",c:"휴양",l:"선택",d:"60분",p:"무료",note:"메이지진구·하라주쿠와 묶기."},
    {n:"KAWAII MONSTER LAND - HARAJUKU -",c:"체험",l:"선택",d:"90분",p:"¥3,000~",note:"2026-02-13 오픈. 화려한 신작이지만 장기 리뷰 축적은 아직 적어 취향형으로 분류."},
    {n:"@cosme TOKYO",c:"쇼핑",l:"선택",d:"60분",p:"—",note:"하라주쿠역 앞. 뷰티 쇼핑."},
-   {n:"오모테산도 힐즈",c:"쇼핑",l:"선택",d:"50분",p:"무료",note:"건축 산책과 중복 선택 가능."}
+   {n:"오모테산도 힐즈",c:"쇼핑",l:"선택",d:"50분",p:"무료",mapsaved:true,note:"📍 맵 저장. 건축 산책과 중복 선택 가능."}
+  ]},
+  {time:"12:00",title:"하라주쿠 맵 저장",rule:"1곳 선택",items:[
+   {n:"해리포터 샵 하라주쿠",c:"쇼핑",l:"추천",at:"12:00",d:"45분",p:"무료~",mapsaved:true,note:"📍 신규 맵 저장. 공식 매일 11:00~21:00. 현재 09:00부터 온라인 정리권을 배포하므로 당일 확보했을 때 다케시타도리·HARAKADO 대신 선택."},
+   {n:"도큐 플라자 오모테산도 오모카도",c:"건축",l:"선택",at:"12:00",d:"20분",p:"무료",mapsaved:true,note:"📍 맵 저장. 거울식 에스컬레이터 진입부와 옥상만 짧게 보고, 기본 HARAKADO 구간과 교체."}
   ]},
   {time:"13:20",title:"점심 선택",rule:"1곳 선택",items:[
    {n:"CHERMSIDE SANDWICH Harajuku Takeshita Dori",c:"맛집",l:"선택",at:"13:25",d:"35분",p:"¥3,000~4,000",mapsaved:true,note:"📍 평점 4.1. 다케시타도리 안이라 동선은 맞지만 가격이 높습니다. 14:05 아자부다이 출발을 지킬 수 있을 때만 점심으로 선택."}
@@ -471,7 +475,7 @@ const CHOICE_DAYS=[
    {n:"도쿄국립박물관",c:"관광",l:"추천",d:"2~3시간",p:"¥1,000",note:"9/27 일요일 개관. 오전 단독 핵심 코스로 적합."},
    {n:"구라마에",c:"관광",l:"선택",d:"2시간",p:"—",note:"카페·소품점. 캇파바시와 연결."},
    {n:"캇파바시 도구거리",c:"쇼핑",l:"선택",d:"70분",p:"—",note:"주방도구·식품 모형. 아사쿠사 서쪽."},
-   {n:"국립서양미술관 — 르 코르뷔지에",c:"건축",l:"불가",d:"90분",p:"¥500~",note:"9/24~9/30 임시 휴관. 외관만 가능.",no:true}
+   {n:"국립서양미술관 — 르 코르뷔지에",c:"건축",l:"불가",d:"90분",p:"¥500~",mapsaved:true,note:"📍 맵 저장. 9/24~9/30 임시 휴관. 외관만 가능.",no:true}
   ]},
   {time:"12:00",title:"아사쿠사 점심",rule:"1곳 선택",items:[
    {n:"아사쿠사 다이코쿠야 텐동",c:"맛집",l:"후순위",at:"11:00",d:"50분",p:"¥2,000~",note:"선택하면 스카이트리·소라마치 기본 구간을 빼고 우에노로 이동. 바삭한 튀김 취향이면 다른 식당 권장."},
@@ -482,7 +486,7 @@ const CHOICE_DAYS=[
   ]},
   {time:"10:45",title:"스카이트리 구간",rule:"1곳 선택",items:[
    {n:"스미다 수족관",c:"체험",l:"추천",at:"10:45",d:"90분",p:"¥2,700",note:"스카이트리타운 5·6층. 일요일 09:00~21:00, 연중무휴. 기본 외관·소라마치 75분 대신 고르는 실내 핵심."},
-   {n:"도쿄 스카이트리 전망대",c:"관광",l:"선택",at:"10:45",d:"75분",p:"WEB ¥2,300~",note:"날씨와 시야가 좋을 때만 기본 외관 코스를 유료 전망대로 전환. SHIBUYA SKY와 전망대가 겹친다는 점을 감안."}
+   {n:"도쿄 스카이트리 전망대",c:"관광",l:"선택",at:"10:45",d:"75분",p:"WEB ¥2,300~",mapsaved:true,note:"📍 맵 저장. 날씨와 시야가 좋을 때만 기본 외관 코스를 유료 전망대로 전환. SHIBUYA SKY와 전망대가 겹친다는 점을 감안."}
   ]},
   {time:"13:30",title:"우에노 구간",rule:"1곳 선택",items:[
    {n:"국립과학박물관",c:"관광",l:"추천",at:"13:30",d:"120분",p:"¥630",note:"일요일 09:00~17:00 개관. 아메요코 대신 자연사·과학 상설전을 보고 아키하바라는 16시부터 압축."},
@@ -529,7 +533,7 @@ const CHOICE_DAYS=[
   ]},
   {time:"18:00",title:"오다이바 마무리",rule:"1곳 선택",items:[
    {n:"레인보우브리지 도보 횡단",c:"휴양",l:"대체",at:"18:10",d:"60분",p:"무료",note:"해변·건담 대신 신토요스에서 시바우라 입구로 이동해 오다이바 방향으로 한 번만 횡단. 비·강풍 시 제외."},
-   {n:"후지TV 구체 전망대",c:"관광",l:"후순위",d:"40분",p:"¥800~",note:"평가는 무난한 편. 오다이바에 이미 있을 때만 추가하고 야경 목적이면 해변공원을 우선."}
+   {n:"후지TV 구체 전망대 하치타마",c:"관광",l:"후순위",d:"40분",p:"¥800~",mapsaved:true,note:"📍 맵 저장. 오다이바에 이미 있을 때만 추가하고 야경 목적이면 해변공원을 우선."}
   ]}
  ]
 },
@@ -546,8 +550,8 @@ const CHOICE_DAYS=[
  slots:[
   {time:"반나절",title:"롯폰기·아자부다이",rule:"1~2곳 선택",items:[
    {n:"teamLab Borderless",c:"체험",l:"선택",d:"2시간",p:"¥3,600~",note:"시간지정 예약. Planets와 중복 취향이면 하나만."},
-   {n:"도쿄타워",c:"야경",l:"선택",d:"70분",p:"¥1,500~",note:"아자부다이·롯폰기와 묶기."},
-   {n:"모리 미술관·도쿄 시티뷰",c:"야경",l:"선택",d:"2시간",p:"¥2,000~",note:"전시와 실내 전망대. 옥상 스카이데크는 제외."},
+   {n:"도쿄타워",c:"야경",l:"선택",d:"70분",p:"¥1,500~",mapsaved:true,note:"📍 맵 저장. 아자부다이·롯폰기와 묶기."},
+   {n:"롯폰기 힐스 · 모리 미술관·도쿄 시티뷰",c:"야경",l:"선택",d:"2시간",p:"¥2,000~",mapsaved:true,note:"📍 저장된 롯폰기 힐스와 모리 미술관을 한 선택지로 통합. 전시와 실내 전망대 중심."},
    {n:"국립신미술관",c:"관광",l:"선택",d:"90분",p:"전시별",note:"롯폰기 반나절 실내 대안."}
   ]},
   {time:"반나절",title:"권역 교체",rule:"1곳 선택",items:[
@@ -608,7 +612,9 @@ const CHOICE_COORDS={
 "스미다 수족관":[35.7100,139.8107],"도쿄 스카이트리 전망대":[35.7101,139.8107],"국립과학박물관":[35.7163,139.7765],
 "우에노도쇼구 · 시노바즈노이케":[35.7156,139.7714],"칸다묘진":[35.7020,139.7679],"2k540 AKI-OKA ARTISAN":[35.7044,139.7745],
 "아키하바라 라디오회관":[35.6979,139.7719],"스미다 호쿠사이 미술관":[35.6963,139.8000],"우나기 이즈에이 본점":[35.7094,139.7707],
-"니쿠노오야마 우에노점":[35.7103,139.7759]
+"니쿠노오야마 우에노점":[35.7103,139.7759],"해리포터 샵 하라주쿠":[35.6686494,139.7044101],
+"도큐 플라자 오모테산도 오모카도":[35.6686,139.7051],"후지TV 구체 전망대 하치타마":[35.6264,139.7744],
+"롯폰기 힐스 · 모리 미술관·도쿄 시티뷰":[35.6605,139.7292]
 };
 
 const CAT={관광:"#2a78d6","관광·쇼핑":"#168b80",건축:"#3455a4",맛집:"#eb6834",쇼핑:"#1baf7a",야경:"#4a3aa7",체험:"#e87ba4",휴양:"#38a687",시장:"#eda100",이동:"#898781"};
@@ -763,7 +769,7 @@ const DAYS=[
   {t:"21:30",n:"Tokyo Night & Light 프로젝션 매핑",cat:"야경",lat:35.6895,lng:139.6917,
    d:"9월 공식 마지막 회차. 도청 외관까지 한 번에 보고 악천후 취소 시 바로 저녁으로 이동합니다.",stay:"20분",cost:"무료"},
   {move:"🚶 오모이데요코초까지 약 12분"},
-  {t:"22:00",n:"저녁 · 오모이데요코초 또는 가부키초",cat:"맛집",lat:35.6929,lng:139.6995,
+  {t:"22:00",n:"저녁 · 오모이데요코초 또는 가부키초",cat:"맛집",lat:35.6929,lng:139.6995,mapsaved:true,
    d:"첫날의 실질적인 핵심 일정. 오모이데요코초를 1순위로 하고 도착이 늦으면 프로젝션보다 식사와 체크인을 우선합니다.",stay:"80분",cost:"¥2,500~"},
   {move:"🚶 동쪽 출구·가부키초 방향 약 8분"},
   {t:"23:20",n:"신주쿠 3D 고양이 → 가부키초 심야 산책",cat:"야경",lat:35.6936,lng:139.7005,
@@ -785,7 +791,7 @@ const DAYS=[
   {t:"12:00",n:"다케시타도리",cat:"쇼핑",lat:35.6716,lng:139.7060,
    d:"아자부다이 이동시간을 확보하기 위해 입구와 핵심 구간만 통과합니다.",stay:"15분",cost:"—",priority:"짧은 경유"},
   {move:"🚶 도보 약 5분"},
-  {t:"12:20",n:"도큐 플라자 하라주쿠 HARAKADO",cat:"쇼핑",lat:35.6693,lng:139.7052,
+  {t:"12:20",n:"도큐 플라자 하라주쿠 HARAKADO",cat:"쇼핑",lat:35.6693,lng:139.7052,mapsaved:true,
    d:"건물과 진입부만 짧게 보고 오모테산도 건축축으로 바로 이어갑니다.",stay:"10분",cost:"무료(입장)",priority:"짧은 경유"},
   {move:"🚶 오모테산도 건축축으로 이동"},
   {t:"12:30",n:"오모테산도 현대건축 산책",cat:"건축",lat:35.6652,lng:139.7123,
@@ -794,7 +800,7 @@ const DAYS=[
   {t:"13:30",n:"점심 슬롯 · 오모테산도·아오야마",cat:"맛집",lat:35.6660,lng:139.7086,
    d:"35분 안에 끝나는 식사를 고릅니다. 마이센은 대기가 없을 때만 이용하고 줄이 있으면 즉시 인근 대체식으로 전환합니다.",stay:"35분",cost:"¥1,500~",priority:"14:05 출발 고정"},
   {move:"🚇 오모테산도 → 가미야초 · 환승 포함 약 25분"},
-  {t:"14:30",n:"아자부다이 힐즈 · 건축 산책",cat:"건축",lat:35.6604,lng:139.7404,
+  {t:"14:30",n:"아자부다이 힐즈 · 건축 산책",cat:"건축",lat:35.6604,lng:139.7404,mapsaved:true,
    d:"필수 방문. Garden Plaza → Central Green → Heatherwick 저층부 → The Cloud → Mori JP Tower 순으로 보고 Borderless·쇼핑은 제외합니다.",stay:"70분",cost:"무료",mandatory:true,priority:"15:40 출발 고정"},
   {move:"🚇 가미야초 → 에비스 → 시부야 · 이동·역내 보행 약 35분"},
   {t:"16:40",n:"SHIBUYA SKY",cat:"야경",lat:35.6584,lng:139.7022,
@@ -813,13 +819,13 @@ const DAYS=[
  lodging:"숙소 → 센소지 / 아키하바라 → 숙소 · 숙소 확정 후 계산",
  rain:"센소지는 짧게 보고 소라마치·우에노 실내 시설·아키하바라 중심으로 전환, 보행자천국 취소 가능",
  items:[
-  {t:"08:30",n:"센소지 · 가미나리몬",cat:"관광",lat:35.7148,lng:139.7967,
+  {t:"08:30",n:"센소지 · 가미나리몬",cat:"관광",lat:35.7148,lng:139.7967,mapsaved:true,
    d:"도쿄 최고(最古) 사찰. 관광버스가 몰리기 전에 경내와 가미나리몬부터 보고 상점가는 뒤에 봅니다.",stay:"60분",cost:"무료"},
   {move:"🚶 도보 3분 (경내 바로 앞)"},
   {t:"09:35",n:"나카미세도리",cat:"맛집",lat:35.7130,lng:139.7960,
    d:"250m 참배길 상점가. 닌교야키·멜론빵·센베이를 서서 먹는 구간. 노점은 현금만 받는 곳이 많음.",stay:"45분",cost:"¥1,000~"},
   {move:"🚶 도보 약 20분 (스미다강 건너) 또는 🚃 도부선 3분"},
-  {t:"10:45",n:"도쿄 스카이트리 외관 · 소라마치",cat:"관광",lat:35.7101,lng:139.8107,
+  {t:"10:45",n:"도쿄 스카이트리 외관 · 소라마치",cat:"관광",lat:35.7101,lng:139.8107,mapsaved:true,
    d:"SHIBUYA SKY와 전망이 중복되므로 기본은 외관·소라마치·스미다강 조망만 봅니다. 유료 전망대는 시야가 아주 좋은 날에만 현장에서 결정합니다.",stay:"75분",cost:"무료~",priority:"유료 전망대 후순위"},
   {move:"🚶 소라마치 내부 이동"},
   {t:"12:05",n:"점심 · 소라마치 푸드플로어",cat:"맛집",lat:35.7104,lng:139.8100,
@@ -871,7 +877,7 @@ const DAYS=[
  lodging:"숙소 → 츠키지 / 오다이바 → 숙소 · 숙소 확정 후 계산",
  rain:"오다이바 해변은 축소하고 다이버시티·아쿠아시티를 확대, teamLab 예약은 그대로 유지",
  items:[
-  {t:"08:00",n:"츠키지 장외시장",cat:"시장",lat:35.6655,lng:139.7708,
+  {t:"08:00",n:"츠키지 장외시장",cat:"시장",lat:35.6655,lng:139.7708,mapsaved:true,
    d:"🔑 오전 장사라 점심 지나면 닫기 시작합니다. 카이센동·참치초밥·¥100 다마고야키 꼬치가 대표. 소규모 점포는 현금만 받는 곳이 있음.",stay:"100분",cost:"¥2,500~"},
   {move:"🚶 도보 약 6분"},
   {t:"09:50",n:"츠키지 혼간지",cat:"관광",lat:35.6665,lng:139.7726,
@@ -897,7 +903,7 @@ const DAYS=[
   {t:"14:00",n:"후쿠로노미세",cat:"체험",lat:35.6648,lng:139.7838,
    d:"고동민(비둘기)은 츠키시마역 10번 출구에서 먼저 합류합니다. 카페 운영·회차가 확인될 때만 입장하고, 미운영이면 몬자거리 산책으로 대체합니다.",stay:"60분",cost:"¥2,000~",book:"운영·회차 재확인",priority:"합류는 역 출구 기준"},
   {move:"🚇 츠키시마 → 신토요스 약 20분"},
-  {t:"16:00",n:"teamLab Planets TOKYO",cat:"체험",lat:35.649075,lng:139.789525,
+  {t:"16:00",n:"teamLab Planets TOKYO",cat:"체험",lat:35.649075,lng:139.789525,mapsaved:true,
    d:"츠키시마 일정 종료 뒤 약 40분의 이동·입장 여유를 둡니다. 이 예약을 지키기 위해 앞 일정만 줄이며, 맨발로 물에 들어가므로 걷어올리기 쉬운 하의가 편합니다.",stay:"100분",cost:"¥3,600~",book:"16:00 예약 필수 · 지금 가능",priority:"16:00 절대 고정"},
   {move:"🚃 신도요스 → 유리카모메 → 다이바 · 약 20분 · ¥330"},
   {t:"18:00",n:"오다이바 해변공원",cat:"관광",lat:35.6296,lng:139.7754,
@@ -1010,6 +1016,13 @@ function effectiveDayItems(day){
     if(cd.id==='c1'&&slot.title==='심야 신주쿠 추가')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=1390&&p.cat!=='이동'));
     if(cd.id==='c5'&&slot.title==='신주쿠에서 회수')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=540&&timeRank(p.t)<645&&p.cat!=='이동'));
     if(cd.id==='c5'&&slot.title==='오모테산도·하라주쿠')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=660&&timeRank(p.t)<900&&p.cat!=='맛집'));
+    if(cd.id==='c5'&&slot.title==='하라주쿠 맵 저장'){
+      places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=720&&timeRank(p.t)<750&&p.cat!=='맛집'));
+      if(item.n==='해리포터 샵 하라주쿠'){
+        const architecture=places.find(p=>removeBase(p)&&p.cat==='건축'&&timeRank(p.t)>=750&&timeRank(p.t)<810);
+        if(architecture){architecture.t='12:50';architecture.stay='35분';}
+      }
+    }
     if(cd.id==='c5'&&slot.title==='시부야 쇼핑'){
       if(rank<990)places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=900&&timeRank(p.t)<990&&p.cat!=='맛집'));
       else{const dinner=places.find(p=>removeBase(p)&&p.cat==='맛집'&&timeRank(p.t)>=1020);if(dinner)dinner.t='19:20';}
@@ -1060,9 +1073,9 @@ function effectiveDayItems(day){
     }
     const ni=normPlace(item.n);
     const existing=places.find(p=>{const np=normPlace(p.n);return np===ni||(Math.min(np.length,ni.length)>5&&(np.includes(ni)||ni.includes(np)));});
-    if(existing){existing.choice=true;existing.d=item.note;existing.stay=item.d;existing.cost=item.p;return;}
+    if(existing){existing.choice=true;existing.mapsaved=item.mapsaved;existing.d=item.note;existing.stay=item.d;existing.cost=item.p;return;}
     const coord=CHOICE_COORDS[item.n];
-    places.push({t:chosenTime,n:item.n,cat:item.c,d:item.note,stay:item.d,cost:item.p,choice:true,
+    places.push({t:chosenTime,n:item.n,cat:item.c,d:item.note,stay:item.d,cost:item.p,choice:true,mapsaved:item.mapsaved,
       lat:coord?.[0],lng:coord?.[1]});
   });
   places.sort((a,b)=>timeRank(a.t)-timeRank(b.t));
@@ -1086,9 +1099,10 @@ function routeLinksFor(items,selected=false){
 }
 
 function detailStateBadge(item){
-  if(item.choice)return '<span class="detail-state confirmed">선택 확정</span>';
+  const saved=item.mapsaved?'<span class="badge mapsaved">📍 맵 저장</span>':'';
+  if(item.choice)return `<span class="detail-state confirmed">선택 확정</span>${saved}`;
   const fixed=Boolean(item.book)||Boolean(item.mandatory)||/ZE607|ZE610|고동민.*합류/.test(item.n);
-  return fixed?'<span class="detail-state fixed">필수</span>':'<span class="detail-state base">기본</span>';
+  return `${fixed?'<span class="detail-state fixed">필수</span>':'<span class="detail-state base">기본</span>'}${saved}`;
 }
 
 function select(id){
