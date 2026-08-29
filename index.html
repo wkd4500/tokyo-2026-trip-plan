@@ -156,6 +156,31 @@ tr:last-child td{border-bottom:none}
 .source-links{font-size:10.5px;color:var(--muted);margin-top:12px;line-height:1.65}
 .source-links a{color:var(--text-secondary)}
 
+/* Google Maps saved places */
+.saved-head{display:flex;justify-content:space-between;gap:18px;align-items:flex-start}
+.saved-summary{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+.saved-summary .badge{font-size:10.5px;padding:4px 8px}
+.saved-summary .planned{background:#eef7ee;border-color:#cce5cc;color:#176b17}
+.saved-summary .candidate{background:#f2f8ff;border-color:#cbdff6;color:#1d5f9e}
+.saved-tabs{display:flex;gap:7px;overflow-x:auto;padding:14px 24px 0;scrollbar-width:thin}
+.saved-tab{border:1px solid var(--grid);background:var(--surface-1);border-radius:999px;padding:9px 13px;
+  font:inherit;font-size:12px;color:var(--text-secondary);white-space:nowrap;cursor:pointer}
+.saved-tab[aria-selected="true"]{background:var(--text-primary);color:#fff;border-color:var(--text-primary)}
+.saved-body{padding:18px 24px 24px}
+.saved-route{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;padding:11px 12px;
+  background:var(--plane);border:1px solid var(--grid);border-radius:10px;margin-bottom:13px}
+.saved-route p{font-size:12px;color:var(--text-secondary);margin:3px 0 0}
+.saved-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.saved-place{border:1px solid var(--grid);border-left:4px solid var(--d1);border-radius:12px;
+  padding:12px;background:var(--surface-1);min-width:0}
+.saved-place.is-planned{border-left-color:var(--good)}
+.saved-place.is-closed{border-left-color:var(--critical);background:#fdf8f8}
+.saved-place-top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.saved-place-name{font-size:13px;font-weight:800;line-height:1.38;overflow-wrap:anywhere}
+.saved-place-meta{font-size:11px;color:var(--muted);margin-top:5px}
+.saved-place-note{font-size:11.5px;color:var(--text-secondary);line-height:1.45;margin-top:7px}
+.saved-place .badge{flex:none}.saved-place .gmap{margin-top:8px}
+
 @media(max-width:900px){
   .tiles{grid-template-columns:repeat(3,1fr)}
   .daygrid{grid-template-columns:1fr}
@@ -164,14 +189,16 @@ tr:last-child td{border-bottom:none}
   #map{height:400px}
   .grid2,.grid3{grid-template-columns:1fr}
   .verdict-grid{grid-template-columns:1fr}
-  .pick-grid{grid-template-columns:1fr 1fr}
+  .pick-grid,.saved-grid{grid-template-columns:1fr 1fr}
   .wrap{padding:12px} .pad{padding:18px}
 }
 @media(max-width:560px){
   .tiles{grid-template-columns:repeat(2,1fr)}
-  .pick-grid{grid-template-columns:1fr}
+  .pick-grid,.saved-grid{grid-template-columns:1fr}
   .choice-head{display:block}.choice-actions{margin-top:9px;justify-content:space-between}
-  .choice-tabs{padding-left:18px;padding-right:18px}.choice-body{padding:16px 18px 20px}
+  .choice-tabs,.saved-tabs{padding-left:18px;padding-right:18px}.choice-body,.saved-body{padding:16px 18px 20px}
+  .saved-head{display:block}.saved-summary{justify-content:flex-start;margin-top:10px}
+  .saved-route{display:block}
   .table-scroll{margin-right:-2px}
 }
 </style>
@@ -263,6 +290,26 @@ tr:last-child td{border-bottom:none}
   </div>
   <div class="choice-tabs" id="choiceTabs" role="tablist"></div>
   <div class="choice-body" id="choiceBody"></div>
+</section>
+
+<!-- ══ Google 지도 저장 장소 ══ -->
+<section class="card" id="saved-places">
+  <div class="pad" style="padding-bottom:0">
+    <div class="saved-head">
+      <div>
+        <div class="eyebrow">Google Maps · 2026 도쿄 🗼</div>
+        <h2>저장 장소 20곳 · 일정 권역별 정리</h2>
+        <div class="sub">공유 목록 표기는 21곳이지만 Google 지도에서 실제 확인되는 장소 레코드는 20곳입니다. 기존 일정 7곳은 중복 추가하지 않고 반영 상태를 표시했습니다.</div>
+      </div>
+      <div class="saved-summary" aria-label="저장 장소 반영 현황">
+        <span class="badge planned">7곳 일정 반영·검토</span>
+        <span class="badge candidate">13곳 권역별 후보</span>
+        <a class="ghost-btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/xqAmQD8casuqXV1B6" style="text-decoration:none">원본 목록 ↗</a>
+      </div>
+    </div>
+  </div>
+  <div class="saved-tabs" id="savedTabs" role="tablist" aria-label="저장 장소 권역"></div>
+  <div class="saved-body" id="savedBody"></div>
 </section>
 
 <!-- ══ 예약 체크리스트 ══ -->
@@ -372,7 +419,7 @@ tr:last-child td{border-bottom:none}
 </section>
 
 <div class="footer">
-  <b>데이터 기준일 2026-08-28.</b> 운영시간·요금·휴관일은 변동될 수 있으니 <b>예약 직전 공식 채널에서 재확인</b>하세요.
+  <b>일정 데이터 기준일 2026-08-28 · Google 지도 저장 목록 확인일 2026-08-30.</b> 운영시간·요금·휴관일은 변동될 수 있으니 <b>예약 직전 공식 채널에서 재확인</b>하세요.
 </div>
 
 </div>
@@ -380,6 +427,47 @@ tr:last-child td{border-bottom:none}
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
+const SAVED_PLACE_GROUPS=[
+  {
+    id:"saved-west", label:"9/25·9/29 서부 · 7곳", title:"신주쿠 → 하라주쿠·시부야",
+    route:"첫날 신주쿠와 9/29 서부 일정에 붙일 수 있는 후보입니다. 식당은 예약·대기시간에 따라 같은 권역의 기존 식사 구간과 교체하세요.",
+    places:[
+      {n:"라멘야 시마",rating:"4.3",reviews:"756",price:"¥1,000~2,000",type:"라면",note:"저장 메모: 소유라멘"},
+      {n:"우동 심보리",rating:"4.0",reviews:"546",price:"¥1,000~2,000",type:"우동"},
+      {n:"라멘 브레이크 비츠",rating:"4.3",reviews:"616",price:"¥1,000~2,000",type:"라면"},
+      {n:"오모테산도 힐즈",rating:"4.0",reviews:"8,506",type:"쇼핑몰",status:"planned",plan:"9/29 오모테산도·하라주쿠 선택 구간에 반영됨"},
+      {n:"CHERMSIDE SANDWICH Harajuku Takeshita Dori",rating:"4.1",reviews:"514",price:"¥3,000~4,000",type:"샌드위치"},
+      {n:"도큐 플라자 하라주쿠 하라카도",rating:"4.3",reviews:"1,184",type:"쇼핑몰",note:"저장 메모: 야경✨",status:"planned",plan:"9/29 하라주쿠 동선에 반영됨"},
+      {n:"후운지 신주쿠",rating:"4.3",reviews:"5,661",price:"¥1,000~2,000",type:"라면",status:"planned",plan:"9/25 도착 후 저녁 대안으로 반영됨"}
+    ]
+  },
+  {
+    id:"saved-bay", label:"9/26 긴자·베이 · 8곳", title:"츠키지·긴자 → 츠키시마·도요스",
+    route:"9/26 고동민 합류일의 기본 이동축입니다. 14:00 합류와 16:00 teamLab 예약은 고정하고, 긴자 식사·디저트 후보만 오전 구간에 넣으세요.",
+    places:[
+      {n:"안즈 하나레",rating:"4.7",reviews:"895",type:"돈까스 전문식당"},
+      {n:"우미노사치 쇼",rating:"4.4",reviews:"446",price:"¥2,000~6,000",type:"해산물 돈부리",note:"저장 메모: 참치덮밥"},
+      {n:"麺屋いしヰ 東京銀座 MENYA ISHII WAGYU UDON",rating:"4.9",reviews:"951",price:"¥1,000~2,000",type:"우동"},
+      {n:"DOLCE TACUBO GINZA",rating:"4.0",reviews:"51",price:"¥1,000~2,000",type:"카페"},
+      {n:"茶屋いつか 銀座店",rating:"4.2",reviews:"35",price:"¥1~1,000",type:"디저트"},
+      {n:"팀랩 플래닛 도쿄",rating:"4.5",reviews:"55,566",type:"현대미술관",status:"planned",plan:"9/26 16:00 예약 전시로 반영됨"},
+      {n:"후쿠로노미세",rating:"4.6",reviews:"191",price:"¥1,000~2,000",type:"카페",status:"planned",plan:"9/26 14:00 회차 권장으로 반영됨"},
+      {n:"쓰키지 장외시장",rating:"4.2",reviews:"56,007",type:"시장",status:"planned",plan:"9/26 오전 시작 구간에 반영됨"}
+    ]
+  },
+  {
+    id:"saved-east", label:"9/27 동부 · 5곳", title:"칸다·우에노·아사쿠사·아키하바라",
+    route:"9/27 동부 일정과 가까운 후보입니다. 아사쿠사·우에노·아키하바라 중 실제로 지나는 축에만 붙여 이동 역주행을 피하세요.",
+    places:[
+      {n:"멘야 스고 칸다점",rating:"4.2",reviews:"313",price:"¥1,000~2,000",type:"라면"},
+      {n:"American Diner Andra",rating:"4.4",reviews:"843",price:"¥2,000~3,000",type:"햄버거"},
+      {n:"베니즈루 팬케익",rating:"4.0",reviews:"2,485",price:"¥2,000~3,000",type:"팬케이크"},
+      {n:"아울카페 아키바 후쿠로우",rating:"4.9",reviews:"9,721",type:"동물카페"},
+      {n:"국립서양미술관",rating:"4.5",reviews:"12,122",type:"미술관",status:"closed",plan:"9/24~9/30 임시휴관 · 일정에서 관람 불가로 검토됨"}
+    ]
+  }
+];
+
 const CHOICE_DAYS=[
 {
  id:"c1",label:"9/25 신주쿠",route:"16:30 나리타 도착 → N'EX → 도착시각에 따라 서쪽 건축 → 21:30 프로젝션 → 22:00 저녁 → 23:20 가부키초. 19:45 이후 신주쿠 도착이면 코쿤 타워부터 생략.",
@@ -852,6 +940,38 @@ let layer=null;
 
 function gmap(n){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(n+', Tokyo');}
 function pinIcon(hex,n){return L.divIcon({html:`<div style="width:26px;height:26px;border-radius:50%;background:${hex};color:#fff;border:2px solid #fff;box-shadow:0 1px 5px #0004;display:grid;place-items:center;font:700 12px system-ui">${n}</div>`,className:'',iconSize:[26,26],iconAnchor:[13,13]});}
+
+function savedBadge(place){
+  if(place.status==='planned') return '<span class="badge rec">일정 반영됨</span>';
+  if(place.status==='closed') return '<span class="badge no">임시휴관</span>';
+  return '<span class="badge">저장 후보</span>';
+}
+function selectSavedGroup(id){
+  const group=SAVED_PLACE_GROUPS.find(g=>g.id===id)||SAVED_PLACE_GROUPS[0];
+  document.querySelectorAll('.saved-tab').forEach(tab=>tab.setAttribute('aria-selected',String(tab.dataset.id===group.id)));
+  document.getElementById('savedBody').innerHTML=`
+    <div class="saved-route">
+      <div><b>${group.title}</b><p>${group.route}</p></div>
+      <a class="ghost-btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/xqAmQD8casuqXV1B6" style="text-decoration:none;white-space:nowrap">공유 목록 ↗</a>
+    </div>
+    <div class="saved-grid">${group.places.map(place=>`
+      <article class="saved-place ${place.status==='planned'?'is-planned':''} ${place.status==='closed'?'is-closed':''}">
+        <div class="saved-place-top"><div class="saved-place-name">${place.n}</div>${savedBadge(place)}</div>
+        <div class="saved-place-meta">★ ${place.rating} · 리뷰 ${place.reviews}${place.price?' · '+place.price:''} · ${place.type}</div>
+        ${place.note?`<div class="saved-place-note">${place.note}</div>`:''}
+        ${place.plan?`<div class="saved-place-note"><b>${place.plan}</b></div>`:''}
+        <a class="gmap" target="_blank" rel="noopener" href="${gmap(place.n)}">지도에서 열기 ↗</a>
+      </article>`).join('')}</div>`;
+}
+const savedTabs=document.getElementById('savedTabs');
+SAVED_PLACE_GROUPS.forEach(group=>{
+  const button=document.createElement('button');
+  button.className='saved-tab'; button.type='button'; button.dataset.id=group.id;
+  button.setAttribute('role','tab'); button.setAttribute('aria-selected','false');
+  button.textContent=group.label; button.onclick=()=>selectSavedGroup(group.id);
+  savedTabs.appendChild(button);
+});
+selectSavedGroup(SAVED_PLACE_GROUPS[0].id);
 
 /* ── 렌더 ── */
 const tabsEl=document.getElementById('tabs');
