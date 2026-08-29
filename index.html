@@ -109,12 +109,17 @@ tr:last-child td{border-bottom:none}
 
 /* selectable v3 planner */
 .choice-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
-.choice-count{font-size:12px;font-weight:800;color:var(--d1);white-space:nowrap}
-.choice-actions{display:flex;align-items:center;gap:8px}
+.choice-count{grid-area:status;font-size:12px;font-weight:800;color:var(--d1)}
+.choice-actions{display:grid;grid-template-columns:minmax(150px,1fr) auto;grid-template-areas:"status confirm" "secondary confirm";
+  column-gap:12px;row-gap:3px;align-items:center;min-width:330px}
+.choice-secondary{grid-area:secondary;display:flex;align-items:center;gap:11px}
 .ghost-btn{border:1px solid var(--grid);background:var(--surface-1);border-radius:8px;padding:6px 9px;
   font:inherit;font-size:11px;color:var(--text-secondary);cursor:pointer}
-.ghost-btn.confirm-btn{background:var(--text-primary);border-color:var(--text-primary);color:#fff;font-weight:800}
+.ghost-btn.confirm-btn{grid-area:confirm;background:var(--text-primary);border-color:var(--text-primary);color:#fff;
+  font-weight:800;font-size:12px;min-height:44px;padding:10px 15px;white-space:nowrap}
 .ghost-btn:disabled{opacity:.42;cursor:not-allowed}
+.text-btn{border:0;background:transparent;padding:0;font:inherit;font-size:10.5px;color:var(--muted);cursor:pointer;text-decoration:underline;text-underline-offset:2px}
+.text-btn:disabled{opacity:.38;cursor:not-allowed;text-decoration:none}
 .choice-tabs{display:flex;gap:7px;overflow-x:auto;padding:14px 24px 0;scrollbar-width:thin}
 .choice-tab{border:1px solid var(--grid);background:var(--surface-1);border-radius:999px;padding:9px 13px;
   font:inherit;font-size:12px;color:var(--text-secondary);white-space:nowrap;cursor:pointer}
@@ -174,12 +179,14 @@ tr:last-child td{border-bottom:none}
   .grid2,.grid3{grid-template-columns:1fr}
   .verdict-grid{grid-template-columns:1fr}
   .pick-grid{grid-template-columns:1fr 1fr}
+  .choice-head{display:block}.choice-actions{margin-top:14px;max-width:480px}
   .wrap{padding:12px} .pad{padding:18px}
 }
 @media(max-width:560px){
   .tiles{grid-template-columns:repeat(2,1fr)}
   .pick-grid{grid-template-columns:1fr}
-  .choice-head{display:block}.choice-actions{margin-top:9px;justify-content:space-between}
+  .choice-actions{grid-template-columns:1fr;grid-template-areas:"status" "confirm" "secondary";min-width:0;width:100%;row-gap:9px}
+  .ghost-btn.confirm-btn{width:100%}.choice-secondary{justify-content:flex-end}
   .choice-tabs{padding-left:18px;padding-right:18px}.choice-body{padding:16px 18px 20px}
   .table-scroll{margin-right:-2px}
 }
@@ -264,12 +271,12 @@ tr:last-child td{border-bottom:none}
         <div class="sub">체크는 아직 초안입니다. <b>선택 일정 확정</b>을 눌러야 같은 시간대의 기본 코스를 교체하고 상세 일정·지도·Google 구간 동선에 고정됩니다. <b>📍 맵 저장</b>은 Google 지도 공유 목록에서 가져온 후보입니다.</div>
       </div>
       <div class="choice-actions">
-        <span class="choice-count" id="choiceCount">0개 선택 · 0개 확정</span>
-        <a class="ghost-btn" target="_blank" rel="noopener" href="https://maps.app.goo.gl/xqAmQD8casuqXV1B6" style="text-decoration:none">저장 목록 ↗</a>
-        <a class="ghost-btn" href="#daily-detail" style="text-decoration:none">반영 일정 보기 ↑</a>
-        <button class="ghost-btn confirm-btn" id="choiceConfirm" type="button">선택 일정 확정</button>
-        <button class="ghost-btn" id="choiceUnconfirm" type="button">확정 해제</button>
-        <button class="ghost-btn" id="choiceReset" type="button">선택 초기화</button>
+        <span class="choice-count" id="choiceCount" aria-live="polite">선택 0 · 확정 0</span>
+        <button class="ghost-btn confirm-btn" id="choiceConfirm" type="button">선택 확정</button>
+        <div class="choice-secondary">
+          <button class="text-btn" id="choiceUnconfirm" type="button">확정 해제</button>
+          <button class="text-btn" id="choiceReset" type="button">전체 초기화</button>
+        </div>
       </div>
     </div>
   </div>
@@ -643,9 +650,10 @@ function choiceBadge(level){
 function sameChoices(a,b){return a.size===b.size&&[...a].every(key=>b.has(key));}
 function updateChoiceCount(){
   const dirty=!sameChoices(choiceDraft,choiceConfirmed);
-  document.getElementById('choiceCount').textContent=`${choiceDraft.size}개 선택 · ${choiceConfirmed.size}개 확정${dirty?' · 미확정 변경':''}`;
+  document.getElementById('choiceCount').textContent=`선택 ${choiceDraft.size} · 확정 ${choiceConfirmed.size}${dirty?' · 미확정':''}`;
   document.getElementById('choiceConfirm').disabled=!dirty||choiceDraft.size===0;
   document.getElementById('choiceUnconfirm').disabled=choiceConfirmed.size===0;
+  document.getElementById('choiceReset').disabled=choiceDraft.size===0&&choiceConfirmed.size===0;
   localStorage.setItem(choiceDraftStoreKey,JSON.stringify([...choiceDraft]));
   localStorage.setItem(choiceConfirmedStoreKey,JSON.stringify([...choiceConfirmed]));
 }
