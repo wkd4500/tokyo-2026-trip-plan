@@ -204,7 +204,7 @@ tr:last-child td{border-bottom:none}
   <div class="dates">2026.09.25(금) — 09.30(수)</div>
   <div class="tiles">
     <div class="tile"><div class="v">6일 5박</div><div class="k">여행 기간</div></div>
-    <div class="tile"><div class="v">72곳</div><div class="k">선택 가능 스팟</div></div>
+    <div class="tile"><div class="v">71곳</div><div class="k">선택 가능 스팟</div></div>
     <div class="tile"><div class="v">1일</div><div class="k">디즈니씨</div></div>
     <div class="tile"><div class="v">3건</div><div class="k">사전예약 필수</div></div>
     <div class="tile"><div class="v">약 ¥58–80k</div><div class="k">쇼핑·DPA 제외 기본비</div></div>
@@ -242,7 +242,7 @@ tr:last-child td{border-bottom:none}
     <tr><td><b>9/26(토)</b></td><td>츠키지 · 긴자 · 니혼바시 · 베이</td><td>츠키지 → 긴자 → 츠키시마 → 도요스 → 오다이바</td></tr>
     <tr><td><b>9/27(일)</b></td><td>아사쿠사 · 스미다 · 우에노 · 아키하바라</td><td>아사쿠사 → 스카이트리 → 우에노·아메요코 → 아키하바라</td></tr>
     <tr><td><b>9/28(월)</b></td><td>마이하마</td><td>도쿄 디즈니씨 종일 · 확보한 앱 예약시간 우선</td></tr>
-    <tr><td><b>9/29(화)</b></td><td>신주쿠 · 요요기 · 하라주쿠 · 시부야</td><td>신주쿠교엔 → 메이지진구 → 하라주쿠·오모테산도 → SHIBUYA SKY</td></tr>
+    <tr><td><b>9/29(화)</b></td><td>신주쿠 · 하라주쿠 · 아자부다이 · 시부야</td><td>신주쿠교엔 → 메이지진구 → 오모테산도 → 아자부다이 → SHIBUYA SKY</td></tr>
     <tr><td><b>9/30(수)</b></td><td>고쿄 · 도쿄역 · 나리타</td><td>도쿄역 짐 보관 → 고쿄 → 도쿄역 → N'EX → 나리타</td></tr>
   </table></div>
 </section>
@@ -311,7 +311,7 @@ tr:last-child td{border-bottom:none}
       <td><b>SHIBUYA SKY</b></td>
       <td class="nowrap">9/29(화)</td>
       <td><b style="color:var(--serious)">9/15(화) 00:00 JST</b></td>
-      <td><b>방문 14일 전 자정부터 판매</b>. 15:00 이후 WEB 성인 ¥3,400 / 당일 ¥3,700. 일몰 약 17:30 → <b>16:30 입장</b> 슬롯 권장.</td>
+      <td><b>방문 14일 전 자정부터 판매</b>. 15:00 이후 WEB 성인 ¥3,400 / 당일 ¥3,700. 9/29 일몰 17:28 → 실제 20분 단위 중 <b>16:40 입장</b> 슬롯 우선.</td>
     </tr>
     <tr>
       <td><span class="prio p3">4</span></td>
@@ -427,7 +427,7 @@ const CHOICE_DAYS=[
  ]
 },
 {
- id:"c5",label:"9/29 건축·시부야",route:"09:30 신주쿠교엔 → NTT 도코모 외관은 지나가며 보기 → 메이지진구 → 하라주쿠·오모테산도 → 16:30 SHIBUYA SKY.",
+ id:"c5",label:"9/29 건축·시부야",route:"09:30 신주쿠교엔 → 메이지진구 → 하라주쿠·오모테산도 → 14:30 아자부다이 힐즈 필수 → 16:40 SHIBUYA SKY.",
  slots:[
   {time:"09:00",title:"신주쿠에서 회수",rule:"1~2곳 선택",items:[
    {n:"라멘야 시마",c:"맛집",l:"예약",at:"08:15",d:"50분",p:"¥1,000~2,000",mapsaved:true,note:"📍 평점 4.3. 완전예약제·평일 오전 영업. 9/29 전날 08:00 TableCheck 예약에 성공하면 신주쿠교엔 대신 첫 코스로 선택."}
@@ -445,14 +445,14 @@ const CHOICE_DAYS=[
    {n:"오모테산도 힐즈",c:"쇼핑",l:"선택",d:"50분",p:"무료",note:"건축 산책과 중복 선택 가능."}
   ]},
   {time:"13:20",title:"점심 선택",rule:"1곳 선택",items:[
-   {n:"CHERMSIDE SANDWICH Harajuku Takeshita Dori",c:"맛집",l:"선택",at:"12:00",d:"50분",p:"¥3,000~4,000",mapsaved:true,note:"📍 평점 4.1. 다케시타도리 안이라 동선은 좋지만 가격이 높아 샌드위치가 목적일 때만 점심으로 선택."},
-   {n:"우동 심보리",c:"맛집",l:"선택",at:"13:20",d:"50분",p:"¥1,000~2,000",mapsaved:true,note:"📍 평점 4.0. 시부야 사쿠라가오카 쪽 우동. 하라주쿠 구간을 마친 뒤 SHIBUYA SKY로 내려갈 때 점심 대안."}
+   {n:"CHERMSIDE SANDWICH Harajuku Takeshita Dori",c:"맛집",l:"선택",at:"13:25",d:"35분",p:"¥3,000~4,000",mapsaved:true,note:"📍 평점 4.1. 다케시타도리 안이라 동선은 맞지만 가격이 높습니다. 14:05 아자부다이 출발을 지킬 수 있을 때만 점심으로 선택."}
   ]},
   {time:"18:10",title:"시부야 쇼핑",rule:"1곳 선택",items:[
    {n:"시부야 파르코 — 닌텐도 도쿄·포켓몬센터",c:"쇼핑",l:"추천",at:"18:10",d:"60분",p:"—",note:"SHIBUYA SKY 뒤에 방문. 캐릭터·게임 쇼핑 만족도가 높은 우선 옵션."},
    {n:"시부야 109 · MEGA 돈키호테",c:"쇼핑",l:"선택",at:"18:10",d:"50분",p:"—",note:"화장품·잡화 쇼핑을 우선할 때 선택."}
   ]},
   {time:"19:20",title:"저녁",rule:"1곳 선택",items:[
+   {n:"우동 심보리",c:"맛집",l:"선택",at:"18:45",d:"50분",p:"¥1,000~2,000",mapsaved:true,note:"📍 평점 4.0. 시부야 사쿠라가오카 쪽 우동. SHIBUYA SKY 뒤 미야시타파크 대신 고르는 저녁 대안."},
    {n:"논베이요코초",c:"맛집",l:"선택",d:"80분",p:"¥3,000~",note:"작은 이자카야 골목. 초반 입장 권장."},
    {n:"우오베이 시부야",c:"맛집",l:"추천",d:"45분",p:"¥1,500~",note:"회전초밥. 빠른 저녁 선택."},
    {n:"규카츠 모토무라",c:"맛집",l:"선택",d:"50분",p:"¥1,900~",note:"한국인 인지도가 높지만 대기 대비 효율은 보통. 줄이 길면 우오베이로 전환."},
@@ -532,7 +532,6 @@ const CHOICE_DAYS=[
    {n:"teamLab Borderless",c:"체험",l:"선택",d:"2시간",p:"¥3,600~",note:"시간지정 예약. Planets와 중복 취향이면 하나만."},
    {n:"도쿄타워",c:"야경",l:"선택",d:"70분",p:"¥1,500~",note:"아자부다이·롯폰기와 묶기."},
    {n:"모리 미술관·도쿄 시티뷰",c:"야경",l:"선택",d:"2시간",p:"¥2,000~",note:"전시와 실내 전망대. 옥상 스카이데크는 제외."},
-   {n:"아자부다이힐스 스카이로비",c:"야경",l:"후순위",d:"50분",p:"이용 조건 있음",note:"무료 자유 입장 전망대가 아님. 전망 목적이면 모리 시티뷰가 확실한 대체."},
    {n:"국립신미술관",c:"관광",l:"선택",d:"90분",p:"전시별",note:"롯폰기 반나절 실내 대안."}
   ]},
   {time:"반나절",title:"권역 교체",rule:"1곳 선택",items:[
@@ -754,38 +753,38 @@ const DAYS=[
 },
 {
  id:"d5",label:"9/29",dow:"화",color:"var(--d5)",hex:"#e87ba4",
- zone:"신주쿠 → 요요기 → 하라주쿠 · 시부야",theme:"신주쿠교엔 회수 → 남하 → 일몰 전망",
+ zone:"신주쿠 → 메이지진구 → 오모테산도 → 아자부다이 → 시부야",theme:"정원·신사 → 현대건축 → 아자부다이 필수 → 일몰 전망",
  lodging:"숙소 → 신주쿠교엔 / 시부야 → 숙소 · 숙소 확정 후 계산",
  rain:"신주쿠교엔을 축소·생략하고 HARAKADO·오모테산도 힐즈·PARCO 중심으로 전환, SKY 옥상 제한 확인",
  items:[
   {t:"09:30",n:"신주쿠교엔",cat:"휴양",lat:35.6852,lng:139.7100,
-   d:"디즈니씨 다음 날 체력을 고려해 09:30부터 핵심 정원만 봅니다. 첫날에서 빠진 우선순위 높은 장소를 이 날 회수합니다.",stay:"70분",cost:"¥500"},
-  {move:"🚶 센다가야문 → 요요기 방향 약 15분"},
-  {t:"10:55",n:"NTT 도코모 요요기 빌딩 · 지나가며 외관",cat:"건축",lat:35.6852,lng:139.7020,
-   d:"별도 관람지로 멈추지 않고 메이지진구로 남하하며 외관만 확인합니다.",stay:"5분",cost:"무료(외관)"},
-  {move:"🚶 메이지진구 북쪽 입구까지 약 12분"},
-  {t:"11:10",n:"메이지진구",cat:"관광",lat:35.6764,lng:139.6993,
+   d:"디즈니씨 다음 날 체력을 고려해 09:30부터 핵심 정원만 압축해서 봅니다. 10:35에는 센다가야문으로 나옵니다.",stay:"65분",cost:"¥500"},
+  {move:"🚶 센다가야문 → NTT 도코모 외관을 지나 메이지진구 북쪽 입구 · 약 20분"},
+  {t:"10:55",n:"메이지진구",cat:"관광",lat:35.6764,lng:139.6993,
    d:"도심 한복판의 70만㎡ 인공 숲. 본전 중심으로 압축해 관람합니다.",stay:"55분",cost:"무료"},
   {move:"🚶 하라주쿠역 방향 약 10분"},
-  {t:"12:15",n:"다케시타도리",cat:"쇼핑",lat:35.6716,lng:139.7060,
-   d:"통과하며 보는 정도로 시간을 제한합니다.",stay:"25분",cost:"—"},
+  {t:"12:00",n:"다케시타도리",cat:"쇼핑",lat:35.6716,lng:139.7060,
+   d:"아자부다이 이동시간을 확보하기 위해 입구와 핵심 구간만 통과합니다.",stay:"15분",cost:"—",priority:"짧은 경유"},
   {move:"🚶 도보 약 5분"},
-  {t:"12:45",n:"도큐 플라자 하라주쿠 HARAKADO",cat:"쇼핑",lat:35.6693,lng:139.7052,
-   d:"옥상 테라스 중심으로 짧게 봅니다.",stay:"25분",cost:"무료(입장)"},
-  {move:"🚶 도보 약 8분 (아오야마 방향)"},
-  {t:"13:20",n:"점심 슬롯 · 마이센 아오야마 본점 1순위",cat:"맛집",lat:35.6660,lng:139.7086,
-   d:"20분 이상 대기하면 인근 대체식으로 즉시 전환합니다. 14:15에는 식사를 끝내 SHIBUYA SKY 예약시간을 지킵니다.",stay:"50분",cost:"¥2,000~",priority:"20분 이상 대기 시 전환"},
-  {move:"🚶 도보 약 6분"},
-  {t:"14:15",n:"오모테산도 · 캣스트리트",cat:"쇼핑",lat:35.6652,lng:139.7123,
-   d:"건축과 편집숍을 모두 훑되 예약시간 때문에 70분으로 제한합니다.",stay:"70분",cost:"—"},
-  {move:"🚶 도보 약 15분 (시부야역 방향, 내리막)"},
-  {t:"15:40",n:"시부야 스크램블 교차로 · 하치코",cat:"관광",lat:35.6590,lng:139.7005,
-   d:"세계 최대 보행 교차로. 16:00에는 이동을 끝내 SHIBUYA SKY 입장 여유를 확보합니다.",stay:"20분",cost:"무료"},
-  {move:"🚶 도보 약 5분 (시부야 스크램블 스퀘어)"},
-  {t:"16:30",n:"SHIBUYA SKY",cat:"야경",lat:35.6584,lng:139.7022,
-   d:"이번 일정의 최우선 전망대. 229m 옥상에서 낮·노을·야경을 한 슬롯에 보고, 우천·강풍 시에는 실내 구간만 이용합니다.",stay:"90분",cost:"WEB ¥3,400",book:"9/15부터 9/29분 판매 · 현지시간 00:00",priority:"최우선 전망대"},
-  {move:"🚶 도보 약 8분"},
-  {t:"18:30",n:"저녁 · 미야시타파크 시부야 요코초",cat:"맛집",lat:35.6614,lng:139.7024,
+  {t:"12:20",n:"도큐 플라자 하라주쿠 HARAKADO",cat:"쇼핑",lat:35.6693,lng:139.7052,
+   d:"건물과 진입부만 짧게 보고 오모테산도 건축축으로 바로 이어갑니다.",stay:"10분",cost:"무료(입장)",priority:"짧은 경유"},
+  {move:"🚶 오모테산도 건축축으로 이동"},
+  {t:"12:30",n:"오모테산도 현대건축 산책",cat:"건축",lat:35.6652,lng:139.7123,
+   d:"오모테산도 힐즈·Dior·GYRE·Prada Aoyama를 중심으로 봅니다. 캣스트리트는 제외하고 건축 동선에 집중합니다.",stay:"55분",cost:"무료~"},
+  {move:"🚶 아오야마 점심 구간으로 약 5분"},
+  {t:"13:30",n:"점심 슬롯 · 오모테산도·아오야마",cat:"맛집",lat:35.6660,lng:139.7086,
+   d:"35분 안에 끝나는 식사를 고릅니다. 마이센은 대기가 없을 때만 이용하고 줄이 있으면 즉시 인근 대체식으로 전환합니다.",stay:"35분",cost:"¥1,500~",priority:"14:05 출발 고정"},
+  {move:"🚇 오모테산도 → 가미야초 · 환승 포함 약 25분"},
+  {t:"14:30",n:"아자부다이 힐즈 · 건축 산책",cat:"건축",lat:35.6604,lng:139.7404,
+   d:"필수 방문. Garden Plaza → Central Green → Heatherwick 저층부 → The Cloud → Mori JP Tower 순으로 보고 Borderless·쇼핑은 제외합니다.",stay:"70분",cost:"무료",mandatory:true,priority:"15:40 출발 고정"},
+  {move:"🚇 가미야초 → 에비스 → 시부야 · 이동·역내 보행 약 35분"},
+  {t:"16:40",n:"SHIBUYA SKY",cat:"야경",lat:35.6584,lng:139.7022,
+   d:"이번 일정의 최우선 전망대. 17:28 일몰 전에 여유 있게 올라가 낮·노을·블루아워·야경을 보고, 우천·강풍 시에는 실내 구간만 이용합니다.",stay:"90분",cost:"WEB ¥3,400",book:"9/15부터 9/29분 판매 · 현지시간 00:00",priority:"16:40 슬롯 최우선"},
+  {move:"🚶 하치코광장 방향 약 5분"},
+  {t:"18:20",n:"시부야 스크램블 교차로 · 하치코",cat:"관광",lat:35.6590,lng:139.7005,
+   d:"전망대 퇴장 뒤 지상 시부야를 짧게 확인하고 미야시타파크로 이동합니다.",stay:"15분",cost:"무료"},
+  {move:"🚶 미야시타파크까지 약 8분"},
+  {t:"18:45",n:"저녁 · 미야시타파크 시부야 요코초",cat:"맛집",lat:35.6614,lng:139.7024,
    d:"공원 위에 얹은 상업시설. 1층 요코초에 일본 각지 향토요리 점포가 늘어서 있어 한 곳에서 고르기 좋습니다.",stay:"90분",cost:"¥3,000~"}
  ]
 },
@@ -985,7 +984,7 @@ function effectiveDayItems(day){
   let places=day.items.filter(i=>!i.move).map(i=>({...i}));
   choices.forEach(({cd,slot,item})=>{
     const chosenTime=item.at||slot.time,rank=timeRank(chosenTime);
-    const removeBase=p=>!p.choice;
+    const removeBase=p=>!p.choice&&!p.mandatory;
     if(cd.id==='c1'&&slot.title==='도착 후 서쪽 코스')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=1180&&timeRank(p.t)<1290&&p.cat!=='이동'));
     if(cd.id==='c1'&&slot.title==='무료 야경')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=1200&&timeRank(p.t)<1300&&p.cat==='야경'));
     if(cd.id==='c1'&&slot.title==='무료 야경'&&item.n==='도쿄도청 남전망대')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=1200&&timeRank(p.t)<1260&&p.cat!=='이동'));
@@ -1053,7 +1052,7 @@ function routeLinksFor(items,selected=false){
 
 function detailStateBadge(item){
   if(item.choice)return '<span class="detail-state confirmed">선택 확정</span>';
-  const fixed=Boolean(item.book)||/ZE607|ZE610|고동민.*합류/.test(item.n);
+  const fixed=Boolean(item.book)||Boolean(item.mandatory)||/ZE607|ZE610|고동민.*합류/.test(item.n);
   return fixed?'<span class="detail-state fixed">필수</span>':'<span class="detail-state base">기본</span>';
 }
 
