@@ -257,7 +257,7 @@ tr:last-child td{border-bottom:none}
 <section class="card" id="daily-detail">
   <div class="pad" style="padding-bottom:0">
     <h2>일자별 상세 일정</h2>
-    <div class="sub">상세 일정은 <b>필수</b>·<b>기본</b> 일정과 플래너에서 <b>선택 확정</b>한 장소만 보여줍니다. 날짜를 누르면 타임라인과 지도가 함께 바뀝니다.</div>
+    <div class="sub">상세 일정은 <b>필수</b>·<b>기본</b> 일정과 플래너에서 <b>선택 확정</b>한 장소만 보여줍니다. 지도에는 해당 날짜의 Google 저장 맛집 후보도 주황색 핀으로 표시하며, 확정 전에는 경로선에 연결하지 않습니다.</div>
   </div>
   <div class="tabs" id="tabs" role="tablist"></div>
   <div class="dayhead" id="dayhead"></div>
@@ -1165,7 +1165,8 @@ if(map)L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom
 let layer=null;
 
 function gmap(n){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(n+', Tokyo');}
-function pinIcon(hex,n){return L.divIcon({html:`<div style="width:26px;height:26px;border-radius:50%;background:${hex};color:#fff;border:2px solid #fff;box-shadow:0 1px 5px #0004;display:grid;place-items:center;font:700 12px system-ui">${n}</div>`,className:'',iconSize:[26,26],iconAnchor:[13,13]});}
+function pinIcon(hex,n,mapsaved=false){return L.divIcon({html:`<div style="position:relative;width:26px;height:26px;border-radius:50%;background:${hex};color:#fff;border:2px solid #fff;box-shadow:0 1px 5px #0004;display:grid;place-items:center;font:700 12px system-ui">${n}${mapsaved?'<i class="route-saved-badge" style="position:absolute;right:-5px;top:-5px;width:10px;height:10px;border-radius:50%;background:#eb6834;border:2px solid #fff"></i>':''}</div>`,className:'',iconSize:[26,26],iconAnchor:[13,13]});}
+function savedFoodIcon(){return L.divIcon({html:'<div style="width:25px;height:25px;border-radius:50%;background:#eb6834;color:#fff;border:2px solid #fff;box-shadow:0 1px 5px #0005;display:grid;place-items:center;font:700 12px system-ui">●</div>',className:'saved-food-marker',iconSize:[25,25],iconAnchor:[12,12]});}
 
 /* ── 렌더 ── */
 const tabsEl=document.getElementById('tabs');
@@ -1321,6 +1322,18 @@ function routeLinksFor(items,selected=false){
   return groups.map((group,i)=>`<a class="route-open" target="_blank" rel="noopener" href="${routeUrlForNames(group)}">${groups.length>1?`Google 지도 ${i+1}구간`:`${selected?'확정 반영':'기본'} Google 지도`} ↗</a>`).join('');
 }
 
+function savedFoodCandidatesForDay(dayId,renderItems){
+  const used=new Set(renderItems.filter(item=>!item.move).map(item=>normPlace(item.n)));
+  const found=new Map();
+  CHOICE_DAYS.forEach(choiceDay=>visibleChoiceSlots(choiceDay).forEach(slot=>visibleChoiceItems(choiceDay,slot).forEach(item=>{
+    if(item.c!=='맛집'||!item.mapsaved||isModeUnavailable(choiceDay,item)||targetDayForChoice(choiceDay,item)!==dayId)return;
+    const coord=CHOICE_COORDS[item.n],key=normPlace(item.n);
+    if(!coord||used.has(key)||found.has(key))return;
+    found.set(key,{...item,slotTitle:slot.title,lat:coord[0],lng:coord[1]});
+  })));
+  return [...found.values()];
+}
+
 function detailStateBadge(item){
   const saved=item.mapsaved?'<span class="badge mapsaved">📍 맵 저장</span>':'';
   if(item.choice)return `<span class="detail-state confirmed">선택 확정</span>${saved}`;
@@ -1388,14 +1401,22 @@ function select(id){
     const coords=[];
     pts.forEach(p=>{
       coords.push([p.lat,p.lng]);
-      L.marker([p.lat,p.lng],{icon:pinIcon(day.hex,p._seq)}).addTo(layer)
+      L.marker([p.lat,p.lng],{icon:pinIcon(day.hex,p._seq,p.mapsaved)}).addTo(layer)
         .bindPopup(`<div class="pt">${p._seq}. ${p.n}</div><span style="font-size:11.5px;color:#898781">${p.t} · ${p.cat}${p.stay&&p.stay!=='—'?' · '+p.stay:''}</span><br>${p.d}
           <br><a class="gmap" style="margin-top:7px" target="_blank" rel="noopener" href="${gmap(p.n)}">지도에서 열기 ↗</a>`);
     });
+    const fitCoords=[...coords];
+    const savedFoods=savedFoodCandidatesForDay(day.id,renderItems);
+    savedFoods.forEach(p=>{
+      fitCoords.push([p.lat,p.lng]);
+      L.marker([p.lat,p.lng],{icon:savedFoodIcon(),zIndexOffset:-200}).addTo(layer)
+        .bindPopup(`<div class="pt">📍 ${p.n}</div><span style="font-size:11.5px;color:#9a4d08">Google 저장 맛집 후보 · ${p.slotTitle}</span><br>${p.note}
+          <br><a class="gmap" style="margin-top:7px" target="_blank" rel="noopener" href="${gmap(p.n)}">Google 지도에서 열기 ↗</a>`);
+    });
     if(coords.length>1)L.polyline(coords,{color:day.hex,weight:3,opacity:.7,dashArray:'7 8'}).addTo(layer);
     layer.addTo(map);
-    if(coords.length){const b=L.latLngBounds(coords);map.fitBounds(b.pad(.18));}
-    document.getElementById('maplegend').innerHTML=`<span class="dot" style="background:${day.hex}"></span> ${day.label} 시내 동선 · 공항·항공편·N'EX 구간 제외 · 기본 일정과 확정 선택 장소 반영`;
+    if(fitCoords.length){const b=L.latLngBounds(fitCoords);map.fitBounds(b.pad(.18));}
+    document.getElementById('maplegend').innerHTML=`<span class="dot" style="background:${day.hex}"></span> ${day.label} 시내 동선 · <b style="color:#eb6834">● Google 저장 맛집 후보</b> · 후보는 확정 전 경로선 제외 · 공항·N'EX 제외`;
     setTimeout(()=>map.invalidateSize(),80);
   }else{
     document.getElementById('map').innerHTML=`<div style="height:100%;display:grid;place-items:center;padding:24px;text-align:center"><div>${routeLinksFor(renderItems,Boolean(picked.length))}</div></div>`;
