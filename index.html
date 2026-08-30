@@ -552,22 +552,20 @@ const CHOICE_DAYS=[
  ]
 },
 {
- id:"c4",label:"9/28 야나카·중앙",route:"디즈니 제외 버전 전용. 네즈·야나카 → 칸다 저장 맛집 → 니혼바시 → 긴자 → 유라쿠초.",
+ id:"c4",label:"9/28",route:"버전별 핵심 일정의 우선순위와 체력 조절안을 선택합니다.",
  slots:[
-  {time:"12:20",title:"칸다 저장 맛집 회수",rule:"1곳 선택",items:[
-   {n:"멘야 스고 칸다점",c:"맛집",l:"대체",at:"11:50",d:"70분",p:"¥1,000~2,000",mapsaved:true,note:"📍 수·토·일 휴무. 기본 우미노사치 쇼 대신 라멘을 고를 때 선택하며 대기는 20분까지만 기다립니다."},
-   {n:"American Diner Andra",c:"맛집",l:"후순위",at:"11:30",d:"70분",p:"¥2,000~3,000",mapsaved:true,note:"📍 일요일 휴무. 야나카에서 이나리초로 바로 이동해 먹고 이후 니혼바시로 내려갑니다."},
-   {n:"안즈 하나레",c:"맛집",l:"긴자 점심 대체",at:"12:00",d:"70분",p:"¥4,000~",mapsaved:true,note:"📍 Google 지도 저장. 칸다권 저장 맛집 대신 긴자에서 돈카츠를 우선할 때 선택하고 2k540을 생략합니다."},
-   {n:"MENYA ISHII WAGYU UDON",c:"맛집",l:"긴자 점심 대체",at:"12:00",d:"50분",p:"¥1,000~2,000",mapsaved:true,note:"📍 Google 지도 저장. 칸다권 저장 맛집 대신 긴자로 바로 내려가 먹는 선택이며 1일 100식 한정입니다."}
+  {time:"13:15",title:"해리포터 체류 조절",rule:"1곳 선택",items:[
+   {n:"해리포터 투어 연장 · 숍 축소",c:"체험",l:"선택",at:"13:15",d:"25분",p:"—",modes:["nodisney"],note:"투어가 4시간을 넘기면 전시를 서두르지 않고 숍 시간을 줄입니다. 13:40 도시마엔 출발선은 그대로 지킵니다."}
   ]},
-  {time:"15:00",title:"긴자 간식·식사",rule:"1곳 선택",items:[
-   {n:"DOLCE TACUBO GINZA",c:"맛집",l:"간식",at:"16:10",d:"25분",p:"¥1,000~2,000",mapsaved:true,note:"📍 긴자 쇼핑 중 테이크아웃으로 짧게 추가. 저녁 식사 슬롯은 유지합니다."},
-   {n:"茶屋いつか 銀座店",c:"맛집",l:"간식",at:"16:10",d:"25분",p:"¥1,000~",mapsaved:true,note:"📍 말차 디저트. DOLCE TACUBO와 둘 중 하나만 선택합니다."},
-   {n:"쇼에이도 긴자점",c:"쇼핑",l:"선택",at:"16:55",d:"30분",p:"¥1,000~",mapsaved:true,note:"📍 신규 맵 저장. 월요일 공식 10:00~19:00. 향 전문점 체험을 고르면 GINZA SIX 옥상정원을 교체하고 17:35까지 국제포럼으로 이동합니다."}
+  {time:"14:25",title:"후반 체력 조절",rule:"1곳 선택",items:[
+   {n:"도쿄타워 생략 · 아자부다이 직행",c:"휴양",l:"대체",at:"14:25",d:"35분",p:"무료",modes:["nodisney"],note:"비가 오거나 해리포터 투어가 밀렸을 때 도쿄타워 외관을 빼고 아자부다이 휴식·건축 산책 시간을 확보합니다. 아자부다이·AMBIENT·롯폰기는 유지합니다."}
   ]},
-  {time:"17:45",title:"유라쿠초·마루노우치 마무리",rule:"1곳 선택",items:[
-   {n:"KITTE 마루노우치 옥상정원",c:"야경",l:"선택",at:"18:00",d:"35분",p:"무료",note:"도쿄국제포럼 건축축 뒤 도쿄역 야경을 보는 선택. 9/30 오전 KITTE 선택과 중복되면 생략합니다."},
-   {n:"도쿄 미드타운 히비야",c:"쇼핑",l:"선택",at:"17:45",d:"60분",p:"무료~",note:"유라쿠초 저녁 전 실내 대안. 비가 오면 국제포럼 외부 대신 이쪽 체류를 늘립니다."}
+  {time:"09:00",title:"입장 직후 DPA 우선순위",rule:"1곳 선택",items:[
+   {n:"판타지 스프링스 DPA 최우선",c:"체험",l:"추천",at:"09:00",d:"10분",p:"DPA 별도",modes:["disney"],note:"입장 직후 원하는 판타지 스프링스 어트랙션의 DPA부터 확보하고 나머지 패스·추첨을 진행합니다."},
+   {n:"토이 스토리 마니아 DPA 최우선",c:"체험",l:"대체",at:"09:00",d:"10분",p:"DPA 별도",modes:["disney"],note:"토이 스토리가 최우선 취향이면 이 DPA부터 확보합니다. 판타지 스프링스는 대기시간이나 남은 DPA로 전환합니다."}
+  ]},
+  {time:"19:50",title:"야간 쇼",rule:"1곳 선택",items:[
+   {n:"Believe! Sea of Dreams DPA",c:"야경",l:"선택",at:"19:50",d:"30분",p:"DPA 별도",modes:["disney"],note:"대기 대신 지정 관람구역을 우선할 때 선택합니다. 선택하지 않으면 무료 관람 위치를 일찍 확보하거나 어트랙션을 계속 이용합니다."}
   ]}
  ]
 },
@@ -701,21 +699,22 @@ function targetDayForChoice(choiceDay,item){
   return 'd1';
 }
 function visibleChoiceSlots(day){
-  if(day.id==='c4')return [];
-  if(day.id==='c2')return day.slots.filter(slot=>['긴자·니혼바시 회수','아티존 대체','긴자·츠키지 점심·디저트'].includes(slot.title));
-  return day.slots;
+  const slots=day.id==='c2'?day.slots.filter(slot=>['긴자·니혼바시 회수','아티존 대체','긴자·츠키지 점심·디저트'].includes(slot.title)):day.slots;
+  return slots.filter(slot=>visibleChoiceItems(day,slot).length);
 }
 function visibleChoiceItems(day,slot){
-  return slot.items.filter(item=>!(day.id==='c3'&&item.n==='도쿄국립박물관'));
+  return slot.items.filter(item=>(!item.modes||item.modes.includes(itineraryMode))&&!(day.id==='c3'&&item.n==='도쿄국립박물관'));
 }
 function choiceLabelForMode(day){
   if(day.id==='c2')return itineraryMode==='nodisney'?'9/26 중앙·오다이바':'9/26 중앙·아자부다이';
+  if(day.id==='c4')return itineraryMode==='nodisney'?'9/28 해리포터·아자부다이':'9/28 디즈니씨';
   if(day.id==='c5')return '9/27 서부·시부야';
   if(day.id==='c3')return '9/29 동부';
   return day.label;
 }
 function choiceRouteForMode(day){
   if(itineraryMode==='nodisney'&&day.id==='c2')return '08:00 츠키지 → 10:05 카네코한노스케 → 긴자 핵심 → 14:00 후쿠로노미세 → 후지TV 외관 → 유니콘 건담·다이버시티 → 오다이바 해변 야경.';
+  if(day.id==='c4')return itineraryMode==='nodisney'?'09:00 해리포터 → 도쿄타워 외관 → 아자부다이·AMBIENT → 롯폰기. 지연·우천 시 도쿄타워만 선택적으로 생략합니다.':'07:30 마이하마 → 09:00 입장 → 확보한 DPA·Entry Request 기준으로 권역 순서를 조정 → 19:50 Believe! → 20:50 Night High Halloween.';
   if(day.id==='c5')return '09:00 신주쿠교엔 → 메이지진구 → CHERMSIDE → NUMBER SUGAR → 오모테산도 → 16:40 SHIBUYA SKY → PARCO → 미야시타파크·KITH → 시부야 저녁.';
   if(day.id==='c3')return '08:00 센소지 → 스카이트리 → 11:50 ANDRA → 히로시게 특별전 → 아메요코·2k540 → 아키하바라 → 18:55 우동 신보리.';
   return day.route;
@@ -790,7 +789,7 @@ function renderChoiceDay(id){
 }
 
 function renderChoiceTabs(preferred='c1'){
-  const visible=CHOICE_DAYS.filter(day=>day.id!=='c4').sort((a,b)=>a.id==='cx'?1:b.id==='cx'?-1:Number(targetDayForChoice(a,a.slots[0]?.items[0]).slice(1))-Number(targetDayForChoice(b,b.slots[0]?.items[0]).slice(1)));
+  const visible=CHOICE_DAYS.filter(day=>visibleChoiceSlots(day).length).sort((a,b)=>a.id==='cx'?1:b.id==='cx'?-1:Number(targetDayForChoice(a,a.slots[0]?.items[0]).slice(1))-Number(targetDayForChoice(b,b.slots[0]?.items[0]).slice(1)));
   const chosen=visible.some(day=>day.id===preferred)?preferred:visible[0].id;
   const tabs=document.getElementById('choiceTabs');tabs.innerHTML='';
   visible.forEach(day=>{
@@ -1239,11 +1238,9 @@ function effectiveDayItems(day){
     }
     if(cd.id==='c3'&&slot.title==='아키하바라 선택')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=890&&timeRank(p.t)<1080&&p.cat!=='맛집'));
     if(cd.id==='c3'&&slot.title==='아사쿠사 점심')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=630&&timeRank(p.t)<780));
-    if(cd.id==='c4'&&slot.title==='칸다 저장 맛집 회수'){
-      places=places.filter(p=>p.n!=='우미노사치 쇼');
-    }
-    if(cd.id==='c4'&&item.n==='쇼에이도 긴자점')places=places.filter(p=>p.n!=='긴자식스 옥상정원 · 주오도리');
-    if(cd.id==='c4'&&slot.title==='유라쿠초·마루노우치 마무리')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=1070&&timeRank(p.t)<1140&&p.cat!=='맛집'));
+    if(cd.id==='c4'&&item.n==='해리포터 투어 연장 · 숍 축소')places=places.filter(p=>p.n!=='스튜디오 숍 · 퇴장 버퍼');
+    if(cd.id==='c4'&&item.n==='도쿄타워 생략 · 아자부다이 직행')places=places.filter(p=>!p.n.startsWith('도쿄타워 외관'));
+    if(cd.id==='c4'&&item.n==='Believe! Sea of Dreams DPA')places=places.filter(p=>p.n!=='Believe! Sea of Dreams');
     if(cd.id==='c2'&&slot.title==='정원·점심'&&item.c!=='맛집')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)<660&&p.cat!=='맛집'));
     if(cd.id==='c2'&&slot.title==='아티존 대체')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=600&&timeRank(p.t)<800));
     if(cd.id==='c2'&&slot.title==='긴자·니혼바시 회수'&&item.n!=='쇼에이도 긴자점')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=620&&timeRank(p.t)<760&&p.cat!=='이동'));
