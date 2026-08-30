@@ -204,8 +204,8 @@ tr:last-child td{border-bottom:none}
 <div class="wrap">
 
 <section class="version-switch" role="tablist" aria-label="여행 일정 버전">
-  <button class="version-tab" id="versionDisney" type="button" role="tab" aria-selected="true">디즈니 포함</button>
-  <button class="version-tab" id="versionNoDisney" type="button" role="tab" aria-selected="false">디즈니 제외</button>
+  <button class="version-tab" id="versionNoDisney" type="button" role="tab" aria-selected="true">디즈니 제외</button>
+  <button class="version-tab" id="versionDisney" type="button" role="tab" aria-selected="false">디즈니 포함</button>
 </section>
 
 <section class="card pad" style="padding-top:15px;padding-bottom:15px">
@@ -427,7 +427,7 @@ tr:last-child td{border-bottom:none}
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
-let itineraryMode='disney';
+let itineraryMode='nodisney';
 try{
   const savedMode=localStorage.getItem('tokyo-itinerary-mode');
   if(savedMode==='disney'||savedMode==='nodisney')itineraryMode=savedMode;
