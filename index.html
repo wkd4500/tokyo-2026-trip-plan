@@ -215,15 +215,15 @@ tr:last-child td{border-bottom:none}
 
 <!-- ══ HERO ══ -->
 <section class="card pad">
-  <div class="eyebrow">Tokyo 5N6D · Itinerary v5</div>
+  <div class="eyebrow">Tokyo 5N6D · Itinerary v6</div>
   <h1>도쿄 5박 6일 선택형 여행 플랜</h1>
   <div class="dates">2026.09.25(금) — 09.30(수)</div>
   <div class="tiles">
     <div class="tile"><div class="v">6일 5박</div><div class="k">여행 기간</div></div>
     <div class="tile"><div class="v" id="spotCount">40곳</div><div class="k">Google 지도 저장</div></div>
     <div class="tile"><div class="v" id="featureDay">1일</div><div class="k" id="featureDayLabel">디즈니씨</div></div>
-    <div class="tile"><div class="v" id="bookingCount">3+1건</div><div class="k" id="bookingCountLabel">필수 3·권장 1</div></div>
-    <div class="tile"><div class="v" id="heroBudget">약 ¥57–79k</div><div class="k" id="heroBudgetLabel">쇼핑·DPA 제외 기본비</div></div>
+    <div class="tile"><div class="v" id="bookingCount">6건</div><div class="k" id="bookingCountLabel">확정 1·예약/확인 5</div></div>
+    <div class="tile"><div class="v" id="heroBudget">약 ¥57–80k</div><div class="k" id="heroBudgetLabel">항공·숙박·쇼핑·DPA 제외</div></div>
     <div class="tile"><div class="v">6일</div><div class="k">날짜별 지도 동선</div></div>
   </div>
 </section>
@@ -276,7 +276,7 @@ tr:last-child td{border-bottom:none}
     <div class="choice-head">
       <div>
         <h2>날짜별 선택 플래너</h2>
-        <div class="sub">체크는 아직 초안입니다. <b>선택 일정 확정</b>을 눌러야 같은 시간대의 기본 코스를 교체하고 상세 일정·지도·Google 구간 동선에 고정됩니다. <b>📍 맵 저장</b>은 2026-08-30에 전수 확인한 Google 지도 공유 목록 <b>40곳</b> 기준입니다.</div>
+        <div class="sub">체크는 아직 초안입니다. <b>선택 일정 확정</b>을 눌러야 같은 시간대의 기본 코스를 교체하고 상세 일정·지도·Google 구간 동선에 고정됩니다. <b>📍 맵 저장</b>은 <a href="https://maps.app.goo.gl/xqAmQD8casuqXV1B6" target="_blank" rel="noopener">Google 지도 공유 목록 ↗</a>을 2026-08-30에 직접 전수 확인한 <b>40곳</b> 기준입니다. Google 목록과 이 웹은 실시간 자동 연동이 아니므로 이후 추가 장소는 다시 갱신해야 합니다.</div>
       </div>
       <div class="choice-actions">
         <span class="choice-count" id="choiceCount" aria-live="polite">선택 0 · 확정 0</span>
@@ -361,11 +361,11 @@ tr:last-child td{border-bottom:none}
   <div class="grid2" style="margin-top:12px">
     <table>
       <tr><th>항목</th><th class="num" style="width:130px">금액(엔)</th></tr>
-      <tr><td id="fixedBudgetLabel">고정 예약비 · 디즈니·AMBIENT·SKY</td><td class="num" id="fixedBudget">15,800 –</td></tr>
-      <tr><td id="transportBudgetLabel">교통비 · N'EX + 시내 IC</td><td class="num" id="transportBudget">11,200 – 13,200</td></tr>
+      <tr><td id="fixedBudgetLabel">예정 입장비 · 디즈니·후쿠로·AMBIENT·SKY</td><td class="num" id="fixedBudget">17,800 –</td></tr>
+      <tr><td id="transportBudgetLabel">교통비 · N'EX + 시내 IC</td><td class="num" id="transportBudget">9,000 – 11,000</td></tr>
       <tr><td>식비 6일</td><td class="num">30,000 – 45,000</td></tr>
-      <tr><td>선택 입장비 · 후쿠로·스카이트리 등</td><td class="num">0 – 4,300+</td></tr>
-      <tr><td><b>기본 합계</b></td><td class="num"><b id="totalBudget">약 57,000 – 79,000</b></td></tr>
+      <tr><td>선택 입장비 · 미술관·스카이트리 등</td><td class="num">0 – 6,000+</td></tr>
+      <tr><td><b>기본 합계</b></td><td class="num"><b id="totalBudget">약 57,000 – 80,000</b></td></tr>
       <tr id="dpaBudgetRow"><td>디즈니 DPA</td><td class="num"><b>별도 한도</b></td></tr>
       <tr><td>쇼핑·굿즈·카페·술</td><td class="num"><b>개인 한도</b></td></tr>
       <tr><td>비상금</td><td class="num">10,000 권장</td></tr>
@@ -392,6 +392,7 @@ tr:last-child td{border-bottom:none}
     <div class="mini"><b>비·강풍</b><p>SHIBUYA SKY 옥상은 제한될 수 있습니다. 같은 권역의 PARCO·소라마치와 아자부다이 힐즈 실내 공간을 대안으로 사용하세요.</p></div>
     <div class="mini" id="variantCaution"><b>디즈니 이동</b><p>도쿄역 게이요선 승강장은 다른 노선에서 멉니다. 환승에 약 15분을 추가하고 공식 앱을 입장 전에 설치하세요.</p></div>
     <div class="mini"><b>AMBIENT KYOTO</b><p>토요일은 20:00까지 운영하며 마지막 입장은 종료 30분 전입니다. 아자부다이 건축 산책 뒤 17:00 전후 전매권으로 관람합니다.</p></div>
+    <div class="mini"><b>롯폰기·모리미술관</b><p>모리미술관은 9/24~9/30 전시 교체 휴관입니다. 롯폰기는 기본 일정이 아니며, 9/26에 도쿄시티뷰를 고르면 아자부다이 저녁과 도쿄타워를 통째로 교체합니다.</p></div>
     <div class="mini"><b>츠키지·현금</b><p>츠키지는 오전 방문이 적합합니다. 골목·시장 소규모 점포용으로 소액 현금을 준비하세요.</p></div>
     <div class="mini"><b>귀국일 짐</b><p>9/30은 08:20까지 도쿄역 또는 출발 거점에 짐 보관을 끝내고, 12:05부터 회수·N'EX 승강장 이동에 들어갑니다.</p></div>
   </div>
@@ -435,7 +436,6 @@ const CHOICE_DAYS=[
    {n:"도쿄도청 남전망대",c:"야경",l:"대안",at:"20:40",d:"40분",p:"무료",note:"피크 라운지를 빼는 경우에만 선택. 통상 21:30 최종 입실·22:00 종료."}
   ]},
   {time:"22:00",title:"저녁·야간 골목",rule:"1곳 선택",items:[
-   {n:"오모이데요코초",c:"맛집",l:"추천",d:"80분",p:"¥2,500~",mapsaved:true,note:"📍 맵 저장. 야키토리 골목. 현금 필요 가능."},
    {n:"신주쿠 골든가이",c:"맛집",l:"선택",d:"90분",p:"¥3,000~",note:"하나조노 신사·가부키초와 한 묶음."}
   ]},
   {time:"23:20",title:"심야 신주쿠 추가",rule:"1곳 선택",items:[
@@ -478,8 +478,7 @@ const CHOICE_DAYS=[
    {n:"논베이요코초",c:"맛집",l:"선택",d:"80분",p:"¥3,000~",note:"작은 이자카야 골목. 초반 입장 권장."},
    {n:"우오베이 시부야",c:"맛집",l:"추천",d:"45분",p:"¥1,500~",note:"회전초밥. 빠른 저녁 선택."},
    {n:"규카츠 모토무라",c:"맛집",l:"선택",d:"50분",p:"¥1,900~",note:"한국인 인지도가 높지만 대기 대비 효율은 보통. 줄이 길면 우오베이로 전환."},
-   {n:"우동 신",c:"맛집",l:"선택",at:"20:30",d:"70분",p:"¥2,000~3,000",mapsaved:true,note:"📍 매일 11:00~L.O.22:00. 시부야 저녁을 생략하고 신주쿠로 돌아가 먹는 대안이며 20:50까지 현장 접수, 대기 30분 초과 시 포기."},
-   {n:"라멘 브레이크 비츠",c:"맛집",l:"불가",at:"11:30",d:"70분",p:"¥1,000~2,000",mapsaved:true,no:true,note:"📍 현재 수~토 점심만 운영·7일 전 21:00 예약 오픈. 9/26 토요일은 14:00 확정축과 권역이 충돌하고 나머지 날짜는 휴무 또는 출국일이라 이번 여행에는 배치 불가."}
+   {n:"우동 신",c:"맛집",l:"선택",at:"20:30",d:"70분",p:"¥2,000~3,000",mapsaved:true,note:"📍 매일 11:00~L.O.22:00. 시부야 저녁을 생략하고 신주쿠로 돌아가 먹는 대안이며 20:50까지 현장 접수, 대기 30분 초과 시 포기."}
   ]}
  ]
 },
@@ -493,8 +492,7 @@ const CHOICE_DAYS=[
    {n:"야네센 — 야나카긴자·네즈 신사",c:"관광",l:"추천",d:"3시간",p:"무료",note:"우에노 북쪽 산책. 도쿄국립박물관과 모두 넣으면 오전 전체 소요."},
    {n:"도쿄국립박물관",c:"관광",l:"추천",d:"2~3시간",p:"상설 ¥1,000·특별전 별도",closedMonday:true,note:"디즈니 포함판 9/29 화요일에는 기본 일정으로 관람합니다. 선택 확정 시 기본 110분을 2~3시간으로 늘리고 아메요코·아키하바라를 줄입니다."},
    {n:"구라마에",c:"관광",l:"선택",d:"2시간",p:"—",note:"카페·소품점. 캇파바시와 연결."},
-   {n:"캇파바시 도구거리",c:"쇼핑",l:"선택",d:"70분",p:"—",note:"주방도구·식품 모형. 아사쿠사 서쪽."},
-   {n:"국립서양미술관 — 르 코르뷔지에",c:"건축",l:"불가",d:"90분",p:"¥500~",mapsaved:true,note:"📍 맵 저장. 9/24~9/30 임시 휴관. 외관만 가능.",no:true}
+   {n:"캇파바시 도구거리",c:"쇼핑",l:"선택",d:"70분",p:"—",note:"주방도구·식품 모형. 아사쿠사 서쪽."}
   ]},
   {time:"12:00",title:"아사쿠사 점심",rule:"1곳 선택",items:[
    {n:"아사쿠사 다이코쿠야 텐동",c:"맛집",l:"후순위",at:"11:00",d:"50분",p:"¥2,000~",note:"선택하면 스카이트리·소라마치 기본 구간을 빼고 우에노로 이동. 바삭한 튀김 취향이면 다른 식당 권장."},
@@ -540,35 +538,33 @@ const CHOICE_DAYS=[
   ]},
   {time:"10:20",title:"긴자·니혼바시 회수",rule:"2~5곳 선택",items:[
    {n:"니혼바시 — 포켓몬센터 도쿄DX·포켓몬 카페",c:"쇼핑",l:"선택",at:"13:00",d:"20분",p:"—",note:"센터만 빠르게 방문. 12:45까지 이토야를 못 나오면 이날은 보류하고 츠키시마로 직행. 포켓몬 카페는 별도 예약이 있을 때만."},
-   {n:"가부키자 — 1막 관람권",c:"체험",l:"대체",at:"10:30",d:"70~90분",p:"¥1,200~",note:"9/26은 9월 공연 마지막 날. 선택하면 MUJI·포켓몬 중 1~2곳을 뺍니다."}
+   {n:"쇼에이도 긴자점",c:"쇼핑",l:"선택",at:"11:35",d:"30분",p:"¥1,000~",mapsaved:true,note:"📍 Google 지도 저장. 공식 10:00~19:00. 이토야 또는 GINZA SIX 체류를 30분 줄여 넣고 12:45 긴자 출발선은 지킵니다."},
+   {n:"가부키자 — 1막 관람권",c:"체험",l:"대체",at:"10:30",d:"70~90분",p:"¥1,200~",note:"9/26은 9월 공연 마지막 날. 선택하면 긴자 쇼핑 대부분을 뺍니다."}
   ]},
   {time:"10:20",title:"아티존 대체",rule:"1곳 선택",items:[
    {n:"아티존 미술관 — 소트사스·다키구치 슈조·소장품전",c:"건축",l:"추천",at:"10:30",d:"110분",p:"WEB ¥1,200",note:"긴자 쇼핑에 더하는 일정이 아니라 GINZA SIX·MUJI·이토야·포켓몬센터를 교체하는 선택. 소트사스 디자인과 피카소·모네·르누아르 등 소장품 원화를 본 뒤 간단히 점심을 먹고 14:00 부엉이카페로 이동합니다."}
   ]},
   {time:"11:00",title:"긴자 점심·디저트",rule:"1~2곳 선택",items:[
-   {n:"안즈 하나레",c:"맛집",l:"추천",at:"11:00",d:"70분",p:"¥4,000~",mapsaved:true,note:"📍 평점 4.7. 긴자 6초메 돈카츠. 기본 코스에서 가장 자연스러운 점심이지만 Google 지도 가격표보다 실제 평균 지출이 높아 예산 확인."},
-   {n:"MENYA ISHII WAGYU UDON",c:"맛집",l:"선택",at:"11:00",d:"50분",p:"¥1,000~2,000",mapsaved:true,note:"📍 평점 4.9. 긴자 2초메·동긴자 쪽, 1일 100식 한정. 츠키지에서 긴자로 올라오는 축의 점심 대안."},
+   {n:"안즈 하나레",c:"맛집",l:"카네코 대체",at:"11:00",d:"70분",p:"¥4,000~",mapsaved:true,note:"📍 Google 지도 저장. 카네코 츠키지 예약을 잡지 않았을 때만 대체 점심으로 선택합니다. 둘 다 먹지 않습니다."},
+   {n:"MENYA ISHII WAGYU UDON",c:"맛집",l:"카네코 대체",at:"11:00",d:"50분",p:"¥1,000~2,000",mapsaved:true,note:"📍 Google 지도 저장. 카네코 츠키지 예약을 잡지 않았을 때만 대체 점심으로 선택합니다. 1일 100식 한정."},
    {n:"DOLCE TACUBO GINZA",c:"맛집",l:"간식",at:"12:15",d:"25분",p:"¥1,000~2,000",mapsaved:true,note:"📍 평점 4.0. 긴자 7초메 테이크아웃 디저트. 안즈 하나레와 가깝고 니혼바시 이동 전 짧게 추가 가능."},
    {n:"茶屋いつか 銀座店",c:"맛집",l:"간식",at:"12:15",d:"25분",p:"¥1,000~",mapsaved:true,note:"📍 평점 4.2. 긴자 5초메 말차 디저트. 식사 대신이 아니라 점심 뒤 간식 1곳으로 선택."}
   ]},
   {time:"18:40",title:"아자부다이 저녁",rule:"1곳 선택",items:[
    {n:"아자부다이 힐즈 마켓·푸드홀",c:"맛집",l:"추천",at:"18:40",d:"70분",p:"¥2,000~",note:"전시 종료 뒤 같은 단지에서 식사해 이동을 줄이는 기본 대안."},
-   {n:"가미야초·도라노몬 저녁",c:"맛집",l:"선택",at:"18:40",d:"80분",p:"¥2,500~",note:"아자부다이 내부가 붐비면 가미야초역 방향에서 대기 짧은 식당을 선택."}
+   {n:"가미야초·도라노몬 저녁",c:"맛집",l:"선택",at:"18:40",d:"80분",p:"¥2,500~",note:"아자부다이 내부가 붐비면 가미야초역 방향에서 대기 짧은 식당을 선택."},
+   {n:"롯폰기 힐스 · 도쿄 시티뷰",c:"야경",l:"저녁 전체 대체",at:"19:00",d:"120분",p:"¥2,400~",mapsaved:true,note:"📍 저장된 롯폰기 힐스를 아자부다이 이후에 잇는 유일한 배치안. 선택하면 아자부다이 저녁과 도쿄타워 외관을 모두 빼고 롯폰기에서 식사·전망을 해결합니다. 도쿄시티뷰는 10:00~22:00이지만 SHIBUYA SKY와 전망이 겹쳐 후순위입니다."}
   ]}
  ]
 },
 {
- id:"c4",label:"9/28 우에노·중앙",route:"디즈니 제외 버전 전용. 우에노·아메요코 → 2k540 → 니혼바시 → 긴자 → 유라쿠초. 9/26·9/27의 과밀 구간을 월요일 영업 가능한 장소만 골라 분산.",
+ id:"c4",label:"9/28 야나카·중앙",route:"디즈니 제외 버전 전용. 네즈·야나카 → 2k540 → 저장 맛집 → 니혼바시 → 긴자 → 유라쿠초.",
  slots:[
-  {time:"09:30",title:"우에노 오전 대체",rule:"1곳 선택",items:[
-   {n:"야네센 — 야나카긴자·네즈 신사",c:"관광",l:"선택",at:"09:30",d:"150분",p:"무료~",note:"우에노공원·아메요코 대신 골목과 신사를 걷는 선택. 박물관이 쉬는 월요일에도 가능하지만 상점은 10시 이후부터 엽니다."},
-   {n:"우에노공원 · 국립서양미술관 외관",c:"건축",l:"경유",at:"09:30",d:"35분",p:"무료",mapsaved:true,note:"9/24~9/30 임시휴관이라 내부 관람은 불가. 우에노공원 산책 중 외관만 확인하고 시간을 더 쓰지 않습니다."}
-  ]},
   {time:"12:20",title:"칸다 저장 맛집 회수",rule:"1곳 선택",items:[
-   {n:"멘야 스고 칸다점",c:"맛집",l:"추천",at:"12:20",d:"70분",p:"¥1,000~2,000",mapsaved:true,note:"📍 수·토·일 휴무라 월요일이 최적. 7석뿐이므로 대기 20분을 넘으면 다른 선택지로 전환합니다."},
-   {n:"우미노사치 쇼",c:"맛집",l:"선택",at:"12:20",d:"85분",p:"¥2,000~6,000",mapsaved:true,note:"📍 토·일·공휴일 휴무인 참치덮밥. 월요일 점심 영업 11:45~14:00 안에 방문하며 대기가 길면 즉시 다음 후보로 전환합니다."},
-   {n:"American Diner Andra",c:"맛집",l:"후순위",at:"11:30",d:"70분",p:"¥2,000~3,000",mapsaved:true,note:"📍 일요일 휴무. 우에노 동쪽이라 선택 시 아메요코 뒤 바로 이동하고 2k540은 생략해야 동선이 맞습니다."},
-   {n:"카네코한노스케 니혼바시 본점",c:"맛집",l:"중복 제외",at:"12:40",d:"70분",p:"¥1,000~2,000",mapsaved:true,no:true,note:"📍 신규 맵 저장. 월요일 11:00~22:00이지만 9/26 츠키지 지점을 이미 기본으로 먹으므로 중복 방문하지 않습니다. 츠키지 지점을 취소할 때만 대체 후보."}
+   {n:"멘야 스고 칸다점",c:"맛집",l:"대체",at:"11:50",d:"70분",p:"¥1,000~2,000",mapsaved:true,note:"📍 수·토·일 휴무. 기본 우미노사치 쇼 대신 라멘을 고를 때 선택하며 대기는 20분까지만 기다립니다."},
+   {n:"American Diner Andra",c:"맛집",l:"후순위",at:"11:30",d:"70분",p:"¥2,000~3,000",mapsaved:true,note:"📍 일요일 휴무. 야나카에서 이나리초로 바로 이동해 먹고 2k540은 생략해야 동선이 맞습니다."},
+   {n:"안즈 하나레",c:"맛집",l:"긴자 점심 대체",at:"12:00",d:"70분",p:"¥4,000~",mapsaved:true,note:"📍 Google 지도 저장. 칸다권 저장 맛집 대신 긴자에서 돈카츠를 우선할 때 선택하고 2k540을 생략합니다."},
+   {n:"MENYA ISHII WAGYU UDON",c:"맛집",l:"긴자 점심 대체",at:"12:00",d:"50분",p:"¥1,000~2,000",mapsaved:true,note:"📍 Google 지도 저장. 칸다권 저장 맛집 대신 긴자로 바로 내려가 먹는 선택이며 1일 100식 한정입니다."}
   ]},
   {time:"15:00",title:"긴자 간식·식사",rule:"1곳 선택",items:[
    {n:"DOLCE TACUBO GINZA",c:"맛집",l:"간식",at:"16:10",d:"25분",p:"¥1,000~2,000",mapsaved:true,note:"📍 긴자 쇼핑 중 테이크아웃으로 짧게 추가. 저녁 식사 슬롯은 유지합니다."},
@@ -591,32 +587,15 @@ const CHOICE_DAYS=[
  ]
 },
 {
- id:"cx",label:"대체·아무 날",route:"이 탭은 기본 일정에 더하는 목록이 아니라, 반나절 전체를 교체하거나 가까운 권역에서 식사만 고르는 용도.",
+ id:"cx",label:"저장목록 미배치",route:"Google 지도 저장 40곳 중 기본 일정이나 날짜별 선택에 넣지 못한 장소입니다. 체크해 억지로 추가하는 항목이 아니라 제외 이유를 확인하는 목록입니다.",
  slots:[
-  {time:"반나절",title:"롯폰기·아자부다이",rule:"1~2곳 선택",items:[
-   {n:"teamLab Borderless",c:"체험",l:"선택",d:"2시간",p:"¥3,600~",note:"시간지정 예약. 같은 아자부다이의 AMBIENT KYOTO와 몰입형 전시 성격이 겹치므로 둘 중 하나만 선택."},
-   {n:"도쿄타워",c:"야경",l:"선택",d:"70분",p:"¥1,500~",mapsaved:true,note:"📍 맵 저장. 아자부다이·롯폰기와 묶기."},
-   {n:"롯폰기 힐스 · 모리 미술관·도쿄 시티뷰",c:"야경",l:"선택",d:"2시간",p:"¥2,000~",mapsaved:true,note:"📍 저장된 롯폰기 힐스와 모리 미술관을 한 선택지로 통합. 전시와 실내 전망대 중심."},
-   {n:"국립신미술관",c:"관광",l:"선택",d:"90분",p:"전시별",note:"롯폰기 반나절 실내 대안."}
-  ]},
-  {time:"반나절",title:"권역 교체",rule:"1곳 선택",items:[
-   {n:"후지TV 구체 전망대 하치타마·오다이바",c:"관광",l:"보류",d:"3~4시간",p:"¥800~",mapsaved:true,no:true,note:"📍 맵 저장. 현재 두 버전에는 미반영. 10:00~18:00(월요 휴관)이며 아자부다이 필수축과 동시 진행하지 않고, 오다이바 반나절 전체를 따로 확보할 때만 재검토."},
-   {n:"teamLab Planets TOKYO",c:"체험",l:"보류",d:"2시간",p:"¥4,000~",mapsaved:true,no:true,note:"📍 맵 저장. 현재 두 버전에는 미반영. 9/26의 아자부다이 건축·AMBIENT KYOTO와 성격 및 시간이 겹쳐 기본에서 제외했으며, 해당 필수축을 취소하지 않는 한 추가하지 않습니다."},
-   {n:"나카메구로·다이칸야마",c:"휴양",l:"선택",d:"3시간",p:"—",note:"카페·산책 위주. 9/26 오후 대체."},
-   {n:"이케부쿠로 — 선샤인시티·애니메이트 본점",c:"쇼핑",l:"선택",d:"3~4시간",p:"—",note:"아키하바라 대체 서브컬처 코스."},
-   {n:"카구라자카·캐널카페",c:"휴양",l:"선택",d:"2~3시간",p:"¥1,000~",mapsaved:true,note:"📍 신규 맵 저장. 골목과 수변 카페를 묶는 반나절 교체안. 기본 도쿄 중심축에 더하지 말고 날씨 좋은 날 한 구간 전체와 교체."},
-   {n:"지브리 미술관(미타카)",c:"체험",l:"예약",d:"3시간",p:"¥1,000",note:"사전예약 필수. 왕복 이동까지 반나절 교체."}
-  ]},
-  {time:"식사",title:"장르별 맛집",rule:"가까운 권역에서 1곳",items:[
-   {n:"라멘 — 아후리",c:"맛집",l:"선택",at:"13:00",d:"40분",p:"¥1,300~",note:"유자 라멘. 하라주쿠 일정 점심."},
-   {n:"라멘 — 무기토 올리브",c:"맛집",l:"선택",at:"12:00",d:"50분",p:"¥1,300~",note:"긴자 일정 점심."},
-   {n:"야키니쿠 — 야키니쿠 라이크",c:"맛집",l:"백업",at:"19:30",d:"45분",p:"¥1,500~",note:"빠른 1인 식사용 체인. 신주쿠 저녁 백업."},
-   {n:"소바 — 칸다 마츠야",c:"맛집",l:"불가",at:"18:40",d:"50분",p:"¥1,200~",no:true,note:"일요일 정기휴무라 9/27 동부 일정에서는 방문 불가. 다른 날짜에 칸다를 지날 때만 별도 검토."},
-   {n:"이자카야 — 토리키조쿠",c:"맛집",l:"백업",at:"19:30",d:"90분",p:"¥2,500~",note:"가격이 예측 가능한 신주쿠 야간 백업."},
-   {n:"카페 — 카야바 커피(야나카)",c:"맛집",l:"선택",at:"10:30",d:"50분",p:"¥1,000~",note:"야네센 코스 휴식."},
-   {n:"디저트 — 하라주쿠 크레페",c:"맛집",l:"선택",at:"12:00",d:"20분",p:"¥700~",note:"하라주쿠 산책 중 간식."},
-   {n:"과일 — 센비키야 후르츠 파를러",c:"맛집",l:"대체",at:"10:30",d:"50분",p:"¥2,500~",note:"9/30 캐릭터 스트리트 대신 고르는 니혼바시·도쿄역 디저트."},
-   {n:"디파치카 순회",c:"맛집",l:"대체",at:"10:30",d:"50분",p:"¥2,000~",note:"9/30 캐릭터 스트리트 대신 식사와 기념품을 함께 해결."}
+  {time:"미배치",title:"휴관·동선 충돌",rule:"이번 여행에는 추가하지 않음",items:[
+   {n:"모리 미술관",c:"관광",l:"기간 휴관",d:"—",p:"—",mapsaved:true,no:true,note:"📍 Google 지도 저장. 2026년 9월 24~30일 전시 교체 휴관이라 여행 전 기간 내부 관람이 불가능합니다. 롯폰기 힐스와 도쿄시티뷰는 9/26 선택으로 분리했습니다."},
+   {n:"후지TV 구체 전망대 하치타마",c:"관광",l:"권역 제외",d:"3~4시간",p:"¥800~",mapsaved:true,no:true,note:"📍 Google 지도 저장. 오다이바 반나절이 필요하며 9/26의 확정 부엉이카페·필수 아자부다이와 병행할 수 없어 두 버전 모두 제외합니다."},
+   {n:"teamLab Planets TOKYO",c:"체험",l:"권역 제외",d:"2시간",p:"¥4,000~",mapsaved:true,no:true,note:"📍 Google 지도 저장. 도요스·오다이바 축을 삭제하고 아자부다이 필수축을 선택했으므로 이번 일정에는 다시 더하지 않습니다."},
+   {n:"라멘 브레이크 비츠",c:"맛집",l:"영업일 충돌",d:"70분",p:"¥1,000~2,000",mapsaved:true,no:true,note:"📍 Google 지도 저장. 현재 수~토 점심 예약제이나 9/26은 14:00 츠키시마 확정 일정과 권역이 충돌하고 다른 날은 영업일이 맞지 않습니다."},
+   {n:"카네코한노스케 니혼바시 본점",c:"맛집",l:"중복 제외",d:"70분",p:"¥1,000~2,000",mapsaved:true,no:true,note:"📍 Google 지도 저장. 9/26 츠키지 지점을 기본으로 잡았으므로 같은 계열 중복 방문은 제외합니다. 츠키지 예약 실패 시에만 대체 후보입니다."},
+   {n:"캐널카페",c:"휴양",l:"권역 제외",d:"90분",p:"¥1,000~",mapsaved:true,no:true,note:"📍 Google 지도 저장. 이이다바시·카구라자카가 어느 기본 축에도 자연스럽게 붙지 않아 왕복 이동을 만들므로 이번 5박 6일에는 제외합니다."}
   ]}
  ]
 }
@@ -664,6 +643,7 @@ const CHOICE_COORDS={
 "롯폰기 힐스 · 모리 미술관·도쿄 시티뷰":[35.6605,139.7292],
 "아티존 미술관 — 소트사스·다키구치 슈조·소장품전":[35.6779,139.7710],
 "아자부다이 힐즈 마켓·푸드홀":[35.6605,139.7401],"가미야초·도라노몬 저녁":[35.6629,139.7451],
+"롯폰기 힐스 · 도쿄 시티뷰":[35.6605,139.7292],"모리 미술관":[35.6605,139.7292],"캐널카페":[35.7003,139.7413],
 "국립서양미술관 — 르 코르뷔지에 외관":[35.7154,139.7758],"포켓몬 카페 도쿄DX":[35.6802,139.7735],
 "니혼바시 텐푸라메시 카네코한노스케":[35.6850,139.7747],"도쿄 미드타운 히비야":[35.6735,139.7590],
 "우동 신":[35.6871,139.6974],"NUMBER SUGAR 오모테산도점":[35.6670,139.7063],
@@ -730,7 +710,7 @@ function targetDayForChoice(choiceDay,item){
 function visibleChoiceSlots(day){
   if(itineraryMode!=='nodisney'){
     if(day.id==='c4')return [];
-    if(day.id==='c2')return day.slots.filter(slot=>['아티존 대체','아자부다이 저녁'].includes(slot.title));
+    if(day.id==='c2')return day.slots.filter(slot=>['긴자·니혼바시 회수','아티존 대체','긴자 점심·디저트','아자부다이 저녁'].includes(slot.title));
     return day.slots;
   }
   if(day.id==='c2')return day.slots.filter(slot=>slot.title==='아자부다이 저녁');
@@ -738,7 +718,7 @@ function visibleChoiceSlots(day){
   return day.slots;
 }
 function visibleChoiceItems(day,slot){
-  return slot.items.filter(item=>!(itineraryMode==='disney'&&day.id==='c3'&&item.n==='도쿄국립박물관'));
+  return slot.items.filter(item=>!(day.id==='c3'&&item.n==='도쿄국립박물관'));
 }
 function choiceLabelForMode(day){
   if(itineraryMode==='nodisney'&&day.id==='c2')return '9/26 츠키지·아자부다이';
@@ -750,7 +730,7 @@ function choiceLabelForMode(day){
 }
 function choiceRouteForMode(day){
   if(itineraryMode==='nodisney'&&day.id==='c2')return '츠키지 시장 → 10:05 카네코한노스케 → 하마리큐 → 13:50 고동민 합류 → 14:00 후쿠로노미세 → 아자부다이·AMBIENT → 도쿄타워 외관.';
-  if(itineraryMode==='nodisney'&&day.id==='c3')return '아사쿠사 → 스카이트리 → 칸다묘진 → 아키하바라 보행자천국. 우에노·아메요코는 9/28로 이동.';
+  if(itineraryMode==='nodisney'&&day.id==='c3')return '08:00 센소지 → 스카이트리 → 국립도쿄박물관 → 2k540 → 아키하바라 보행자천국.';
   if(itineraryMode==='disney'&&day.id==='c5')return '09:00 신주쿠교엔 → 메이지진구 → CHERMSIDE → 오모테산도·NUMBER SUGAR → 16:40 SHIBUYA SKY → 미야시타파크.';
   if(itineraryMode==='disney'&&day.id==='c3')return '08:00 센소지 → 스카이트리 → 11:50 ANDRA → 국립도쿄박물관 → 아메요코·2k540 → 아키하바라 → 18:30 저장 맛집.';
   return day.route;
@@ -798,7 +778,7 @@ function renderChoiceDay(id){
         const mapUrl='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(item.n+', Tokyo');
         return `<label class="pickcard ${blocked?'unavailable':''} ${confirmed?'confirmed':''}" style="border-left-color:${CAT[item.c]||'#898781'}">
           <input type="checkbox" data-key="${key.replace(/&/g,'&amp;').replace(/"/g,'&quot;')}" ${checked?'checked':''} ${blocked?'disabled':''}>
-          <div class="picktop"><div class="pickbadges">${choiceBadge(blocked?'자동 제외':item.l)}<span class="badge">${item.c}</span>${item.mapsaved?'<span class="badge mapsaved">📍 맵 저장</span>':''}${confirmed?`<span class="badge rec">${checked?'✓ 확정됨':'확정본 유지'}</span>`:''}${day.id==='cx'?`<span class="badge">${targetDayLabel(day,item)} 배치</span>`:''}</div><span class="pickcheck">✓</span></div>
+          <div class="picktop"><div class="pickbadges">${choiceBadge(blocked?'자동 제외':item.l)}<span class="badge">${item.c}</span>${item.mapsaved?'<span class="badge mapsaved">📍 맵 저장</span>':''}${confirmed?`<span class="badge rec">${checked?'✓ 확정됨':'확정본 유지'}</span>`:''}</div><span class="pickcheck">✓</span></div>
           <div class="pickname">${item.n}</div><div class="pickmeta">${item.at?`🕒 ${item.at} · `:''}⏱ ${item.d} · 💴 ${item.p}</div>
           <div class="picknote">${item.note}</div>
           <div class="picklinks"><a href="${mapUrl}" target="_blank" rel="noopener" onclick="event.stopPropagation()">지도에서 열기 ↗</a></div>
@@ -861,7 +841,7 @@ const DAYS=[
 {
  id:"d1",label:"9/25",dow:"금",color:"var(--d1)",hex:"#2a78d6",
  zone:"나리타 → 신주쿠",theme:"ZE607 도착 → 체크인 우선 → 무료 야경 → 심야 신주쿠",
- lodging:"도착 숙소 미정 · 체크인·귀환 시각은 숙소 확정 후 계산",
+ lodging:"1박은 신주쿠역 서쪽·남쪽 권역 추천 · 실제 숙소 예약은 미확정",
  rain:"Tokyo Night & Light 취소 시 체크인·저녁을 앞당기고 가부키초 타워 등 실내 중심으로 전환",
  items:[
   {t:"16:30",n:"나리타 국제공항 도착 · ZE607",cat:"이동",lat:35.7720,lng:140.3929,
@@ -968,7 +948,7 @@ const DAYS=[
    d:"공식 개장보다 일찍 도착해 입장 대기를 줄입니다. 모노레일로 도쿄디즈니씨 스테이션 하차.",stay:"20분",cost:"¥300"},
   {t:"08:05",n:"디즈니씨 입장 대기",cat:"이동",lat:35.6267,lng:139.8850,
    d:"보안검색과 입장열을 고려한 시간입니다. 입장이 조기 시작되면 바로 공식 앱을 확인합니다.",stay:"약 55분",cost:"—"},
-  {t:"09:00",n:"도쿄 디즈니씨 입장",cat:"체험",lat:35.6267,lng:139.8850,
+  {t:"09:00",n:"도쿄 디즈니씨 입장",cat:"체험",lat:35.6267,lng:139.8850,mandatory:true,
    d:"개장 09:00 / 폐장 21:00. 입장 즉시 Fantasy Springs·Toy Story DPA와 쇼 Entry Request를 확인하고, 확보한 시각이 아래 권역 순서보다 우선합니다.",stay:"—",cost:"¥9,900",book:"사전예약 필수"},
   {t:"오전",n:"① 판타지스프링스",cat:"체험",lat:35.6300,lng:139.8880,
    d:"권장 시작 권역일 뿐 고정 시각이 아닙니다. 겨울왕국·라푼젤·피터팬 중 대기가 짧거나 DPA를 확보한 어트랙션부터 이용합니다.",stay:"약 120분",cost:"일반 대기 또는 DPA"},
@@ -991,9 +971,13 @@ const DAYS=[
 {
  id:"d2",label:"9/26",dow:"토",color:"var(--d2)",hex:"#eb6834",
  zone:"츠키지 · 긴자 · 츠키시마 → 아자부다이 · 도쿄타워",theme:"시장·예약 점심 → 긴자 핵심 → 14:00 합류 → 건축·사운드 아트",
- lodging:"숙소 → 츠키지 / 아자부다이 → 숙소 · 숙소 확정 후 계산",
+ lodging:"06:50 신주쿠 1박 숙소 체크아웃 → 중앙권 숙소 짐 보관 → 츠키지",
  rain:"츠키지는 축소하고 카네코한노스케·긴자 실내·후쿠로노미세·AMBIENT를 유지. 도쿄타워 외관은 생략",
  items:[
+  {t:"06:50",n:"첫날 숙소 체크아웃 · 중앙권 숙소로 짐 이동",cat:"이동",
+   d:"첫날은 신주쿠권, 이후 숙소는 긴자1초메·교바시·유라쿠초 권역을 전제로 한 이동입니다. 숙소가 확정되면 실제 출발시각만 다시 계산합니다.",stay:"약 50분",cost:"IC 운임",placeholder:true,priority:"숙소 확정 후 재계산"},
+  {t:"07:45",n:"중앙권 숙소에 짐 맡기기",cat:"이동",
+   d:"체크인 전 수하물 보관 가능 여부를 숙소에 확인합니다. 불가능하면 도쿄역·긴자역 보관소를 사용하고 츠키지 08:00 도착을 우선합니다.",stay:"10분",cost:"무료~",placeholder:true},
   {t:"08:00",n:"츠키지 장외시장",cat:"시장",lat:35.6655,lng:139.7708,mapsaved:true,
    d:"오전 영업 시장은 구경·간식 위주로 봅니다. 10:05 예약 점심을 위해 카이센동 한 그릇 식사는 하지 않습니다.",stay:"75분",cost:"¥1,500~",priority:"시장에서는 간식만"},
   {move:"🚶 도보 약 6분"},
@@ -1057,9 +1041,13 @@ const DISNEY_DAYS={d2:DAYS.find(day=>day.id==='d2'),d3:DAYS.find(day=>day.id==='
 const NO_DISNEY_DAY2={
  id:"d2",label:"9/26",dow:"토",color:"var(--d2)",hex:"#eb6834",
  zone:"츠키지 → 하마리큐 → 츠키시마 → 아자부다이",theme:"시장·예약 점심 → 14:00 합류 → 필수 건축·사운드 아트",
- lodging:"숙소 → 츠키지 / 아자부다이 → 숙소 · 숙소 확정 후 계산",
+ lodging:"06:50 신주쿠 1박 숙소 체크아웃 → 중앙권 숙소 짐 보관 → 츠키지",
  rain:"츠키지 골목과 하마리큐를 줄이고 카네코한노스케·후쿠로노미세·AMBIENT 등 예약 실내 일정은 유지",
  items:[
+  {t:"06:50",n:"첫날 숙소 체크아웃 · 중앙권 숙소로 짐 이동",cat:"이동",
+   d:"첫날은 신주쿠권, 이후 숙소는 긴자1초메·교바시·유라쿠초 권역을 전제로 한 이동입니다. 숙소가 확정되면 실제 출발시각만 다시 계산합니다.",stay:"약 50분",cost:"IC 운임",placeholder:true,priority:"숙소 확정 후 재계산"},
+  {t:"07:45",n:"중앙권 숙소에 짐 맡기기",cat:"이동",
+   d:"체크인 전 수하물 보관 가능 여부를 숙소에 확인합니다. 불가능하면 도쿄역·긴자역 보관소를 사용하고 츠키지 08:00 도착을 우선합니다.",stay:"10분",cost:"무료~",placeholder:true},
   {t:"08:00",n:"츠키지 장외시장",cat:"시장",lat:35.6655,lng:139.7708,mapsaved:true,
    d:"디즈니 제외판에서는 긴자 쇼핑을 9/28로 옮겼습니다. 시장은 구경과 간식 위주로 보고 카네코한노스케 식사를 위해 과식하지 않습니다.",stay:"80분",cost:"¥1,500~"},
   {move:"🚶 도보 약 6분"},
@@ -1091,62 +1079,65 @@ const NO_DISNEY_DAY2={
 };
 const NO_DISNEY_DAY3={
  id:"d3",label:"9/27",dow:"일",color:"var(--d3)",hex:"#1baf7a",
- zone:"아사쿠사 → 스카이트리 → 칸다·아키하바라",theme:"전통·강변 → 일요일 보행자천국 · 우에노는 월요일로 분리",
+ zone:"아사쿠사 → 스카이트리 → 우에노 → 아키하바라",theme:"전통·강변 → 국립도쿄박물관 → 일요일 보행자천국",
  lodging:"숙소 → 센소지 / 아키하바라 → 숙소 · 숙소 확정 후 계산",
  rain:"센소지는 축소하고 소라마치와 아키하바라 실내 매장을 확대, 보행자천국 취소 여부 확인",
  items:[
-  {t:"08:30",n:"센소지 · 가미나리몬",cat:"관광",lat:35.7148,lng:139.7967,mapsaved:true,
-   d:"관광버스 전에 경내와 가미나리몬부터 봅니다. 우에노를 9/28로 옮겨 아사쿠사를 서두르지 않습니다.",stay:"60분",cost:"무료"},
-  {t:"09:35",n:"나카미세도리",cat:"맛집",lat:35.7130,lng:139.7960,
-   d:"상점이 열리는 시간에 맞춰 닌교야키·센베이 등 간식과 기념품을 봅니다.",stay:"45분",cost:"¥1,000~"},
+  {t:"08:00",n:"센소지 · 가미나리몬",cat:"관광",lat:35.7148,lng:139.7967,mapsaved:true,
+   d:"관광버스 전에 경내와 가미나리몬부터 봅니다. 박물관과 보행자천국 시간을 확보하기 위해 09:00에 나카미세로 이동합니다.",stay:"60분",cost:"무료"},
+  {t:"09:05",n:"나카미세도리",cat:"맛집",lat:35.7130,lng:139.7960,
+   d:"문을 연 점포만 가볍게 보고 간식은 한 종류로 제한합니다.",stay:"35분",cost:"¥800~"},
   {move:"🚶 스미다강을 건너 스카이트리까지 약 20분"},
-  {t:"10:45",n:"도쿄 스카이트리 외관 · 소라마치",cat:"관광",lat:35.7101,lng:139.8107,mapsaved:true,
-   d:"SHIBUYA SKY와 전망이 겹쳐 기본은 외관·소라마치입니다. 날씨가 매우 좋을 때만 전망대로 전환합니다.",stay:"75분",cost:"무료~"},
-  {t:"12:05",n:"점심 · 소라마치 푸드플로어",cat:"맛집",lat:35.7104,lng:139.8100,
-   d:"아키하바라 이동 전에 한 끼를 끝냅니다. 전망 좌석 대기가 길면 저층 식당을 선택합니다.",stay:"55분",cost:"¥1,800~"},
-  {move:"🚃 오시아게 → 스에히로초·아키하바라 약 30분"},
-  {t:"13:40",n:"칸다묘진",cat:"관광",lat:35.7020,lng:139.7679,
-   d:"아키하바라 북쪽에서 시작해 남쪽으로 내려가는 선형 동선. 본전과 EDOCCO를 짧게 봅니다.",stay:"35분",cost:"무료"},
-  {move:"🚶 주오도리까지 약 8분"},
-  {t:"14:25",n:"아키하바라 · 보행자천국",cat:"쇼핑",lat:35.6984,lng:139.7731,
-   d:"일요일 13:00~18:00 한정. 전자상가·라디오회관·만다라케 중 관심 매장을 골라 3시간 확보합니다.",stay:"185분",cost:"—",priority:"우천 시 취소 가능"},
-  {t:"17:40",n:"저녁 · 아키하바라",cat:"맛집",lat:35.6990,lng:139.7740,
-   d:"규카츠·츠케멘 등 대기 20분 이내인 곳에서 식사하고 일찍 복귀합니다.",stay:"75분",cost:"¥2,000~"}
+  {t:"09:55",n:"도쿄 스카이트리 외관 · 소라마치",cat:"관광",lat:35.7101,lng:139.8107,mapsaved:true,
+   d:"SHIBUYA SKY와 전망이 겹쳐 기본은 외관·소라마치입니다. 11:00에는 점심 장소로 이동합니다.",stay:"65분",cost:"무료~",priority:"11:00 출발"},
+  {t:"11:05",n:"점심 · 소라마치",cat:"맛집",lat:35.7104,lng:139.8100,
+   d:"일요일에 쉬는 ANDRA·우미노사치·멘야 스고 대신 이 권역에서 식사합니다. 대기 15분 이내인 매장을 고릅니다.",stay:"55분",cost:"¥1,800~"},
+  {move:"🚃 오시아게 → 우에노공원 약 30분"},
+  {t:"12:40",n:"국립도쿄박물관 · 본관 핵심 관람",cat:"관광",lat:35.7188,lng:139.7765,
+   d:"일요일 개관일에 본관 핵심 작품을 100분 압축 관람합니다. 9/29 시작 히로시게 특별전은 이 버전에서는 볼 수 없습니다.",stay:"100분",cost:"상설 ¥1,000",priority:"박물관 기본 고정"},
+  {move:"🚶 우에노역 방향 약 5분"},
+  {t:"14:25",n:"국립서양미술관 외관",cat:"건축",lat:35.7154,lng:139.7758,mapsaved:true,
+   d:"9/24~9/30 임시휴관이므로 르 코르뷔지에 본관 외관만 보고 내부 관람은 시도하지 않습니다.",stay:"15분",cost:"무료",priority:"임시휴관·외관만"},
+  {move:"🚶 2k540까지 남쪽으로 약 15분"},
+  {t:"14:55",n:"2k540 AKI-OKA ARTISAN",cat:"쇼핑",lat:35.7044,lng:139.7745,
+   d:"고가 아래 공예·디자인 상점가를 통과하며 관심 점포만 봅니다.",stay:"35분",cost:"무료~"},
+  {move:"🚶 아키하바라 주오도리 약 10분"},
+  {t:"15:40",n:"아키하바라 · 보행자천국",cat:"쇼핑",lat:35.6984,lng:139.7731,
+   d:"일요일 13:00~18:00 한정. 라디오회관·만다라케·슈퍼포테이토 중 관심 매장을 골라 보고 17:50에 마칩니다.",stay:"130분",cost:"—",priority:"우천 시 취소 가능"},
+  {t:"18:00",n:"저녁 · 아키하바라",cat:"맛집",lat:35.6990,lng:139.7740,
+   d:"일요일 휴무인 저장 맛집은 억지로 넣지 않고 대기 20분 이내인 식당에서 마칩니다.",stay:"70분",cost:"¥2,000~"}
  ]
 };
 const NO_DISNEY_DAY4={
  id:"d4",label:"9/28",dow:"월",color:"var(--d4)",hex:"#eda100",
- zone:"우에노 → 오카치마치 → 니혼바시 → 긴자 → 유라쿠초",theme:"9/26·9/27 과밀구간 분산 · 북쪽에서 남쪽으로 한 방향",
- lodging:"숙소 → 우에노 / 유라쿠초 → 숙소 · 숙소 확정 후 계산",
- rain:"우에노공원은 외관만 보고 아메요코·2k540·니혼바시·긴자의 실내 쇼핑 비중을 확대",
+ zone:"야나카·네즈 → 오카치마치 → 칸다 → 니혼바시 → 긴자",theme:"월요일 야외 골목 → 저장 맛집 → 중앙권 쇼핑",
+ lodging:"숙소 → 네즈 / 유라쿠초 → 숙소 · 숙소 확정 후 계산",
+ rain:"야나카·네즈를 줄이고 2k540·니혼바시·긴자의 실내 쇼핑 비중을 확대",
  items:[
-  {t:"09:30",n:"우에노공원 · 국립서양미술관 외관",cat:"건축",lat:35.7154,lng:139.7758,mapsaved:true,
-   d:"국립서양미술관은 9/24~9/30 임시휴관이므로 르 코르뷔지에 건축 외관만 봅니다. 내부 관람을 시도하지 않습니다.",stay:"35분",cost:"무료",priority:"임시휴관·외관만"},
-  {move:"🚶 아메요코 북쪽 입구까지 약 8분"},
-  {t:"10:15",n:"우에노 아메요코 시장",cat:"시장",lat:35.7085,lng:139.7747,
-   d:"일요일 동부 코스에서 분리했습니다. 상점이 열린 뒤 건어물·잡화·간식을 여유 있게 봅니다.",stay:"60분",cost:"—"},
-  {move:"🚶 고가 아래 오카치마치 방향 약 5분"},
-  {t:"11:20",n:"2k540 AKI-OKA ARTISAN",cat:"쇼핑",lat:35.7044,lng:139.7745,
-   d:"고가 아래 공예·디자인 상점가. 월요일 11시 이후 방문하고 개별 점포 휴무는 현장에서 확인합니다.",stay:"50분",cost:"무료~"},
-  {move:"🚶·JR 오카치마치 → 칸다 약 15분"},
-  {t:"12:20",n:"점심 · 칸다 마츠야",cat:"맛집",lat:35.6964,lng:139.7677,
-   d:"월요일 11:00~20:00 영업, 일요일 휴무. 오카치마치에서 니혼바시로 내려가는 선형축에 있고 예약 없이 이용 가능합니다. 대기 20분을 넘으면 선택 플래너의 멘야 스고·우미노사치 쇼로 전환합니다.",stay:"70분",cost:"¥1,200~",priority:"기본 1순위·20분 컷오프"},
+  {t:"09:20",n:"네즈신사 · 야나카긴자",cat:"관광",lat:35.7240,lng:139.7630,
+   d:"박물관이 쉬는 월요일에는 골목·신사 중심으로 시작합니다. 야나카긴자 점포가 열리는 10시 전후에 맞춰 남쪽으로 이동합니다.",stay:"85분",cost:"무료~"},
+  {move:"🚃 닛포리·오카치마치 이동 약 15분"},
+  {t:"11:00",n:"2k540 AKI-OKA ARTISAN",cat:"쇼핑",lat:35.7044,lng:139.7745,
+   d:"고가 아래 공예·디자인 상점가. 개별 점포 월요일 휴무가 있으면 통과 동선으로만 사용합니다.",stay:"35분",cost:"무료~"},
+  {move:"🚶 이와모토초까지 약 12분"},
+  {t:"11:50",n:"우미노사치 쇼",cat:"맛집",lat:35.6950,lng:139.7735,mapsaved:true,
+   d:"📍 평일 점심 11:45~14:00. 저장한 참치덮밥집을 기본 점심으로 배치하고 대기는 20분까지만 기다립니다. 선택 플래너의 멘야 스고·ANDRA·긴자 점심을 고르면 교체합니다.",stay:"70분",cost:"¥2,000~6,000",priority:"20분 대기 컷오프"},
   {move:"🚃 칸다 → 니혼바시 약 10분"},
-  {t:"13:45",n:"포켓몬센터 도쿄DX",cat:"쇼핑",lat:35.6802,lng:139.7735,
+  {t:"13:20",n:"포켓몬센터 도쿄DX",cat:"쇼핑",lat:35.6802,lng:139.7735,
    d:"9/26의 20분짜리 급한 방문을 없애고 월요일에 45분 확보했습니다. 포켓몬 카페는 별도 예약 성공 시 점심과 통합합니다.",stay:"45분",cost:"—"},
   {move:"🚇 니혼바시 → 긴자잇초메 약 10분"},
-  {t:"14:45",n:"긴자 이토야 본점",cat:"쇼핑",lat:35.6721,lng:139.7680,
+  {t:"14:20",n:"긴자 이토야 본점",cat:"쇼핑",lat:35.6721,lng:139.7680,
    d:"평일 20:00까지 운영. 문구·종이·디자인 층을 중심으로 50분 봅니다.",stay:"50분",cost:"—"},
   {move:"🚶 무인양품 긴자까지 약 7분"},
-  {t:"15:45",n:"무인양품 긴자 플래그십",cat:"쇼핑",lat:35.6721,lng:139.7642,
+  {t:"15:20",n:"무인양품 긴자 플래그십",cat:"쇼핑",lat:35.6721,lng:139.7642,
    d:"월요일 11:00~21:00. 관심층과 6층 ATELIER MUJI를 중심으로 보고 전 층 순회는 하지 않습니다.",stay:"60분",cost:"—"},
   {move:"🚶 GINZA SIX까지 약 8분"},
-  {t:"16:55",n:"긴자식스 옥상정원 · 주오도리",cat:"건축",lat:35.6697,lng:139.7635,
+  {t:"16:30",n:"긴자식스 옥상정원 · 주오도리",cat:"건축",lat:35.6697,lng:139.7635,
    d:"옥상정원과 긴자 거리 야경을 함께 봅니다. 토요일 보행자천국은 포기하되 쇼핑 시간을 확보한 선택입니다.",stay:"45분",cost:"무료"},
   {move:"🚶 도쿄국제포럼까지 약 12분"},
-  {t:"17:55",n:"도쿄국제포럼 · 유라쿠초 건축축",cat:"건축",lat:35.6769,lng:139.7637,
+  {t:"17:30",n:"도쿄국제포럼 · 유라쿠초 건축축",cat:"건축",lat:35.6769,lng:139.7637,
    d:"라파엘 비뇰리의 유리 홀과 유라쿠초 고가 주변을 보고 저녁으로 연결합니다. 9/30 도쿄역 쇼핑과 역할이 겹치지 않습니다.",stay:"55분",cost:"무료"},
-  {t:"19:00",n:"저녁 · 유라쿠초",cat:"맛집",lat:35.6749,lng:139.7628,
+  {t:"18:35",n:"저녁 · 유라쿠초",cat:"맛집",lat:35.6749,lng:139.7628,
    d:"고가 아래 식당가나 히비야 방향에서 대기 짧은 곳을 선택합니다.",stay:"80분",cost:"¥2,500~"}
  ]
 };
@@ -1266,16 +1257,17 @@ function effectiveDayItems(day){
     }
     if(cd.id==='c3'&&slot.title==='아키하바라 선택')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=890&&timeRank(p.t)<1080&&p.cat!=='맛집'));
     if(cd.id==='c3'&&slot.title==='아사쿠사 점심')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=630&&timeRank(p.t)<780));
-    if(cd.id==='c4'&&slot.title==='우에노 오전 대체'&&item.n.startsWith('야네센'))places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=570&&timeRank(p.t)<680));
     if(cd.id==='c4'&&slot.title==='칸다 저장 맛집 회수'){
-      places=places.filter(p=>p.n!=='점심 · 칸다 마츠야');
+      places=places.filter(p=>p.n!=='우미노사치 쇼');
       if(item.n==='American Diner Andra')places=places.filter(p=>p.n!=='2k540 AKI-OKA ARTISAN');
     }
     if(cd.id==='c4'&&item.n==='쇼에이도 긴자점')places=places.filter(p=>p.n!=='긴자식스 옥상정원 · 주오도리');
     if(cd.id==='c4'&&slot.title==='유라쿠초·마루노우치 마무리')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=1070&&timeRank(p.t)<1140&&p.cat!=='맛집'));
     if(cd.id==='c2'&&slot.title==='정원·점심'&&item.c!=='맛집')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)<660&&p.cat!=='맛집'));
     if(cd.id==='c2'&&slot.title==='아티존 대체')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=600&&timeRank(p.t)<800));
-    if(cd.id==='c2'&&slot.title==='긴자·니혼바시 회수')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=620&&timeRank(p.t)<840&&p.cat!=='이동'));
+    if(cd.id==='c2'&&slot.title==='긴자·니혼바시 회수'&&item.n!=='쇼에이도 긴자점')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=620&&timeRank(p.t)<840&&p.cat!=='이동'));
+    if(cd.id==='c2'&&slot.title==='긴자 점심·디저트'&&/안즈 하나레|MENYA ISHII/.test(item.n))places=places.filter(p=>p.n!=='텐동 카네코한노스케 츠키지 본점');
+    if(cd.id==='c2'&&slot.title==='아자부다이 저녁'&&item.n.startsWith('롯폰기 힐스'))places=places.filter(p=>p.n!=='도쿄타워 외관·조조지 야경');
     if(cd.id==='c6'&&slot.title==='출국 전 오전 핵심'){
       const end=rank<600?620:rank<680?685:725;
       places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=rank&&timeRank(p.t)<end&&p.cat!=='이동'));
@@ -1330,7 +1322,7 @@ function routeLinksFor(items,selected=false){
 function detailStateBadge(item){
   const saved=item.mapsaved?'<span class="badge mapsaved">📍 맵 저장</span>':'';
   if(item.choice)return `<span class="detail-state confirmed">선택 확정</span>${saved}`;
-  const fixed=Boolean(item.book)||Boolean(item.mandatory)||/ZE607|ZE610|고동민.*합류/.test(item.n);
+  const fixed=Boolean(item.mandatory)||/ZE607|ZE610|고동민.*합류/.test(item.n);
   return `${fixed?'<span class="detail-state fixed">필수</span>':'<span class="detail-state base">기본</span>'}${saved}`;
 }
 
@@ -1339,14 +1331,21 @@ function select(id){
   currentDetailDay=id;
   const renderItems=effectiveDayItems(day);
   const picked=selectedChoiceItems(id);
+  const roppongiReplacement=picked.some(({item})=>item.n.startsWith('롯폰기 힐스'));
+  const displayZone=roppongiReplacement
+    ?day.zone.replace('아자부다이 · 도쿄타워','아자부다이 → 롯폰기')
+    :day.zone;
+  const displayRain=roppongiReplacement
+    ?day.rain.replace('도쿄타워 외관은 생략','롯폰기 이동은 줄이고 도쿄시티뷰 실내 관람을 유지')
+    :day.rain;
   document.querySelectorAll('.tab').forEach(t=>t.setAttribute('aria-selected',t.dataset.id===id));
 
   document.getElementById('dayhead').innerHTML=
     `<h2><span class="dot" style="background:${day.hex}"></span>${day.label}(${day.dow}) · ${day.theme}</h2>
-     <div class="zone">${day.zone}${picked.length?` · <b>${picked.length}개 선택 확정 · 시간순 반영</b>`:' · 기본 일정'}</div>
+     <div class="zone">${displayZone}${picked.length?` · <b>${picked.length}개 선택 확정 · 시간순 반영</b>`:' · 기본 일정'}</div>
      <div class="day-notes">
        <div class="day-note">🏨 ${day.lodging}</div>
-       <div class="day-note">☔ ${day.rain}</div>
+       <div class="day-note">☔ ${displayRain}</div>
      </div>
      ${routeLinksFor(renderItems,Boolean(picked.length))}`;
 
@@ -1443,23 +1442,23 @@ function applyItineraryMode(mode){
   document.getElementById('versionNoDisney').setAttribute('aria-selected',String(no));
   document.getElementById('versionTitle').textContent=no?'디즈니 제외 · 도쿄 권역 분산 재설계안':'디즈니 포함 · 휴무 회피 전면 재설계안';
   document.getElementById('versionNote').innerHTML=no
-    ?"공통 필수축을 유지하면서 9/26의 긴자·니혼바시와 9/27의 우에노를 <b>9/28 월요일 중앙축</b>으로 옮겼습니다. 근교 추가 없이 기존 일정을 3일에 걸쳐 다시 분산했습니다."
+    ?"9/27 동부에서 <b>국립도쿄박물관과 일요일 보행자천국</b>을 함께 보고, 9/28은 <b>야나카·저장 맛집·니혼바시·긴자</b>로 분산했습니다."
     :"9/26 확정축 뒤 <b>9/27 서부 → 9/28 디즈니씨 → 9/29 동부</b>로 재배치했습니다. 디즈니 운영조건은 유지하면서 화요일 동부권의 국립도쿄박물관과 저장 맛집을 함께 살립니다.";
   document.getElementById('spotCount').textContent='40곳';
   document.getElementById('featureDay').textContent=no?'3일':'1일';
   document.getElementById('featureDayLabel').textContent=no?'권역 재조합':'디즈니씨';
-  document.getElementById('bookingCount').textContent=no?'2+1건':'3+1건';
-  document.getElementById('bookingCountLabel').textContent=no?'필수 2·권장 1':'필수 3·권장 1';
-  document.getElementById('heroBudget').textContent=no?'약 ¥48–70k':'약 ¥57–79k';
-  document.getElementById('heroBudgetLabel').textContent=no?'쇼핑 제외 기본비':'쇼핑·DPA 제외 기본비';
+  document.getElementById('bookingCount').textContent=no?'5건':'6건';
+  document.getElementById('bookingCountLabel').textContent='확정 1·예약/확인 '+(no?'4':'5');
+  document.getElementById('heroBudget').textContent=no?'약 ¥47–69k':'약 ¥57–80k';
+  document.getElementById('heroBudgetLabel').textContent=no?'항공·숙박·쇼핑 제외':'항공·숙박·쇼핑·DPA 제외';
   document.getElementById('summaryD2').innerHTML=no
     ?'<td><b>9/26(토)</b></td><td>츠키지 · 하마리큐 · 츠키시마 · 아자부다이·도쿄타워</td><td>츠키지 → 10:05 카네코한노스케 → 하마리큐 → 14:00 부엉이카페 → 아자부다이·도쿄타워</td>'
     :'<td><b>9/26(토)</b></td><td>츠키지 · 긴자 · 츠키시마 · 아자부다이·도쿄타워</td><td>츠키지 → 10:05 카네코한노스케 → 긴자 핵심 → 14:00 부엉이카페 → 아자부다이·도쿄타워</td>';
   document.getElementById('summaryD3').innerHTML=no
-    ?'<td><b>9/27(일)</b></td><td>아사쿠사 · 스카이트리 · 칸다 · 아키하바라</td><td>아사쿠사 → 스카이트리 → 칸다묘진 → 일요일 아키하바라 보행자천국</td>'
+    ?'<td><b>9/27(일)</b></td><td>아사쿠사 · 스카이트리 · 우에노 · 아키하바라</td><td>센소지 → 스카이트리 → 국립도쿄박물관 → 2k540 → 아키하바라 보행자천국</td>'
     :'<td><b>9/27(일)</b></td><td>신주쿠 · 하라주쿠 · 오모테산도 · 시부야</td><td>신주쿠교엔 → 메이지진구 → CHERMSIDE → 오모테산도 → SHIBUYA SKY</td>';
   document.getElementById('summaryD4').innerHTML=no
-    ?'<td><b>9/28(월)</b></td><td>우에노 · 칸다 · 니혼바시 · 긴자 · 유라쿠초</td><td>우에노·아메요코 → 칸다 마츠야 → 포켓몬DX → 이토야·MUJI → 국제포럼</td>'
+    ?'<td><b>9/28(월)</b></td><td>야나카 · 오카치마치 · 칸다 · 니혼바시 · 긴자</td><td>네즈·야나카 → 2k540 → 우미노사치 → 포켓몬DX → 이토야·MUJI → 국제포럼</td>'
     :'<td><b>9/28(월)</b></td><td>마이하마</td><td>도쿄 디즈니씨 종일 · 확보한 앱 예약시간 우선</td>';
   document.getElementById('summaryD5').innerHTML=no
     ?'<td><b>9/29(화)</b></td><td>신주쿠 · 하라주쿠 · 오모테산도 · 시부야</td><td>신주쿠교엔 → 메이지진구 → 하라주쿠 → 오모테산도 → SHIBUYA SKY</td>'
@@ -1471,16 +1470,16 @@ function applyItineraryMode(mode){
   document.getElementById('skytreeBookingDate').textContent=no?'9/27(일)':'9/29(화)';
   document.getElementById('kanekoBookingRow').style.display='';
   document.getElementById('versionCallout').innerHTML=no
-    ?'<b>디즈니 제외판 재조합 결론 —</b> 9/26은 예약·합류 중심으로 줄이고, 9/27은 일요일 한정 보행자천국에 집중합니다. 빠진 우에노·니혼바시·긴자는 9/28 월요일에 북→남 한 방향으로 연결했습니다. 9/28 점심은 칸다 마츠야를 기본으로 고정하고, 대기가 20분을 넘을 때만 저장 맛집으로 전환합니다.<div class="source-links">공식 확인 · <a href="https://kaneko-hannosuke.com/shop/?id=0020038&amp;top=" target="_blank" rel="noopener">카네코한노스케 츠키지</a> · <a href="https://www.ito-ya.co.jp/ginza" target="_blank" rel="noopener">긴자 이토야</a> · <a href="https://www.muji.com/jp/ja/shop/detail/046604" target="_blank" rel="noopener">MUJI 긴자</a></div>'
+    ?'<b>디즈니 제외판 재조합 —</b> 9/27은 국립도쿄박물관과 일요일 아키하바라를 함께 살리고, 9/28은 네즈·야나카에서 남쪽으로 내려오며 저장 맛집과 니혼바시·긴자를 연결합니다. 월요일 휴관 미술관은 넣지 않습니다.<div class="source-links">공식 확인 · <a href="https://www.tnm.jp/" target="_blank" rel="noopener">국립도쿄박물관</a> · <a href="https://kaneko-hannosuke.com/shop/?id=0020038&amp;top=" target="_blank" rel="noopener">카네코한노스케 츠키지</a> · <a href="https://www.ito-ya.co.jp/ginza" target="_blank" rel="noopener">긴자 이토야</a></div>'
     :'<b>디즈니씨 9/28 핵심 —</b> 09:00~21:00·성인 ¥9,900. 타워 오브 테러·인디아나 존스·머메이드 라군 시어터·메디테레이니언 하버 출발 스티머라인은 휴장입니다. Believe! 19:50·Night High Halloween 20:50 예정이며 당일 앱 시간이 권역 순서보다 우선입니다.<div class="source-links">공식 확인 · <a href="https://www.tokyodisneyresort.jp/en/tds/daily/calendar/20260928/" target="_blank" rel="noopener">9/28 디즈니씨</a> · <a href="https://www.tnm.jp/modules/r_exhibition/index.php?controller=hall&amp;date=2026-09-29&amp;hid=12" target="_blank" rel="noopener">9/29 국립도쿄박물관</a> · <a href="https://www.sompo-museum.org/exhibitions/schedule/" target="_blank" rel="noopener">SOMPO 전시 일정</a> · <a href="https://www.mensugo.com/" target="_blank" rel="noopener">멘야 스고</a></div>';
-  document.getElementById('fixedBudgetLabel').textContent=no?'고정 예약비 · AMBIENT·SKY':'고정 예약비 · 디즈니·AMBIENT·SKY';
-  document.getElementById('fixedBudget').textContent=no?'5,900 –':'15,800 –';
+  document.getElementById('fixedBudgetLabel').textContent=no?'예정 입장비 · 후쿠로·AMBIENT·SKY':'예정 입장비 · 디즈니·후쿠로·AMBIENT·SKY';
+  document.getElementById('fixedBudget').textContent=no?'7,900 –':'17,800 –';
   document.getElementById('transportBudgetLabel').textContent="교통비 · N'EX + 시내 IC";
-  document.getElementById('transportBudget').textContent='11,200 – 13,200';
-  document.getElementById('totalBudget').textContent=no?'약 48,000 – 70,000':'약 57,000 – 79,000';
+  document.getElementById('transportBudget').textContent=no?'8,500 – 10,000':'9,000 – 11,000';
+  document.getElementById('totalBudget').textContent=no?'약 47,000 – 69,000':'약 57,000 – 80,000';
   document.getElementById('dpaBudgetRow').style.display=no?'none':'';
   document.getElementById('variantCaution').innerHTML=no
-    ?'<b>월요일 휴관·맛집 컷오프</b><p>우에노 박물관 내부 관람은 넣지 않습니다. 칸다 마츠야를 기본으로 하되 대기 20분을 넘으면 멘야 스고 또는 우미노사치 쇼로 전환합니다.</p>'
+    ?'<b>월요일 휴관·맛집 컷오프</b><p>박물관은 9/27에 끝내고 9/28에는 다시 넣지 않습니다. 우미노사치 쇼 대기가 20분을 넘으면 멘야 스고 또는 ANDRA로 전환합니다.</p>'
     :'<b>디즈니 이동</b><p>도쿄역 게이요선 승강장은 다른 노선에서 멉니다. 환승에 약 15분을 추가하고 공식 앱을 입장 전에 설치하세요.</p>';
   updateReservationNumbers();
   const choiceDay=activeChoiceDay();
