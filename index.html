@@ -220,7 +220,7 @@ tr:last-child td{border-bottom:none}
   <div class="dates">2026.09.25(금) — 09.30(수)</div>
   <div class="tiles">
     <div class="tile"><div class="v">6일 5박</div><div class="k">여행 기간</div></div>
-    <div class="tile"><div class="v" id="spotCount">47곳</div><div class="k">Google 지도 저장</div></div>
+    <div class="tile"><div class="v" id="spotCount">53곳</div><div class="k">Google 지도 저장</div></div>
     <div class="tile"><div class="v" id="featureDay">1일</div><div class="k" id="featureDayLabel">디즈니씨</div></div>
     <div class="tile"><div class="v" id="bookingCount">6건</div><div class="k" id="bookingCountLabel">확정 1·예약/확인 5</div></div>
     <div class="tile"><div class="v" id="heroBudget">약 ¥58–81k</div><div class="k" id="heroBudgetLabel">항공·숙박·쇼핑·DPA 제외</div></div>
@@ -276,7 +276,7 @@ tr:last-child td{border-bottom:none}
     <div class="choice-head">
       <div>
         <h2>날짜별 선택 플래너</h2>
-        <div class="sub">체크는 아직 초안입니다. <b>선택 일정 확정</b>을 눌러야 같은 시간대의 기본 코스를 교체하고 상세 일정·지도·Google 구간 동선에 고정됩니다. <b>📍 맵 저장</b>은 <a href="https://maps.app.goo.gl/xqAmQD8casuqXV1B6" target="_blank" rel="noopener">Google 지도 공유 목록 ↗</a>을 2026-08-31에 직접 전수 확인한 <b>47곳</b> 기준입니다. Google 목록과 이 웹은 실시간 자동 연동이 아니므로 이후 추가 장소는 다시 갱신해야 합니다.</div>
+        <div class="sub">체크는 아직 초안입니다. <b>선택 일정 확정</b>을 눌러야 같은 시간대의 기본 코스를 교체하고 상세 일정·지도·Google 구간 동선에 고정됩니다. <b>📍 맵 저장</b>은 <a href="https://maps.app.goo.gl/xqAmQD8casuqXV1B6" target="_blank" rel="noopener">Google 지도 공유 목록 ↗</a>을 2026-08-31에 직접 전수 확인한 <b>53곳</b> 기준입니다. Google 목록과 이 웹은 실시간 자동 연동이 아니므로 이후 추가 장소는 다시 갱신해야 합니다.</div>
       </div>
       <div class="choice-actions">
         <span class="choice-count" id="choiceCount" aria-live="polite">선택 0 · 확정 0</span>
@@ -470,6 +470,7 @@ const CHOICE_DAYS=[
    {n:"후글렌 도쿄 시부야",c:"카페",l:"선택",at:"20:30",d:"60분",p:"¥1,000~",mapsaved:true,note:"📍 공식 일요일 07:00~익일 01:00, 화요일 23:00까지. 미야시타파크 저녁 뒤 도미가야로 이동하는 야간 선택이며, 피곤하면 생략."}
   ]},
   {time:"19:20",title:"저녁",rule:"1곳 선택",items:[
+   {n:"스시노미도리 시부야점",c:"맛집",l:"추천",at:"18:50",d:"90분",p:"¥2,000~4,000",mapsaved:true,note:"📍 신규 맵 저장. 시부야 마크시티 4층·일요일 11:00~21:00(L.O.20:30). SKY 뒤 하치코를 보고 바로 이동하며, 이 선택을 확정하면 PARCO·미야시타파크를 빼고 식사를 우선합니다. 10:00부터 현장 순번표 발권 가능."},
    {n:"논베이요코초",c:"맛집",l:"선택",d:"80분",p:"¥3,000~",note:"작은 이자카야 골목. 초반 입장 권장."},
    {n:"우오베이 시부야",c:"맛집",l:"추천",d:"45분",p:"¥1,500~",note:"회전초밥. 빠른 저녁 선택."},
    {n:"규카츠 모토무라",c:"맛집",l:"선택",d:"50분",p:"¥1,900~",note:"한국인 인지도가 높지만 대기 대비 효율은 보통. 줄이 길면 우오베이로 전환."},
@@ -541,6 +542,9 @@ const CHOICE_DAYS=[
    {n:"아티존 미술관 — 소트사스·다키구치 슈조·소장품전",c:"건축",l:"추천",at:"10:30",d:"110분",p:"WEB ¥1,200",note:"긴자 쇼핑에 더하는 일정이 아니라 GINZA SIX·MUJI·이토야·포켓몬센터를 교체하는 선택. 소트사스 디자인과 피카소·모네·르누아르 등 소장품 원화를 본 뒤 간단히 점심을 먹고 14:00 부엉이카페로 이동합니다."}
   ]},
   {time:"11:00",title:"긴자·츠키지 점심·디저트",rule:"1~2곳 선택",items:[
+   {n:"덴푸라 카네코한노스케 니혼바시점",c:"맛집",l:"카네코 대체",at:"10:05",d:"70분",p:"¥1,000~2,000",mapsaved:true,note:"📍 신규 맵 저장. 토요일 10:00~21:00. 덮밥이 아닌 갓 튀긴 덴푸라 정식이 우선이면 츠키지 카네코와 교체하고 11:15까지 나와 긴자로 이동합니다."},
+   {n:"니혼바시 돈카츠 하지메",c:"맛집",l:"카네코 대체",at:"10:05",d:"70분",p:"¥2,000~3,000",mapsaved:true,note:"📍 신규 맵 저장. 토요일 10:00 개점. 츠키지 카네코 대신 돈카츠를 먹고 11:15까지 나올 때만 선택합니다."},
+   {n:"니혼바시 돈카츠 하지메 하나레",c:"맛집",l:"카네코 대체",at:"10:05",d:"70분",p:"¥2,000~3,000",mapsaved:true,note:"📍 신규 맵 저장. 토요일 10:00 개점·온라인 예약 가능. 본점보다 예약 안정성을 우선할 때 선택하며 본점과 둘 다 고르지 않습니다."},
    {n:"호카이반야",c:"맛집",l:"카네코 대체",at:"08:30",d:"50분",p:"¥3,000~5,000",mapsaved:true,note:"📍 신규 맵 저장. 츠키지 장외시장 안의 해산물덮밥. 08:30 식사로 선택하면 카네코한노스케는 빼고, 09:20에 나와 혼간지로 이동합니다."},
    {n:"고다이메 하나야마우동 긴자점",c:"맛집",l:"카네코 대체",at:"11:00",d:"70분",p:"¥1,000~2,000",mapsaved:true,note:"📍 신규 맵 저장. 토요일 11:00~16:00·정리권 운영. 11:00 첫 순번을 확보했을 때만 카네코와 교체하고 12:20까지 퇴장합니다."},
    {n:"고다이메 하나야마 우동 니혼바시점",c:"맛집",l:"후순위",at:"11:00",d:"70분",p:"¥1,000~2,000",mapsaved:true,note:"📍 신규 맵 저장. 토요일 11:00~16:00. 긴자점보다 왕복 이동이 늘어나므로 긴자점 대기 실패 시에만 선택하고 12:20 퇴장을 지킵니다."},
@@ -549,6 +553,9 @@ const CHOICE_DAYS=[
    {n:"DOLCE TACUBO GINZA",c:"맛집",l:"간식",at:"12:15",d:"25분",p:"¥1,000~2,000",mapsaved:true,note:"📍 평점 4.0. 긴자 7초메 테이크아웃 디저트. 안즈 하나레와 가깝고 니혼바시 이동 전 짧게 추가 가능."},
    {n:"茶屋いつか 銀座店",c:"맛집",l:"간식",at:"12:15",d:"25분",p:"¥1,000~",mapsaved:true,note:"📍 평점 4.2. 긴자 5초메 말차 디저트. 식사 대신이 아니라 점심 뒤 간식 1곳으로 선택."}
   ]},
+  {time:"19:15",title:"아자부주반·롯폰기 저녁",rule:"1곳 선택",items:[
+   {n:"KABUN-AZABUJUBAN",c:"맛집",l:"선택",at:"19:15",d:"120분",p:"¥8,000~14,000 + 10%",mapsaved:true,modes:["disney"],note:"📍 신규 맵 저장. 토요일 17:00~24:00. AMBIENT 뒤 아자부주반에서 예약 식사를 하고 21:30 롯폰기 야간 산책으로 마무리하는 대안입니다. 기본 롯폰기 힐스 식사만 교체합니다."}
+  ]}
  ]
 },
 {
@@ -559,6 +566,9 @@ const CHOICE_DAYS=[
   ]},
   {time:"14:25",title:"후반 체력 조절",rule:"1곳 선택",items:[
    {n:"도쿄타워 생략 · 아자부다이 직행",c:"휴양",l:"대체",at:"14:25",d:"35분",p:"무료",modes:["nodisney"],note:"비가 오거나 해리포터 투어가 밀렸을 때 도쿄타워 외관을 빼고 아자부다이 휴식·건축 산책 시간을 확보합니다. 아자부다이·AMBIENT·롯폰기는 유지합니다."}
+  ]},
+  {time:"18:40",title:"아자부주반·롯폰기 저녁",rule:"1곳 선택",items:[
+   {n:"KABUN-AZABUJUBAN",c:"맛집",l:"선택",at:"18:40",d:"120분",p:"¥8,000~14,000 + 10%",mapsaved:true,modes:["nodisney"],note:"📍 신규 맵 저장. 월요일 17:00~익일 01:00. AMBIENT 뒤 아자부주반에서 예약 식사를 하고 20:55 롯폰기 야간 산책으로 마무리합니다. 기본 롯폰기 힐스 식사만 교체합니다."}
   ]},
   {time:"09:00",title:"입장 직후 DPA 우선순위",rule:"1곳 선택",items:[
    {n:"판타지 스프링스 DPA 최우선",c:"체험",l:"추천",at:"09:00",d:"10분",p:"DPA 별도",modes:["disney"],note:"입장 직후 원하는 판타지 스프링스 어트랙션의 DPA부터 확보하고 나머지 패스·추첨을 진행합니다."},
@@ -579,7 +589,7 @@ const CHOICE_DAYS=[
  ]
 },
 {
- id:"cx",label:"저장목록 미배치",route:"Google 지도 저장 47곳 중 기본 일정이나 날짜별 선택에 넣지 못한 장소입니다. 체크해 억지로 추가하는 항목이 아니라 제외 이유를 확인하는 목록입니다.",
+ id:"cx",label:"저장목록 미배치",route:"Google 지도 저장 53곳 중 기본 일정이나 날짜별 선택에 넣지 못한 장소입니다. 체크해 억지로 추가하는 항목이 아니라 제외 이유를 확인하는 목록입니다.",
  slots:[
   {time:"미배치",title:"휴관·동선 충돌",rule:"이번 여행에는 추가하지 않음",items:[
    {n:"모리 미술관",c:"관광",l:"기간 휴관",d:"—",p:"—",mapsaved:true,no:true,note:"📍 Google 지도 저장. 2026년 9월 24~30일 전시 교체 휴관이라 여행 전 기간 내부 관람이 불가능합니다."},
@@ -588,7 +598,8 @@ const CHOICE_DAYS=[
    {n:"라멘 브레이크 비츠",c:"맛집",l:"영업일 충돌",d:"70분",p:"¥1,000~2,000",mapsaved:true,no:true,note:"📍 Google 지도 저장. 현재 수~토 점심 예약제이나 9/26은 14:00 츠키시마 확정 일정과 권역이 충돌하고 다른 날은 영업일이 맞지 않습니다."},
    {n:"카네코한노스케 니혼바시 본점",c:"맛집",l:"중복 제외",d:"70분",p:"¥1,000~2,000",mapsaved:true,no:true,note:"📍 Google 지도 저장. 9/26 츠키지 지점을 기본으로 잡았으므로 같은 계열 중복 방문은 제외합니다. 츠키지 예약 실패 시에만 대체 후보입니다."},
    {n:"캐널카페",c:"휴양",l:"권역 제외",d:"90분",p:"¥1,000~",mapsaved:true,no:true,note:"📍 Google 지도 저장. 이이다바시·카구라자카가 어느 기본 축에도 자연스럽게 붙지 않아 왕복 이동을 만들므로 이번 5박 6일에는 제외합니다."},
-   {n:"긴자 돈카츠 사이토",c:"맛집",l:"영업일 충돌",d:"70분",p:"¥3,000~4,000",mapsaved:true,no:true,note:"📍 신규 맵 저장. 공식 토·일요일 휴무라 중앙권 방문일 9/26 토요일에는 불가합니다. 평일에는 해리포터/디즈니·동부·출국 일정과 충돌해 이번 여행에는 넣지 않습니다."}
+   {n:"긴자 돈카츠 사이토",c:"맛집",l:"영업일 충돌",d:"70분",p:"¥3,000~4,000",mapsaved:true,no:true,note:"📍 신규 맵 저장. 공식 토·일요일 휴무라 중앙권 방문일 9/26 토요일에는 불가합니다. 평일에는 해리포터/디즈니·동부·출국 일정과 충돌해 이번 여행에는 넣지 않습니다."},
+   {n:"커리 & 바 모쿠바자",c:"맛집",l:"폐업",d:"—",p:"—",mapsaved:true,no:true,note:"📍 신규 맵 저장. Google 지도에서 현재 폐업으로 표시되고 기존 진구마에 매장은 2026년 4월 영업 종료·지방 이전 정보가 확인되어 도쿄 일정에서 제외합니다."}
   ]}
  ]
 }
@@ -642,6 +653,8 @@ const CHOICE_COORDS={
 "Supreme 시부야":[35.6635,139.6965],"후글렌 도쿄 시부야":[35.6690,139.6886],
 "쇼에이도 긴자점":[35.6703,139.7594],"카네코한노스케 니혼바시 본점":[35.6849,139.7744],
 "호카이반야":[35.6649,139.7707],"고다이메 하나야마우동 긴자점":[35.6703,139.7710],"고다이메 하나야마 우동 니혼바시점":[35.6810,139.7742],"긴자 돈카츠 사이토":[35.6674,139.7650],
+"스시노미도리 시부야점":[35.6583453,139.6989875],"덴푸라 카네코한노스케 니혼바시점":[35.6862974,139.7757336],
+"니혼바시 돈카츠 하지메":[35.6864255,139.7754729],"니혼바시 돈카츠 하지메 하나레":[35.6854075,139.7753620],"KABUN-AZABUJUBAN":[35.6564570,139.7374466],
 "카구라자카·캐널카페":[35.7003,139.7413]
 };
 
@@ -699,7 +712,7 @@ function targetDayForChoice(choiceDay,item){
   return 'd1';
 }
 function visibleChoiceSlots(day){
-  const slots=day.id==='c2'?day.slots.filter(slot=>['긴자·니혼바시 회수','아티존 대체','긴자·츠키지 점심·디저트'].includes(slot.title)):day.slots;
+  const slots=day.id==='c2'?day.slots.filter(slot=>['긴자·니혼바시 회수','아티존 대체','긴자·츠키지 점심·디저트','아자부주반·롯폰기 저녁'].includes(slot.title)):day.slots;
   return slots.filter(slot=>visibleChoiceItems(day,slot).length);
 }
 function visibleChoiceItems(day,slot){
@@ -771,6 +784,7 @@ function renderChoiceDay(id){
   document.querySelectorAll('#choiceBody input[type="checkbox"]').forEach(input=>input.addEventListener('change',()=>{
     const parts=input.dataset.key.split('|'),prefix=`${parts[0]}|${parts[1]}|${parts[2]}|`;
     const slot=visibleSlots.find(s=>s.time===parts[1]&&s.title===parts[2]);
+    const selectedItem=slot?.items.find(item=>choiceKey(day,slot,item)===input.dataset.key);
     if(input.checked){
       if((day.id==='c3'&&parts[1]==='14:00')||(day.id==='cx'&&parts[1]==='반나절')){
         [...choiceDraft].filter(k=>k.startsWith(`${parts[0]}|${parts[1]}|`)&&!k.startsWith(prefix)).forEach(k=>choiceDraft.delete(k));
@@ -779,6 +793,9 @@ function renderChoiceDay(id){
         [...choiceDraft].filter(k=>k.startsWith('c2|')&&(k.includes('|긴자·니혼바시 회수|')||k.includes('|긴자·츠키지 점심·디저트|'))).forEach(k=>choiceDraft.delete(k));
       }else if(day.id==='c2'&&(parts[2]==='긴자·니혼바시 회수'||parts[2]==='긴자·츠키지 점심·디저트')){
         [...choiceDraft].filter(k=>k.startsWith('c2|10:20|아티존 대체|')).forEach(k=>choiceDraft.delete(k));
+      }
+      if(day.id==='c2'&&parts[2]==='긴자·츠키지 점심·디저트'&&selectedItem?.at!=='12:15'){
+        slot.items.filter(item=>item.at!=='12:15').forEach(item=>choiceDraft.delete(choiceKey(day,slot,item)));
       }
       const max=slotMax(slot.rule),inSlot=[...choiceDraft].filter(k=>k.startsWith(prefix));
       while(inSlot.length>=max){const old=inSlot.shift();choiceDraft.delete(old);}
@@ -1220,6 +1237,7 @@ function effectiveDayItems(day){
       else{const dinner=places.find(p=>removeBase(p)&&p.cat==='맛집'&&timeRank(p.t)>=1020);if(dinner)dinner.t='19:20';}
     }
     if(cd.id==='c5'&&slot.title==='저녁')places=places.filter(p=>p.n!=='미야시타파크 · KITH Tokyo');
+    if(cd.id==='c5'&&item.n==='스시노미도리 시부야점')places=places.filter(p=>!p.n.startsWith('시부야 PARCO'));
     if(cd.id==='c3'&&slot.title==='스카이트리 구간'){
       places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=630&&timeRank(p.t)<720&&p.cat!=='맛집'));
       const lunch=places.find(p=>removeBase(p)&&p.cat==='맛집'&&timeRank(p.t)>=720&&timeRank(p.t)<780);
@@ -1244,7 +1262,11 @@ function effectiveDayItems(day){
     if(cd.id==='c2'&&slot.title==='정원·점심'&&item.c!=='맛집')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)<660&&p.cat!=='맛집'));
     if(cd.id==='c2'&&slot.title==='아티존 대체')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=600&&timeRank(p.t)<800));
     if(cd.id==='c2'&&slot.title==='긴자·니혼바시 회수'&&item.n!=='쇼에이도 긴자점')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=620&&timeRank(p.t)<760&&p.cat!=='이동'));
-    if(cd.id==='c2'&&slot.title==='긴자·츠키지 점심·디저트'&&/호카이반야|하나야마|안즈 하나레|MENYA ISHII/.test(item.n))places=places.filter(p=>p.n!=='텐동 카네코한노스케 츠키지 본점');
+    if(cd.id==='c2'&&slot.title==='긴자·츠키지 점심·디저트'&&/호카이반야|하나야마|안즈 하나레|MENYA ISHII|덴푸라 카네코|돈카츠 하지메/.test(item.n))places=places.filter(p=>p.n!=='텐동 카네코한노스케 츠키지 본점');
+    if(item.n==='KABUN-AZABUJUBAN'){
+      const roppongi=places.find(p=>p.n.startsWith('롯폰기 힐스'));
+      if(roppongi){roppongi.t=day.id==='d2'?'21:30':'20:55';roppongi.cat='야경';roppongi.stay='35분';roppongi.cost='무료';roppongi.d='KABUN 식사 후 모리정원·게야키자카를 짧게 걸으며 롯폰기 방문은 유지합니다.';}
+    }
     if(cd.id==='c6'&&slot.title==='출국 전 오전 핵심'){
       const end=rank<600?620:rank<680?685:725;
       places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=rank&&timeRank(p.t)<end&&p.cat!=='이동'));
@@ -1419,7 +1441,7 @@ function applyItineraryMode(mode){
   document.getElementById('versionNote').innerHTML=no
     ?"<b>9/26 중앙·부엉이·오다이바 → 9/27 서부·시부야 → 9/28 해리포터·아자부다이·롯폰기 → 9/29 동부</b>로 배치했습니다. 예약시간·휴관일·영업일을 지키면서 같은 권역을 한 방향으로 잇는 조합입니다."
     :"9/26 확정축 뒤 <b>9/27 서부 → 9/28 디즈니씨 → 9/29 동부</b>로 재배치했습니다. 디즈니 운영조건은 유지하면서 화요일 동부권의 국립도쿄박물관과 저장 맛집을 함께 살립니다.";
-  document.getElementById('spotCount').textContent='47곳';
+  document.getElementById('spotCount').textContent='53곳';
   document.getElementById('featureDay').textContent=no?'2곳':'1일';
   document.getElementById('featureDayLabel').textContent=no?'해리포터·오다이바':'디즈니씨';
   document.getElementById('bookingCount').textContent='6건';
