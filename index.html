@@ -209,8 +209,8 @@ tr:last-child td{border-bottom:none}
 </section>
 
 <section class="card pad" style="padding-top:15px;padding-bottom:15px">
-  <h2 id="versionTitle">디즈니 포함 · 현재 추천안</h2>
-  <div class="version-note" id="versionNote">9/26 확정 일정 뒤 <b>9/27 서부 → 9/28 디즈니씨 → 9/29 동부</b>로 재배치했습니다. 화요일 동부권에서 저장 맛집과 국립도쿄박물관을 함께 살리는 조합입니다.</div>
+  <h2 id="versionTitle">디즈니 제외 · 전 권역 재조합 최종안</h2>
+  <div class="version-note" id="versionNote"><b>9/26 중앙·부엉이·오다이바 → 9/27 서부·시부야 → 9/28 해리포터·아자부다이·롯폰기 → 9/29 동부</b>로 배치했습니다. 예약시간·휴관일·영업일을 지키면서 같은 권역을 한 방향으로 잇는 조합입니다.</div>
 </section>
 
 <!-- ══ HERO ══ -->
@@ -251,22 +251,6 @@ tr:last-child td{border-bottom:none}
     <tr id="summaryD5"><td><b>9/29(화)</b></td><td>아사쿠사 · 스미다 · 우에노 · 아키하바라 → 요요기</td><td>센소지 → 스카이트리 → ANDRA → 히로시게 특별전 → 아키하바라 → 우동 신보리</td></tr>
     <tr><td><b>9/30(수)</b></td><td>고쿄 · 도쿄역 · 나리타</td><td>도쿄역 짐 보관 → 고쿄 → 도쿄역 → N'EX → 나리타</td></tr>
   </table></div>
-</section>
-
-<!-- ══ 디즈니 제외안 시나리오 비교 ══ -->
-<section class="card pad" id="noDisneyScenario" style="display:none">
-  <h2>디즈니 제외안 전체 날짜 조합 비교</h2>
-  <div class="sub" style="margin-bottom:14px">9/25는 16:30 항공 도착, 9/30은 16:20 출국·N'EX 때문에 고정하고 이동 가능한 9/26~29의 모든 권역을 재배치 · 100점 만점: 예약·필수 25 + 영업일 25 + 권역·환승 20 + 일일 부하 15 + 대표 관광 15</div>
-  <div class="table-scroll"><table>
-    <tr><th>순위</th><th>9/26 토</th><th>9/27 일</th><th>9/28 월</th><th>9/29 화</th><th class="num">점수</th></tr>
-    <tr><td><b>1</b></td><td><b>중앙·부엉이·오다이바</b></td><td><b>서부·시부야</b></td><td><b>해리포터·아자부다이·롯폰기</b></td><td><b>동부·우에노·아키하바라</b></td><td class="num"><b>94</b><br><small>25·24·19·13·13</small></td></tr>
-    <tr><td>2</td><td>중앙·부엉이·오다이바</td><td>동부·아키하바라</td><td>해리포터·아자부다이·롯폰기</td><td>서부·시부야</td><td class="num">88<br><small>25·20·19·12·12</small></td></tr>
-    <tr><td>3</td><td>중앙·부엉이·아자부다이</td><td>서부·시부야</td><td>해리포터·오다이바</td><td>동부·우에노·아키하바라</td><td class="num">78<br><small>25·22·12·8·11</small></td></tr>
-    <tr><td>4</td><td>오다이바·부엉이·아자부다이</td><td>동부·아키하바라</td><td>해리포터·중앙</td><td>서부·시부야</td><td class="num">74<br><small>25·18·13·7·11</small></td></tr>
-    <tr><td>5</td><td>중앙·부엉이·오다이바</td><td>해리포터·서부</td><td>동부</td><td>아자부다이·롯폰기·시부야</td><td class="num">66<br><small>21·12·12·8·13</small></td></tr>
-    <tr><td>6</td><td>중앙·부엉이·오다이바</td><td>동부</td><td>서부</td><td>해리포터·아자부다이·롯폰기</td><td class="num">61<br><small>25·8·11·6·11</small></td></tr>
-  </table></div>
-  <div class="callout"><b>최종 선택 근거 —</b> 9/26은 14:00 츠키시마 예약 뒤 동쪽 오다이바로 계속 진행하고, 9/28은 도시마엔에서 오에도선으로 아카바네바시에 내려 도쿄타워→아자부다이→롯폰기로 끝냅니다. 9/27 서부는 신주쿠교엔 월요일 휴원을 피하고, 9/29 동부는 화요일 개관 박물관과 평일 저장 맛집을 함께 살립니다.</div>
 </section>
 
 <!-- ══ 일자별 상세 (트리플 스타일) ══ -->
@@ -894,7 +878,7 @@ const DAYS=[
    d:"📍 공식 11:00~19:00·정기휴일 없음. 건축 산책을 시작하기 전에 15분만 들러 포장하고, 줄이 10분을 넘으면 생략합니다.",stay:"15분",cost:"¥500~",priority:"10분 대기 컷오프"},
   {move:"🚶 오모테산도 힐즈 방향 약 5분"},
   {t:"13:50",n:"오모테산도 현대건축 산책",cat:"건축",lat:35.6652,lng:139.7123,
-   d:"오모테산도 힐즈 → Dior·GYRE → Prada Aoyama 순으로 서쪽에서 동쪽으로 한 방향으로 봅니다. 매장 내부는 관심 있는 1~2곳만 들어갑니다.",stay:"70분",cost:"무료~"},
+   d:"오모테산도 힐즈 → Dior·GYRE → Prada Aoyama 순으로 서쪽에서 동쪽으로 한 방향으로 봅니다. 매장 내부는 관심 있는 1~2곳만 들어가고 14:50에는 무조건 출발합니다.",stay:"60분",cost:"무료~",priority:"14:50 출발 고정"},
   {move:"🚇 오모테산도 → 시부야 · 역내 이동 포함 약 15분"},
   {t:"15:20",n:"시부야 도착 · SHIBUYA SKY 입장 버퍼",cat:"휴양",lat:35.6584,lng:139.7022,
    d:"PARCO 등 추가 관광을 넣지 않고 예약 입구를 먼저 확인합니다. 일요일 혼잡과 식당 지연을 흡수하는 60분입니다.",stay:"60분",cost:"무료~",priority:"버퍼 유지"},
@@ -956,10 +940,10 @@ const DAYS=[
  lodging:"숙소 → 마이하마 / 마이하마 → 숙소 · 숙소 확정 후 계산",
  rain:"실내 어트랙션과 앱 예약시간을 우선하고 야외 공연·운영 변경을 당일 앱에서 확인",
  items:[
-  {t:"07:45",n:"마이하마역 → 디즈니리조트라인",cat:"이동",lat:35.6329,lng:139.8814,
-   d:"공식 개장보다 일찍 도착해 입장 대기를 줄입니다. 모노레일로 도쿄디즈니씨 스테이션 하차.",stay:"20분",cost:"¥300"},
-  {t:"08:05",n:"디즈니씨 입장 대기",cat:"이동",lat:35.6267,lng:139.8850,
-   d:"보안검색과 입장열을 고려한 시간입니다. 입장이 조기 시작되면 바로 공식 앱을 확인합니다.",stay:"약 55분",cost:"—"},
+  {t:"07:30",n:"마이하마역 → 디즈니리조트라인",cat:"이동",lat:35.6329,lng:139.8814,
+   d:"할로윈 기간의 보안검색·입장열을 고려해 공식 개장 90분 전에 마이하마역 도착을 목표로 합니다. 모노레일로 도쿄디즈니씨 스테이션에 내립니다.",stay:"20분",cost:"¥300",priority:"숙소 확정 후 출발시각 역산"},
+  {t:"07:50",n:"디즈니씨 입장 대기",cat:"이동",lat:35.6267,lng:139.8850,
+   d:"보안검색과 입장열을 고려한 시간입니다. 입장이 조기 시작되면 바로 공식 앱을 확인합니다.",stay:"약 70분",cost:"—"},
   {t:"09:00",n:"도쿄 디즈니씨 입장",cat:"체험",lat:35.6267,lng:139.8850,mandatory:true,
    d:"개장 09:00 / 폐장 21:00. 입장 즉시 Fantasy Springs·Toy Story DPA와 쇼 Entry Request를 확인하고, 확보한 시각이 아래 권역 순서보다 우선합니다.",stay:"—",cost:"¥9,900",book:"사전예약 필수"},
   {t:"오전",n:"① 판타지스프링스",cat:"체험",lat:35.6300,lng:139.8880,
@@ -1149,18 +1133,6 @@ const NO_DISNEY_DAY4={
    d:"모리정원과 게야키자카 야간 산책 뒤 단지에서 저녁을 먹습니다. 도쿄시티뷰와 전시 교체 중인 모리미술관은 들어가지 않습니다.",stay:"120분",cost:"¥3,000~",priority:"도쿄시티뷰 제외"},
   {move:"🚇 롯폰기 → 4박 숙소 · 숙소 확정 후 계산"}
  ]
-};
-const NO_DISNEY_DAY5={
- ...DISNEY_DAYS.d3,
- id:"d5",label:"9/29",dow:"화",color:"var(--d5)",hex:"#e87ba4",
- theme:"정원·신사 → 현대건축·쇼핑 → 유일한 기본 전망대 · 전날 중앙권과 분리",
- lodging:"숙소 → 신주쿠교엔 / 시부야 → 숙소 · 숙소 확정 후 계산",
- items:DISNEY_DAYS.d3.items.map(item=>{
-   const times={"신주쿠교엔":"09:30","메이지진구":"11:05","다케시타도리 · HARAKADO":"12:15","CHERMSIDE SANDWICH 하라주쿠":"12:55","NUMBER SUGAR 오모테산도점":"14:05","오모테산도 현대건축 산책":"14:30","시부야 도착 · SHIBUYA SKY 입장 버퍼":"15:50"};
-   if(item.n==='신주쿠교엔')return {...item,t:times[item.n],d:"디즈니 제외판은 화요일 방문입니다. 전날 중앙권 일정의 피로를 고려해 09:30부터 핵심 정원을 봅니다."};
-   if(item.n==='SHIBUYA SKY')return {...item,d:"9/29 일몰 약 17:28 전에 입장해 낮·노을·블루아워를 봅니다.",book:"9/15 00:00 JST부터 9/29분 판매"};
-   return times[item.n]?{...item,t:times[item.n]}:item;
- })
 };
 if(itineraryMode==='nodisney'){
  DAYS[DAYS.findIndex(day=>day.id==='d2')]=NO_DISNEY_DAY2;
@@ -1448,9 +1420,8 @@ function applyItineraryMode(mode){
   document.getElementById('versionNoDisney').setAttribute('aria-selected',String(no));
   document.getElementById('versionTitle').textContent=no?'디즈니 제외 · 전 권역 재조합 최종안':'디즈니 포함 · 휴무 회피 전면 재설계안';
   document.getElementById('versionNote').innerHTML=no
-    ?"9/26~29의 스팟을 전부 다시 풀어 6개 날짜 조합을 비교했습니다. <b>9/26 중앙·부엉이·오다이바 → 9/27 서부 → 9/28 해리포터·아자부다이·롯폰기 → 9/29 동부</b> 조합이 <b>94점</b>으로 1위입니다."
+    ?"<b>9/26 중앙·부엉이·오다이바 → 9/27 서부·시부야 → 9/28 해리포터·아자부다이·롯폰기 → 9/29 동부</b>로 배치했습니다. 예약시간·휴관일·영업일을 지키면서 같은 권역을 한 방향으로 잇는 조합입니다."
     :"9/26 확정축 뒤 <b>9/27 서부 → 9/28 디즈니씨 → 9/29 동부</b>로 재배치했습니다. 디즈니 운영조건은 유지하면서 화요일 동부권의 국립도쿄박물관과 저장 맛집을 함께 살립니다.";
-  document.getElementById('noDisneyScenario').style.display=no?'':'none';
   document.getElementById('spotCount').textContent='47곳';
   document.getElementById('featureDay').textContent=no?'2곳':'1일';
   document.getElementById('featureDayLabel').textContent=no?'해리포터·오다이바':'디즈니씨';
