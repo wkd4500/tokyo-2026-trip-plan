@@ -16,6 +16,7 @@
   --good:#0ca30c; --warn:#fab219; --serious:#ec835a; --critical:#d03b3b;
 }
 *{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:82px}
 body{margin:0;background:var(--plane);color:var(--text-primary);
   font-family:system-ui,-apple-system,"Segoe UI","Noto Sans KR",sans-serif;line-height:1.5}
 .wrap{max-width:1160px;margin:auto;padding:20px}
@@ -33,6 +34,9 @@ h3{font-size:14px;margin:0 0 8px}
 .version-tab{flex:1;border:0;border-radius:10px;padding:12px 16px;background:transparent;color:var(--text-secondary);font:inherit;font-size:13px;font-weight:800;cursor:pointer}
 .version-tab[aria-selected="true"]{background:var(--text-primary);color:#fff;box-shadow:0 2px 8px #0002}
 .version-note{font-size:11.5px;color:var(--text-secondary);padding:5px 8px 3px;line-height:1.45}
+.guide-shortcut{display:flex;align-items:center;justify-content:center;gap:6px;flex:0 0 auto;border:1px solid #bcd4f3;
+  border-radius:10px;padding:10px 14px;background:#eef5ff;color:#175eae;text-decoration:none;font-size:12px;font-weight:850;white-space:nowrap}
+.guide-shortcut:hover{background:#e2efff;border-color:#76a9e8}.guide-shortcut .ico{font-size:16px;line-height:1}
 
 /* stat tiles */
 .tiles{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:18px}
@@ -209,6 +213,7 @@ tr:last-child td{border-bottom:none}
   .ghost-btn.confirm-btn{width:100%}.choice-secondary{justify-content:flex-end}
   .choice-tabs{padding-left:18px;padding-right:18px}.choice-body{padding:16px 18px 20px}
   .table-scroll{margin-right:-2px}
+  .guide-shortcut{padding:10px 11px}.guide-shortcut .txt{display:none}
 }
 </style>
 </head>
@@ -218,6 +223,7 @@ tr:last-child td{border-bottom:none}
 <section class="version-switch" role="tablist" aria-label="여행 일정 버전">
   <button class="version-tab" id="versionNoDisney" type="button" role="tab" aria-selected="true">디즈니 제외</button>
   <button class="version-tab" id="versionDisney" type="button" role="tab" aria-selected="false">디즈니 포함</button>
+  <a class="guide-shortcut" href="#area-guidebook" aria-label="권역별 가이드북으로 이동"><span class="ico">🧭</span><span class="txt">권역 가이드북</span></a>
 </section>
 
 <section class="card pad" style="padding-top:15px;padding-bottom:15px">
@@ -227,7 +233,7 @@ tr:last-child td{border-bottom:none}
 
 <!-- ══ HERO ══ -->
 <section class="card pad">
-  <div class="eyebrow">Tokyo 5N6D · Itinerary v21</div>
+  <div class="eyebrow">Tokyo 5N6D · Itinerary v22</div>
   <h1>도쿄 5박 6일 선택형 여행 플랜</h1>
   <div class="dates">2026.09.25(금) — 09.30(수)</div>
   <div class="tiles">
