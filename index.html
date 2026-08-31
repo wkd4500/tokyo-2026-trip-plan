@@ -205,7 +205,7 @@ tr:last-child td{border-bottom:none}
 
 <!-- ══ HERO ══ -->
 <section class="card pad">
-  <div class="eyebrow">Tokyo 5N6D · Itinerary v18</div>
+  <div class="eyebrow">Tokyo 5N6D · Itinerary v19</div>
   <h1>도쿄 5박 6일 선택형 여행 플랜</h1>
   <div class="dates">2026.09.25(금) — 09.30(수)</div>
   <div class="tiles">
@@ -234,12 +234,12 @@ tr:last-child td{border-bottom:none}
   <h2>일자별 권역 요약</h2>
   <div class="table-scroll"><table>
     <tr><th>날짜</th><th>권역</th><th>핵심 동선</th></tr>
-    <tr><td><b>9/25(금)</b></td><td>나리타 · 신주쿠</td><td>나리타 → 신주쿠 1박 체크인 → 21:30 도쿄도청 프로젝션 → 오모이데요코초 → 3D 고양이 → 고질라 헤드 → 가부키초 타워</td></tr>
+    <tr><td><b>9/25(금)</b></td><td>신주쿠</td><td>나리타 → 신주쿠 1박 체크인 → 21:30 도쿄도청 프로젝션 → 오모이데요코초 → 3D 고양이 → 고질라 헤드 → 가부키초 타워</td></tr>
     <tr id="summaryD2"><td><b>9/26(토)</b></td><td>츠키지 · 긴자 · 츠키시마 · 도쿄타워 · 아자부다이 · 롯폰기</td><td>츠키지 → 긴자 → 14:00 부엉이카페 → 도쿄타워 외관 → 아자부다이·AMBIENT → 롯폰기</td></tr>
     <tr><td><b>9/27(일)</b></td><td>신주쿠 · 하라주쿠 · 오모테산도 · 시부야</td><td>신주쿠교엔 → 메이지진구 → CHERMSIDE → 오모테산도 → SHIBUYA SKY → PARCO → 미야시타파크·저녁</td></tr>
     <tr id="summaryD4"><td><b>9/28(월)</b></td><td>마이하마</td><td>도쿄 디즈니씨 종일 · 확보한 앱 예약시간 우선</td></tr>
-    <tr><td><b>9/29(화)</b></td><td>아사쿠사 · 스미다 · 우에노 · 아키하바라</td><td>센소지 → FUGLEN ASAKUSA → 스카이트리 → ANDRA 또는 니혼바시 점심 → 히로시게 특별전 → 아키하바라·저녁</td></tr>
-    <tr><td><b>9/30(수)</b></td><td>도쿄역 · 고쿄 · 마루노우치 · 나리타</td><td>도쿄역사 → 고쿄 → 도쿄국제포럼 → KITTE → 쇼핑·에키벤 → N'EX</td></tr>
+    <tr><td><b>9/29(화)</b></td><td>아사쿠사 · 우에노 · 아키하바라</td><td>센소지 → FUGLEN ASAKUSA → 스카이트리 → ANDRA 또는 니혼바시 점심 → 히로시게 특별전 → 아키하바라·저녁</td></tr>
+    <tr><td><b>9/30(수)</b></td><td>도쿄역 · 마루노우치</td><td>도쿄역사 → 고쿄 → 도쿄국제포럼 → KITTE → 쇼핑·에키벤 → N'EX</td></tr>
   </table></div>
 </section>
 
@@ -1347,11 +1347,11 @@ function applyItineraryMode(mode){
   document.getElementById('heroBudget').textContent=no?'약 ¥53–76k':'약 ¥58–81k';
   document.getElementById('heroBudgetLabel').textContent=no?'항공·숙박·쇼핑 제외':'항공·숙박·쇼핑·DPA 제외';
   document.getElementById('summaryD2').innerHTML=no
-    ?'<td><b>9/26(토)</b></td><td>츠키지 · 긴자 · 츠키시마 · 오다이바</td><td>츠키지 → 긴자 → 14:00 부엉이카페 → 후지TV 외관 → 유니콘 건담·다이버시티 → 해변 야경</td>'
-    :'<td><b>9/26(토)</b></td><td>츠키지 · 긴자 · 츠키시마 · 도쿄타워 · 아자부다이 · 롯폰기</td><td>츠키지 → 긴자 → 14:00 부엉이카페 → 도쿄타워 외관 → 아자부다이·AMBIENT → 롯폰기</td>';
+    ?'<td><b>9/26(토)</b></td><td>긴자 · 오다이바</td><td>츠키지 → 긴자 → 14:00 부엉이카페 → 후지TV 외관 → 유니콘 건담·다이버시티 → 해변 야경</td>'
+    :'<td><b>9/26(토)</b></td><td>긴자 · 아자부다이 · 롯폰기</td><td>츠키지 → 긴자 → 14:00 부엉이카페 → 도쿄타워 외관 → 아자부다이·AMBIENT → 롯폰기</td>';
   document.getElementById('summaryD4').innerHTML=no
-    ?'<td><b>9/28(월)</b></td><td>도시마엔 · 시바공원 · 아자부다이 · 롯폰기</td><td>09:00 해리포터·내부 점심 → 도쿄타워 뷰 → 아자부다이 → 전시 1곳 선택 → 롯폰기 저녁</td>'
-    :'<td><b>9/28(월)</b></td><td>마이하마</td><td>도쿄 디즈니씨 종일 · 확보한 앱 예약시간 우선</td>';
+    ?'<td><b>9/28(월)</b></td><td>아자부다이 · 롯폰기</td><td>09:00 해리포터·내부 점심 → 도쿄타워 뷰 → 아자부다이 → 전시 1곳 선택 → 롯폰기 저녁</td>'
+    :'<td><b>9/28(월)</b></td><td>디즈니씨</td><td>도쿄 디즈니씨 종일 · 확보한 앱 예약시간 우선</td>';
   document.getElementById('disneyBookingRow').style.display=no?'none':'';
   document.getElementById('harryBookingRow').style.display=no?'':'none';
   document.getElementById('ambientBookingDate').textContent=no?'9/28(월)':'9/26(토)';
