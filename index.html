@@ -16,7 +16,6 @@
   --good:#0ca30c; --warn:#fab219; --serious:#ec835a; --critical:#d03b3b;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:82px}
 body{margin:0;background:var(--plane);color:var(--text-primary);
   font-family:system-ui,-apple-system,"Segoe UI","Noto Sans KR",sans-serif;line-height:1.5}
 .wrap{max-width:1160px;margin:auto;padding:20px}
@@ -28,15 +27,17 @@ h2{font-size:17px;margin:0 0 4px}
 h3{font-size:14px;margin:0 0 8px}
 .sub{font-size:12.5px;color:var(--muted)}
 .dates{font-size:19px;font-weight:800;color:var(--d1);margin-top:4px}
+.hero-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.guide-shortcut{display:flex;align-items:center;gap:7px;flex:0 0 auto;border:1px solid #bcd4f3;
+  border-radius:12px;padding:10px 13px;background:#eef6ff;color:#125ca8;text-decoration:none;font-size:12px;font-weight:800}
+.guide-shortcut:hover{background:#e2efff;border-color:#76a9e8}
+.guide-shortcut .ico{font-size:17px;line-height:1}
 
 /* itinerary version switch */
 .version-switch{display:flex;gap:8px;padding:6px;background:#efefeb;border:1px solid var(--grid);border-radius:15px;margin-bottom:16px;position:sticky;top:8px;z-index:1000;box-shadow:0 5px 18px #0000000d}
 .version-tab{flex:1;border:0;border-radius:10px;padding:12px 16px;background:transparent;color:var(--text-secondary);font:inherit;font-size:13px;font-weight:800;cursor:pointer}
 .version-tab[aria-selected="true"]{background:var(--text-primary);color:#fff;box-shadow:0 2px 8px #0002}
 .version-note{font-size:11.5px;color:var(--text-secondary);padding:5px 8px 3px;line-height:1.45}
-.guide-shortcut{display:flex;align-items:center;justify-content:center;gap:6px;flex:0 0 auto;border:1px solid #bcd4f3;
-  border-radius:10px;padding:10px 14px;background:#eef5ff;color:#175eae;text-decoration:none;font-size:12px;font-weight:850;white-space:nowrap}
-.guide-shortcut:hover{background:#e2efff;border-color:#76a9e8}.guide-shortcut .ico{font-size:16px;line-height:1}
 
 /* stat tiles */
 .tiles{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:18px}
@@ -173,27 +174,6 @@ tr:last-child td{border-bottom:none}
 
 .badge.mapsaved{background:#fff3e7;border-color:#f1cda8;color:#9a4d08}
 
-/* regional guidebook */
-.region-guide-list{display:grid;gap:10px;margin-top:16px}
-.region-guide{border:1px solid var(--grid);border-radius:14px;background:var(--surface-1);overflow:hidden}
-.region-guide summary{list-style:none;cursor:pointer;padding:15px 16px;display:flex;align-items:center;gap:10px}
-.region-guide summary::-webkit-details-marker{display:none}
-.region-guide summary:after{content:"＋";margin-left:auto;color:var(--muted);font-size:18px}
-.region-guide[open] summary:after{content:"−"}
-.region-name{font-size:15px;font-weight:850}.region-day{font-size:10px;font-weight:800;color:var(--d1);background:#eef5ff;border-radius:999px;padding:3px 7px}
-.region-summary{font-size:11.5px;color:var(--text-secondary)}
-.region-body{border-top:1px solid var(--grid);padding:14px 16px 16px}
-.region-columns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
-.region-axis{border:1px solid var(--grid);border-radius:11px;padding:12px;background:var(--plane)}
-.region-axis h3{font-size:12px;margin:0 0 8px}.region-axis ul{list-style:none;padding:0;margin:0;display:grid;gap:8px}
-.region-axis li{font-size:11.5px;color:var(--text-secondary);line-height:1.45}
-.region-axis li b{color:var(--text-primary)}
-.guide-rank{display:inline-block;font-size:9px;font-weight:850;border-radius:999px;padding:2px 5px;margin-right:4px;vertical-align:1px}
-.guide-rank.core{background:#fdecec;color:#8a1f1f}.guide-rank.rec{background:#eef7ee;color:#176b17}.guide-rank.choice{background:#ecebea;color:#5f5e5a}
-.guide-map{font-size:9.5px;color:var(--d1);text-decoration:none;white-space:nowrap}
-.region-tip{margin-top:10px;font-size:11.5px;color:var(--text-secondary)}
-.region-source{margin-left:6px;font-size:10px;color:var(--muted)}
-
 @media(max-width:900px){
   .tiles{grid-template-columns:repeat(3,1fr)}
   .daygrid{grid-template-columns:1fr}
@@ -201,7 +181,6 @@ tr:last-child td{border-bottom:none}
   .mapcol{position:static;order:1}
   #map{height:400px}
   .grid2{grid-template-columns:1fr}
-  .region-columns{grid-template-columns:1fr}
   .pick-grid{grid-template-columns:1fr 1fr}
   .choice-head{display:block}.choice-actions{margin-top:14px;max-width:480px}
   .wrap{padding:12px} .pad{padding:18px}
@@ -213,7 +192,7 @@ tr:last-child td{border-bottom:none}
   .ghost-btn.confirm-btn{width:100%}.choice-secondary{justify-content:flex-end}
   .choice-tabs{padding-left:18px;padding-right:18px}.choice-body{padding:16px 18px 20px}
   .table-scroll{margin-right:-2px}
-  .guide-shortcut{padding:10px 11px}.guide-shortcut .txt{display:none}
+  .hero-head{gap:8px}.guide-shortcut{padding:10px}.guide-shortcut .txt{display:none}
 }
 </style>
 </head>
@@ -223,7 +202,6 @@ tr:last-child td{border-bottom:none}
 <section class="version-switch" role="tablist" aria-label="여행 일정 버전">
   <button class="version-tab" id="versionNoDisney" type="button" role="tab" aria-selected="true">디즈니 제외</button>
   <button class="version-tab" id="versionDisney" type="button" role="tab" aria-selected="false">디즈니 포함</button>
-  <a class="guide-shortcut" href="#area-guidebook" aria-label="권역별 가이드북으로 이동"><span class="ico">🧭</span><span class="txt">권역 가이드북</span></a>
 </section>
 
 <section class="card pad" style="padding-top:15px;padding-bottom:15px">
@@ -233,9 +211,14 @@ tr:last-child td{border-bottom:none}
 
 <!-- ══ HERO ══ -->
 <section class="card pad">
-  <div class="eyebrow">Tokyo 5N6D · Itinerary v22</div>
-  <h1>도쿄 5박 6일 선택형 여행 플랜</h1>
-  <div class="dates">2026.09.25(금) — 09.30(수)</div>
+  <div class="hero-head">
+    <div>
+      <div class="eyebrow">Tokyo 5N6D · Itinerary v23</div>
+      <h1>도쿄 5박 6일 선택형 여행 플랜</h1>
+      <div class="dates">2026.09.25(금) — 09.30(수)</div>
+    </div>
+    <a class="guide-shortcut" href="guidebook.html" aria-label="별도 도쿄 권역 가이드북 열기"><span class="ico">🧭</span><span class="txt">권역 가이드북</span></a>
+  </div>
   <div class="tiles">
     <div class="tile"><div class="v">6일 5박</div><div class="k">여행 기간</div></div>
     <div class="tile"><div class="v">52곳</div><div class="k">Google 지도 저장</div></div>
@@ -269,13 +252,6 @@ tr:last-child td{border-bottom:none}
     <tr><td><b>9/29(화)</b></td><td>아사쿠사 · 니혼바시 · 우에노 · 아키하바라</td><td>센소지 → FUGLEN ASAKUSA → 스카이트리 → ANDRA 또는 니혼바시 점심 → 히로시게 특별전 → 아키하바라·저녁</td></tr>
     <tr><td><b>9/30(수)</b></td><td>도쿄역</td><td>도쿄역사 → 고쿄 → 도쿄국제포럼 → KITTE → 쇼핑·에키벤 → N'EX</td></tr>
   </table></div>
-</section>
-
-<!-- ══ 권역별 3축 가이드북 ══ -->
-<section class="card pad" id="area-guidebook">
-  <h2>권역별 가이드북 — 관광·맛집·쇼핑 3축</h2>
-  <div class="sub">한국인 첫 도쿄 여행 기준으로 <b>필수</b>·<b>추천</b>·<b>선택</b>을 구분했습니다. 가이드북은 후보 전체를 보여주며, 실제 고정 일정은 아래 상세 일정이 기준입니다.</div>
-  <div class="region-guide-list" id="regionGuide"></div>
 </section>
 
 <!-- ══ 일자별 상세 (트리플 스타일) ══ -->
@@ -444,60 +420,6 @@ try{
   const savedMode=localStorage.getItem('tokyo-itinerary-mode');
   if(savedMode==='disney'||savedMode==='nodisney')itineraryMode=savedMode;
 }catch(e){}
-const REGION_GUIDE=[
- {n:"신주쿠",day:"9/25·9/27",summary:"고층도시·정원·야간 골목을 모두 보는 서부 거점",src:"https://www.gotokyo.org/en/destinations/western-tokyo/shinjuku/index.html",tip:"첫날은 야간축만, 신주쿠교엔은 9/27 오전에 분리해 중복 이동을 없앱니다.",
-  tour:[["core","도쿄도청·Tokyo Night & Light","무료 야간 도시경관. 첫날 21:30 일정."],["core","신주쿠교엔","일본정원과 도심 스카이라인의 대비. 일요일 오전 방문."],["rec","가부키초·고질라 헤드·3D 고양이","목적지 세 곳이 아니라 한 방향의 야간 산책으로 봅니다."]],
-  food:[["core","오모이데요코초","첫날 늦은 저녁. 점포별 마감이 달라 빈자리 우선."],["rec","후운지","츠케멘. 대기가 길면 일정에서 즉시 제외."],["choice","우동 신","면 요리 선호 시 선택하되 긴 대기와 남쪽 왕복을 감수해야 합니다."]],
-  shop:[["rec","이세탄 신주쿠 본점","일본 백화점·식품관을 한 번에 보기 좋습니다."],["rec","요도바시카메라 신주쿠 서口","전자제품·카메라·면세 비교."],["choice","NEWoMan·루미네","신주쿠역 안에서 패션·식품 쇼핑을 해결할 때 적합."]]},
- {n:"긴자",day:"9/26",summary:"전통 상업·현대건축·문구와 백화점 쇼핑의 중심",src:"https://www.gotokyo.org/en/destinations/central-tokyo/ginza/index.html",tip:"토요일 정오에는 주오도리 보행자천국을 활용하되 14:00 부엉이카페 때문에 12:50 출발선을 지킵니다.",
-  tour:[["core","가부키자 외관·주오도리","전통 공연장과 현대 상업가를 짧고 선명하게 봅니다."],["rec","GINZA SIX 옥상·건축","쇼핑보다 건축과 무료 옥상 공간 가치가 큽니다."],["choice","츠키지 혼간지","츠키지에서 긴자로 이동하는 길의 이토 주타 건축 경유."]],
-  food:[["core","텐동 카네코한노스케 츠키지 본점","10:05 이른 점심 예약 우선."],["rec","긴자 기무라야","앙팡 포장용 베이커리. 긴 체류는 불필요."],["choice","茶屋いつか·DOLCE TACUBO","말차 또는 디저트 중 하나만 선택합니다."]],
-  shop:[["core","긴자 이토야 본점","문구·디자인 상품의 대표 매장. 기본 블록과 교체형."],["rec","MUJI 긴자","생활용품·의류·식품을 한 건물에서 비교."],["rec","GINZA SIX·미츠코시","럭셔리·일본 브랜드·식품관을 묶어 보기 좋습니다."]]},
- {n:"오다이바",day:"9/26",summary:"베이 건축·대형몰·일몰과 야경을 묶는 해안 권역",src:"https://www.gotokyo.org/en/destinations/southern-tokyo/odaiba/",tip:"실물대 유니콘 건담은 2026년 8월 31일 전시 종료 예정이므로 여행일에는 볼 수 없는 것으로 판단합니다. 일정표는 요청대로 유지하고 현장 대체 전시 공지만 확인하세요.",
-  tour:[["core","자유의 여신상·해변공원·레인보우브리지","일몰 직후가 핵심. 오다이바 방문 이유가 가장 분명한 구간."],["rec","후지TV 본사 외관","단게 겐조 건축. 부엉이카페가 밀리면 생략."],["choice","Tokyo Aqua Symphony","2026년 개장한 해안 분수·빛 공연. 당일 공식 시간 확인."]],
-  food:[["core","아쿠아시티·DECKS 저녁","해변 야경 뒤 이동이 없는 식당을 고릅니다."],["rec","bills 오다이바","베이 전망 브런치·카페가 필요할 때."],["choice","곤파치 오다이바","전망형 일본식 저녁이 목적일 때만 선택."]],
-  shop:[["core","다이버시티 도쿄 플라자","패션·캐릭터·대형 실내몰의 중심."],["rec","AQUA CiTY ODAIBA","해변과 저녁을 함께 해결하기 편합니다."],["choice","DECKS Tokyo Beach","레트로 상점·조이폴리스 관심이 있을 때."]]},
- {n:"하라주쿠",day:"9/27",summary:"신사·거리문화·캐릭터와 뷰티 쇼핑",src:"https://www.gotokyo.org/en/destinations/western-tokyo/harajuku/index.html",tip:"메이지진구에서 하라주쿠로 나와 오모테산도 방향으로 이동하면 역주행이 없습니다.",
-  tour:[["core","메이지진구","번화가와 대비되는 숲·신사 경험."],["rec","다케시타도리","입구와 핵심 구간만 보고 오래 머물지 않습니다."],["rec","HARAKADO","옥상·공용공간과 현대 상업건축을 짧게 확인."]],
-  food:[["core","CHERMSIDE SANDWICH","현재 일정의 하라주쿠 점심."],["rec","마리온 크레페","하라주쿠 대표 길거리 디저트지만 줄이 짧을 때만."],["choice","KAWAII MONSTER LAND","음식보다 연출·체험을 원하는 경우."]],
-  shop:[["core","라포레 하라주쿠","일본 스트리트·서브컬처 패션."],["rec","@cosme TOKYO","한국인 관광객이 비교 쇼핑하기 좋은 뷰티 플래그십."],["choice","해리포터 숍 하라주쿠","정리권을 확보했을 때만 기본 거리 구간과 교체."]]},
- {n:"오모테산도",day:"9/27",summary:"현대건축·디자인·하이엔드 플래그십 거리",src:"https://www.gotokyo.org/en/destinations/western-tokyo/aoyama-and-omotesando/",tip:"건축은 오모테산도 힐즈→GYRE→Prada Aoyama 방향으로 한 번만 걸어야 효율적입니다.",
-  tour:[["core","오모테산도 현대건축 산책","안도 다다오·헤르초크&드뫼롱 등 건축 밀도가 높습니다."],["rec","네즈미술관","구마 겐고 건축·동양미술·정원. 기본 산책 교체형."],["choice","캣스트리트","편집숍과 거리 분위기를 볼 때 하라주쿠에서 연결."]],
-  food:[["core","NUMBER SUGAR","카라멜 포장 디저트. 10분 대기 컷오프."],["rec","KOFFEE MAMEYA","커피 상담·원두 경험을 중시할 때."],["choice","HIGUMA Doughnuts × Coffee Wrights","도넛과 스페셜티 커피 휴식."]],
-  shop:[["core","오모테산도 힐즈","건축과 일본 디자이너 브랜드를 동시에 봅니다."],["rec","GYRE","패션·디자인·갤러리형 상업공간."],["choice","Prada·Dior 등 플래그십","구매보다 건축 외관 중심으로 1~2곳만 입장."]]},
- {n:"시부야",day:"9/27",summary:"대표 전망·교차로·게임과 트렌드 쇼핑",src:"https://www.gotokyo.org/en/destinations/western-tokyo/shibuya/index.html",tip:"SHIBUYA SKY 예약이 최우선이며 쇼핑과 저녁은 그 뒤에 배치합니다.",
-  tour:[["core","SHIBUYA SKY","이번 여행의 유일한 유료 전망대. 16:40 고정."],["core","스크램블 교차로·하치코","SKY 퇴장 뒤 지상에서 한 구간으로 확인."],["rec","미야시타파크 옥상","도심 공원과 야간 분위기. 피곤하면 생략 가능."]],
-  food:[["rec","스시노미도리 시부야","순번표·대기 관리가 가능한 날에만."],["rec","우오베이 시부야","빠르고 가격 부담이 적은 회전초밥."],["choice","후글렌 도쿄 시부야","늦은 시간 카페를 원할 때만 도미가야 이동."]],
-  shop:[["core","시부야 PARCO","닌텐도·포켓몬·게임·패션을 한 번에."],["rec","SHIBUYA 109·MEGA 돈키호테","대중 패션·잡화·면세 쇼핑."],["choice","시부야 Loft·Hands","문구·생활잡화 중심일 때 PARCO와 체류시간을 나눕니다."]]},
- {n:"아자부다이",day:"9/28",summary:"도시개발·조경·유기적 저층부 건축과 현대전시",src:"https://www.azabudai-hills.com/",tip:"건축 산책은 필수지만 AMBIENT와 teamLab은 별개의 유료 전시입니다. 자동으로 모두 넣지 않습니다.",
-  tour:[["core","아자부다이 힐즈 건축 산책","Central Green·Heatherwick 저층부·The Cloud·Mori JP Tower."],["rec","AMBIENT KYOTO - TOKYO","사카모토 류이치·타카타니 시로 공간음향전. 선택형."],["choice","teamLab Borderless","몰입형 디지털 전시를 특별히 원할 때만 별도 예약."]],
-  food:[["rec","아자부다이 힐즈 마켓","33개 전문점의 델리·빵·디저트를 비교."],["rec","% ARABICA Tokyo Azabudai Hills","건축 산책 중 짧은 커피 휴식."],["choice","Dining 33","시간과 예산을 확보한 예약형 식사."]],
-  shop:[["core","아자부다이 힐즈 마켓","일본 식재료·델리·베이커리 선물."],["rec","Garden Plaza 상점","디자인·라이프스타일 매장 위주로 선별."],["choice","갤러리 숍","전시를 실제 관람했을 때만 연계."]]},
- {n:"롯폰기",day:"9/28",summary:"미술·디자인·대형 복합공간과 야간 도시경관",src:"https://www.gotokyo.org/en/destinations/southern-tokyo/roppongi/index.html",tip:"유료 전망대는 SHIBUYA SKY로 단일화하고 롯폰기는 미술·정원·저녁에 집중합니다.",
-  tour:[["core","롯폰기 힐스·모리정원·게야키자카","무료 야간 산책과 도쿄타워 뷰."],["rec","21_21 DESIGN SIGHT","안도 다다오 건축과 ‘작은 건축’ 전시. 월요일 선택 1순위."],["choice","국립신미술관","구로카와 기쇼 건축·기획전. 21_21과 모두 넣지 않습니다."]],
-  food:[["rec","츠루톤탄 롯폰기","늦은 시간에도 활용 가능한 대형 우동."],["choice","KABUN-AZABUJUBAN","고예산 예약식. 기본 롯폰기 저녁과 교체."],["rec","도쿄미드타운 식당가","21_21 관람 뒤 이동 최소화 저녁."]],
-  shop:[["core","도쿄미드타운 Galleria","디자인·생활용품·식품을 고르게 구성."],["rec","롯폰기 힐스 상점","산책·저녁과 함께 보는 복합몰."],["choice","돈키호테 롯폰기","심야 잡화가 꼭 필요할 때만."]]},
- {n:"우에노",day:"9/29",summary:"국립박물관·공원과 아메요코 시장",src:"https://www.gotokyo.org/en/story/walks-and-tours/ueno/index.html",tip:"9/29는 히로시게 특별전 개막일입니다. 국립서양미술관은 여행기간 임시휴관이라 외관만 봅니다.",
-  tour:[["core","도쿄국립박물관·히로시게 특별전","이번 여행의 동부권 핵심 전시."],["rec","우에노공원·시노바즈노이케","박물관 뒤 휴식형 산책."],["choice","국립서양미술관 외관","르 코르뷔지에 건축. 내부 휴관으로 15분만."]],
-  food:[["rec","우나기 이즈에이 본점","우에노 전통 장어 식사."],["rec","니쿠노오야마","아메요코의 저가 멘치카츠·고기 요리."],["choice","인쇼테이","공원 안에서 여유 있게 먹는 예약형 일본식."]],
-  shop:[["core","아메요코","시장·간식·잡화·스니커즈가 혼합된 대표 거리."],["rec","도쿄국립박물관 뮤지엄숍","도록·전통미술 상품."],["choice","다케야","생활잡화와 면세를 한 번에 볼 때."]]},
- {n:"아키하바라",day:"9/29",summary:"전자제품·애니메이션·게임·취미 전문상권",src:"https://www.gotokyo.org/en/spot/55/index.html",tip:"아키하바라는 기본 권역으로 유지하되 관심 분야 매장 1~2곳만 깊게 봅니다.",
-  tour:[["core","아키하바라 전자상가 주오도리","도쿄 대표 서브컬처 거리 자체를 경험."],["rec","칸다묘진","전자상가 북쪽에서 내려오는 확장 동선."],["choice","2k540 AKI-OKA ARTISAN","공예·디자인 관심 시 통과 동선으로 방문."]],
-  food:[["rec","우미노사치 쇼","참치덮밥 중심 저장 맛집."],["rec","멘야 스고 칸다점","화요일 저녁 영업을 활용한 라멘 후보."],["choice","칸다 마츠야","소바를 우선하면 전자상가 체류를 줄여 이동."]],
-  shop:[["core","라디오회관","피규어·카드·취미용품을 한 건물에서 비교."],["rec","만다라케·슈퍼포테이토","중고 서브컬처·레트로게임 전문."],["rec","요도바시 Akiba","전자제품·면세·식당을 한 번에 해결."]]},
- {n:"도쿄역",day:"9/30",summary:"근대 역사·고쿄·대형 역사 내 식품과 기념품",src:"https://www.gotokyo.org/en/destinations/central-tokyo/tokyo-station-and-marunouchi/index.html",tip:"귀국일이므로 관광보다 12:20 N'EX 승강장 도착이 우선입니다.",
-  tour:[["core","도쿄역 마루노우치 역사","다쓰노 긴고 설계의 붉은 벽돌 역사와 돔."],["core","고쿄 히가시교엔","수요일 개원 직후 핵심 구간만."],["choice","도쿄국제포럼·KITTE 옥상","유리 건축과 도쿄역 조망. 시간 부족 시 순차 삭제."]],
-  food:[["core","에키벤야 마츠리","N'EX에서 먹을 이른 점심·도시락."],["rec","도쿄 라멘 스트리트","귀국일보다 다른 날 식사 여유가 있을 때."],["rec","다이마루 도쿄 식품관","도시락·디저트·선물 포장."]],
-  shop:[["rec","도쿄 캐릭터 스트리트","정해둔 매장 1곳만 방문."],["rec","GRANSTA Tokyo","역 안 식품·한정 기념품."],["choice","KITTE","일본 디자인·공예와 옥상정원을 함께 볼 때."]]},
- {n:"아사쿠사",day:"9/29",summary:"도쿄 전통·사찰·상점가와 스미다강 풍경",src:"https://www.gotokyo.org/en/destinations/eastern-tokyo/asakusa/index.html",tip:"센소지는 08:00 경내부터 보고 나카미세는 상점이 열린 뒤 역방향으로 확인합니다.",
-  tour:[["core","센소지·가미나리몬","첫 도쿄 여행의 대표 전통 관광지."],["rec","아사쿠사 문화관광센터","구마 겐고 건축과 무료 전망 테라스."],["rec","아즈마바시·스미다강·스카이트리 조망","아사쿠사에서 현대 도쿄 스카이라인을 함께 봅니다."]],
-  food:[["core","FUGLEN ASAKUSA","건축과 노르딕 커피를 묶은 기본 카페."],["choice","베니즈루","시간권과 대기가 기본 동선에 맞을 때만."],["rec","아사쿠사 이마한·다이코쿠야","스키야키 또는 텐동 중 하나를 점심 대체로 선택."]],
-  shop:[["core","나카미세도리","전통 과자·부채·소형 기념품."],["rec","캇파바시 도구거리","칼·그릇·주방도구에 관심 있을 때 오전 대체."],["choice","마루고토 닛폰·에키미세","실내 지역상품·기념품 쇼핑."]]},
- {n:"니혼바시",day:"9/29 선택",summary:"에도 상업의 출발점·노포·백화점과 저장 맛집",src:"https://www.gotokyo.org/en/destinations/central-tokyo/nihombashi/index.html",tip:"현재는 9/29 스카이트리 뒤 점심 교체안입니다. 니혼바시를 고르면 ANDRA는 먹지 않습니다.",
-  tour:[["core","니혼바시 다리·도로원표","에도 오대로의 출발점과 현대 고가가 겹치는 장소."],["rec","후쿠토쿠신사·COREDO 무로마치","전통 상업과 현대 재개발을 압축해서 봅니다."],["choice","미쓰이기념미술관","일본 전통미술을 추가할 때 우에노 박물관과 중복 조정."]],
-  food:[["rec","덴푸라 카네코한노스케 니혼바시","화요일 점심 교체 1순위."],["rec","고다이메 하나야마 우동","폭넓은 히모카와 면. 대기 20분 컷오프."],["choice","니혼바시 돈카츠 하지메·하나레","카네코 대신 돈카츠를 원할 때."]],
-  shop:[["core","니혼바시 미쓰코시 본점","역사적 백화점 건축·식품관·일본 브랜드."],["rec","COREDO 무로마치","전통 전문점·식품·공예를 현대적으로 구성."],["choice","포켓몬센터 도쿄DX","캐릭터 쇼핑 목적이 분명할 때만. 카페는 별도 예약."]]}
-];
 const CHOICE_DAYS=[
 {
  id:"c1",label:"9/25 신주쿠",route:"16:30 나리타 도착 → N'EX 신주쿠 → 신주쿠 1박 체크인 → 21:30 프로젝션 → 오모이데요코초 → 3D 고양이 → 고질라 헤드 → 가부키초 타워.",
@@ -1133,20 +1055,6 @@ if(map)L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom
 let layer=null;
 
 function gmap(n){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(n+', Tokyo');}
-function renderRegionGuide(){
-  const host=document.getElementById('regionGuide');
-  if(!host)return;
-  const labels={core:'필수',rec:'추천',choice:'선택'};
-  const axis=(title,icon,items)=>`<div class="region-axis"><h3>${icon} ${title}</h3><ul>${items.map(([rank,name,note])=>
-    `<li><span class="guide-rank ${rank}">${labels[rank]}</span><b>${name}</b> · ${note} <a class="guide-map" href="${gmap(name)}" target="_blank" rel="noopener">지도 ↗</a></li>`).join('')}</ul></div>`;
-  host.innerHTML=REGION_GUIDE.map((r,index)=>`<details class="region-guide"${index===0?' open':''}>
-    <summary><span class="region-name">${r.n}</span><span class="region-day">${r.day}</span><span class="region-summary">${r.summary}</span></summary>
-    <div class="region-body"><div class="region-columns">
-      ${axis('관광·건축·전시','🏛',r.tour)}${axis('맛집·카페','🍽',r.food)}${axis('쇼핑','🛍',r.shop)}
-    </div><div class="region-tip"><b>컨설턴트 판단</b> · ${r.tip}<a class="region-source" href="${r.src}" target="_blank" rel="noopener">공식 지역 가이드 ↗</a></div></div>
-  </details>`).join('');
-}
-renderRegionGuide();
 function pinIcon(hex,n,mapsaved=false){return L.divIcon({html:`<div style="position:relative;width:26px;height:26px;border-radius:50%;background:${hex};color:#fff;border:2px solid #fff;box-shadow:0 1px 5px #0004;display:grid;place-items:center;font:700 12px system-ui">${n}${mapsaved?'<i class="route-saved-badge" style="position:absolute;right:-5px;top:-5px;width:10px;height:10px;border-radius:50%;background:#eb6834;border:2px solid #fff"></i>':''}</div>`,className:'',iconSize:[26,26],iconAnchor:[13,13]});}
 function savedFoodIcon(){return L.divIcon({html:'<div style="width:25px;height:25px;border-radius:50%;background:#eb6834;color:#fff;border:2px solid #fff;box-shadow:0 1px 5px #0005;display:grid;place-items:center;font:700 12px system-ui">●</div>',className:'saved-food-marker',iconSize:[25,25],iconAnchor:[12,12]});}
 
