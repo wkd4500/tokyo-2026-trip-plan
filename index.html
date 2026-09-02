@@ -33,10 +33,6 @@ h3{font-size:14px;margin:0 0 8px}
 .guide-shortcut:hover{background:#e2efff;border-color:#76a9e8}
 .guide-shortcut .ico{font-size:17px;line-height:1}
 
-/* itinerary version switch */
-.version-switch{display:flex;gap:8px;padding:6px;background:#efefeb;border:1px solid var(--grid);border-radius:15px;margin-bottom:16px;position:sticky;top:8px;z-index:1000;box-shadow:0 5px 18px #0000000d}
-.version-tab{flex:1;border:0;border-radius:10px;padding:12px 16px;background:transparent;color:var(--text-secondary);font:inherit;font-size:13px;font-weight:800;cursor:pointer}
-.version-tab[aria-selected="true"]{background:var(--text-primary);color:#fff;box-shadow:0 2px 8px #0002}
 .version-note{font-size:11.5px;color:var(--text-secondary);padding:5px 8px 3px;line-height:1.45}
 
 /* stat tiles */
@@ -199,14 +195,9 @@ tr:last-child td{border-bottom:none}
 <body>
 <div class="wrap">
 
-<section class="version-switch" role="tablist" aria-label="여행 일정 버전">
-  <button class="version-tab" id="versionNoDisney" type="button" role="tab" aria-selected="true">디즈니 제외</button>
-  <button class="version-tab" id="versionDisney" type="button" role="tab" aria-selected="false">디즈니 포함</button>
-</section>
-
 <section class="card pad" style="padding-top:15px;padding-bottom:15px">
-  <h2 id="versionTitle">디즈니 제외 · 전 권역 재조합 최종안</h2>
-  <div class="version-note" id="versionNote"><b>9/26 중앙·부엉이·오다이바 → 9/27 서부·시부야 → 9/28 해리포터·아자부다이·롯폰기 → 9/29 동부</b>로 배치했습니다. 예약시간·휴관일·영업일을 지키면서 같은 권역을 한 방향으로 잇는 조합입니다.</div>
+  <h2>전 권역 재조합 최종안</h2>
+  <div class="version-note"><b>9/26 중앙·부엉이·오다이바 → 9/27 서부·시부야 → 9/28 해리포터·아자부다이·롯폰기 → 9/29 동부</b>로 배치했습니다. 예약시간·휴관일·영업일을 지키면서 같은 권역을 한 방향으로 잇는 조합입니다.</div>
 </section>
 
 <!-- ══ HERO ══ -->
@@ -222,9 +213,9 @@ tr:last-child td{border-bottom:none}
   <div class="tiles">
     <div class="tile"><div class="v">6일 5박</div><div class="k">여행 기간</div></div>
     <div class="tile"><div class="v">52곳</div><div class="k">Google 지도 저장</div></div>
-    <div class="tile"><div class="v" id="featureDay">1일</div><div class="k" id="featureDayLabel">디즈니씨</div></div>
+    <div class="tile"><div class="v">2곳</div><div class="k">해리포터·오다이바</div></div>
     <div class="tile"><div class="v">6건</div><div class="k">확정 1·예약/확인 5</div></div>
-    <div class="tile"><div class="v" id="heroBudget">약 ¥58–81k</div><div class="k" id="heroBudgetLabel">항공·숙박·쇼핑·DPA 제외</div></div>
+    <div class="tile"><div class="v">약 ¥53–76k</div><div class="k">항공·숙박·쇼핑 제외</div></div>
     <div class="tile"><div class="v">6일</div><div class="k">날짜별 지도 동선</div></div>
   </div>
 </section>
@@ -246,9 +237,9 @@ tr:last-child td{border-bottom:none}
   <div class="table-scroll"><table>
     <tr><th>날짜</th><th>권역</th><th>핵심 동선</th></tr>
     <tr><td><b>9/25(금)</b></td><td>신주쿠</td><td>나리타 → 신주쿠 1박 체크인 → 21:30 도쿄도청 프로젝션 → 오모이데요코초 → 3D 고양이 → 고질라 헤드 → 가부키초 타워</td></tr>
-    <tr id="summaryD2"><td><b>9/26(토)</b></td><td>츠키지 · 긴자 · 츠키시마 · 도쿄타워 · 아자부다이 · 롯폰기</td><td>츠키지 → 긴자 → 14:00 부엉이카페 → 도쿄타워 외관 → 아자부다이·AMBIENT → 롯폰기</td></tr>
+    <tr><td><b>9/26(토)</b></td><td>긴자 · 오다이바</td><td>츠키지 → 긴자 → 14:00 부엉이카페 → 후지TV 외관 → 유니콘 건담·다이버시티 → 해변 야경</td></tr>
     <tr><td><b>9/27(일)</b></td><td>신주쿠 · 하라주쿠 · 오모테산도 · 시부야</td><td>신주쿠교엔 → 메이지진구 → CHERMSIDE → 오모테산도 → SHIBUYA SKY → PARCO → 미야시타파크·저녁</td></tr>
-    <tr id="summaryD4"><td><b>9/28(월)</b></td><td>마이하마</td><td>도쿄 디즈니씨 종일 · 확보한 앱 예약시간 우선</td></tr>
+    <tr><td><b>9/28(월)</b></td><td>아자부다이 · 롯폰기</td><td>09:00 해리포터·내부 점심 → 도쿄타워 뷰 → 아자부다이 → 전시 1곳 선택 → 롯폰기 저녁</td></tr>
     <tr><td><b>9/29(화)</b></td><td>아사쿠사 · 니혼바시 · 우에노 · 아키하바라</td><td>센소지 → FUGLEN ASAKUSA → 스카이트리 → ANDRA 또는 니혼바시 점심 → 히로시게 특별전 → 아키하바라·저녁</td></tr>
     <tr><td><b>9/30(수)</b></td><td>도쿄역</td><td>도쿄역사 → 고쿄 → 도쿄국제포럼 → KITTE → 쇼핑·에키벤 → N'EX</td></tr>
   </table></div>
@@ -299,14 +290,7 @@ tr:last-child td{border-bottom:none}
   <div class="sub" style="margin-bottom:14px">2026-08-31 공식 판매 페이지 기준.</div>
   <div class="table-scroll"><table id="reservationTable">
     <tr><th style="width:34px"></th><th style="width:180px">대상</th><th style="width:96px">해당일</th><th style="width:150px">예약 오픈 / 마감</th><th>메모</th></tr>
-    <tr id="disneyBookingRow">
-      <td><span class="prio p1">1</span></td>
-      <td><b>도쿄 디즈니씨 1데이 패스포트</b></td>
-      <td class="nowrap">9/28(월)</td>
-      <td><b style="color:var(--critical)">지금 예약 가능</b></td>
-      <td>9/28 성인 1데이 패스포트 <b>¥9,900</b>. 당일 09:00–21:00, 25주년·할로윈 기간. 공식 앱 설치 필수.</td>
-    </tr>
-    <tr id="harryBookingRow" style="display:none">
+    <tr>
       <td><span class="prio p1">1</span></td>
       <td><b>워너 브라더스 스튜디오 투어 도쿄</b></td>
       <td class="nowrap">9/28(월)</td>
@@ -323,9 +307,9 @@ tr:last-child td{border-bottom:none}
     <tr>
       <td><span class="prio p1">2</span></td>
       <td><b id="ambientBookingName">AMBIENT KYOTO - TOKYO</b></td>
-      <td class="nowrap" id="ambientBookingDate">9/26(토)</td>
+      <td class="nowrap">9/28(월)</td>
       <td><b id="ambientBookingAction" style="color:var(--critical)">지금 예약 가능</b></td>
-      <td id="ambientBookingMemo">아자부다이 힐즈 갤러리. 토요일 전매권 성인 <b>¥2,500</b>·당일권 ¥2,800. 건축 산책 뒤 <b>17:25</b> 관람을 권장합니다.</td>
+      <td>자동 고정이 아닙니다. <b>AMBIENT</b>를 고르면 16:35·전매 ¥2,200, <b>21_21</b>을 고르면 16:40·10:00~19:00(18:30 입장 마감)입니다. 둘 다 선택하지 않아도 됩니다.</td>
     </tr>
     <tr>
       <td><span class="prio p2">3</span></td>
@@ -349,11 +333,7 @@ tr:last-child td{border-bottom:none}
       <td>전 좌석 지정. <b>N'EX TOKYO Round Trip Ticket ¥5,200</b>, 14일 유효. 9/25 나리타→신주쿠, 9/30 도쿄역→나리타에 사용.</td>
     </tr>
   </table></div>
-  <div class="callout" id="versionCallout" style="border-left-color:var(--critical);background:#fdf6f6">
-    <b>디즈니씨 9/28 핵심 —</b> 판타지스프링스는 자유 입장이고 어트랙션은 <b>일반 대기 또는 유료 Premier Access</b>입니다.
-    타워 오브 테러·인디아나 존스·머메이드 라군 시어터·메디테레이니언 하버 출발 트랜짓 스티머라인은 이날 휴장이고, <b>Sky Full of Colors</b>도 휴연입니다. <b>Night High Halloween은 20:50 예정</b>이므로 당일 앱에서 최종 확인합니다.
-    화요일과 운영시간·요금·휴장 시설이 같으므로 <b>서부 일요일·디즈니 월요일·동부 화요일</b>로 배치합니다. 화요일 동부권에서 저장 맛집과 국립도쿄박물관을 함께 살립니다.
-  </div>
+  <div class="callout" style="border-left-color:var(--critical);background:#fdf6f6"><b>전 날짜 재검증 —</b> 9/26은 중앙권 뒤 오다이바, 9/27은 신주쿠에서 시부야로 내려가는 서부축, 9/28은 도시마엔에서 오에도선으로 시바공원·아자부다이·롯폰기를 잇고, 9/29는 아사쿠사에서 아키하바라로 내려가는 동부축입니다. 월요일 도쿄타워 뷰와 아자부다이는 기본으로 복원하고 AMBIENT·21_21은 1곳 선택으로 분리했습니다.<div class="source-links">공식 확인 · <a href="https://www.wbstudiotour.jp/en/tickets/" target="_blank" rel="noopener">해리포터 티켓</a> · <a href="https://www.wbstudiotour.jp/en/plan-your-visit/facilities/" target="_blank" rel="noopener">해리포터 내부 식사</a> · <a href="https://ambientkyoto.com/" target="_blank" rel="noopener">AMBIENT</a> · <a href="https://www.2121designsight.jp/en/program/" target="_blank" rel="noopener">21_21 전시·운영</a> · <a href="https://www.nmwa.go.jp/en/visit/calendar.html?ym=2026-09" target="_blank" rel="noopener">국립서양미술관 휴관</a> · <a href="https://www.kunaicho.go.jp/e-event/higashigyoen/higashigyoen.html" target="_blank" rel="noopener">고쿄 히가시교엔</a></div></div>
 </section>
 
 <!-- ══ 예산 ══ -->
@@ -362,12 +342,11 @@ tr:last-child td{border-bottom:none}
   <div class="grid2" style="margin-top:12px">
     <table>
       <tr><th>항목</th><th class="num" style="width:130px">금액(엔)</th></tr>
-      <tr><td id="fixedBudgetLabel">예정 입장비 · 디즈니·후쿠로·AMBIENT·히로시게·SKY</td><td class="num" id="fixedBudget">19,300 –</td></tr>
-      <tr><td>교통비 · N'EX + 시내 IC</td><td class="num" id="transportBudget">9,000 – 11,000</td></tr>
+      <tr><td>예정 입장비 · 해리포터·후쿠로·히로시게·SKY</td><td class="num">13,500 –</td></tr>
+      <tr><td>교통비 · N'EX + 시내 IC</td><td class="num">9,500 – 11,500</td></tr>
       <tr><td>식비 6일</td><td class="num">30,000 – 45,000</td></tr>
       <tr><td>선택 입장비 · 미술관·체험 등</td><td class="num">0 – 6,000+</td></tr>
       <tr><td><b>기본 합계</b></td><td class="num"><b id="totalBudget">약 58,000 – 81,000</b></td></tr>
-      <tr id="dpaBudgetRow"><td>디즈니 DPA</td><td class="num"><b>별도 한도</b></td></tr>
       <tr><td>쇼핑·굿즈·카페·술</td><td class="num"><b>개인 한도</b></td></tr>
       <tr><td>비상금</td><td class="num">10,000 권장</td></tr>
     </table>
@@ -391,12 +370,7 @@ tr:last-child td{border-bottom:none}
   <h2>꼭 필요한 주의사항</h2>
   <div class="grid2" style="margin-top:12px">
     <div class="mini"><b>비·강풍</b><p>SHIBUYA SKY 옥상은 제한될 수 있습니다. 같은 권역의 PARCO·소라마치와 아자부다이 힐즈 실내 공간을 대안으로 사용하세요.</p></div>
-    <div class="mini" id="variantCaution"><b>디즈니 이동</b><p>도쿄역 게이요선 승강장은 다른 노선에서 멉니다. 환승에 약 15분을 추가하고 공식 앱을 입장 전에 설치하세요.</p></div>
-    <div class="mini"><b>월요일 전시 선택</b><p>디즈니 제외판은 아자부다이 뒤 AMBIENT 또는 21_21 DESIGN SIGHT 중 1곳만 선택합니다. AMBIENT는 필수가 아니며, 21_21은 9/28 월요일 정상 운영입니다.</p></div>
-    <div class="mini"><b>전망대 단일화</b><p>SHIBUYA SKY만 유료 전망대로 유지합니다. 롯폰기 힐스는 야간 산책·저녁만 하고 도쿄시티뷰에는 들어가지 않습니다. 스카이트리는 외관만, 도쿄타워는 제외판 9/28 시바공원·조조지 기본 방문(포함판은 9/26 권장 경유)입니다.</p></div>
-    <div class="mini"><b>츠키지·현금</b><p>츠키지는 오전 방문이 적합합니다. 골목·시장 소규모 점포용으로 소액 현금을 준비하세요.</p></div>
-    <div class="mini"><b>귀국일 짐</b><p>9/30은 08:20까지 도쿄역 또는 출발 거점에 짐 보관을 끝내고, 11:55부터 회수·N'EX 승강장 이동에 들어갑니다.</p></div>
-  </div>
+    <div class="mini"><b>세 날짜의 절대 컷오프</b><p>9/26은 12:50까지 긴자권을 떠나 14:00 부엉이카페를 지킵니다. 9/28은 해리포터 09:00 입장·13:40 퇴장을 기준으로 하며, 30분 이상 지연되면 시바공원 체류를 15분으로 줄이고 전시 선택을 취소합니다. 아자부다이는 유지합니다. 9/30은 12:20 N'EX 승강장 도착을 고정합니다.</p></div>
 </section>
 
 <!-- ══ 전체 표 (접근성: table view) ══ -->
@@ -415,11 +389,6 @@ tr:last-child td{border-bottom:none}
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
  integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script>
-let itineraryMode='nodisney';
-try{
-  const savedMode=localStorage.getItem('tokyo-itinerary-mode');
-  if(savedMode==='disney'||savedMode==='nodisney')itineraryMode=savedMode;
-}catch(e){}
 const CHOICE_DAYS=[
 {
  id:"c1",label:"9/25 신주쿠",route:"16:30 나리타 도착 → N'EX 신주쿠 → 신주쿠 1박 체크인 → 21:30 프로젝션 → 오모이데요코초 → 3D 고양이 → 고질라 헤드 → 가부키초 타워.",
@@ -486,10 +455,10 @@ const CHOICE_DAYS=[
    {n:"아사쿠사 이마한 스키야키",c:"맛집",l:"선택",at:"11:00",d:"90분",p:"¥5,000~",note:"선택하면 스카이트리·소라마치 기본 구간을 빼고 여유 있게 식사."}
   ]},
   {time:"11:25",title:"니혼바시 점심 교체",rule:"1곳 선택",items:[
-   {n:"덴푸라 카네코한노스케 니혼바시점",c:"맛집",l:"선택",at:"11:25",d:"70분",p:"¥1,000~2,000",mapsaved:true,modes:["nodisney"],note:"📍 Google 지도 저장. 화요일 11:00 개점. 스카이트리를 10:45에 출발해 ANDRA 대신 식사하고 12:35까지 나와 우에노로 이동합니다."},
-   {n:"니혼바시 돈카츠 하지메",c:"맛집",l:"선택",at:"11:25",d:"70분",p:"¥2,000~3,000",mapsaved:true,modes:["nodisney"],note:"📍 Google 지도 저장. ANDRA를 교체하는 일본바시 점심입니다. 현장 대기가 20분을 넘으면 같은 블록의 다른 후보로 바꾸고 12:35 출발선을 지킵니다."},
-   {n:"니혼바시 돈카츠 하지메 하나레",c:"맛집",l:"선택",at:"11:25",d:"70분",p:"¥2,000~3,000",mapsaved:true,modes:["nodisney"],note:"📍 Google 지도 저장. ANDRA를 교체하는 일본바시 점심입니다. 점심은 예약을 전제로 잡지 않고 20분 대기 컷오프를 적용합니다."},
-   {n:"고다이메 하나야마 우동 니혼바시점",c:"맛집",l:"선택",at:"11:25",d:"70분",p:"¥1,000~2,000",mapsaved:true,modes:["nodisney"],note:"📍 Google 지도 저장. 화요일 11:00~15:30. ANDRA 대신 선택하며 면 소진과 대기를 고려해 12:35에는 우에노로 출발합니다."}
+   {n:"덴푸라 카네코한노스케 니혼바시점",c:"맛집",l:"선택",at:"11:25",d:"70분",p:"¥1,000~2,000",mapsaved:true,note:"📍 Google 지도 저장. 화요일 11:00 개점. 스카이트리를 10:45에 출발해 ANDRA 대신 식사하고 12:35까지 나와 우에노로 이동합니다."},
+   {n:"니혼바시 돈카츠 하지메",c:"맛집",l:"선택",at:"11:25",d:"70분",p:"¥2,000~3,000",mapsaved:true,note:"📍 Google 지도 저장. ANDRA를 교체하는 일본바시 점심입니다. 현장 대기가 20분을 넘으면 같은 블록의 다른 후보로 바꾸고 12:35 출발선을 지킵니다."},
+   {n:"니혼바시 돈카츠 하지메 하나레",c:"맛집",l:"선택",at:"11:25",d:"70분",p:"¥2,000~3,000",mapsaved:true,note:"📍 Google 지도 저장. ANDRA를 교체하는 일본바시 점심입니다. 점심은 예약을 전제로 잡지 않고 20분 대기 컷오프를 적용합니다."},
+   {n:"고다이메 하나야마 우동 니혼바시점",c:"맛집",l:"선택",at:"11:25",d:"70분",p:"¥1,000~2,000",mapsaved:true,note:"📍 Google 지도 저장. 화요일 11:00~15:30. ANDRA 대신 선택하며 면 소진과 대기를 고려해 12:35에는 우에노로 출발합니다."}
   ]},
   {time:"10:45",title:"스카이트리 구간",rule:"1곳 선택",items:[
    {n:"스미다 수족관",c:"체험",l:"추천",at:"10:45",d:"90분",p:"¥2,700",note:"스카이트리타운 5·6층. 기본 외관·소라마치 75분 대신 고르는 실내 핵심. 전망대는 SHIBUYA SKY로 단일화합니다."}
@@ -519,10 +488,10 @@ const CHOICE_DAYS=[
  ]
 },
 {
- id:"c2",label:"9/26 중앙·아자부다이",route:"츠키지 → 10:05 카네코한노스케 → 긴자 핵심 → 14:00 후쿠로노미세 → 아자부다이·AMBIENT → 도쿄타워 외관 → 롯폰기 힐스·저녁.",
+ id:"c2",label:"9/26 중앙·아자부다이",route:"08:00 츠키지 → 10:05 카네코한노스케 → 긴자 핵심 → 14:00 후쿠로노미세 → 후지TV 외관 → 유니콘 건담·다이버시티 → 오다이바 해변 야경.",
  slots:[
   {time:"10:20",title:"긴자·니혼바시 회수",rule:"최대 1곳 선택",items:[
-   {n:"긴자 이토야 본점",c:"쇼핑",l:"교체",at:"11:30",d:"50분",p:"—",note:"디즈니 제외판에서는 긴자식스·가부키자 기본 블록과 교체하는 선택. 둘 다 더하지 않고 12:25 긴자 출발선을 지킵니다."},
+   {n:"긴자 이토야 본점",c:"쇼핑",l:"교체",at:"11:30",d:"50분",p:"—",note:"긴자식스·가부키자 기본 블록과 교체하는 선택. 둘 다 더하지 않고 12:25 긴자 출발선을 지킵니다."},
    {n:"니혼바시 — 포켓몬센터 도쿄DX·포켓몬 카페",c:"쇼핑",l:"선택",at:"13:00",d:"20분",p:"—",note:"센터만 빠르게 방문. 12:45까지 이토야를 못 나오면 이날은 보류하고 츠키시마로 직행. 포켓몬 카페는 별도 예약이 있을 때만."},
    {n:"쇼에이도 긴자점",c:"쇼핑",l:"선택",at:"11:55",d:"25분",p:"¥1,000~",mapsaved:true,note:"📍 Google 지도 저장. 이토야 또는 GINZA SIX 후반을 교체하고 향 제품을 봅니다. 12:20에 나와 디저트와 12:45 출발선을 지킵니다."},
    {n:"가부키자 — 1막 관람권",c:"체험",l:"대체",at:"10:30",d:"70~90분",p:"¥1,200~",note:"9/26은 9월 공연 마지막 날. 선택하면 긴자 쇼핑 대부분을 뺍니다."}
@@ -535,11 +504,8 @@ const CHOICE_DAYS=[
    {n:"고다이메 하나야마우동 긴자점",c:"맛집",l:"카네코 대체",at:"11:00",d:"70분",p:"¥1,000~2,000",mapsaved:true,note:"📍 신규 맵 저장. 토요일 11:00~16:00·정리권 운영. 11:00 첫 순번을 확보했을 때만 카네코와 교체하고 12:20까지 퇴장합니다."},
    {n:"안즈 하나레",c:"맛집",l:"카네코 대체",at:"11:00",d:"70분",p:"¥4,000~",mapsaved:true,note:"📍 Google 지도 저장. 카네코 츠키지 예약을 잡지 않았을 때만 대체 점심으로 선택합니다. 둘 다 먹지 않습니다."},
    {n:"MENYA ISHII WAGYU UDON",c:"맛집",l:"카네코 대체",at:"11:00",d:"50분",p:"¥1,000~2,000",mapsaved:true,note:"📍 Google 지도 저장. 카네코 츠키지 예약을 잡지 않았을 때만 대체 점심으로 선택합니다. 1일 100식 한정."},
-   {n:"茶屋いつか 銀座店",c:"카페·디저트",l:"교체",at:"12:25",d:"20분",p:"¥1,000~",mapsaved:true,note:"📍 Google 지도 저장. 디즈니 제외판에서는 DOLCE TACUBO, 포함판에서는 이토야 후반을 교체하는 말차 디저트안입니다. 12:45에는 츠키시마로 이동합니다."},
-   {n:"긴자 기무라야",c:"베이커리",l:"교체",at:"12:25",d:"20분",p:"¥500~",note:"메이지 시대부터 이어진 긴자의 앙팡 본점. 디즈니 제외판에서는 DOLCE TACUBO, 포함판에서는 이토야 후반을 교체해 빵을 포장하며 12:45 출발선을 지킵니다."}
-  ]},
-  {time:"19:15",title:"아자부주반·롯폰기 저녁",rule:"1곳 선택",items:[
-   {n:"KABUN-AZABUJUBAN",c:"맛집",l:"선택",at:"19:15",d:"120분",p:"¥8,000~14,000 + 10%",mapsaved:true,modes:["disney"],note:"📍 신규 맵 저장. 토요일 17:00~24:00. AMBIENT 뒤 아자부주반에서 예약 식사를 하고 21:30 롯폰기 야간 산책으로 마무리하는 대안입니다. 기본 롯폰기 힐스 식사만 교체합니다."}
+   {n:"茶屋いつか 銀座店",c:"카페·디저트",l:"교체",at:"12:25",d:"20분",p:"¥1,000~",mapsaved:true,note:"📍 Google 지도 저장. DOLCE TACUBO를 교체하는 말차 디저트안입니다. 12:45에는 츠키시마로 이동합니다."},
+   {n:"긴자 기무라야",c:"베이커리",l:"교체",at:"12:25",d:"20분",p:"¥500~",note:"메이지 시대부터 이어진 긴자의 앙팡 본점. DOLCE TACUBO를 교체해 빵을 포장하며 12:45 출발선을 지킵니다."}
   ]}
  ]
 },
@@ -547,20 +513,17 @@ const CHOICE_DAYS=[
  id:"c4",label:"9/28 롯폰기권",route:"09:00 해리포터·백롯카페 점심 → 시바공원·조조지 도쿄타워 뷰 → 아자부다이 → AMBIENT 또는 21_21 → 롯폰기 저녁.",
  slots:[
  {time:"16:35",title:"아자부다이·롯폰기 전시",rule:"최대 1곳 선택",items:[
-   {n:"AMBIENT KYOTO - TOKYO",c:"전시",l:"선택",at:"16:35",d:"100분",p:"평일 전매 ¥2,200",modes:["nodisney"],note:"아자부다이 안에서 바로 이어지는 사카모토 류이치·타카타니 시로 공간·음향 전시. 이동 효율은 가장 높지만 필수는 아닙니다. 선택하면 18:15 퇴장 후 롯폰기로 이동합니다."},
-   {n:"21_21 DESIGN SIGHT",c:"건축·전시",l:"추천",at:"16:40",d:"80분",p:"전시별",mapsaved:true,modes:["nodisney"],note:"📍 맵 저장. 안도 다다오 건축과 2026 기획전 ‘방장기에 배우다—삶을 다시 엮는 작은 건축’. 9/28 월요일은 10:00~19:00 정상 운영(입장 18:30까지)이라 아자부다이에서 롯폰기로 이동하는 방향과 정확히 맞습니다."}
+   {n:"AMBIENT KYOTO - TOKYO",c:"전시",l:"선택",at:"16:35",d:"100분",p:"평일 전매 ¥2,200",note:"아자부다이 안에서 바로 이어지는 사카모토 류이치·타카타니 시로 공간·음향 전시. 이동 효율은 가장 높지만 필수는 아닙니다. 선택하면 18:15 퇴장 후 롯폰기로 이동합니다."},
+   {n:"21_21 DESIGN SIGHT",c:"건축·전시",l:"추천",at:"16:40",d:"80분",p:"전시별",mapsaved:true,note:"📍 맵 저장. 안도 다다오 건축과 2026 기획전 ‘방장기에 배우다—삶을 다시 엮는 작은 건축’. 9/28 월요일은 10:00~19:00 정상 운영(입장 18:30까지)이라 아자부다이에서 롯폰기로 이동하는 방향과 정확히 맞습니다."}
   ]},
  {time:"18:40",title:"아자부주반·롯폰기 저녁",rule:"1곳 선택",items:[
-   {n:"KABUN-AZABUJUBAN",c:"맛집",l:"선택",at:"18:40",d:"120분",p:"¥8,000~14,000 + 10%",mapsaved:true,modes:["nodisney"],note:"📍 맵 저장. 월요일 17:00~익일 01:00. 예약했을 때만 기본 롯폰기 저녁을 교체하고, 식사 뒤 20:55 롯폰기 야간 산책으로 마무리합니다."}
+   {n:"KABUN-AZABUJUBAN",c:"맛집",l:"선택",at:"18:40",d:"120분",p:"¥8,000~14,000 + 10%",mapsaved:true,note:"📍 맵 저장. 월요일 17:00~익일 01:00. 예약했을 때만 기본 롯폰기 저녁을 교체하고, 식사 뒤 20:55 롯폰기 야간 산책으로 마무리합니다."}
   ]}
  ]
 },
 {
  id:"c6",label:"9/30 중앙",route:"07:55 짐 보관 → 도쿄역사 → 09:05 고쿄 → 도쿄국제포럼 → 11:00 KITTE → 도쿄역 쇼핑·에키벤 → 11:55 짐 회수 → 12:30 N'EX.",
  slots:[
-  {time:"09:00",title:"출국 전 오전 핵심",rule:"1~2곳 선택",items:[
-   {n:"포켓몬센터 도쿄DX",c:"쇼핑",l:"선택",at:"10:30",d:"35분",p:"—",modes:["disney"],note:"디즈니 포함판에서 국제포럼·KITTE·캐릭터 스트리트를 교체하는 니혼바시 쇼핑안. 11:05 종료·11:25 도쿄역 복귀를 지킵니다. 11:55 짐 회수는 변경하지 않습니다."}
-  ]}
  ]
 }
 ];
@@ -624,17 +587,16 @@ function visibleChoiceSlots(day){
   return day.slots.filter(slot=>visibleChoiceItems(day,slot).length);
 }
 function visibleChoiceItems(day,slot){
-  return slot.items.filter(item=>!item.modes||item.modes.includes(itineraryMode));
+  return slot.items;
 }
 function choiceLabelForMode(day){
-  if(day.id==='c2')return itineraryMode==='nodisney'?'9/26 중앙·오다이바':'9/26 중앙·아자부다이';
+  if(day.id==='c2')return '9/26 중앙·오다이바';
   if(day.id==='c4')return '9/28 해리포터·아자부다이';
   if(day.id==='c5')return '9/27 서부·시부야';
   if(day.id==='c3')return '9/29 동부';
   return day.label;
 }
 function choiceRouteForMode(day){
-  if(itineraryMode==='nodisney'&&day.id==='c2')return '08:00 츠키지 → 10:05 카네코한노스케 → 긴자 핵심 → 14:00 후쿠로노미세 → 후지TV 외관 → 유니콘 건담·다이버시티 → 오다이바 해변 야경.';
   return day.route;
 }
 function selectedChoiceItems(dayId){
@@ -861,120 +823,35 @@ const DAYS=[
 },
 {
  id:"d4",label:"9/28",dow:"월",hex:"#eda100",
- zone:"마이하마 · 도쿄 디즈니씨 ⭐",theme:"월요일 종일 · 앱 예약시간 우선",
- lodging:"숙소 → 마이하마 / 마이하마 → 숙소 · 숙소 확정 후 계산",
- rain:"실내 어트랙션과 앱 예약시간을 우선하고 야외 공연·운영 변경을 당일 앱에서 확인",
+ zone:"도시마엔 → 시바공원·조조지 → 아자부다이 → 롯폰기",theme:"해리포터·내부 점심 → 도쿄타워 뷰 → 필수 아자부다이 → 전시 선택 → 롯폰기 저녁",
+ lodging:"07:20 4박 숙소 출발 → 도시마엔 / 롯폰기 → 숙소 · 숙소 확정 후 재계산",
+ rain:"해리포터와 아자부다이는 유지. 시바공원·조조지는 외관만 15분으로 줄이고 AMBIENT 또는 21_21 중 실내 전시 1곳을 선택",
  items:[
-  {t:"06:45",n:"숙소 조식 · 간편식",cat:"맛집",
-   d:"입장 대기 전에 숙소 조식 또는 편의점 간편식으로 아침을 먹습니다. 파크 안 첫 식사를 점심까지 미루지 않습니다.",stay:"30분",cost:"¥700~1,500",placeholder:true},
-  {t:"07:30",n:"마이하마역 → 디즈니리조트라인",cat:"이동",lat:35.6329,lng:139.8814,
-   d:"할로윈 기간의 보안검색·입장열을 고려해 공식 개장 90분 전에 마이하마역 도착을 목표로 합니다. 모노레일로 도쿄디즈니씨 스테이션에 내립니다.",stay:"20분",cost:"¥300",priority:"숙소 확정 후 출발시각 역산"},
-  {t:"07:50",n:"디즈니씨 입장 대기",cat:"이동",lat:35.6267,lng:139.8850,
-   d:"보안검색과 입장열을 고려한 시간입니다. 입장이 조기 시작되면 바로 공식 앱을 확인합니다.",stay:"약 70분",cost:"—"},
-  {t:"09:00",n:"도쿄 디즈니씨 입장",cat:"체험",lat:35.6267,lng:139.8850,mandatory:true,
-   d:"개장 09:00 / 폐장 21:00. 입장 즉시 Fantasy Springs·Toy Story DPA와 쇼 Entry Request를 확인하고, 확보한 시각이 아래 권역 순서보다 우선합니다.",stay:"—",cost:"¥9,900",book:"사전예약 필수"},
-  {t:"오전",n:"① 판타지스프링스",cat:"체험",lat:35.6300,lng:139.8880,
-   d:"권장 시작 권역일 뿐 고정 시각이 아닙니다. 겨울왕국·라푼젤·피터팬 중 대기가 짧거나 DPA를 확보한 어트랙션부터 이용합니다.",stay:"약 120분",cost:"일반 대기 또는 DPA"},
-  {t:"오전~점심",n:"② 로스트리버 델타",cat:"체험",lat:35.6285,lng:139.8875,optional:true,
-   d:"판타지스프링스에서 가까운 레이징 스피리츠 중심. 인디아나 존스는 휴장이라 동선에서 제외합니다.",stay:"65분",cost:"—"},
-  {t:"점심",n:"③ 점심 · 아라비안 코스트",cat:"맛집",lat:35.6255,lng:139.8862,
-   d:"카스바 푸드코트에서 피크를 피해 빠르게 식사합니다. 모바일 오더가 가능하면 먼저 확보합니다.",stay:"55분",cost:"¥1,500~"},
-  {t:"오후",n:"④ 머메이드 라군 → 미스테리어스 아일랜드",cat:"체험",lat:35.6272,lng:139.8837,optional:true,
-   d:"실내 휴식 후 센터 오브 디 어스·해저 2만 마일로 이동합니다. 머메이드 라군 시어터는 휴장입니다.",stay:"110분",cost:"—"},
-  {t:"오후",n:"⑤ 아메리칸 워터프론트",cat:"체험",lat:35.6260,lng:139.8820,optional:true,
-   d:"토이스토리 마니아와 뉴욕 항구 테마 중심. 타워 오브 테러는 휴장이며, 확보한 DPA 시각에 맞춰 앞뒤 순서를 조정합니다.",stay:"115분",cost:"—"},
-  {t:"저녁",n:"⑥ 이른 저녁 · 메디테레이니언 하버",cat:"맛집",lat:35.6252,lng:139.8845,
-   d:"공연 전 식사와 야경을 함께 해결합니다. 19:20까지 하버 관람 위치로 이동합니다.",stay:"100분",cost:"¥2,500~"},
-  {t:"19:50",n:"⑦ Believe! Sea of Dreams",cat:"체험",lat:35.6254,lng:139.8850,
-   d:"메디테레이니언 하버 야간 공연. 9/28 공식 일정 기준 19:50 시작이며 당일 앱에서 재확인합니다.",stay:"30분",cost:"무료~"},
-  {t:"20:25",n:"⑧ 쇼핑 · 엠포리오",cat:"쇼핑",lat:35.6245,lng:139.8838,
-   d:"입구 쪽 대형 굿즈샵. 필요한 상품만 빠르게 고르고 퇴장합니다.",stay:"30분",cost:"—"}
- ]
-},
-{
- id:"d2",label:"9/26",dow:"토",hex:"#eb6834",
- zone:"츠키지 · 긴자 · 츠키시마 → 도쿄타워 → 아자부다이 → 롯폰기",theme:"시장·예약 점심 → 14:00 합류 → 동쪽에서 서쪽으로 건축·사운드 아트",
- lodging:"06:50 신주쿠 1박 숙소 체크아웃 → 고동민과 사용할 4박 숙소에 짐 보관 → 츠키지",
- rain:"츠키지는 축소하고 카네코한노스케·긴자 실내·후쿠로노미세·AMBIENT를 유지. 도쿄타워 외관은 생략",
- items:[
-  {t:"06:50",n:"신주쿠 1박 숙소 체크아웃 · 4박 숙소로 이동",cat:"이동",mandatory:true,
-   d:"고동민이 합류하는 날입니다. 이후 4박 숙소에 먼저 짐을 맡기고 가벼운 짐만 들고 츠키지로 이동합니다.",stay:"약 50분",cost:"IC 운임",placeholder:true,priority:"숙소 확정 후 재계산"},
-  {t:"07:45",n:"4박 숙소에 짐 맡기기",cat:"이동",mandatory:true,
-   d:"체크인 전 수하물 보관 가능 여부를 숙소에 확인합니다. 불가능하면 도쿄역·긴자역 보관소를 이용하고 츠키지 08:00 도착을 우선합니다.",stay:"10분",cost:"무료~",placeholder:true},
-  {t:"08:00",n:"츠키지 장외시장 · 아침식사",cat:"맛집",lat:35.6655,lng:139.7708,mapsaved:true,
-   d:"시장 구경과 함께 달걀말이·오니기리·해산물 한두 가지로 아침을 먹습니다. 10:05 이른 점심이 있으므로 카이센동 한 그릇은 먹지 않습니다.",stay:"75분",cost:"¥1,500~",priority:"가벼운 아침"},
-  {move:"🚶 도보 약 6분"},
-  {t:"09:25",n:"츠키지 혼간지",cat:"건축",lat:35.6665,lng:139.7726,optional:true,
-   d:"고대 인도 양식 외관과 본당을 봅니다. 다음 식당이 가까워 25분만 사용합니다.",stay:"25분",cost:"무료"},
-  {move:"🚶 츠키지 2초메까지 약 4분"},
-  {t:"10:05",n:"이른 점심 · 텐동 카네코한노스케 츠키지 본점",cat:"맛집",lat:35.6686,lng:139.7717,
-   d:"토요일 10:00 개점. 좌석 예약이 가능한 지점이므로 10:05 전후로 예약해 시장 식사와 점심을 하나로 합칩니다.",stay:"70분",cost:"¥1,500~",book:"좌석 예약 권장"},
-  {move:"🚶 GINZA SIX까지 약 12분"},
-  {t:"11:30",n:"긴자식스 옥상정원·가부키자 외관",cat:"건축",lat:35.6697,lng:139.7635,
-   d:"옥상정원과 인접한 가부키자 외관을 한 구간으로 묶어 짧게 봅니다. 긴자를 백화점 순회로 늘리지 않습니다.",stay:"35분",cost:"무료"},
-  {move:"🚶 긴자 이토야까지 약 7분"},
-  {t:"12:15",n:"긴자 이토야 본점·주오도리",cat:"쇼핑",lat:35.6721,lng:139.7680,optional:true,
-   d:"이토야의 문구·디자인 핵심층만 보고, 토요일 보행자천국인 주오도리를 거쳐 역으로 이동합니다.",stay:"35분",cost:"—",priority:"12:50 출발"},
-  {move:"🚇 긴자·유라쿠초 → 츠키시마 약 25분"},
-  {t:"13:20",n:"츠키시마 도착 · 합류 버퍼",cat:"휴양",lat:35.6648,lng:139.7838,
-   d:"이동 오차와 고동민 도착 지연을 흡수합니다. 추가 관광을 넣지 않고 13:50까지 10번 출구에서 합류합니다.",stay:"30분",cost:"무료",priority:"버퍼 유지"},
-  {t:"14:00",n:"후쿠로노미세",cat:"체험",lat:35.6648,lng:139.7838,mapsaved:true,mandatory:true,
-   d:"확정 일정. 고동민(비둘기)과 츠키시마역 10번 출구에서 먼저 합류한 뒤 14:00 회차에 입장합니다. 앞 일정이 밀리면 니혼바시·긴자 선택 일정을 줄이고 이 시간을 지킵니다.",stay:"60분",cost:"¥2,000~",book:"14:00 일정 확정",priority:"13:50까지 합류 완료"},
-  {move:"🚇 츠키시마 → 아카바네바시 약 25~30분"},
-  {t:"15:35",n:"도쿄타워 외관·조조지",cat:"건축",lat:35.6586,lng:139.7454,mapsaved:true,optional:true,
-   d:"전망대는 들어가지 않고 조조지에서 도쿄타워 외관을 봅니다. 아자부다이보다 동쪽에 있으므로 먼저 들러 역주행을 없앱니다.",stay:"35분",cost:"무료",priority:"전망대 제외"},
-  {move:"🚶 도쿄타워 → 아자부다이 힐즈 약 15분"},
-  {t:"16:25",n:"아자부다이 힐즈 · 건축 산책",cat:"건축",lat:35.6604,lng:139.7404,mapsaved:true,mandatory:true,
-   d:"고동민과 함께 보는 필수 방문. Garden Plaza → Central Green → Heatherwick 저층부 → The Cloud → Mori JP Tower 순으로 봅니다.",stay:"50분",cost:"무료",priority:"17:15까지 갤러리로 이동"},
-  {move:"🚶 단지 내 가든플라자A MB층으로 이동"},
-  {t:"17:25",n:"AMBIENT KYOTO - TOKYO",cat:"체험",lat:35.6610,lng:139.7406,
-   d:"坂本龍一+高谷史郎의 async - immersion. 26.4m 스크린과 입체음향으로 구성된 공간 설치를 관람합니다. 토요일은 20:00까지이며 당일권보다 전매권이 저렴합니다.",stay:"90분",cost:"전매 ¥2,500",book:"사전예매 권장",priority:"최종입장 19:30"},
-  {move:"🚶 아자부다이 → 롯폰기 힐스 약 15~20분"},
-  {t:"19:15",n:"롯폰기 힐스 · 모리정원 · 게야키자카 · 저녁",cat:"맛집",lat:35.6605,lng:139.7292,mapsaved:true,
-   d:"📍 저장한 롯폰기 힐스를 기본 방문합니다. 모리정원·게야키자카 야간 산책 뒤 단지에서 저녁을 먹으며, 도쿄시티뷰와 모리미술관은 들어가지 않습니다.",stay:"110분",cost:"¥3,000~",priority:"도쿄시티뷰 제외"},
+  {t:"06:40",n:"숙소 조식 · 간편식",cat:"맛집",
+   d:"도시마엔 이동 전에 숙소 조식 또는 편의점 간편식으로 아침을 먹습니다. 스튜디오 입장 후 첫 식사를 점심까지 미루지 않습니다.",stay:"30분",cost:"¥700~1,500",placeholder:true},
+  {t:"07:20",n:"숙소 출발 · 도시마엔 이동",cat:"이동",
+   d:"09:00 지정 입장을 기준으로 08:30 현장 도착을 목표로 합니다. 숙소 위치 확정 뒤 실제 첫 열차와 출발시각을 다시 계산합니다.",stay:"약 60~70분",cost:"IC 운임",placeholder:true,priority:"08:30 현장 도착"},
+  {t:"08:30",n:"해리포터 스튜디오 입장 준비",cat:"이동",lat:35.7450,lng:139.6472,
+   d:"도시마엔역에서 도보 2분. 지정시간 전 화장실·클로크·입구 확인을 끝내고 예약 회차를 놓치지 않습니다.",stay:"30분",cost:"—",placeholder:true},
+  {t:"09:00",n:"워너 브라더스 스튜디오 투어 도쿄 · 백롯카페 점심",cat:"체험",lat:35.7450,lng:139.6472,mapsaved:true,mandatory:true,
+   d:"공식 권장 관람 3~4시간을 기준으로 투어 중간 백롯카페 식사 45분과 마지막 굿즈 쇼핑을 포함해 4시간 40분을 확보합니다. 전반·후반 시각은 현장에서 고정하지 않고 13:40 퇴장만 관리합니다.",stay:"4시간 40분",cost:"입장 ¥6,600~ + 식사 ¥2,000~3,500",book:"날짜·09:00 지정권",priority:"11:30 전후 내부 점심 · 13:40 퇴장"},
+  {move:"🚇 도시마엔 → 오에도선 아카바네바시 · 환승 없이 약 35~40분"},
+  {t:"14:25",n:"시바공원 · 조조지 · 도쿄타워 뷰",cat:"건축·관광",lat:35.6586,lng:139.7454,mapsaved:true,
+   d:"도쿄타워 전망대에는 들어가지 않고 시바공원과 조조지에서 타워 외관을 봅니다. 아카바네바시에서 아자부다이로 이동하는 직선상이라 별도 왕복이 없습니다.",stay:"35분",cost:"무료",priority:"15:00 아자부다이 이동"},
+  {move:"🚶 조조지 → 아자부다이 힐즈 약 15분"},
+  {t:"15:20",n:"아자부다이 힐즈 · 건축 산책",cat:"건축",lat:35.6604,lng:139.7404,mapsaved:true,mandatory:true,
+   d:"사용자 지정 필수 방문. Garden Plaza → Central Green → Heatherwick 저층부 → The Cloud → Mori JP Tower 순으로 건축과 도시공간을 봅니다.",stay:"65분",cost:"무료",priority:"16:25 전시 이동"},
+  {t:"16:35",n:"전시 선택 · AMBIENT 또는 21_21",cat:"전시",optional:true,placeholder:true,
+   d:"둘 다 자동 고정하지 않습니다. 이동 최소화·미디어아트면 AMBIENT, 안도 다다오 건축·디자인 전시면 21_21을 선택 플래너에서 1곳만 확정합니다. 전시를 원하지 않으면 이 구간은 카페·휴식으로 둡니다.",stay:"최대 100분",cost:"선택별"},
+  {move:"🚶 아자부다이/도쿄미드타운 → 롯폰기 힐스 약 10~20분"},
+  {t:"18:35",n:"롯폰기 힐스 · 모리정원 · 게야키자카",cat:"야경",lat:35.6605,lng:139.7292,mapsaved:true,
+   d:"롯폰기 권역을 빼지 않고 모리정원과 도쿄타워가 보이는 게야키자카를 걷습니다. 도쿄시티뷰와 전시 교체 중인 모리미술관은 들어가지 않습니다.",stay:"25분",cost:"무료",priority:"전망대 제외"},
+  {t:"19:00",n:"저녁 · 롯폰기",cat:"맛집",lat:35.6605,lng:139.7292,
+   d:"롯폰기 힐스·도쿄미드타운 권역에서 대기 20분 이내 식당을 고릅니다. KABUN을 예약하면 이 기본 저녁만 교체합니다.",stay:"80분",cost:"¥2,000~4,000"},
   {move:"🚇 롯폰기 → 4박 숙소 · 숙소 확정 후 계산"}
  ]
 },
 {
- id:"d6",label:"9/30",dow:"수",hex:"#008300",
- zone:"도쿄역 · 고쿄 · 마루노우치 → 나리타",theme:"관광·건축 → 쇼핑 → 이른 식사 · 12:30 N'EX 고정",
- lodging:"기본안은 체크아웃 후 도쿄역 보관. 최종 숙소가 도쿄역 도보권일 때만 호텔 프런트 보관으로 전환",
- rain:"고쿄를 축소·생략하고 도쿄역·KITTE 실내 중심으로 전환, N'EX 지정열차는 유지",
- items:[
-  {t:"06:50",n:"숙소 조식 · 체크아웃 준비",cat:"맛집",
-   d:"짐을 모두 정리한 뒤 숙소 조식 또는 편의점 간편식으로 아침을 먹습니다. 공항 이동 전 마지막 식사는 11:40이므로 결식하지 않습니다.",stay:"35분",cost:"¥700~1,500",placeholder:true},
-  {t:"07:55",n:"짐 보관 · 도쿄역 기본 / 호텔 도보권이면 프런트",cat:"이동",lat:35.6812,lng:139.7671,
-   d:"고쿄·마루노우치 관광 뒤 N'EX를 타므로 긴자·신토미초 숙소라면 도쿄역 보관이 되돌아가는 시간을 줄입니다. 최종 숙소가 도쿄역 도보권이면 호텔 로비에 맡기는 방식으로 바꿉니다. 보관 방식은 숙소 확정 뒤 결정합니다.",stay:"25분",cost:"무료~¥700",priority:"08:20 완료"},
-  {t:"08:20",n:"도쿄역 마루노우치역사 · 교코도리",cat:"건축",lat:35.6812,lng:139.7659,
-   d:"복원된 붉은 벽돌 역사와 황궁으로 이어지는 교코도리를 아침 인파가 적을 때 봅니다. 별도 우회 없이 오테몬 이동축에 포함합니다.",stay:"20분",cost:"무료"},
-  {move:"🚶 교코도리·오테마치 경유 오테몬까지 약 20분"},
-  {t:"09:05",n:"고쿄 히가시교엔 · 에도성 천수대",cat:"관광",lat:35.6861,lng:139.7567,
-   d:"개원 직후 핵심 구간만 보고 10:10까지 나옵니다. 휴원·임시 폐쇄 공지는 전날 확인합니다.",stay:"65분",cost:"무료"},
-  {move:"🚶 마루노우치 나카도리를 따라 약 20분"},
-  {t:"10:30",n:"도쿄국제포럼 · 유리동",cat:"건축",lat:35.6769,lng:139.7645,optional:true,
-   d:"라파엘 비뇰리 설계의 배 모양 유리 아트리움과 지상 광장을 핵심만 봅니다. 공용공간은 07:00부터 열리며 10:50에는 KITTE로 이동합니다.",stay:"20분",cost:"무료",priority:"10:50 출발"},
-  {move:"🚶 KITTE까지 약 6분"},
-  {t:"11:00",n:"KITTE 마루노우치 · 옥상정원",cat:"건축",lat:35.6797,lng:139.7647,optional:true,
-   d:"11:00 개장 직후 옥상정원과 옛 도쿄중앙우체국장실에서 도쿄역사를 봅니다. 20분만 사용하고 쇼핑·점심 구입으로 전환합니다.",stay:"20분",cost:"무료",priority:"11:20 출발"},
-  {move:"🚶 도쿄역까지 약 3분"},
-  {t:"11:25",n:"도쿄역 캐릭터 스트리트 · 다이마루",cat:"쇼핑",lat:35.6812,lng:139.7677,optional:true,
-   d:"마지막 기념품과 캐릭터 상품은 미리 정한 매장 한 곳만 봅니다. 11:40에는 식사·공항 간식 구입으로 전환합니다.",stay:"15분",cost:"—",priority:"매장 1곳만"},
-  {t:"11:40",n:"에키벤야 마츠리 · 이른 점심",cat:"맛집",lat:35.6815,lng:139.7680,
-   d:"열차에서 먹을 도시락과 공항 간식을 구입합니다. 줄이 길면 가까운 편의점·매점으로 바꾸고 11:55 짐 회수 시간을 지킵니다.",stay:"15분",cost:"¥1,200~",priority:"11:55 종료"},
-  {t:"11:55",n:"짐 회수 · N'EX 승강장 이동",cat:"이동",
-   d:"도쿄역 보관을 택했다면 짐을 찾아 소부선 지하 N'EX 승강장으로 이동합니다. 호텔 프런트 보관을 택했다면 마지막 오전 동선과 출발시각을 숙소 위치 기준으로 다시 계산해야 합니다.",stay:"25분",cost:"—",placeholder:true,priority:"12:20 승강장 도착"},
-  {t:"12:30 전후",n:"N'EX · 도쿄역 → 나리타공항",cat:"이동",lat:35.6812,lng:139.7671,mandatory:true,
-   d:"16:20 출발편 기준 약 3시간의 공항 여유를 두는 안전한 이동안입니다. 정확한 열차는 출발일 시간표에서 확정하고 앞 일정보다 우선합니다.",stay:"약 53분",cost:"왕복권 사용",book:"좌석 지정",priority:"지정열차 절대 고정"},
-  {t:"13:30 전후",n:"나리타 국제공항 도착",cat:"이동",lat:35.7720,lng:140.3929,
-   d:"체크인·수하물 위탁·보안검색·출국심사를 진행합니다.",stay:"약 2시간 50분",cost:"—"},
-  {t:"16:20",n:"ZE610 · 나리타 출발",cat:"이동",lat:35.7720,lng:140.3929,mandatory:true,
-   d:"인천국제공항 19:10 도착 예정. 비행시간 2시간 50분.",stay:"2시간 50분",cost:"—"}
- ]
-}
-];
-const DISNEY_DAY2=DAYS.find(day=>day.id==='d2');
-const DISNEY_DAY4=DAYS.find(day=>day.id==='d4');
-const NO_DISNEY_DAY2={
  id:"d2",label:"9/26",dow:"토",hex:"#eb6834",
  zone:"츠키지 → 긴자 → 츠키시마 → 오다이바",theme:"시장·긴자 핵심 → 14:00 합류 → 인접 베이권 → 해변 야경",
  lodging:"06:50 신주쿠 1박 숙소 체크아웃 → 고동민과 사용할 4박 숙소에 짐 보관 → 츠키지",
@@ -1015,37 +892,44 @@ const NO_DISNEY_DAY2={
    d:"해변과 가까운 상업시설에서 대기 20분 이내 식당을 선택합니다. 식사 후 여유가 있으면 DECKS를 보고 20:30에 귀환합니다.",stay:"95분",cost:"¥2,500~",priority:"20:30 귀환"},
   {move:"🚃 유리카모메 또는 린카이선 → 4박 숙소 · 숙소 확정 후 계산"}
  ]
-};
-const NO_DISNEY_DAY4={
- id:"d4",label:"9/28",dow:"월",hex:"#eda100",
- zone:"도시마엔 → 시바공원·조조지 → 아자부다이 → 롯폰기",theme:"해리포터·내부 점심 → 도쿄타워 뷰 → 필수 아자부다이 → 전시 선택 → 롯폰기 저녁",
- lodging:"07:20 4박 숙소 출발 → 도시마엔 / 롯폰기 → 숙소 · 숙소 확정 후 재계산",
- rain:"해리포터와 아자부다이는 유지. 시바공원·조조지는 외관만 15분으로 줄이고 AMBIENT 또는 21_21 중 실내 전시 1곳을 선택",
+},
+{
+ id:"d6",label:"9/30",dow:"수",hex:"#008300",
+ zone:"도쿄역 · 고쿄 · 마루노우치 → 나리타",theme:"관광·건축 → 쇼핑 → 이른 식사 · 12:30 N'EX 고정",
+ lodging:"기본안은 체크아웃 후 도쿄역 보관. 최종 숙소가 도쿄역 도보권일 때만 호텔 프런트 보관으로 전환",
+ rain:"고쿄를 축소·생략하고 도쿄역·KITTE 실내 중심으로 전환, N'EX 지정열차는 유지",
  items:[
-  {t:"06:40",n:"숙소 조식 · 간편식",cat:"맛집",
-   d:"도시마엔 이동 전에 숙소 조식 또는 편의점 간편식으로 아침을 먹습니다. 스튜디오 입장 후 첫 식사를 점심까지 미루지 않습니다.",stay:"30분",cost:"¥700~1,500",placeholder:true},
-  {t:"07:20",n:"숙소 출발 · 도시마엔 이동",cat:"이동",
-   d:"09:00 지정 입장을 기준으로 08:30 현장 도착을 목표로 합니다. 숙소 위치 확정 뒤 실제 첫 열차와 출발시각을 다시 계산합니다.",stay:"약 60~70분",cost:"IC 운임",placeholder:true,priority:"08:30 현장 도착"},
-  {t:"08:30",n:"해리포터 스튜디오 입장 준비",cat:"이동",lat:35.7450,lng:139.6472,
-   d:"도시마엔역에서 도보 2분. 지정시간 전 화장실·클로크·입구 확인을 끝내고 예약 회차를 놓치지 않습니다.",stay:"30분",cost:"—",placeholder:true},
-  {t:"09:00",n:"워너 브라더스 스튜디오 투어 도쿄 · 백롯카페 점심",cat:"체험",lat:35.7450,lng:139.6472,mapsaved:true,mandatory:true,
-   d:"공식 권장 관람 3~4시간을 기준으로 투어 중간 백롯카페 식사 45분과 마지막 굿즈 쇼핑을 포함해 4시간 40분을 확보합니다. 전반·후반 시각은 현장에서 고정하지 않고 13:40 퇴장만 관리합니다.",stay:"4시간 40분",cost:"입장 ¥6,600~ + 식사 ¥2,000~3,500",book:"날짜·09:00 지정권",priority:"11:30 전후 내부 점심 · 13:40 퇴장"},
-  {move:"🚇 도시마엔 → 오에도선 아카바네바시 · 환승 없이 약 35~40분"},
-  {t:"14:25",n:"시바공원 · 조조지 · 도쿄타워 뷰",cat:"건축·관광",lat:35.6586,lng:139.7454,mapsaved:true,
-   d:"도쿄타워 전망대에는 들어가지 않고 시바공원과 조조지에서 타워 외관을 봅니다. 아카바네바시에서 아자부다이로 이동하는 직선상이라 별도 왕복이 없습니다.",stay:"35분",cost:"무료",priority:"15:00 아자부다이 이동"},
-  {move:"🚶 조조지 → 아자부다이 힐즈 약 15분"},
-  {t:"15:20",n:"아자부다이 힐즈 · 건축 산책",cat:"건축",lat:35.6604,lng:139.7404,mapsaved:true,mandatory:true,
-   d:"사용자 지정 필수 방문. Garden Plaza → Central Green → Heatherwick 저층부 → The Cloud → Mori JP Tower 순으로 건축과 도시공간을 봅니다.",stay:"65분",cost:"무료",priority:"16:25 전시 이동"},
-  {t:"16:35",n:"전시 선택 · AMBIENT 또는 21_21",cat:"전시",optional:true,placeholder:true,
-   d:"둘 다 자동 고정하지 않습니다. 이동 최소화·미디어아트면 AMBIENT, 안도 다다오 건축·디자인 전시면 21_21을 선택 플래너에서 1곳만 확정합니다. 전시를 원하지 않으면 이 구간은 카페·휴식으로 둡니다.",stay:"최대 100분",cost:"선택별"},
-  {move:"🚶 아자부다이/도쿄미드타운 → 롯폰기 힐스 약 10~20분"},
-  {t:"18:35",n:"롯폰기 힐스 · 모리정원 · 게야키자카",cat:"야경",lat:35.6605,lng:139.7292,mapsaved:true,
-   d:"롯폰기 권역을 빼지 않고 모리정원과 도쿄타워가 보이는 게야키자카를 걷습니다. 도쿄시티뷰와 전시 교체 중인 모리미술관은 들어가지 않습니다.",stay:"25분",cost:"무료",priority:"전망대 제외"},
-  {t:"19:00",n:"저녁 · 롯폰기",cat:"맛집",lat:35.6605,lng:139.7292,
-   d:"롯폰기 힐스·도쿄미드타운 권역에서 대기 20분 이내 식당을 고릅니다. KABUN을 예약하면 이 기본 저녁만 교체합니다.",stay:"80분",cost:"¥2,000~4,000"},
-  {move:"🚇 롯폰기 → 4박 숙소 · 숙소 확정 후 계산"}
+  {t:"06:50",n:"숙소 조식 · 체크아웃 준비",cat:"맛집",
+   d:"짐을 모두 정리한 뒤 숙소 조식 또는 편의점 간편식으로 아침을 먹습니다. 공항 이동 전 마지막 식사는 11:40이므로 결식하지 않습니다.",stay:"35분",cost:"¥700~1,500",placeholder:true},
+  {t:"07:55",n:"짐 보관 · 도쿄역 기본 / 호텔 도보권이면 프런트",cat:"이동",lat:35.6812,lng:139.7671,
+   d:"고쿄·마루노우치 관광 뒤 N'EX를 타므로 긴자·신토미초 숙소라면 도쿄역 보관이 되돌아가는 시간을 줄입니다. 최종 숙소가 도쿄역 도보권이면 호텔 로비에 맡기는 방식으로 바꿉니다. 보관 방식은 숙소 확정 뒤 결정합니다.",stay:"25분",cost:"무료~¥700",priority:"08:20 완료"},
+  {t:"08:20",n:"도쿄역 마루노우치역사 · 교코도리",cat:"건축",lat:35.6812,lng:139.7659,
+   d:"복원된 붉은 벽돌 역사와 황궁으로 이어지는 교코도리를 아침 인파가 적을 때 봅니다. 별도 우회 없이 오테몬 이동축에 포함합니다.",stay:"20분",cost:"무료"},
+  {move:"🚶 교코도리·오테마치 경유 오테몬까지 약 20분"},
+  {t:"09:05",n:"고쿄 히가시교엔 · 에도성 천수대",cat:"관광",lat:35.6861,lng:139.7567,
+   d:"개원 직후 핵심 구간만 보고 10:10까지 나옵니다. 휴원·임시 폐쇄 공지는 전날 확인합니다.",stay:"65분",cost:"무료"},
+  {move:"🚶 마루노우치 나카도리를 따라 약 20분"},
+  {t:"10:30",n:"도쿄국제포럼 · 유리동",cat:"건축",lat:35.6769,lng:139.7645,optional:true,
+   d:"라파엘 비뇰리 설계의 배 모양 유리 아트리움과 지상 광장을 핵심만 봅니다. 공용공간은 07:00부터 열리며 10:50에는 KITTE로 이동합니다.",stay:"20분",cost:"무료",priority:"10:50 출발"},
+  {move:"🚶 KITTE까지 약 6분"},
+  {t:"11:00",n:"KITTE 마루노우치 · 옥상정원",cat:"건축",lat:35.6797,lng:139.7647,optional:true,
+   d:"11:00 개장 직후 옥상정원과 옛 도쿄중앙우체국장실에서 도쿄역사를 봅니다. 20분만 사용하고 쇼핑·점심 구입으로 전환합니다.",stay:"20분",cost:"무료",priority:"11:20 출발"},
+  {move:"🚶 도쿄역까지 약 3분"},
+  {t:"11:25",n:"도쿄역 캐릭터 스트리트 · 다이마루",cat:"쇼핑",lat:35.6812,lng:139.7677,optional:true,
+   d:"마지막 기념품과 캐릭터 상품은 미리 정한 매장 한 곳만 봅니다. 11:40에는 식사·공항 간식 구입으로 전환합니다.",stay:"15분",cost:"—",priority:"매장 1곳만"},
+  {t:"11:40",n:"에키벤야 마츠리 · 이른 점심",cat:"맛집",lat:35.6815,lng:139.7680,
+   d:"열차에서 먹을 도시락과 공항 간식을 구입합니다. 줄이 길면 가까운 편의점·매점으로 바꾸고 11:55 짐 회수 시간을 지킵니다.",stay:"15분",cost:"¥1,200~",priority:"11:55 종료"},
+  {t:"11:55",n:"짐 회수 · N'EX 승강장 이동",cat:"이동",
+   d:"도쿄역 보관을 택했다면 짐을 찾아 소부선 지하 N'EX 승강장으로 이동합니다. 호텔 프런트 보관을 택했다면 마지막 오전 동선과 출발시각을 숙소 위치 기준으로 다시 계산해야 합니다.",stay:"25분",cost:"—",placeholder:true,priority:"12:20 승강장 도착"},
+  {t:"12:30 전후",n:"N'EX · 도쿄역 → 나리타공항",cat:"이동",lat:35.6812,lng:139.7671,mandatory:true,
+   d:"16:20 출발편 기준 약 3시간의 공항 여유를 두는 안전한 이동안입니다. 정확한 열차는 출발일 시간표에서 확정하고 앞 일정보다 우선합니다.",stay:"약 53분",cost:"왕복권 사용",book:"좌석 지정",priority:"지정열차 절대 고정"},
+  {t:"13:30 전후",n:"나리타 국제공항 도착",cat:"이동",lat:35.7720,lng:140.3929,
+   d:"체크인·수하물 위탁·보안검색·출국심사를 진행합니다.",stay:"약 2시간 50분",cost:"—"},
+  {t:"16:20",n:"ZE610 · 나리타 출발",cat:"이동",lat:35.7720,lng:140.3929,mandatory:true,
+   d:"인천국제공항 19:10 도착 예정. 비행시간 2시간 50분.",stay:"2시간 50분",cost:"—"}
  ]
-};
+}
+];
 DAYS.sort((a,b)=>Number(a.id.slice(1))-Number(b.id.slice(1)));
 
 /* ── 지도 ── */
@@ -1341,47 +1225,7 @@ function updateReservationNumbers(){
     const badge=row.querySelector('.prio');if(badge)badge.textContent=++seq;
   });
 }
-function applyItineraryMode(mode){
-  itineraryMode=mode==='nodisney'?'nodisney':'disney';
-  try{localStorage.setItem('tokyo-itinerary-mode',itineraryMode);}catch(e){}
-  const no=itineraryMode==='nodisney';
-  DAYS[DAYS.findIndex(day=>day.id==='d2')]=no?NO_DISNEY_DAY2:DISNEY_DAY2;
-  DAYS[DAYS.findIndex(day=>day.id==='d4')]=no?NO_DISNEY_DAY4:DISNEY_DAY4;
-  document.getElementById('versionDisney').setAttribute('aria-selected',String(!no));
-  document.getElementById('versionNoDisney').setAttribute('aria-selected',String(no));
-  document.getElementById('versionTitle').textContent=no?'디즈니 제외 · 전 권역 재조합 최종안':'디즈니 포함 · 휴무 회피 전면 재설계안';
-  document.getElementById('versionNote').innerHTML=no
-    ?"<b>9/26 중앙·부엉이·오다이바 → 9/27 서부·시부야 → 9/28 해리포터·아자부다이·롯폰기 → 9/29 동부</b>로 배치했습니다. 예약시간·휴관일·영업일을 지키면서 같은 권역을 한 방향으로 잇는 조합입니다."
-    :"9/26 확정축 뒤 <b>9/27 서부 → 9/28 디즈니씨 → 9/29 동부</b>로 재배치했습니다. 디즈니 운영조건은 유지하면서 화요일 동부권의 국립도쿄박물관과 저장 맛집을 함께 살립니다.";
-  document.getElementById('featureDay').textContent=no?'2곳':'1일';
-  document.getElementById('featureDayLabel').textContent=no?'해리포터·오다이바':'디즈니씨';
-  document.getElementById('heroBudget').textContent=no?'약 ¥53–76k':'약 ¥58–81k';
-  document.getElementById('heroBudgetLabel').textContent=no?'항공·숙박·쇼핑 제외':'항공·숙박·쇼핑·DPA 제외';
-  document.getElementById('summaryD2').innerHTML=no
-    ?'<td><b>9/26(토)</b></td><td>긴자 · 오다이바</td><td>츠키지 → 긴자 → 14:00 부엉이카페 → 후지TV 외관 → 유니콘 건담·다이버시티 → 해변 야경</td>'
-    :'<td><b>9/26(토)</b></td><td>긴자 · 아자부다이 · 롯폰기</td><td>츠키지 → 긴자 → 14:00 부엉이카페 → 도쿄타워 외관 → 아자부다이·AMBIENT → 롯폰기</td>';
-  document.getElementById('summaryD4').innerHTML=no
-    ?'<td><b>9/28(월)</b></td><td>아자부다이 · 롯폰기</td><td>09:00 해리포터·내부 점심 → 도쿄타워 뷰 → 아자부다이 → 전시 1곳 선택 → 롯폰기 저녁</td>'
-    :'<td><b>9/28(월)</b></td><td>디즈니씨</td><td>도쿄 디즈니씨 종일 · 확보한 앱 예약시간 우선</td>';
-  document.getElementById('disneyBookingRow').style.display=no?'none':'';
-  document.getElementById('harryBookingRow').style.display=no?'':'none';
-  document.getElementById('ambientBookingDate').textContent=no?'9/28(월)':'9/26(토)';
-  document.getElementById('ambientBookingName').textContent=no?'월요일 전시 · AMBIENT / 21_21':'AMBIENT KYOTO - TOKYO';
-  document.getElementById('ambientBookingAction').textContent=no?'선택 후 예매':'지금 예약 가능';
-  document.getElementById('ambientBookingMemo').innerHTML=no
-    ?'자동 고정이 아닙니다. <b>AMBIENT</b>를 고르면 16:35·전매 ¥2,200, <b>21_21</b>을 고르면 16:40·10:00~19:00(18:30 입장 마감)입니다. 둘 다 선택하지 않아도 됩니다.'
-    :'아자부다이 힐즈 갤러리. 토요일 전매권 성인 <b>¥2,500</b>·당일권 ¥2,800. 건축 산책 뒤 <b>17:25</b> 관람을 권장합니다.';
-  document.getElementById('versionCallout').innerHTML=no
-    ?'<b>디즈니 제외판 전 날짜 재검증 —</b> 9/26은 중앙권 뒤 오다이바, 9/27은 신주쿠에서 시부야로 내려가는 서부축, 9/28은 도시마엔에서 오에도선으로 시바공원·아자부다이·롯폰기를 잇고, 9/29는 아사쿠사에서 아키하바라로 내려가는 동부축입니다. 월요일 도쿄타워 뷰와 아자부다이는 기본으로 복원하고 AMBIENT·21_21은 1곳 선택으로 분리했습니다.<div class="source-links">공식 확인 · <a href="https://www.wbstudiotour.jp/en/tickets/" target="_blank" rel="noopener">해리포터 티켓</a> · <a href="https://www.wbstudiotour.jp/en/plan-your-visit/facilities/" target="_blank" rel="noopener">해리포터 내부 식사</a> · <a href="https://ambientkyoto.com/" target="_blank" rel="noopener">AMBIENT</a> · <a href="https://www.2121designsight.jp/en/program/" target="_blank" rel="noopener">21_21 전시·운영</a> · <a href="https://www.nmwa.go.jp/en/visit/calendar.html?ym=2026-09" target="_blank" rel="noopener">국립서양미술관 휴관</a> · <a href="https://www.kunaicho.go.jp/e-event/higashigyoen/higashigyoen.html" target="_blank" rel="noopener">고쿄 히가시교엔</a></div>'
-    :'<b>디즈니씨 9/28 핵심 —</b> 09:00~21:00·성인 ¥9,900. 타워 오브 테러·인디아나 존스·머메이드 라군 시어터·메디테레이니언 하버 출발 스티머라인은 휴장입니다. Believe! 19:50·Night High Halloween 20:50 예정이며 당일 앱 시간이 권역 순서보다 우선입니다.<div class="source-links">공식 확인 · <a href="https://www.tokyodisneyresort.jp/en/tds/daily/calendar/20260928/" target="_blank" rel="noopener">9/28 디즈니씨</a> · <a href="https://www.tnm.jp/modules/r_free_page/index.php?id=2759" target="_blank" rel="noopener">9/29 히로시게 특별전</a> · <a href="https://www.sompo-museum.org/exhibitions/schedule/" target="_blank" rel="noopener">SOMPO 전시 일정</a> · <a href="https://www.mensugo.com/" target="_blank" rel="noopener">멘야 스고</a></div>';
-  document.getElementById('fixedBudgetLabel').textContent=no?'예정 입장비 · 해리포터·후쿠로·히로시게·SKY':'예정 입장비 · 디즈니·후쿠로·AMBIENT·히로시게·SKY';
-  document.getElementById('fixedBudget').textContent=no?'13,500 –':'19,300 –';
-  document.getElementById('transportBudget').textContent=no?'9,500 – 11,500':'9,000 – 11,000';
-  document.getElementById('totalBudget').textContent=no?'약 53,000 – 76,000':'약 58,000 – 81,000';
-  document.getElementById('dpaBudgetRow').style.display=no?'none':'';
-  document.getElementById('variantCaution').innerHTML=no
-    ?'<b>세 날짜의 절대 컷오프</b><p>9/26은 12:50까지 긴자권을 떠나 14:00 부엉이카페를 지킵니다. 9/28은 해리포터 09:00 입장·13:40 퇴장을 기준으로 하며, 30분 이상 지연되면 시바공원 체류를 15분으로 줄이고 전시 선택을 취소합니다. 아자부다이는 유지합니다. 9/30은 12:20 N\'EX 승강장 도착을 고정합니다.</p>'
-    :'<b>디즈니 이동</b><p>도쿄역 게이요선 승강장은 다른 노선에서 멉니다. 환승에 약 15분을 추가하고 공식 앱을 입장 전에 설치하세요.</p>';
+function initItinerary(){
   updateReservationNumbers();
   const choiceDay=activeChoiceDay();
   renderChoiceTabs(choiceDay);
@@ -1390,9 +1234,7 @@ function applyItineraryMode(mode){
 }
 
 detailReady=true;
-document.getElementById('versionDisney').addEventListener('click',()=>applyItineraryMode('disney'));
-document.getElementById('versionNoDisney').addEventListener('click',()=>applyItineraryMode('nodisney'));
-applyItineraryMode(itineraryMode);
+initItinerary();
 </script>
 </body>
 </html>
