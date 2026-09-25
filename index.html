@@ -26,7 +26,7 @@
   --muted:var(--ink-3);--grid:var(--line);--baseline:var(--line-2);--d1:var(--accent);
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:72px}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:16px}
 body{margin:0;background:var(--bg);color:var(--ink);
   font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,system-ui,"Apple SD Gothic Neo","Noto Sans KR",sans-serif;
   font-size:15px;line-height:1.6;letter-spacing:-.005em;-webkit-font-smoothing:antialiased;
@@ -43,17 +43,6 @@ h3{font-size:15px;margin:0 0 8px}
 p.sub{margin:14px 0 0}
 .nowrap{white-space:nowrap}
 .num{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap}
-
-/* ═════════ 버전 전환 (상단 고정) ═════════ */
-.version-switch{position:sticky;top:10px;z-index:1000;display:flex;gap:4px;padding:4px;margin-bottom:12px;
-  background:rgba(255,255,255,.86);-webkit-backdrop-filter:saturate(180%) blur(14px);backdrop-filter:saturate(180%) blur(14px);
-  border:1px solid var(--line);border-radius:14px;box-shadow:0 4px 16px rgba(16,24,40,.06)}
-.version-tab{flex:1;border:0;border-radius:10px;padding:10px 8px;background:transparent;color:var(--ink-2);
-  font:inherit;font-size:13.5px;font-weight:700;cursor:pointer;transition:background .15s,color .15s}
-.version-tab:hover{background:var(--soft);color:var(--ink)}
-.version-tab[aria-selected="true"]{background:var(--ink);color:#fff}
-.version-banner{background:var(--warn-soft);border:1px solid #f3d9a6;border-radius:12px;padding:12px 16px;margin-bottom:16px;
-  font-size:13.5px;line-height:1.6;color:var(--ink)}
 
 /* ═════════ Hero ═════════ */
 .hero-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
@@ -97,7 +86,7 @@ tr:last-child td{border-bottom:0}
 .day-note{font-size:13px;line-height:1.55;color:var(--ink-2);background:var(--soft);border-radius:8px;padding:8px 11px}
 .daygrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,.8fr)}
 .tlwrap{padding:20px 26px 26px;border-right:1px solid var(--line);min-width:0}
-.mapcol{position:sticky;top:68px;align-self:start}
+.mapcol{position:sticky;top:16px;align-self:start}
 #map{height:620px;width:100%;border-radius:0 0 var(--radius) 0}
 .maplegend{padding:10px 16px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-3)}
 .route-open{display:inline-flex;align-items:center;margin-top:10px;font-size:12.5px;font-weight:700;color:var(--accent);text-decoration:none;
@@ -285,7 +274,6 @@ details.fold[open]>summary{margin-bottom:14px}
   .step,.move{grid-template-columns:46px 24px minmax(0,1fr);gap:8px}
   .time{font-size:12px}
   .pin{width:24px;height:24px;font-size:11px}
-  .version-tab{font-size:12.5px;padding:10px 4px}
   /* 표 → 카드 */
   .table-scroll table.rtable{min-width:0}
   table.rtable,table.rtable tbody,table.rtable tr,table.rtable td{display:block;width:100%}
@@ -301,7 +289,7 @@ details.fold[open]>summary{margin-bottom:14px}
 }
 @media print{
   body{background:#fff;font-size:12px}
-  .version-switch,.version-banner,.jump,.mapcol,.tabs,#choice-planner,.guide-shortcut{display:none!important}
+  .jump,.mapcol,.tabs,#choice-planner,.guide-shortcut{display:none!important}
   .card{box-shadow:none;break-inside:avoid-page}
   .daygrid{grid-template-columns:1fr}.tlwrap{border:0}
   details.fold>summary::after{display:none}
@@ -311,11 +299,6 @@ details.fold[open]>summary{margin-bottom:14px}
 <body>
 <div class="wrap">
 
-<section class="version-switch" role="tablist" aria-label="일정 버전">
-  <button class="version-tab" id="versionKeep" type="button" role="tab" aria-selected="true">현재 유지 · 쇼타 9/29</button>
-  <button class="version-tab" id="versionSwap" type="button" role="tab" aria-selected="false">교체안 · 쇼타 9/27</button>
-</section>
-<div class="version-banner" id="versionBanner" style="display:none">⚠️ <b>교체안</b> · 9/27 롯폰기·쇼타 ↔ 9/29 서부. <b>쇼타 변경이 확정되기 전까지는 ‘현재 유지’가 실제 일정.</b></div>
 
 
 <!-- ══ HERO ══ -->
@@ -420,7 +403,7 @@ details.fold[open]>summary{margin-bottom:14px}
     <tr id="resShota">
       <td><span class="prio ok">✓</span></td>
       <td><b>스시야 쇼타</b></td>
-      <td class="nowrap">9/29(화)</td>
+      <td class="nowrap">9/27(일)</td>
       <td><b style="color:var(--good)">예약 확정 · 17:30 · 2명</b></td>
       <td>麻布十番 3-3-10 · 오마카세 <b>¥17,600/인</b>(세금·서비스 포함) · 취소료 48h 전 50% / 24h 전 100% · <b>15분 지연 시 자동 취소</b> → 늦으면 인스타그램 DM.</td>
     </tr>
@@ -434,9 +417,9 @@ details.fold[open]>summary{margin-bottom:14px}
     <tr id="resSky">
       <td><span class="prio p2">3</span></td>
       <td><b>SHIBUYA SKY</b></td>
-      <td class="nowrap">9/27(일)</td>
-      <td><b style="color:var(--critical)">미예약 · 즉시 구매</b></td>
-      <td>WEB 성인 <b>¥3,400</b>(15시 이후) / 당일 ¥3,700 · <b>17:00 입장</b> 슬롯(일몰 17:31, 매진 시 16:40) · 전날까지 무료 취소, 옥상 폐쇄 시 당일 무료 취소.</td>
+      <td class="nowrap">9/29(화)</td>
+      <td><b style="color:var(--critical)">미예약 · 15시 전 입장권</b></td>
+      <td>9/29는 15시 이후 매진(9/25 조회) → <b>14:40 입장 · WEB ¥2,700</b> · 전날까지 무료 취소, 옥상 폐쇄 시 당일 무료 취소. 9/27 표를 샀다면 9/26까지 무료 취소.</td>
     </tr>
 <tr>
       <td><span class="prio p3">5</span></td>
@@ -450,14 +433,14 @@ details.fold[open]>summary{margin-bottom:14px}
       <td><b>국립신미술관 루브르전</b></td>
       <td class="nowrap">9/27(일)</td>
       <td><b>당일권 · 시간 지정 없음</b></td>
-      <td>당일 ¥2,400 · 온라인(아소뷰·로손티켓) 또는 현장 · 일 10:00~18:00(입장 17:30) · 화요일 휴관 · 15:15 입장.</td>
+      <td>당일 ¥2,400 · 온라인(아소뷰·로손티켓) 또는 현장 · 일 10:00~18:00(입장 17:30) · 화요일 휴관 · 12:25 입장.</td>
     </tr>
 <tr>
       <td><span class="prio p1">2</span></td>
       <td><b id="ambientBookingName">AMBIENT KYOTO - TOKYO</b></td>
-      <td class="nowrap">9/29(화)</td>
+      <td class="nowrap">9/27(일)</td>
       <td><b id="ambientBookingAction">선택 · 현장 구매</b></td>
-      <td>시간 지정 없음 · 평일 10:00~19:00(입장 18:30) · 전매 ¥2,200 / 당일 ¥2,500 · 고르면 17:05 퇴장, 아자부주반 산책 생략.</td>
+      <td>시간 지정 없음 · 일요일 10:00~20:00(입장 19:30) · 주말 전매 ¥2,500 / 당일 ¥2,800 · 고르면 17:05 퇴장, 아자부주반 산책 생략.</td>
     </tr>
   </table></div>
 </section>
@@ -468,7 +451,7 @@ details.fold[open]>summary{margin-bottom:14px}
   <div class="grid2" style="margin-top:12px">
     <table>
       <tr><th>항목</th><th class="num" style="width:130px">금액(엔)</th></tr>
-      <tr><td>예정 입장비 · 루브르전 2,400·후쿠로 2,000·SKY 3,400·신주쿠교엔 500·21_21 1,400</td><td class="num">9,700 –</td></tr>
+      <tr><td>예정 입장비 · 루브르전 2,400·후쿠로 2,000·SKY 2,700·신주쿠교엔 500·21_21 1,400</td><td class="num">9,000 –</td></tr>
       <tr><td>교통비 · N'EX + 시내 IC</td><td class="num">9,500 – 11,500</td></tr>
       <tr><td>식비 6일 · 스시야 쇼타 ¥17,600 포함</td><td class="num">45,000 – 60,000</td></tr>
       <tr><td>선택 입장비 · 만요구락부 4,000·AMBIENT 2,200·수족관 2,700 등</td><td class="num">0 – 9,000</td></tr>
@@ -489,12 +472,12 @@ details.fold[open]>summary{margin-bottom:14px}
     <ul class="cutoffs">
       <li><span>9/25</span><span><b>20:55 타츠노야 출발</b> → 21:30 도청</span></li>
       <li><span>9/26</span><span><b>12:45 긴자 출발</b> → 14:00 후쿠로노미세</span></li>
-      <li><span>9/27</span><span><b>14:20 오모테산도 출발 · 15:10 21_21 퇴장 · 16:25 루브르전 퇴장</b> → 17:00 SKY(점심 30분 초과 시 21_21 생략)</span></li>
+      <li><span>9/27</span><span><b>17:05 AMBIENT 퇴장(선택 시) · 17:15 아자부주반 도착</b> → 17:30 스시야 쇼타</span></li>
       <li><span>9/28</span><span><b>08:30 베니즈루 정리권</b>(실패 시 ANDRA 코스)</span></li>
-      <li><span>9/29</span><span><b>17:15 아자부주반 도착</b> → 17:30 쇼타(AMBIENT 선택 시 17:05 퇴장)</span></li>
+      <li><span>9/29</span><span><b>14:20 오모테산도 출발</b> → 14:40 SHIBUYA SKY(15시 전 입장권)</span></li>
       <li><span>9/30</span><span><b>11:10 KITTE 출발 → 11:30 짐 회수 → 12:10 N'EX 홈</b></span></li>
     </ul></div>
-    <div class="mini"><b>비·태풍</b><p>9/26(토)~27(일) 비 예보. 태풍 26호 진로를 9/26부터 매일 확인. SKY 옥상 폐쇄 시 WEB 티켓 당일 무료 취소. 우천 대안은 각 날짜 ☔ 참고.</p></div>
+    <div class="mini"><b>비·태풍</b><p>9/26(토)~27(일) 비 예보. 태풍 26호 진로를 9/26부터 매일 확인. SKY(9/29) 옥상 폐쇄 시 WEB 티켓 당일 무료 취소. 우천 대안은 각 날짜 ☔ 참고.</p></div>
     <div class="mini"><b>현지 규칙</b><p>노상흡연 과태료(지요다·시부야 ¥2,000) · 시부야 노상음주 금지 18:00~05:00 · 가부키초 안내원 따라가지 말 것 · 골든가이 자릿세 ¥500~1,500 · 면세는 세전 ¥5,000 이상, 소모품 밀봉 유지 · 육류가공품 한국 반입 금지.</p></div>
   </div>
 </section>
@@ -531,16 +514,13 @@ const WX_LABEL={rain:'비',cloud:'흐림',cloudrain:'흐리고 한때 비'};
 const DAY_META={
  d1:{short:'나리타 도착 · 신주쿠 야경',wx:'rain',pop:80,t:'21–27',keys:[['16:30','나리타 도착'],['20:10','타츠노야'],['21:30','도청 프로젝션']]},
  d2:{short:'긴자 · 부엉이카페 · 오다이바',wx:'rain',pop:90,t:'18–19',keys:[['10:30','긴자'],['14:00','후쿠로노미세 · 예약'],['17:40','오다이바 야경']]},
- d3:{short:'신주쿠 · 하라주쿠 · 루브르전 · 시부야',wx:'rain',pop:70,t:'18–20',keys:[['09:00','신주쿠교엔'],['15:15','루브르전'],['17:00','SHIBUYA SKY']]},
+ d3:{short:'루브르전 · 아자부다이 · 스시야 쇼타',wx:'rain',pop:70,t:'18–20',keys:[['12:25','루브르전'],['15:05','아자부다이'],['17:30','스시야 쇼타 · 예약']]},
  d4:{short:'아사쿠사 · 우에노 · 아키하바라',wx:'cloud',pop:40,t:'20–25',keys:[['07:10','베니즈루 정리권'],['12:50','우에노'],['15:55','아키하바라']]},
- d5:{short:'아자부다이 · 스시야 쇼타 · 롯폰기 야경',wx:'cloudrain',pop:70,t:'20–25',keys:[['14:10','아자부다이'],['17:30','스시야 쇼타 · 예약'],['19:40','롯폰기 야경']]},
+ d5:{short:'신주쿠 · 하라주쿠 · 시부야',wx:'cloudrain',pop:70,t:'20–25',keys:[['09:00','신주쿠교엔'],['14:40','SHIBUYA SKY'],['16:30','PARCO']]},
  d6:{short:'도쿄역 · 고쿄 · 출국',wx:'cloudrain',pop:70,t:'20–27',keys:[['09:00','고쿄'],['12:30','N\'EX'],['16:20','출국']]}
 };
-const SWAP_META={
- d3:{short:'루브르전 · 아자부다이 · 스시야 쇼타',keys:[['12:25','루브르전'],['15:05','아자부다이'],['17:30','스시야 쇼타 · 변경 요청']]},
- d5:{short:'신주쿠 · 하라주쿠 · 시부야',keys:[['09:00','신주쿠교엔'],['14:40','SHIBUYA SKY'],['16:30','PARCO']]}
-};
-function dayMeta(d){return Object.assign({},DAY_META[d.id],(typeof VERSION!=='undefined'&&VERSION==='swap'&&SWAP_META[d.id])||{});}
+
+function dayMeta(d){return DAY_META[d.id];}
 function wxBadge(m){return `<span class="wx">${ic(m.wx)}<b>${m.t}°</b><span>${WX_LABEL[m.wx]} ${m.pop}%</span></span>`;}
 function renderOverview(){
   const el=document.getElementById('overview');if(!el)return;
@@ -582,10 +562,10 @@ const CHOICE_DAYS=[
  ]
 },
 {
- id:"c5",label:"서부·시부야",route:"신주쿠교엔 → 메이지진구 → 하라주쿠 → NUMBER SUGAR → 오모테산도 → 21_21 → 루브르전 → 17:00 SHIBUYA SKY → PARCO → 미야시타파크·KITH → 시부야 저녁.",
+ id:"c5",label:"서부·시부야",route:"신주쿠교엔 → 메이지진구 → 하라주쿠 → NUMBER SUGAR → 오모테산도 → 14:40 SHIBUYA SKY → PARCO → 미야시타파크·KITH → 18:30 시부야 저녁.",
  slots:[
   {time:"09:00",title:"건축·미술 시작",rule:"1곳 선택",items:[
-   {n:"도쿄 카테드랄 성 마리아 대성당",c:"건축",l:"추천",at:"09:00",d:"40분",p:"무료",mapsaved:true,note:"신주쿠교엔 대신. 일요일 08:00·10:00 미사 시간은 견학 자제."},
+   {n:"도쿄 카테드랄 성 마리아 대성당",c:"건축",l:"추천",at:"09:00",d:"40분",p:"무료",mapsaved:true,note:"신주쿠교엔 대신."},
    {n:"SOMPO 미술관 — 알베르 마르케 회고전",c:"관광",l:"대체",at:"10:00",d:"75분",p:"전시별",note:"신주쿠교엔 대신 · 10:00~18:00."}
   ]},
   {time:"11:00",title:"오모테산도·하라주쿠",rule:"1~2곳 선택",items:[
@@ -607,7 +587,7 @@ const CHOICE_DAYS=[
    {n:"카츠키치",c:"맛집",l:"선택",at:"19:20",d:"80분",p:"¥2,000~3,000",mapsaved:true,note:"미야시타파크 쇼핑 뒤 바로."},
    {n:"야키니쿠폰가 에비스점",c:"맛집",l:"선택",at:"19:20",d:"100분",p:"¥5,000~8,000",mapsaved:true,note:"시부야에서 JR 1정거장 · 예약 필요 · 100분."},
    {n:"Chez Lui Daikanyama",c:"베이커리",l:"선택",at:"19:20",d:"20분",p:"¥1~1,000",mapsaved:true,note:"저녁엔 닫힐 수 있음."},
-   {n:"스시노미도리 시부야점",c:"맛집",l:"추천",at:"18:50",d:"90분",p:"¥2,000~4,000",mapsaved:true,note:"마크시티 4층 · 일요일 L.O. 20:30 · <b>10:00부터 현장 순번표</b>. 고르면 PARCO·미야시타파크는 뺀다."},
+   {n:"스시노미도리 시부야점",c:"맛집",l:"추천",at:"18:50",d:"90분",p:"¥2,000~4,000",mapsaved:true,note:"마크시티 4층 · L.O. 20:30 · <b>10:00부터 현장 순번표</b>. 고르면 PARCO·미야시타파크는 뺀다."},
    {n:"논베이요코초",c:"맛집",l:"선택",d:"80분",p:"¥3,000~",note:"일찍 가야 자리가 있다."},
    {n:"우오베이 시부야",c:"맛집",l:"추천",d:"45분",p:"¥1,500~",note:"회전초밥. 빠른 저녁."},
    {n:"규카츠 모토무라",c:"맛집",l:"선택",d:"50분",p:"¥1,900~",note:"줄이 길면 우오베이로."},
@@ -616,7 +596,7 @@ const CHOICE_DAYS=[
  ]
 },
 {
- id:"c3",label:"동부",route:"07:10 베니즈루 정리권 → 센소지 → FUGLEN → 10:00 베니즈루 브런치 → 스카이트리·소라마치 → 우에노공원·아메요코·2k540 → 아키하바라 → 19:00 동부 저녁. 온천은 28·29 중 하루만 선택.",
+ id:"c3",label:"동부",route:"07:10 베니즈루 정리권 → 센소지 → FUGLEN → 10:00 베니즈루 브런치 → 스카이트리·소라마치 → 우에노공원·아메요코·2k540 → 아키하바라 → 19:00 동부 저녁. 온천은 선택.",
  slots:[
   {time:"08:30",title:"아사쿠사 아침",rule:"1곳 선택",items:[
    {n:"팡 메종 스미다 아사쿠사 도리점",c:"베이커리",l:"선택",at:"08:30",d:"15분",p:"¥1~1,000",mapsaved:true,note:"베니즈루 정리권을 못 받았을 때 아침 대용."}
@@ -671,8 +651,8 @@ const CHOICE_DAYS=[
    {n:"우나기 이즈에이 본점",c:"맛집",l:"추천",at:"19:00",d:"80분",p:"¥4,000~",note:"11:00~21:00(L.O. 20:15) · 무휴 · 아키하바라에서 JR 1정거장. <b>19:00 저녁으로 가장 확실.</b>"},
    {n:"니쿠노오야마 우에노점",c:"맛집",l:"선택",at:"19:00",d:"50분",p:"¥1,000~2,000",note:"월~토 11:00~23:00 · 아키하바라 도보 10분 · 저렴·빠름."}
   ]},
-{time:"18:50",title:"온천 (선택 · 28일 또는 29일 중 하루)",rule:"1곳 선택",items:[
-{n:"東京豊洲 만요구락부",c:"휴양",l:"선택",at:"18:50",d:"150~180분",p:"성인 ¥3,850 + 입탕세 ¥150 = ¥4,000 + 관내 저녁 ¥2,000~4,000",mapsaved:true,note:"豊洲 6-5-1 · 시조마에역 도보 4분 · 24시간(03:00~05:00 입욕 불가) · 유카타·타올 포함.<br><b>이 날 고르면</b> 18:00 아키하바라 → 숙소에 짐 → 18:50 도착 → 万葉庵(~21:00) 저녁 → 온천 → 22:30 귀가. 29일과 <b>하루만</b>."},
+{time:"18:50",title:"온천 (선택)",rule:"1곳 선택",items:[
+{n:"東京豊洲 만요구락부",c:"휴양",l:"선택",at:"18:50",d:"150~180분",p:"성인 ¥3,850 + 입탕세 ¥150 = ¥4,000 + 관내 저녁 ¥2,000~4,000",mapsaved:true,note:"豊洲 6-5-1 · 시조마에역 도보 4분 · 24시간(03:00~05:00 입욕 불가) · 유카타·타올 포함.<br><b>이 날 고르면</b> 18:00 아키하바라 → 숙소에 짐 → 18:50 도착 → 万葉庵(~21:00) 저녁 → 온천 → 22:30 귀가."},
 {n:"泉天空の湯 有明가든",c:"휴양",l:"대안",at:"18:50",d:"120~150분",p:"평일 성인 ¥2,600 (토·일·공휴 ¥3,800) + 관내복 ¥200",note:"아리아케역 도보 4분 · 평일 ¥2,600 + 관내복 ¥200 · 01:00~05:00 청소 · 월 1회 점검 휴관 확인."},
 {n:"료고쿠 유야 에도유",c:"휴양",l:"대안",at:"18:50",d:"180분",p:"3시간 ¥2,400 · 60분 ¥1,500",note:"료고쿠역 도보 5분 · 10:00~다음날 08:30 · 무휴. 아키하바라에서 JR 2정거장."}
   ]}
@@ -682,7 +662,7 @@ const CHOICE_DAYS=[
  id:"c2",label:"9/26 중앙·오다이바",route:"07:45 짐 보관 → (선택: 츠키지 아침 · 하마리큐 · 10:40 카네코 웨이팅) → 긴자 핵심 → 12:45 츠키시마 → 14:00 후쿠로노미세(예약 확정) → (선택: 센캬쿠반라이) → 후지TV 외관 → 다이버시티 → 오다이바 해변 야경.",
  slots:[
  {time:"08:00",title:"오전 선택 (기본=혼간지 → 하마리큐 → 긴자)",rule:"1~2곳 선택",items:[
- {n:"츠키지 장외시장 아침",c:"시장",l:"선택",at:"08:15",d:"75분",p:"¥1,500~",mapsaved:true,note:"히비야선 1정거장 · <b>토요일 영업</b>. 고르면 하마리큐가 빠진다. 9/29 브런치와 <b>하루만</b>."},
+ {n:"츠키지 장외시장 아침",c:"시장",l:"선택",at:"08:15",d:"75분",p:"¥1,500~",mapsaved:true,note:"히비야선 1정거장 · <b>토요일 영업</b>. 고르면 하마리큐가 빠진다."},
  {n:"카네코한노스케 츠키지 본점 웨이팅",c:"맛집",l:"선택",at:"10:40",d:"70분",p:"江戸前天丼 ¥1,600",mapsaved:true,note:"<b>토요일 11:00 개점 · 예약 불가 줄서기</b> · 텐동 ¥1,600. 10:40 줄 → 11:50 퇴점. <b>줄 20분 넘으면 포기</b> → 9/28 니혼바시점. 고르면 긴자는 12:00~12:25로 압축."}
  ]},
  {time:"15:00",title:"오다이바 가는 길",rule:"1곳 선택",items:[
@@ -713,19 +693,15 @@ const CHOICE_DAYS=[
  ]
 },
 {
- id:"c4",label:"9/29 롯폰기권",route:"오전 숙소 휴식(선택: 09:30 츠키지 브런치) → 시바공원·조조지 도쿄타워 뷰 → 아자부다이 → AMBIENT(선택) → 17:30 스시야 쇼타 → 롯폰기 힐스 야경 → (선택: 21:00 만요구락부 온천).",
+ id:"c4",label:"9/27 롯폰기권",route:"오전 휴식 → 12:25 루브르전 → 21_21 → 아자부다이 → AMBIENT(선택) → 17:30 스시야 쇼타 → 롯폰기 힐스 야경.",
  slots:[
- {time:"09:30",title:"오전 선택 (기본=11:00 숙소 근처 점심)",rule:"1곳 선택",items:[
- {onlyIn:"keep",n:"츠키지 장외시장 브런치",c:"시장",l:"선택",at:"09:30",d:"90분",p:"¥1,500~",mapsaved:true,note:"히비야선 1정거장 · <b>화요일 영업</b>. 09:30~11:00 후 츠키지 → 가미야초 직통. 숙소 근처 점심은 빠진다. 9/26 아침과 <b>하루만</b>."},
- {onlyIn:"keep",n:"도쿄국립박물관 · 히로시게전",c:"관광",l:"선택",at:"09:30",d:"120분",p:"¥1,500",note:"<b>9/29 개막</b> · 09:30~17:00 · 예약 없음. 숙소 → 히비야선 우에노 15분 → 관람 후 가미야초 직통 25분 → 12:35 아타고 신사. 츠키지 브런치와 양자택일."}
+ {time:"09:30",title:"오전 선택 (기본=11:00 숙소 근처 점심)",rule:"1곳 선택",items:[,
  ]},
   {time:"15:40",title:"아자부다이 오후 (기본=마켓 뒤 아자부주반 산책)",rule:"최대 1곳 선택",items:[
-  {n:"AMBIENT KYOTO - TOKYO",c:"전시",l:"선택",at:"15:40",d:"80분",p:"평일 전매 ¥2,200 / 당일 ¥2,500",note:"~10/25 무휴 · 평일 10:00~19:00(입장 18:30) · 시간 지정 없음. 고르면 아자부주반 산책은 빠지고 17:05 퇴장 → 17:30 쇼타."},
+  {n:"AMBIENT KYOTO - TOKYO",c:"전시",l:"선택",at:"15:40",d:"80분",p:"평일 전매 ¥2,200 / 당일 ¥2,500",note:"~10/25 무휴 · 일요일 10:00~20:00(입장 19:30) · 시간 지정 없음. 고르면 아자부주반 산책은 빠지고 17:05 퇴장 → 17:30 쇼타."},
   {n:"Sky Room Cafe & Bar · 森JP타워 33층",c:"카페",l:"선택",at:"15:40",d:"45분",p:"음료 + 차지 ¥500 ≈ ¥1,100",note:"森JP타워 33층 · 도쿄타워 뷰 · 카페 이용자만(1인 1음료 + 차지 ¥500). 16:25에 나와 아자부주반으로."}
   ]},
-{time:"21:00",title:"온천 (선택 · 28일 또는 29일 중 하루)",rule:"1곳 선택",items:[
-{onlyIn:"keep",n:"東京豊洲 만요구락부",c:"휴양",l:"선택",at:"21:00",d:"100분",p:"성인 ¥3,850 + 입탕세 ¥150 = ¥4,000",mapsaved:true,note:"豊洲 6-5-1 · 24시간 · 유카타·타올 포함. <b>이 날 고르면</b> 20:25 롯폰기 → 21:00 도착 → 22:40 퇴장 → 23:20 귀가(다음 날 07:30 체크아웃). 28일과 <b>하루만</b>."},
-{onlyIn:"keep",n:"泉天空の湯 有明가든",c:"휴양",l:"대안",at:"21:00",d:"100분",p:"평일 성인 ¥2,600 + 관내복 ¥200",note:"아리아케역 도보 4분 · 01:00~05:00 청소 · 평일 ¥2,600 + 관내복 ¥200. 롯폰기에서 약 40분."}
+{time:"21:00",title:"온천 (선택 · 28일 또는 29일 중 하루)",rule:"1곳 선택",items:[,
 ]}
 ]
 },
@@ -737,7 +713,7 @@ const CHOICE_DAYS=[
 ];
 
 const CHOICE_COORDS={
-"디즈니 플래그십 스토어 도쿄":[35.6919,139.7031],"츠키지 장외시장 아침":[35.6655,139.7708],"츠키지 장외시장 브런치":[35.6655,139.7708],"하마리큐온시정원":[35.6597,139.7634],"카네코한노스케 츠키지 본점 웨이팅":[35.6686,139.7717],"도요스 센캬쿠반라이":[35.6452,139.7890],"American Diner Andra":[35.7135,139.7830],
+"디즈니 플래그십 스토어 도쿄":[35.6919,139.7031],"츠키지 장외시장 아침":[35.6655,139.7708],"하마리큐온시정원":[35.6597,139.7634],"카네코한노스케 츠키지 본점 웨이팅":[35.6686,139.7717],"도요스 센캬쿠반라이":[35.6452,139.7890],"American Diner Andra":[35.7135,139.7830],
 "터렛 커피":[35.6680,139.7720],"이마카츠 긴자점":[35.6696,139.7689],"우동 마루카":[35.6967,139.7601],"카츠키치":[35.6571,139.7046],
 "東京豊洲 만요구락부":[35.6455,139.7887],"泉天空の湯 有明가든":[35.6350,139.7927],"료고쿠 유야 에도유":[35.6958,139.7934],
 "모드학원 코쿤 타워":[35.6916,139.6967],"후운지":[35.6877,139.6955],"우동 신":[35.6871,139.6974],
@@ -759,7 +735,7 @@ const CHOICE_COORDS={
 "쇼에이도 긴자점":[35.6703,139.7594],"가부키자 — 1막 관람권":[35.6694,139.7678],"아티존 미술관 — 소트사스·다키구치 슈조·소장품전":[35.6779,139.771],
 "호카이반야":[35.6649,139.7707],"고다이메 하나야마우동 긴자점":[35.6703,139.771],"안즈 하나레":[35.6714,139.7624],
 "MENYA ISHII WAGYU UDON":[35.6693,139.7702],"茶屋いつか 銀座店":[35.6704,139.7643],"긴자 기무라야":[35.6719,139.7657],
-"KABUN-AZABUJUBAN":[35.656457,139.7374466],"AMBIENT KYOTO - TOKYO":[35.6610,139.7406],"도쿄국립박물관 · 히로시게전":[35.7188,139.7765],"Sky Room Cafe & Bar · 森JP타워 33층":[35.6604,139.7404],"포켓몬센터 도쿄DX":[35.6802,139.7735]
+"KABUN-AZABUJUBAN":[35.656457,139.7374466],"AMBIENT KYOTO - TOKYO":[35.6610,139.7406],"Sky Room Cafe & Bar · 森JP타워 33층":[35.6604,139.7404],"포켓몬센터 도쿄DX":[35.6802,139.7735]
 };
 
 const CAT={관광:"#2a78d6","관광·쇼핑":"#168b80",건축:"#3455a4",맛집:"#eb6834",카페:"#a6633c","카페·디저트":"#a6633c",디저트:"#b85c7d",베이커리:"#c78942",쇼핑:"#1baf7a",야경:"#4a3aa7",체험:"#e87ba4",휴양:"#38a687",시장:"#eda100",이동:"#898781"};
@@ -792,21 +768,19 @@ function slotMax(rule){
   return Infinity;
 }
 function targetDayForChoice(choiceDay){
-return (VERSION==='swap'?{c1:'d1',c2:'d2',c5:'d5',c4:'d3',c3:'d4',c6:'d6'}:{c1:'d1',c2:'d2',c5:'d3',c4:'d5',c3:'d4',c6:'d6'})[choiceDay.id];
+return ({c1:'d1',c2:'d2',c5:'d5',c4:'d3',c3:'d4',c6:'d6'})[choiceDay.id];
 }
 function shiftByName(places,map){Object.entries(map).forEach(([name,val])=>{const p=places.find(x=>x.n===name||x.n.startsWith(name));if(!p)return;if(typeof val==='string')p.t=val;else Object.assign(p,val);});}
 function visibleChoiceSlots(day){
   return day.slots.filter(slot=>visibleChoiceItems(day,slot).length);
 }
-var VERSION='keep';
-try{if(localStorage.getItem('tokyo-version')==='swap')VERSION='swap';}catch(e){}
 function visibleChoiceItems(day,slot){
-  return slot.items.filter(it=>!it.onlyIn||it.onlyIn===VERSION);
+  return slot.items;
 }
 function choiceLabelForMode(day){
   if(day.id==='c2')return '9/26 중앙·오다이바';
-  if(day.id==='c4')return VERSION==='swap'?'9/27 아자부다이·쇼타':'9/29 아자부다이·쇼타';
-  if(day.id==='c5')return VERSION==='swap'?'9/29 서부·시부야':'9/27 서부·시부야';
+  if(day.id==='c4')return '9/27 롯폰기·쇼타';
+  if(day.id==='c5')return '9/29 서부·시부야';
   if(day.id==='c3')return '9/28 동부·아키하바라';
   return day.label;
 }
@@ -960,14 +934,44 @@ const DAYS=[
 },
 {
  id:"d3",label:"9/27",dow:"일",hex:"#1f9e75",
- zone:"신주쿠 → 메이지진구 → 하라주쿠·오모테산도 → 롯폰기(21_21) → 시부야",theme:"신주쿠교엔 → 메이지진구 → 하라주쿠 점심 → 오모테산도 → 21_21 → 16:40 SKY → PARCO → 19:25 저녁",
+ zone:"숙소 휴식 → 국립신미술관 → 21_21 → 아자부다이 → 아자부주반 → 롯폰기",theme:"오전 휴식 → 12:25 루브르전 → 21_21 → 아자부다이·마켓 → 아자부주반 산책 → 17:30 스시야 쇼타 → 롯폰기 힐스 야경",
+ lodging:"12:00 전후 출발 · 숙소 → 히비야선 핫초보리 → 롯폰기 약 17분 → 4a 출구 국립신미술관 도보 5분 / 롯폰기 → 히비야선 핫초보리 직통 약 17분",
+ rain:"비 예보일. 루브르전·21_21·아자부다이 마켓은 실내라 그대로 진행하고 아자부주반 산책만 짧게. AMBIENT(선택)도 실내",
+ items:[
+  {t:"11:00",n:"점심 · 숙소 근처",cat:"맛집",placeholder:true,
+   d:"오전 휴식 후 숙소 근처에서 가볍게(17:30 오마카세).",stay:"60분",cost:"¥1,500~3,000",priority:"12:00 출발"},
+  {move:"🚇 12:00 출발 → 히비야선 핫초보리 → 롯폰기 약 17분 → 4a 출구 도보 5분"},
+  {t:"12:25",n:"국립신미술관 · 루브르 미술관전 르네상스",cat:"관광",lat:35.6653,lng:139.7263,mandatory:true,
+   d:"六本木 7-22-2 · 일요일 10:00~18:00(입장 17:30) · 화요일 휴관 · <b>당일권 ¥2,400</b>(시간 지정 없음). 노기자카역 6번 출구 직결.",stay:"95분",cost:"¥2,400",book:"당일권 · 온라인 구매 시 줄 단축",priority:"14:00 퇴장"},
+  {move:"🚶 국립신미술관 → 21_21 도보 5분"},
+  {t:"14:05",n:"21_21 DESIGN SIGHT",cat:"건축",lat:35.6665,lng:139.7301,mapsaved:true,
+  d:"일요일 10:00~19:00(입장 18:30) · 화요일 휴관 · 약 ¥1,400. 국립신미술관 도보 5분.",stay:"40분",cost:"¥1,400 전후",priority:"14:45 출발"},
+  {move:"🚶 도쿄 미드타운 → 롯폰기역 → 히비야선 가미야초 1정거장 → 아자부다이 힐즈 · 약 15분"},
+  {t:"15:05",n:"아자부다이 힐즈 · 건축 산책",cat:"건축",lat:35.6604,lng:139.7404,mapsaved:true,mandatory:true,
+  d:"Garden Plaza → Central Green → Heatherwick 저층부 → The Cloud → Mori JP Tower 순.",stay:"45분",cost:"무료",priority:"컷오프 없음"},
+  {t:"15:50",n:"아자부다이 힐즈 마켓 · 선물 쇼핑",cat:"쇼핑",lat:35.6602,lng:139.7398,
+  d:"Garden Plaza B1 · 11:00~20:00. 선물·간식, 무거운 건 사지 않기.",stay:"30분",cost:"—"},
+  {move:"🚶 아자부다이 → 아자부주반 상점가 약 12분 (AMBIENT 선택 시 17:05 퇴장 후 바로 쇼타)"},
+  {t:"16:35",n:"아자부주반 상점가 산책 · 마메겐(豆源)",cat:"쇼핑",lat:35.6560,lng:139.7365,
+  d:"쇼타 도보 3분. 마메겐 본점(콩과자 · 10:00~18:30 · 일요일 영업) · 타이야키 나니와야. 17:15에 쇼타 앞.",stay:"40분",cost:"¥500~",priority:"17:15 쇼타 도착"},
+  {t:"17:30",n:"스시야 쇼타 · 오마카세 (예약 확정)",cat:"맛집",lat:35.6552,lng:139.7357,mapsaved:true,mandatory:true,
+   d:"麻布十番 3-3-10 · 아자부주반역 도보 2~3분. <b>15분 지나 연락 없으면 취소</b>.",stay:"120분",cost:"¥17,600/인 (세금·서비스 포함) + 음료",book:"예약 확정 · 9/27 17:30 · 2명",priority:"17:15 도착 · 취소료 48시간 전 50% / 24시간 전 100%"},
+  {move:"🚶 아자부주반 → 롯폰기 힐스 약 10분"},
+  {t:"19:40",n:"롯폰기 힐스 야간 산책 · 게야키자카 · 모리정원 · 66플라자",cat:"야경",lat:35.6605,lng:139.7292,mapsaved:true,
+  d:"게야키자카 도쿄타워 뷰 → 모리정원(~23:00) → 66플라자, 45분.",stay:"45분",cost:"무료",priority:"20:25 종료"},
+  {move:"🚇 롯폰기 → 히비야선 핫초보리 직통 약 17분"}
+ ]
+},
+{
+ id:"d5",label:"9/29",dow:"화",hex:"#cf5a8c",
+ zone:"신주쿠 → 메이지진구 → 하라주쿠·오모테산도 → 시부야",theme:"신주쿠교엔 → 메이지진구 → 하라주쿠 점심 → 오모테산도 → 14:40 SKY(15시 전 입장) → 스크램블 → PARCO → 미야시타파크 → 18:30 저녁",
  lodging:"숙소 → 도자이선 가야바초 → 오테마치 환승 → 마루노우치선 신주쿠교엔마에 약 30분 / 시부야 → 긴자선 니혼바시 → 도자이선 가야바초 약 30분 · 왕복 모두 환승 1회",
- rain:"신주쿠교엔 축소, HARAKADO·오모테산도 힐즈·PARCO 실내 중심. SKY 옥상 폐쇄 시 WEB 티켓 당일 무료 취소",
+ rain:"신주쿠교엔은 대온실 중심, 메이지진구는 본전만. HARAKADO·오모테산도 힐즈·PARCO 실내 중심. SKY 옥상 폐쇄 시 WEB 티켓 당일 무료 취소",
  items:[
   {t:"07:45",n:"숙소 조식 · 간편식",cat:"맛집",
    d:"숙소 조식 또는 편의점. 결식 금지.",stay:"30분",cost:"¥700~1,500",placeholder:true},
   {t:"09:00",n:"신주쿠교엔",cat:"휴양",lat:35.6852,lng:139.7100,
-   d:"09:00 개원 · ¥500. 핵심만 보고 센다가야문으로.",stay:"75분",cost:"¥500",priority:"10:15 센다가야문 퇴장"},
+   d:"09:00 개원 · ¥500 · 화요일 개원. 비 오면 대온실 중심.",stay:"75분",cost:"¥500",priority:"10:15 센다가야문 퇴장"},
   {move:"🚶 센다가야문 → 기타산도·메이지진구 북쪽 입구 · 약 20분"},
   {t:"10:35",n:"메이지진구",cat:"관광",lat:35.6764,lng:139.6993,
    d:"09월 05:20~17:20. 정오 전에 마친다.",stay:"55분",cost:"무료"},
@@ -982,59 +986,24 @@ const DAYS=[
    d:"11:00~19:00 · 무휴. 줄 10분 넘으면 생략.",stay:"15분",cost:"¥500~",priority:"10분 대기 컷오프"},
   {move:"🚶 오모테산도 힐즈 방향 약 5분"},
   {t:"13:50",n:"오모테산도 현대건축 산책",cat:"건축",lat:35.6652,lng:139.7123,
-  d:"오모테산도 힐즈 → Dior·GYRE → Prada Aoyama, 외관 위주. Prada에서 미드타운까지 도보.",stay:"30분",cost:"무료~",priority:"14:20 출발 고정"},
-  {move:"🚶 Prada 아오야마 → 도쿄 미드타운 · 약 15분"},
-  {t:"14:35",n:"21_21 DESIGN SIGHT",cat:"건축",lat:35.6665,lng:139.7301,mapsaved:true,
-  d:"일요일 10:00~19:00(입장 18:30) · 약 ¥1,400. <b>점심이 30분 컷오프를 넘기면 빼고</b> 국립신미술관 직행.",stay:"35분",cost:"¥1,400 전후",priority:"15:10 출발 · 점심 지연 시 생략"},
-  {move:"🚶 21_21 → 국립신미술관 도보 5분"},
-  {t:"15:15",n:"국립신미술관 · 루브르 미술관전 르네상스",cat:"관광",lat:35.6653,lng:139.7263,mandatory:true,
-   d:"六本木 7-22-2 · 일요일 10:00~18:00(입장 17:30) · 화요일 휴관 · <b>당일권 ¥2,400</b>(시간 지정 없음). 노기자카역 6번 출구 직결.",stay:"70분",cost:"¥2,400",book:"당일권 · 온라인 구매 시 줄 단축",priority:"16:25 퇴장"},
-  {move:"🚇 노기자카 → 지요다선 오모테산도 → 한조몬선 시부야 · 약 25분"},
-  {t:"16:55",n:"시부야 도착 · SHIBUYA SKY 입구",cat:"이동",lat:35.6584,lng:139.7022,
-  d:"스크램블스퀘어 14층 입장구.",stay:"5분",cost:"—",priority:"17:00 입장"},
-  {t:"17:00",n:"SHIBUYA SKY",cat:"야경",lat:35.6584,lng:139.7022,mandatory:true,
-   d:"17:15 옥상 → 17:31 일몰 → 블루아워·야경 점등까지, 18:15 퇴장. 우천·강풍 시 옥상 폐쇄, 46층 실내만.",stay:"75분",cost:"WEB ¥3,400 (당일 ¥3,700)",book:"WEB ¥3,400 · 전날까지 무료 취소",priority:"17:00 슬롯 · 매진 시 16:40 · 옥상 폐쇄 시 당일 무료 취소"},
+  d:"오모테산도 힐즈 → Dior·GYRE → Prada Aoyama, 외관 위주. 오모테산도역으로 돌아가 시부야로.",stay:"30분",cost:"무료~",priority:"14:20 출발 고정"},
+  {move:"🚇 오모테산도 → 긴자선·한조몬선 시부야 1정거장 · 약 10분"},
+  {t:"14:30",n:"시부야 도착 · SHIBUYA SKY 입구",cat:"이동",lat:35.6584,lng:139.7022,
+   d:"스크램블스퀘어 14층 입장구.",stay:"10분",cost:"—",priority:"14:40 입장"},
+  {t:"14:40",n:"SHIBUYA SKY",cat:"전망",lat:35.6584,lng:139.7022,mandatory:true,
+   d:"<b>15시 전 입장권</b>(9/29 15시 이후 매진). 낮 풍경 위주, 16:00 전후 하산. 우천·강풍 시 옥상 폐쇄.",stay:"80분",cost:"WEB ¥2,700 (15시 전)",book:"9/29 14:40 · 15시 전 입장권 · 전날까지 무료 취소",priority:"14:40 슬롯 · 옥상 폐쇄 시 당일 무료 취소"},
   {move:"🚶 하치코광장 방향 약 5분"},
-  {t:"18:20",n:"시부야 스크램블 교차로 · 하치코",cat:"관광",lat:35.6590,lng:139.7005,
+  {t:"16:05",n:"시부야 스크램블 교차로 · 하치코",cat:"관광",lat:35.6590,lng:139.7005,
   d:"",stay:"15분",cost:"무료"},
   {move:"🚶 시부야 PARCO까지 약 8분"},
-  {t:"18:45",n:"시부야 PARCO · 닌텐도 도쿄·포켓몬센터",cat:"쇼핑",lat:35.6620,lng:139.6987,
-  d:"6층 닌텐도 도쿄·포켓몬센터(~21:00).",stay:"40분",cost:"무료~",priority:"19:25 출발"},
-  {t:"19:25",n:"저녁 · 시부야 (일요일 L.O. 대비 앞당김)",cat:"맛집",lat:35.6610,lng:139.7020,
-  d:"일요일은 L.O. 21:00~21:30이 많다. 대기 20분 이내 식당 또는 스시노미도리·우오베이.",stay:"70분",cost:"¥2,000~",priority:"20:35 종료"},
+  {t:"16:30",n:"시부야 PARCO · 닌텐도 도쿄·포켓몬센터",cat:"쇼핑",lat:35.6620,lng:139.6987,
+  d:"6층 닌텐도 도쿄·포켓몬센터.",stay:"60분",cost:"무료~",priority:"17:30 출발"},
   {move:"🚶 미야시타파크까지 약 8분"},
-  {t:"20:40",n:"미야시타파크 · KITH Tokyo",cat:"쇼핑",lat:35.6614,lng:139.7024,mapsaved:true,optional:true,
-  d:"KITH ~21:00. 피곤하면 생략.",stay:"20분",cost:"무료~",priority:"KITH 21:00 마감"}
- ]
-},
-{
- id:"d5",label:"9/29",dow:"화",hex:"#cf5a8c",
- zone:"숙소 휴식 → 아타고 신사 → 시바공원·조조지 → 아자부다이 → 아자부주반 → 롯폰기",theme:"회복일 · 오전 휴식 → 12:35 아타고 신사 → 시바공원 → 아자부다이·마켓 → 아자부주반 산책 → 17:30 스시야 쇼타 → 롯폰기 힐스 야경 (선택: 히로시게전 · AMBIENT · 온천)",
- lodging:"12:15 전후 출발 · 숙소 → 히비야선 가미야초 약 12분 / 롯폰기 → 히비야선 핫초보리 직통 약 17분",
- rain:"아자부다이·마켓은 유지. 아타고·시바공원은 외관 15분으로 줄이고 AMBIENT 또는 Sky Room 카페 실내로 채운다",
- items:[
-  {t:"11:00",n:"점심 · 숙소 근처",cat:"맛집",placeholder:true,
-   d:"가야바초·핫초보리 주변에서 가볍게(17:30 오마카세). 09:30 츠키지 브런치로 교체 가능.",stay:"70분",cost:"¥1,500~3,000",priority:"컷오프 없음"},
-  {move:"🚇 12:15 전후 출발 → 히비야선 핫초보리 → 가미야초 약 12분 → 도보 5분"},
-  {t:"12:35",n:"아타고 신사 · 출세의 돌계단",cat:"관광",lat:35.6650,lng:139.7495,
-  d:"86단 급경사 돌계단 · 무료 · 상시 개방.",stay:"15분",cost:"무료"},
-  {move:"🚶 아타고 신사 → 도쿄타워 밑 → 시바공원 약 12분"},
-  {t:"13:05",n:"시바공원 · 조조지 · 도쿄타워 뷰",cat:"건축·관광",lat:35.6586,lng:139.7454,mapsaved:true,
-  d:"조조지 대전 06:00~17:30 · 타워는 외관만.",stay:"50분",cost:"무료",priority:"컷오프 없음"},
-  {move:"🚶 조조지 → 아자부다이 힐즈 약 15분"},
-  {t:"14:10",n:"아자부다이 힐즈 · 건축 산책",cat:"건축",lat:35.6604,lng:139.7404,mapsaved:true,mandatory:true,
-  d:"Garden Plaza → Central Green → Heatherwick 저층부 → The Cloud → Mori JP Tower 순.",stay:"50분",cost:"무료",priority:"컷오프 없음"},
-  {t:"15:00",n:"아자부다이 힐즈 마켓 · 선물 쇼핑",cat:"쇼핑",lat:35.6602,lng:139.7398,
-  d:"Garden Plaza B1 · 11:00~20:00. 선물·간식, 무거운 건 사지 않기.",stay:"30분",cost:"—"},
-  {move:"🚶 아자부다이 → 아자부주반 상점가 약 12분 (AMBIENT 선택 시 17:05 퇴장 후 바로 쇼타)"},
-  {t:"16:35",n:"아자부주반 상점가 산책 · 마메겐(豆源)",cat:"쇼핑",lat:35.6560,lng:139.7365,
-  d:"쇼타 도보 3분. 마메겐 본점(콩과자) · 타이야키 나니와야는 화요 휴무. 17:15에 쇼타 앞.",stay:"40분",cost:"¥500~",priority:"17:15 쇼타 도착"},
-  {t:"17:30",n:"스시야 쇼타 · 오마카세 (예약 확정)",cat:"맛집",lat:35.6552,lng:139.7357,mapsaved:true,mandatory:true,
-   d:"麻布十番 3-3-10 LANI빌딩Ⅱ 1F · 아자부주반역 도보 2~3분 · 기본 오마카세(니기리 14관). <b>15분 지나 연락 없으면 취소</b> — 늦으면 인스타그램 DM. 강한 향수 금지.",stay:"120분",cost:"¥17,600/인 (세금·서비스 포함) + 음료",book:"예약 확정 · 17:30 · 2명",priority:"17:15 도착 · 취소료 48시간 전 50% / 24시간 전 100%"},
-  {move:"🚶 아자부주반 → 롯폰기 힐스 약 10분"},
-  {t:"19:40",n:"롯폰기 힐스 야간 산책 · 게야키자카 · 모리정원 · 66플라자",cat:"야경",lat:35.6605,lng:139.7292,mapsaved:true,
-  d:"게야키자카 도쿄타워 뷰 → 모리정원(~23:00) → 66플라자, 45분.",stay:"45분",cost:"무료",priority:"20:25 종료"},
-  {move:"🚇 롯폰기 → 히비야선 핫초보리 직통 약 17분 (온천 선택 시 오에도선 롯폰기 → 츠키시마 → 유라쿠초선 도요스 → 유리카모메 시조마에 약 35분)"}
+  {t:"17:40",n:"미야시타파크 · KITH Tokyo",cat:"쇼핑",lat:35.6614,lng:139.7024,mapsaved:true,optional:true,
+  d:"다음 날 출국이라 저녁 전에 쇼핑을 끝낸다.",stay:"40분",cost:"무료~",priority:"18:20 저녁 이동"},
+  {t:"18:30",n:"저녁 · 시부야",cat:"맛집",lat:35.6610,lng:139.7020,
+   d:"대기 20분 이내 식당 또는 스시노미도리·우오베이. 다음 날 07:00 기상.",stay:"70분",cost:"¥2,000~",priority:"19:40 종료"},
+  {move:"🚇 시부야 → 긴자선 니혼바시 → 도자이선 가야바초 약 30분"}
  ]
 },
 {
@@ -1159,82 +1128,7 @@ const DAYS=[
 }
 ];
 DAYS.sort((a,b)=>Number(a.id.slice(1))-Number(b.id.slice(1)));
-/* ── 버전: 현재 유지 / 9/27↔9/29 교체안 ── */
-const BASE_D3=DAYS.find(d=>d.id==='d3'),BASE_D5=DAYS.find(d=>d.id==='d5');
-const SWAP_D3={
- id:"d3",label:"9/27",dow:"일",hex:"#1f9e75",
- zone:"숙소 휴식 → 국립신미술관 → 21_21 → 아자부다이 → 아자부주반 → 롯폰기",theme:"교체안 · 오전 휴식 → 12:25 루브르전 → 21_21 → 아자부다이·마켓 → 아자부주반 산책 → 17:30 스시야 쇼타(변경 요청 중) → 롯폰기 힐스 야경",
- lodging:"12:00 전후 출발 · 숙소 → 히비야선 핫초보리 → 롯폰기 약 17분 → 4a 출구 국립신미술관 도보 5분 / 롯폰기 → 히비야선 핫초보리 직통 약 17분",
- rain:"비 예보일. 루브르전·21_21·아자부다이 마켓은 실내라 그대로 진행하고 아자부주반 산책만 짧게. AMBIENT(선택)도 실내",
- items:[
-  {t:"11:00",n:"점심 · 숙소 근처",cat:"맛집",placeholder:true,
-   d:"오전 휴식 후 숙소 근처에서 가볍게(17:30 오마카세).",stay:"60분",cost:"¥1,500~3,000",priority:"12:00 출발"},
-  {move:"🚇 12:00 출발 → 히비야선 핫초보리 → 롯폰기 약 17분 → 4a 출구 도보 5분"},
-  {t:"12:25",n:"국립신미술관 · 루브르 미술관전 르네상스",cat:"관광",lat:35.6653,lng:139.7263,mandatory:true,
-   d:"六本木 7-22-2 · 일요일 10:00~18:00(입장 17:30) · 화요일 휴관 · <b>당일권 ¥2,400</b>(시간 지정 없음). 노기자카역 6번 출구 직결.",stay:"95분",cost:"¥2,400",book:"당일권 · 온라인 구매 시 줄 단축",priority:"14:00 퇴장"},
-  {move:"🚶 국립신미술관 → 21_21 도보 5분"},
-  {t:"14:05",n:"21_21 DESIGN SIGHT",cat:"건축",lat:35.6665,lng:139.7301,mapsaved:true,
-  d:"일요일 10:00~19:00(입장 18:30) · 화요일 휴관 · 약 ¥1,400. 국립신미술관 도보 5분.",stay:"40분",cost:"¥1,400 전후",priority:"14:45 출발"},
-  {move:"🚶 도쿄 미드타운 → 롯폰기역 → 히비야선 가미야초 1정거장 → 아자부다이 힐즈 · 약 15분"},
-  {t:"15:05",n:"아자부다이 힐즈 · 건축 산책",cat:"건축",lat:35.6604,lng:139.7404,mapsaved:true,mandatory:true,
-  d:"Garden Plaza → Central Green → Heatherwick 저층부 → The Cloud → Mori JP Tower 순.",stay:"45분",cost:"무료",priority:"컷오프 없음"},
-  {t:"15:50",n:"아자부다이 힐즈 마켓 · 선물 쇼핑",cat:"쇼핑",lat:35.6602,lng:139.7398,
-  d:"Garden Plaza B1 · 11:00~20:00. 선물·간식, 무거운 건 사지 않기.",stay:"30분",cost:"—"},
-  {move:"🚶 아자부다이 → 아자부주반 상점가 약 12분 (AMBIENT 선택 시 17:05 퇴장 후 바로 쇼타)"},
-  {t:"16:35",n:"아자부주반 상점가 산책 · 마메겐(豆源)",cat:"쇼핑",lat:35.6560,lng:139.7365,
-  d:"쇼타 도보 3분. 마메겐 본점(콩과자 · 10:00~18:30 · 일요일 영업) · 타이야키 나니와야. 17:15에 쇼타 앞.",stay:"40분",cost:"¥500~",priority:"17:15 쇼타 도착"},
-  {t:"17:30",n:"스시야 쇼타 · 오마카세 (9/27 변경 요청 중)",cat:"맛집",lat:35.6552,lng:139.7357,mapsaved:true,mandatory:true,
-   d:"⚠️ <b>현재 예약은 9/29 17:30 · 9/27로 변경 요청 중.</b> 확정 전엔 ‘현재 유지’가 실제 일정. 麻布十番 3-3-10 · 아자부주반역 도보 2~3분. <b>15분 지나 연락 없으면 취소</b>.",stay:"120분",cost:"¥17,600/인 (세금·서비스 포함) + 음료",book:"변경 요청 중 · 9/27 17:30 · 2명",priority:"17:15 도착 · 취소료 48시간 전 50% / 24시간 전 100%"},
-  {move:"🚶 아자부주반 → 롯폰기 힐스 약 10분"},
-  {t:"19:40",n:"롯폰기 힐스 야간 산책 · 게야키자카 · 모리정원 · 66플라자",cat:"야경",lat:35.6605,lng:139.7292,mapsaved:true,
-  d:"게야키자카 도쿄타워 뷰 → 모리정원(~23:00) → 66플라자, 45분.",stay:"45분",cost:"무료",priority:"20:25 종료"},
-  {move:"🚇 롯폰기 → 히비야선 핫초보리 직통 약 17분"}
- ]
-};
-const SWAP_D5={
- id:"d5",label:"9/29",dow:"화",hex:"#cf5a8c",
- zone:"신주쿠 → 메이지진구 → 하라주쿠·오모테산도 → 시부야",theme:"교체안 · 신주쿠교엔 → 메이지진구 → 하라주쿠 점심 → 오모테산도 → 14:40 SKY(15시 전 입장) → 스크램블 → PARCO → 미야시타파크 → 18:30 저녁",
- lodging:"숙소 → 도자이선 가야바초 → 오테마치 환승 → 마루노우치선 신주쿠교엔마에 약 30분 / 시부야 → 긴자선 니혼바시 → 도자이선 가야바초 약 30분 · 왕복 모두 환승 1회",
- rain:"신주쿠교엔은 대온실 중심, 메이지진구는 본전만. HARAKADO·오모테산도 힐즈·PARCO 실내 중심. SKY 옥상 폐쇄 시 WEB 티켓 당일 무료 취소",
- items:[
-  {t:"07:45",n:"숙소 조식 · 간편식",cat:"맛집",
-   d:"숙소 조식 또는 편의점. 결식 금지.",stay:"30분",cost:"¥700~1,500",placeholder:true},
-  {t:"09:00",n:"신주쿠교엔",cat:"휴양",lat:35.6852,lng:139.7100,
-   d:"09:00 개원 · ¥500 · 화요일 개원. 비 오면 대온실 중심.",stay:"75분",cost:"¥500",priority:"10:15 센다가야문 퇴장"},
-  {move:"🚶 센다가야문 → 기타산도·메이지진구 북쪽 입구 · 약 20분"},
-  {t:"10:35",n:"메이지진구",cat:"관광",lat:35.6764,lng:139.6993,
-   d:"09월 05:20~17:20. 정오 전에 마친다.",stay:"55분",cost:"무료"},
-  {move:"🚶 하라주쿠역 방향 약 10분"},
-  {t:"11:40",n:"다케시타도리 · HARAKADO",cat:"쇼핑",lat:35.6693,lng:139.7052,mapsaved:true,optional:true,
-   d:"해리포터 샵을 고르면 이 구간과 교체.",stay:"35분",cost:"무료~"},
-  {move:"🚶 다케시타도리 안쪽 약 5분"},
-  {t:"12:20",n:"CHERMSIDE SANDWICH 하라주쿠",cat:"맛집",lat:35.6712,lng:139.7051,mapsaved:true,
-   d:"神宮前 1-6-8 · 11:00~19:30 · 무휴. 같은 블록 2호점(Wa Mall 3~4F), 붐비면 다른 쪽. 대기 30분 넘으면 대체식.",stay:"60분",cost:"¥1,500~2,500",priority:"30분 대기 컷오프"},
-  {move:"🚶 캣스트리트 경유 NUMBER SUGAR까지 약 10분"},
-  {t:"13:25",n:"NUMBER SUGAR 오모테산도점",cat:"디저트",lat:35.6670,lng:139.7063,mapsaved:true,optional:true,
-   d:"11:00~19:00 · 무휴. 줄 10분 넘으면 생략.",stay:"15분",cost:"¥500~",priority:"10분 대기 컷오프"},
-  {move:"🚶 오모테산도 힐즈 방향 약 5분"},
-  {t:"13:50",n:"오모테산도 현대건축 산책",cat:"건축",lat:35.6652,lng:139.7123,
-  d:"오모테산도 힐즈 → Dior·GYRE → Prada Aoyama, 외관 위주. 오모테산도역으로 돌아가 시부야로.",stay:"30분",cost:"무료~",priority:"14:20 출발 고정"},
-  {move:"🚇 오모테산도 → 긴자선·한조몬선 시부야 1정거장 · 약 10분"},
-  {t:"14:30",n:"시부야 도착 · SHIBUYA SKY 입구",cat:"이동",lat:35.6584,lng:139.7022,
-   d:"스크램블스퀘어 14층 입장구.",stay:"10분",cost:"—",priority:"14:40 입장"},
-  {t:"14:40",n:"SHIBUYA SKY",cat:"전망",lat:35.6584,lng:139.7022,mandatory:true,
-   d:"<b>15시 전 입장권</b>(9/29 15시 이후 매진). 낮 풍경 위주, 16:00 전후 하산. 우천·강풍 시 옥상 폐쇄.",stay:"80분",cost:"WEB ¥2,700 (15시 전)",book:"9/29 14:40 · 15시 전 입장권 · 전날까지 무료 취소",priority:"14:40 슬롯 · 옥상 폐쇄 시 당일 무료 취소"},
-  {move:"🚶 하치코광장 방향 약 5분"},
-  {t:"16:05",n:"시부야 스크램블 교차로 · 하치코",cat:"관광",lat:35.6590,lng:139.7005,
-  d:"",stay:"15분",cost:"무료"},
-  {move:"🚶 시부야 PARCO까지 약 8분"},
-  {t:"16:30",n:"시부야 PARCO · 닌텐도 도쿄·포켓몬센터",cat:"쇼핑",lat:35.6620,lng:139.6987,
-  d:"6층 닌텐도 도쿄·포켓몬센터.",stay:"60분",cost:"무료~",priority:"17:30 출발"},
-  {move:"🚶 미야시타파크까지 약 8분"},
-  {t:"17:40",n:"미야시타파크 · KITH Tokyo",cat:"쇼핑",lat:35.6614,lng:139.7024,mapsaved:true,optional:true,
-  d:"다음 날 출국이라 저녁 전에 쇼핑을 끝낸다.",stay:"40분",cost:"무료~",priority:"18:20 저녁 이동"},
-  {t:"18:30",n:"저녁 · 시부야",cat:"맛집",lat:35.6610,lng:139.7020,
-   d:"대기 20분 이내 식당 또는 스시노미도리·우오베이. 다음 날 07:00 기상.",stay:"70분",cost:"¥2,000~",priority:"19:40 종료"},
-  {move:"🚇 시부야 → 긴자선 니혼바시 → 도자이선 가야바초 약 30분"}
- ]
-};
+
 
 /* ── 지도 ── */
 const map=typeof L!=='undefined'?L.map('map',{zoomControl:true,scrollWheelZoom:false}).setView([35.68,139.78],12):null;
@@ -1349,7 +1243,6 @@ function effectiveDayItems(day){
     if(item.n==='카네코한노스케 츠키지 본점 웨이팅'){shiftByName(places,{'긴자식스':{t:'12:00',stay:'25분',priority:'12:25 종료 · 압축'}});}
     }
     if(cd.id==='c2'&&slot.title==='오다이바 가는 길')places=places.filter(p=>!p.n.startsWith('후지TV'));
-    if(cd.id==='c4'&&slot.title.startsWith('오전 선택'))places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)<720));
     if(cd.id==='c2'&&slot.title==='아티존 대체')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=600&&timeRank(p.t)<800));
     if(cd.id==='c2'&&slot.title==='긴자·니혼바시 회수'&&item.n!=='쇼에이도 긴자점')places=places.filter(p=>!(removeBase(p)&&timeRank(p.t)>=620&&timeRank(p.t)<760&&p.cat!=='이동'));
     if(cd.id==='c2'&&item.n==='쇼에이도 긴자점'){
@@ -1560,31 +1453,8 @@ function initItinerary(){
   if(detailReady){select(currentDetailDay);renderFullTable();}
 }
 
-const VERSION_HTML={
-  resShota:'<td><span class="prio p2">!</span></td><td><b>스시야 쇼타</b></td><td class="nowrap">9/27(일)</td><td><b style="color:var(--serious)">변경 요청 중 · 17:30 · 2명</b></td><td>현재 예약은 <b>9/29(화) 17:30</b>(식베로그). 가게가 9/27 변경을 확정하기 전까지는 ‘현재 유지’가 실제 일정. 9/29 취소료는 9/27 17:30부터 50%.</td>',
-  resSky:'<td><span class="prio p2">3</span></td><td><b>SHIBUYA SKY</b></td><td class="nowrap">9/29(화)</td><td><b style="color:var(--critical)">15시 전 입장권</b></td><td>9/29는 15시 이후 표 매진(9/25 조회) → <b>14:40 입장 · WEB ¥2,700</b>. 9/27 표를 샀다면 9/26까지 무료 취소.</td>'
-};
-const VERSION_BASE={};
-function applyVersion(v){
-  VERSION=v==='swap'?'swap':'keep';
-  try{localStorage.setItem('tokyo-version',VERSION);}catch(e){}
-  const swap=VERSION==='swap';
-  DAYS[DAYS.findIndex(d=>d.id==='d3')]=swap?SWAP_D3:BASE_D3;
-  DAYS[DAYS.findIndex(d=>d.id==='d5')]=swap?SWAP_D5:BASE_D5;
-  Object.keys(VERSION_HTML).forEach(id=>{
-    const el=document.getElementById(id);if(!el)return;
-    if(!(id in VERSION_BASE))VERSION_BASE[id]=el.innerHTML;
-    el.innerHTML=swap?VERSION_HTML[id]:VERSION_BASE[id];
-  });
-  document.getElementById('versionKeep').setAttribute('aria-selected',String(!swap));
-  document.getElementById('versionSwap').setAttribute('aria-selected',String(swap));
-  document.getElementById('versionBanner').style.display=swap?'':'none';
-  initItinerary();
-}
 detailReady=true;
-document.getElementById('versionKeep').addEventListener('click',()=>applyVersion('keep'));
-document.getElementById('versionSwap').addEventListener('click',()=>applyVersion('swap'));
-applyVersion(VERSION);
+initItinerary();
 </script>
 </body>
 </html>
