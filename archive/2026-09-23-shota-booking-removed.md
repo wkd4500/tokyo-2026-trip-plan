@@ -288,3 +288,9 @@ document.getElementById('versionKeep').addEventListener('click',()=>applyVersion
 document.getElementById('versionSwap').addEventListener('click',()=>applyVersion('swap'));
 applyVersion(VERSION);
 ```
+
+
+## 2026-09-25 · 점검 후 정리
+
+- 9/29 플래너에서 해리포터 샵 하라주쿠 삭제(사용자: 안 간다). 원문: `{n:"해리포터 샵 하라주쿠",c:"쇼핑",l:"추천",at:"12:15",d:"45분",p:"무료~",mapsaved:true,note:"11:00~21:00 · 워크인. 줄 15분 이내일 때만."}` · 좌표 [35.6686494,139.7044101]
+- 9/27 빈 슬롯 2개(오전 선택, 29일 온천) 삭제 — 항목 없음. 온천 2곳은 9/28, 츠키지는 9/26 아침에 남아 있음.
